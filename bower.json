@@ -5,7 +5,7 @@
     "Gulpfile.js",
     "package.json",
     "gulp-config.json.example",
-    "src/**/*"
+    "src"
   ],
   "authors": [
     "Benjamin Dehli <superelg@gmail.com>"
