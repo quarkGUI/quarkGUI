@@ -1,0 +1,74 @@
+
+.box {
+  border-radius: 2px;
+  background-color: #FFF;
+  margin-bottom: 15px;
+  .content {
+    padding: 15px;
+  }
+  .thumbnail img {
+    border-bottom: 1px solid #ccc;
+  }
+  .box-header {
+    font-size: .8em;
+    color: #FFF;
+    a{
+      text-decoration: none;
+    }
+    .icon{
+      color: #FFF;
+      font-family: FontAwesome;
+      font-size: 1.6em;
+      line-height: 15px;
+    }
+  }
+  &.facebook {
+    .box-header {
+      background-color: #3b5998;
+      .icon::after{
+        content: "\f230";
+      }
+    }
+  }
+  &.instagram {
+    .box-header {
+      background-color: #125688;
+      .icon::after{
+        content: "\f16d";
+      }
+    }
+  }
+  &.soundcloud {
+    .box-header {
+      background-color: #F50;
+      .icon::after{
+        content: "\f1be";
+      }
+    }
+  }
+  &.twitter {
+    .box-header {
+      background-color: #55acee;
+      .icon::after{
+        content: "\f099";
+      }
+    }
+  }
+  &.google {
+    .box-header {
+      background-color: #db4437;
+      .icon::after{
+        content: "\f0d5";
+      }
+    }
+  }
+  &.youtube {
+    .box-header {
+      background-color: #cc181e;
+      .icon::after{
+        content: "\f167";
+      }
+    }
+  }
+}
+

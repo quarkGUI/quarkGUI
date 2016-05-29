@@ -1,0 +1,116 @@
+.action-button {
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: fixed;
+  width: 56px;
+  height: 56px;
+  bottom: 16px;
+  right: 16px;
+  background-color: #be2791;
+  color: #FFF;
+  z-index: 20;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  &::after {
+    content: "\f129";
+    font-family: FontAwesome;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    font-size: 28pt;
+    line-height: 56px;
+  }
+  &.active {
+    bottom: 0;
+    box-shadow: none;
+    &::after {
+      content: "\f00d";
+    }
+  }
+}
+
+.action-menu {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  right: 58px;
+  background-color: #be2791;
+  color: #FFF;
+  height: 60px;
+  bottom: 0px;
+  -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 0;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  z-index: 1;
+  .toggle-action-button,
+  .toggle-action-button.active {
+    color: transparent;
+    background-color: transparent;
+    padding: 0;
+    margin-right: -3px;
+    .icon {
+      font-size: 28pt;
+      line-height: 60px;
+      width: 60px;
+    }
+  }
+  &.active {
+    width: 100%;
+    right: 0;
+    .toggle-action-button {
+      .icon::after {
+        color: #FFF;
+        opacity: .8;
+        -webkit-transition: all .2s;
+        transition: all .2s;
+      }
+      &:hover, &.active {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .action-button {
+    bottom: 32px;
+    right: 32px;
+  }
+}
+
+.toggle-action-button.facebook .icon::after {
+  content: "\f230";
+}
+
+.action-menu.active .toggle-action-button.active.facebook {
+  background-color: #3b5998;
+}
+
+.toggle-action-button.twitter .icon::after {
+  content: "\f099";
+}
+
+.action-menu.active .toggle-action-button.active.twitter {
+  background-color: #55acee;
+}
+
+.toggle-action-button.instagram .icon::after {
+  content: "\f16d";
+}
+
+.action-menu.active .toggle-action-button.active.instagram {
+  background-color: #125688;
+}
+
+.toggle-action-button.google .icon::after {
+  content: "\f0d5";
+}
+
+.action-menu.active .toggle-action-button.active.google {
+  background-color: #db4437;
+}
