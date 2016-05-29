@@ -1,0 +1,17 @@
+{
+  "name": "simple-gui-template",
+  "description": "Simple website GUI template",
+  "main": "Gulpfile.js",
+  "authors": [
+    "Benjamin Dehli"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/benjamindehli/Simple-GUI-Template",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
