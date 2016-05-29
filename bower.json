@@ -1,9 +1,14 @@
 {
   "name": "simple-gui-template",
   "description": "Simple website GUI template",
-  "main": "Gulpfile.js",
+  "main": [
+    "Gulpfile.js",
+    "package.json",
+    "gulp-config.json.example",
+    "src/**/*"
+  ],
   "authors": [
-    "Benjamin Dehli"
+    "Benjamin Dehli <superelg@gmail.com>"
   ],
   "license": "MIT",
   "homepage": "https://github.com/benjamindehli/Simple-GUI-Template",
@@ -14,7 +19,7 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
+  "dependencies": {
     "jquery": "^2.2.2",
     "masonry": "^4.0.0",
     "imagesloaded": "^4.1.0",
