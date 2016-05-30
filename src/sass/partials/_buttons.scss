@@ -19,7 +19,7 @@
     background-color: rgba(158, 158, 158, 0.2);
   }
   &:not([disabled]):active {
-    background: rgba(190, 39, 137, .15);
+    @include active-button;
   }
   &[disabled] {
     color: rgba(0, 0, 0, 0.26);
@@ -33,10 +33,18 @@
     transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), background-color .4s cubic-bezier(.25, .8, .25, 1);
   }
   &:not([disabled]):active {
-    background: rgba(190, 39, 137, .15);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
+    @include active-button;
   }
   &[disabled]{
     color: rgba(0, 0, 0, 0.26);
+  }
+}
+
+.button-primary{
+  background-color: $primary-color;
+  color: #FFFFFF;
+  &:not([disabled]):active {
+    @include active-primary-button;
   }
 }

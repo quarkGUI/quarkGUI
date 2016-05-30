@@ -1,0 +1,6 @@
+@mixin active-button() {
+  background-color: rgba($primary-color, .15);
+}
+@mixin active-primary-button() {
+  background-color: rgba($primary-color, .85);
+}
