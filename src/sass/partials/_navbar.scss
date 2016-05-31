@@ -1,6 +1,6 @@
 .navbar {
   position: fixed;
-  background-color: #be2791;
+  background-color: #FFF;
   height: 48px;
   width: 100%;
   z-index: 2;
@@ -20,7 +20,7 @@
     }
   }
   a {
-    color: #FFF;
+    color: $primary-color;
   }
   a.sidenav-toggle {
     font-size: 20pt;
@@ -35,7 +35,7 @@
       background-color: rgba(158, 158, 158, 0.2);
     }
     &:active {
-      background: rgba(190, 39, 137, .15);
+      @include active-button;
     }
   }
   .menu-divider {
@@ -53,7 +53,7 @@
     li {
       display: inline-block;
       a {
-        color: #FFF;
+        color: $primary-color;
         text-decoration: none;
         text-transform: uppercase;
         margin: 0 -2px;
@@ -66,8 +66,32 @@
         -webkit-transition: border-color .2s;
         transition: border-color .2s;
         &:hover {
-          border-bottom: 6px solid #FFF;
+          border-bottom: 6px solid $primary-color;
         }
+      }
+    }
+  }
+  &.navbar-dark {
+    background-color: #333333;
+    a {
+      color: #FFFFFF;
+    }
+    ul li a {
+      color: #FFF;
+      &:hover {
+        border-bottom: 6px solid #FFF;
+      }
+    }
+  }
+  &.navbar-primary {
+    background-color: $primary-color;
+    a {
+      color: $primary-color;
+    }
+    ul li a {
+      color: #FFF;
+      &:hover {
+        border-bottom: 6px solid #FFF;
       }
     }
   }

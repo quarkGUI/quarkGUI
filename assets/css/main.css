@@ -2924,7 +2924,7 @@ pre.code-example {
 
 .navbar {
   position: fixed;
-  background-color: #be2791;
+  background-color: #FFF;
   height: 48px;
   width: 100%;
   z-index: 2;
@@ -2942,7 +2942,7 @@ pre.code-example {
       height: 40px;
       width: auto; }
   .navbar a {
-    color: #FFF; }
+    color: #BE2791; }
   .navbar a.sidenav-toggle {
     font-size: 20pt;
     line-height: 48px;
@@ -2955,7 +2955,7 @@ pre.code-example {
       transition: background .2s .1s;
       background-color: rgba(158, 158, 158, 0.2); }
     .navbar a.sidenav-toggle:active {
-      background: rgba(190, 39, 137, 0.15); }
+      background-color: rgba(190, 39, 145, 0.15); }
   .navbar .menu-divider {
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 1px solid rgba(0, 0, 0, 0.08);
@@ -2970,7 +2970,7 @@ pre.code-example {
     .navbar ul li {
       display: inline-block; }
       .navbar ul li a {
-        color: #FFF;
+        color: #BE2791;
         text-decoration: none;
         text-transform: uppercase;
         margin: 0 -2px;
@@ -2983,7 +2983,23 @@ pre.code-example {
         -webkit-transition: border-color .2s;
         transition: border-color .2s; }
         .navbar ul li a:hover {
-          border-bottom: 6px solid #FFF; }
+          border-bottom: 6px solid #BE2791; }
+  .navbar.navbar-dark {
+    background-color: #333333; }
+    .navbar.navbar-dark a {
+      color: #FFFFFF; }
+    .navbar.navbar-dark ul li a {
+      color: #FFF; }
+      .navbar.navbar-dark ul li a:hover {
+        border-bottom: 6px solid #FFF; }
+  .navbar.navbar-primary {
+    background-color: #BE2791; }
+    .navbar.navbar-primary a {
+      color: #BE2791; }
+    .navbar.navbar-primary ul li a {
+      color: #FFF; }
+      .navbar.navbar-primary ul li a:hover {
+        border-bottom: 6px solid #FFF; }
 
 .left-menu {
   height: 100%;
