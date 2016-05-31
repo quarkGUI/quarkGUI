@@ -2351,7 +2351,9 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
 
 .button-primary {
   background-color: #BE2791;
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  -webkit-transition: background .2s .1s;
+  transition: background .2s .1s; }
   .button-primary:not([disabled]):active {
     background-color: rgba(190, 39, 145, 0.85); }
 

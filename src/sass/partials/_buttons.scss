@@ -44,6 +44,8 @@
 .button-primary{
   background-color: $primary-color;
   color: #FFFFFF;
+  -webkit-transition: background .2s .1s;
+  transition: background .2s .1s;
   &:not([disabled]):active {
     @include active-primary-button;
   }
