@@ -18,6 +18,11 @@ body {
   color: #212121;
 }
 
+a, a:visited{
+  color: $primary-color;
+  text-decoration: none;
+}
+
 p {
   margin: .5em 0;
 }
