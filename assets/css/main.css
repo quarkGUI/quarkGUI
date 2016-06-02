@@ -2112,6 +2112,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #212121; }
 
+a, a:visited {
+  color: #BE2791;
+  text-decoration: none; }
+
 p {
   margin: .5em 0; }
 
@@ -2886,6 +2890,15 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   margin: 0;
   min-height: 0; }
 
+ul.list {
+  list-style: none;
+  padding: 0; }
+  ul.list li {
+    padding: 10px 5px 2px;
+    border-bottom: 1px solid #EEE; }
+  ul.list.hover-list li:hover {
+    background-color: rgba(190, 39, 145, 0.05); }
+
 audio {
   background: #000;
   opacity: .9;
@@ -2987,7 +3000,7 @@ pre.code-example {
         .navbar ul li a:hover {
           border-bottom: 6px solid #BE2791; }
   .navbar.navbar-dark {
-    background-color: #333333; }
+    background-color: #1F1F1F; }
     .navbar.navbar-dark a {
       color: #FFFFFF; }
     .navbar.navbar-dark ul li a {

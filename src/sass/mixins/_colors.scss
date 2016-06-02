@@ -4,3 +4,7 @@
 @mixin active-primary-button() {
   background-color: rgba($primary-color, .85);
 }
+
+@mixin hover-list() {
+  background-color: rgba($primary-color, .05);
+}
