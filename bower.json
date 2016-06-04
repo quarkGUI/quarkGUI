@@ -19,10 +19,8 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "components-font-awesome": "^4.5.0"
-  },
   "devDependencies": {
+    "components-font-awesome": "^4.5.0",
     "jquery": "^2.2.2",
     "masonry": "^4.0.0",
     "imagesloaded": "^4.1.0"
