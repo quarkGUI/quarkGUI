@@ -2960,7 +2960,6 @@ pre.code-example {
     color: #BE2791; }
   .navbar a.sidenav-toggle {
     font-size: 20pt;
-    line-height: 48px;
     display: inline-block;
     vertical-align: bottom;
     padding: 0 15px;
@@ -2971,6 +2970,8 @@ pre.code-example {
       background-color: rgba(158, 158, 158, 0.2); }
     .navbar a.sidenav-toggle:active {
       background-color: rgba(190, 39, 145, 0.15); }
+    .navbar a.sidenav-toggle .sidenav-toggle-logo {
+      line-height: 48px; }
   .navbar .menu-divider {
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 1px solid rgba(0, 0, 0, 0.08);
@@ -3089,8 +3090,9 @@ body.sidebar-active .left-menu {
     .navbar .logo {
       padding: 10px 0; }
     .navbar a.sidenav-toggle {
-      line-height: 64px;
       padding: 0 25px; }
+      .navbar a.sidenav-toggle .sidenav-toggle-logo {
+        line-height: 64px; }
   .left-menu > div {
     top: 64px; }
   .left-menu .sidenav-logo {

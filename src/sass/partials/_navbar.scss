@@ -24,7 +24,6 @@
   }
   a.sidenav-toggle {
     font-size: 20pt;
-    line-height: 48px;
     display: inline-block;
     vertical-align: bottom;
     padding: 0 15px;
@@ -36,6 +35,9 @@
     }
     &:active {
       @include active-button;
+    }
+    .sidenav-toggle-logo{
+      line-height: 48px;
     }
   }
   .menu-divider {
@@ -193,8 +195,10 @@ body.sidebar-active .left-menu {
       padding: 10px 0;
     }
     a.sidenav-toggle {
-      line-height: 64px;
       padding: 0 25px;
+      .sidenav-toggle-logo{
+        line-height: 64px;
+      }
     }
   }
   .left-menu {
