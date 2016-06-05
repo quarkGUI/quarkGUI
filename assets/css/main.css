@@ -2330,6 +2330,8 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   display: inline-block;
   margin: 0 8px;
   padding: 0 6px; }
+  .button.button-icon {
+    min-width: 38px; }
 
 .button-flat {
   -webkit-transition: background .2s .1s;
@@ -2341,6 +2343,11 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   .button-flat[disabled] {
     color: rgba(0, 0, 0, 0.26);
     background-color: transparent; }
+  .button-flat.button-icon {
+    min-width: 38px;
+    margin: 0; }
+    .button-flat.button-icon .fa {
+      line-height: 32px; }
 
 .button-raised:not([disabled]) {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);

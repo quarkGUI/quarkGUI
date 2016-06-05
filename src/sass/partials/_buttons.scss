@@ -10,6 +10,9 @@
   display: inline-block;
   margin: 0 8px;
   padding: 0 6px;
+  &.button-icon {
+    min-width: 38px;
+  }
 }
 
 .button-flat {
@@ -25,6 +28,13 @@
     color: rgba(0, 0, 0, 0.26);
     background-color: transparent;
   }
+  &.button-icon {
+    min-width: 38px;
+    margin: 0;
+    .fa {
+      line-height: 32px;
+    }
+  }
 }
 
 .button-raised {
@@ -36,12 +46,12 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
     @include active-button;
   }
-  &[disabled]{
+  &[disabled] {
     color: rgba(0, 0, 0, 0.26);
   }
 }
 
-.button-primary{
+.button-primary {
   background-color: $primary-color;
   color: #FFFFFF;
   -webkit-transition: background .2s .1s;
