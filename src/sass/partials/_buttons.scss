@@ -61,7 +61,7 @@
   }
   &.button-flat {
     &:hover {
-      @include hover-primartton;
+      @include hover-primary-button;
     }
     &:not([disabled]):active {
       @include active-primary-button;
