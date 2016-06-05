@@ -1,8 +1,14 @@
 @mixin active-button() {
   background-color: rgba($primary-color, .15);
 }
+@mixin hover-flat-button() {
+  background-color: rgba(158, 158, 158, 0.2);
+}
 @mixin active-primary-button() {
   background-color: rgba($primary-color, .85);
+}
+@mixin hover-primary-button() {
+  background-color: rgba($primary-color, .95);
 }
 
 @mixin hover-list() {

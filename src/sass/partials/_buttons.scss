@@ -19,7 +19,7 @@
   -webkit-transition: background .2s .1s;
   transition: background .2s .1s;
   &:not([disabled]):hover {
-    background-color: rgba(158, 158, 158, 0.2);
+    @include hover-flat-button;
   }
   &:not([disabled]):active {
     @include active-button;
@@ -53,10 +53,18 @@
 
 .button-primary {
   background-color: $primary-color;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   -webkit-transition: background .2s .1s;
   transition: background .2s .1s;
   &:not([disabled]):active {
     @include active-primary-button;
+  }
+  &.button-flat {
+    &:hover {
+      @include hover-primartton;
+    }
+    &:not([disabled]):active {
+      @include active-primary-button;
+    }
   }
 }
