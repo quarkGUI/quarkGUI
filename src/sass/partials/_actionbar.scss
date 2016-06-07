@@ -9,7 +9,7 @@
   height: 56px;
   bottom: 16px;
   right: 16px;
-  background-color: #be2791;
+  background-color: $primary-color;
   color: #FFF;
   z-index: 20;
   -webkit-transition: all .2s;
@@ -37,7 +37,7 @@
   width: 100%;
   bottom: 0;
   right: 58px;
-  background-color: #be2791;
+  background-color: $primary-color;
   color: #FFF;
   height: 60px;
   bottom: 0px;

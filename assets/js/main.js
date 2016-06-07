@@ -558,12 +558,14 @@ $(document).ready(function () {
         togglePostType(post_type, selected);
         localStorage.setItem("post_types", JSON.stringify(post_types));
     });
+
+    $(".action-button").click(function () {
+        $(this).toggleClass('active');
+        $(".action-menu").toggleClass('active');
+    });
 });
 
 
-$(".action-button").click(function () {
-    $(this).toggleClass('active');
-    $(".action-menu").toggleClass('active');
-});
+
 
 

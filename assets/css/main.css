@@ -2178,7 +2178,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   height: 56px;
   bottom: 16px;
   right: 16px;
-  background-color: #be2791;
+  background-color: #BE2791;
   color: #FFF;
   z-index: 20;
   -webkit-transition: all .2s;
@@ -2202,7 +2202,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   width: 100%;
   bottom: 0;
   right: 58px;
-  background-color: #be2791;
+  background-color: #BE2791;
   color: #FFF;
   height: 60px;
   bottom: 0px;
