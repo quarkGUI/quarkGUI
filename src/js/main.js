@@ -13,7 +13,6 @@ function updateMasonry() {
 
 
 function toggleActionButton(element_class, active) {
-    console.log(element_class);
     var toggle_action_button = $('.toggle-action-button[value="' + element_class + '"]');
     (active) ? toggle_action_button.addClass('active') : toggle_action_button.removeClass('active');
 }
@@ -30,7 +29,8 @@ function toggleElements(element_class, active) {
     updateMasonry();
 }
 
-var active_elements = (localStorage.getItem("active_elements") === null) ? {} : JSON.parse(localStorage.getItem("active_elements"));
+//var active_elements = (localStorage.getItem("active_elements") === null) ? {} : JSON.parse(localStorage.getItem("active_elements"));
+var active_elements = {};
 $(document).ready(function () {
     $(".sidenav-toggle").click(function () {
         if ($("body").hasClass("sidebar-active")) {
@@ -48,20 +48,19 @@ $(document).ready(function () {
             $(this).addClass("is-not-empty");
         }
     });
-
+/*
     $.each(active_elements, function (element_class, active) {
         toggleActionButton(element_class, active);
         toggleElements(element_class, active);
     });
-
+*/
     $(".toggle-elements").click(function () {
         var element_class = $(this).val();
-        console.log('value ' + element_class);
         var active = (active_elements[element_class]) ? false : true;
         active_elements[element_class] = active;
         toggleActionButton(element_class, active);
         toggleElements(element_class, active);
-        localStorage.setItem("active_elements", JSON.stringify(active_elements));
+      //  localStorage.setItem("active_elements", JSON.stringify(active_elements));
     });
 
     $(".action-button").click(function () {
