@@ -515,7 +515,8 @@ function updateMasonry() {
 
 
 function toggleActionButton(element_class, active) {
-    var toggle_action_button = $('.toggle-action-button').val('element_class');
+    console.log(element_class);
+    var toggle_action_button = $('.toggle-action-button[value="' + element_class + '"]');
     (active) ? toggle_action_button.addClass('active') : toggle_action_button.removeClass('active');
 }
 /*
@@ -557,6 +558,7 @@ $(document).ready(function () {
 
     $(".toggle-elements").click(function () {
         var element_class = $(this).val();
+        console.log('value ' + element_class);
         var active = (active_elements[element_class]) ? false : true;
         active_elements[element_class] = active;
         toggleActionButton(element_class, active);

@@ -2219,7 +2219,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     color: transparent;
     background-color: transparent;
     padding: 0;
-    margin-right: -3px; }
+    margin-right: -4px; }
     .action-menu .toggle-action-button .icon,
     .action-menu .toggle-action-button.active .icon {
       font-size: 28pt;
@@ -2230,12 +2230,16 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     right: 0; }
     .action-menu.active .toggle-action-button {
       display: inline-block; }
+      .action-menu.active .toggle-action-button.active {
+        background-color: #FFFFFF; }
+        .action-menu.active .toggle-action-button.active .icon {
+          background-color: rgba(190, 39, 145, 0.85); }
       .action-menu.active .toggle-action-button .icon::after, .action-menu.active .toggle-action-button .icon::before {
         color: #FFF;
         opacity: .8;
         -webkit-transition: all .2s;
         transition: all .2s; }
-      .action-menu.active .toggle-action-button:hover, .action-menu.active .toggle-action-button.active {
+      .action-menu.active .toggle-action-button:hover .icon::after, .action-menu.active .toggle-action-button:hover .icon::before, .action-menu.active .toggle-action-button.active .icon::after, .action-menu.active .toggle-action-button.active .icon::before {
         opacity: 1; }
 
 @media (min-width: 768px) {
