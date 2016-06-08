@@ -14,21 +14,22 @@
   z-index: 20;
   -webkit-transition: all .2s;
   transition: all .2s;
-  &::after {
-    content: "\f129";
-    font-family: FontAwesome;
+  &.active {
+    bottom: 0;
+    box-shadow: none;
+    .icon{
+      font-family: FontAwesome;
+      &::before {
+        content: "\f00d";
+      }
+    }
+  }
+  .icon{
     text-align: center;
     width: 100%;
     display: inline-block;
     font-size: 28pt;
     line-height: 56px;
-  }
-  &.active {
-    bottom: 0;
-    box-shadow: none;
-    &::after {
-      content: "\f00d";
-    }
   }
 }
 

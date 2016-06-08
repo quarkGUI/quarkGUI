@@ -514,9 +514,9 @@ function updateMasonry() {
 }
 
 
-function toggleActionButton(post_type, selected) {
-    var toggle_action_button = $(".toggle-action-button." + post_type);
-    (selected) ? toggle_action_button.addClass('active') : toggle_action_button.removeClass('active');
+function toggleActionButton(element_class, active) {
+    var toggle_action_button = $('.toggle-action-button').val('element_class');
+    (active) ? toggle_action_button.addClass('active') : toggle_action_button.removeClass('active');
 }
 /*
 function toggleElements(post_type, selected) {

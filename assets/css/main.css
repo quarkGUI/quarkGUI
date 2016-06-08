@@ -2183,19 +2183,19 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   z-index: 20;
   -webkit-transition: all .2s;
   transition: all .2s; }
-  .action-button::after {
-    content: "\f129";
-    font-family: FontAwesome;
+  .action-button.active {
+    bottom: 0;
+    box-shadow: none; }
+    .action-button.active .icon {
+      font-family: FontAwesome; }
+      .action-button.active .icon::before {
+        content: "\f00d"; }
+  .action-button .icon {
     text-align: center;
     width: 100%;
     display: inline-block;
     font-size: 28pt;
     line-height: 56px; }
-  .action-button.active {
-    bottom: 0;
-    box-shadow: none; }
-    .action-button.active::after {
-      content: "\f00d"; }
 
 .action-menu {
   position: fixed;
@@ -2919,7 +2919,8 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
 
 ul.list {
   list-style: none;
-  padding: 0; }
+  padding: 0;
+  margin: 0; }
   ul.list li {
     padding: 10px 5px 2px;
     border-bottom: 1px solid #EEE; }
