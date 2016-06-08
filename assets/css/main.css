@@ -2212,6 +2212,8 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   -webkit-transition: all .2s;
   transition: all .2s;
   z-index: 1; }
+  .action-menu .toggle-action-button {
+    display: none; }
   .action-menu .toggle-action-button,
   .action-menu .toggle-action-button.active {
     color: transparent;
@@ -2226,13 +2228,15 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   .action-menu.active {
     width: 100%;
     right: 0; }
-    .action-menu.active .toggle-action-button .icon::after {
-      color: #FFF;
-      opacity: .8;
-      -webkit-transition: all .2s;
-      transition: all .2s; }
-    .action-menu.active .toggle-action-button:hover, .action-menu.active .toggle-action-button.active {
-      opacity: 1; }
+    .action-menu.active .toggle-action-button {
+      display: inline-block; }
+      .action-menu.active .toggle-action-button .icon::after, .action-menu.active .toggle-action-button .icon::before {
+        color: #FFF;
+        opacity: .8;
+        -webkit-transition: all .2s;
+        transition: all .2s; }
+      .action-menu.active .toggle-action-button:hover, .action-menu.active .toggle-action-button.active {
+        opacity: 1; }
 
 @media (min-width: 768px) {
   .action-button {
