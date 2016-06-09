@@ -13,5 +13,10 @@ ul.list {
       }
     }
   }
+  &.list-clickable{
+    li:hover{
+      pointer: cursor;
+    }
+  }
 }
 

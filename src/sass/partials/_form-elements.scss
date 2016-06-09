@@ -21,6 +21,7 @@
       transition: all .2s;
       height: 28px;
       display: block;
+      cursor: text;
     }
     &:focus {
       border-bottom: 2px solid $primary-color;
@@ -40,6 +41,7 @@
       color: $primary-color;
       bottom: 55px;
       font-size: 16px;
+      cursor: default;
       &:after {
         content: ":";
       }
