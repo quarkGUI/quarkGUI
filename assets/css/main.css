@@ -2957,7 +2957,7 @@ ul.list {
   ul.list.hover-list li:hover {
     background-color: rgba(190, 39, 145, 0.05); }
   ul.list.list-clickable li:hover {
-    pointer: cursor; }
+    cursor: pointer; }
 
 audio {
   background: #000;
