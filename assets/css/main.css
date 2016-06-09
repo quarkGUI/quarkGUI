@@ -2273,15 +2273,14 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
 
 .actionbar-modal {
   position: fixed;
-  width: 100%;
+  width: auto;
   height: 400px;
-  max-height: 100%;
   bottom: 60px;
   left: 0;
   z-index: 1;
   display: none;
   padding-bottom: 30px;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.26); }
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3); }
   .actionbar-modal .modal-header {
     background-color: #BE2791;
     color: #FFF;
