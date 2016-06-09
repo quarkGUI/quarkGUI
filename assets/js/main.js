@@ -513,6 +513,8 @@ function updateMasonry() {
     container.masonry('layout');
 }
 
+var active_elements = {};
+
 
 function toggleActionButton(element_class, active) {
     var toggle_action_button = $('.toggle-action-button[value="' + element_class + '"]');
@@ -531,8 +533,18 @@ function toggleElements(element_class, active) {
     updateMasonry();
 }
 
+function resetToggle(){
+    $(".toggle-elements").each(function(){
+        var element_class = $(this).val();
+        var active = false;
+        active_elements[element_class] = active;
+        toggleActionButton(element_class, active);
+        toggleElements(element_class, active);
+    });
+}
+
 //var active_elements = (localStorage.getItem("active_elements") === null) ? {} : JSON.parse(localStorage.getItem("active_elements"));
-var active_elements = {};
+
 $(document).ready(function () {
     $(".sidenav-toggle").click(function () {
         if ($("body").hasClass("sidebar-active")) {
@@ -557,6 +569,10 @@ $(document).ready(function () {
     });
 */
     $(".toggle-elements").click(function () {
+        var toggle_type = $(this).data('type');
+        if (toggle_type == 'radio'){
+            resetToggle();
+        }
         var element_class = $(this).val();
         var active = (active_elements[element_class]) ? false : true;
         active_elements[element_class] = active;
@@ -566,6 +582,7 @@ $(document).ready(function () {
     });
 
     $(".action-button").click(function () {
+        resetToggle();
         $(this).toggleClass('active');
         $(".action-menu").toggleClass('active');
     });
