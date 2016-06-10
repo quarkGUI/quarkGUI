@@ -546,6 +546,11 @@ function resetToggle() {
 //var active_elements = (localStorage.getItem("active_elements") === null) ? {} : JSON.parse(localStorage.getItem("active_elements"));
 
 $(document).ready(function () {
+
+    if ($("#action-menu").length) {
+        $("body").addClass("has-action-menu");
+    }
+    
     $(".sidenav-toggle").click(function () {
         if ($("body").hasClass("sidebar-active")) {
             $("body").removeClass("sidebar-active");
@@ -575,20 +580,16 @@ $(document).ready(function () {
                 $("body").removeClass("modal-active");
                 resetToggle();
                 return false;
-
             } else {
                 resetToggle();
                 $("body").addClass("modal-active");
             }
-
         }
         var element_class = $(this).val();
         var active = (active_elements[element_class]) ? false : true;
         active_elements[element_class] = active;
         toggleActionButton(element_class, active);
         toggleElements(element_class, active);
-
-
         //  localStorage.setItem("active_elements", JSON.stringify(active_elements));
     });
 

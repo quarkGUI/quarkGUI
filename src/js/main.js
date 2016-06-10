@@ -44,6 +44,11 @@ function resetToggle() {
 //var active_elements = (localStorage.getItem("active_elements") === null) ? {} : JSON.parse(localStorage.getItem("active_elements"));
 
 $(document).ready(function () {
+
+    if ($("#action-menu").length) {
+        $("body").addClass("has-action-menu");
+    }
+    
     $(".sidenav-toggle").click(function () {
         if ($("body").hasClass("sidebar-active")) {
             $("body").removeClass("sidebar-active");

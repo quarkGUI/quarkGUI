@@ -2162,7 +2162,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     padding-top: 64px; } }
 
 @media (min-width: 1160px) {
-  .main-content {
+  body.has-action-menu .main-content {
     margin-left: 60px; } }
 
 .z-1 {
