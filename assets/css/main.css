@@ -2161,6 +2161,10 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   .main-content {
     padding-top: 64px; } }
 
+@media (min-width: 1160px) {
+  .main-content {
+    margin-left: 60px; } }
+
 .z-1 {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.37); }
 
@@ -2294,6 +2298,47 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     width: 100%;
     overflow: auto;
     padding: 12px 6px; }
+
+@media (min-width: 1160px) {
+  .action-button {
+    display: none; }
+  .action-menu,
+  .action-menu.active {
+    width: 60px;
+    height: 100%;
+    top: 64px;
+    z-index: 2;
+    left: 0;
+    float: left; }
+    .action-menu .toggle-action-button,
+    .action-menu.active .toggle-action-button {
+      display: inline-block; }
+      .action-menu .toggle-action-button:hover .icon:before, .action-menu .toggle-action-button:hover .icon:after,
+      .action-menu.active .toggle-action-button:hover .icon:before,
+      .action-menu.active .toggle-action-button:hover .icon:after {
+        opacity: 1; }
+      .action-menu .toggle-action-button.active,
+      .action-menu.active .toggle-action-button.active {
+        background-color: #fff; }
+        .action-menu .toggle-action-button.active .icon,
+        .action-menu.active .toggle-action-button.active .icon {
+          background-color: rgba(190, 39, 145, 0.85); }
+          .action-menu .toggle-action-button.active .icon:before, .action-menu .toggle-action-button.active .icon:after,
+          .action-menu.active .toggle-action-button.active .icon:before,
+          .action-menu.active .toggle-action-button.active .icon:after {
+            opacity: 1; }
+      .action-menu .toggle-action-button .icon:before, .action-menu .toggle-action-button .icon:after,
+      .action-menu.active .toggle-action-button .icon:before,
+      .action-menu.active .toggle-action-button .icon:after {
+        color: #FFFFFF;
+        opacity: .8;
+        transition: all .2s; }
+  .actionbar-modal {
+    height: 100%;
+    top: 64px;
+    left: 60px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.26);
+    z-index: 2; } }
 
 .float-right {
   float: right; }

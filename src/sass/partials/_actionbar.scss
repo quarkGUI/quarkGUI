@@ -96,6 +96,9 @@
   }
 }
 
+
+
+
 .toggle-action-button.facebook .icon::after {
   content: "\f230";
 }
@@ -152,5 +155,53 @@
     width: 100%;
     overflow: auto;
     padding: 12px 6px;
+  }
+}
+
+@media (min-width: 1160px) {
+  .action-button {
+    display: none;
+  }
+  .action-menu,
+  .action-menu.active{
+    width: 60px;
+    height: 100%;
+    top: 64px;
+    z-index: 2;
+    left: 0;
+    float: left;
+    .toggle-action-button{
+      display: inline-block;
+      &:hover{
+        .icon{
+          &:before, &:after{
+            opacity: 1;
+          }
+        }
+      }
+      &.active{
+        background-color: #fff;
+        .icon{
+          @include active-primary-button;
+          &:before, &:after{
+            opacity: 1;
+          }
+        }
+      }
+      .icon{
+        &:before, &:after{
+          color: #FFFFFF;
+          opacity: .8;
+          transition: all .2s;
+        }
+      }
+    }
+  }
+  .actionbar-modal{
+    height: 100%;
+    top: 64px;
+    left: 60px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.26);
+    z-index: 2;
   }
 }

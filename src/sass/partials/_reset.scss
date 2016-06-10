@@ -84,6 +84,12 @@ button, input[type="button"], input[type="submit"] {
   }
 }
 
+@media (min-width: 1160px) {
+  .main-content {
+    margin-left: 60px;
+  }
+}
+
 .z-1 {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.37);
 }
