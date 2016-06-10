@@ -2189,7 +2189,8 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   transition: all .2s; }
   .action-button.active {
     bottom: 0;
-    box-shadow: none; }
+    box-shadow: none;
+    background-color: #232527; }
     .action-button.active .icon {
       font-family: FontAwesome; }
       .action-button.active .icon::before {
@@ -2206,7 +2207,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   width: 100%;
   bottom: 0;
   right: 58px;
-  background-color: #BE2791;
+  background-color: #232527;
   color: #FFF;
   height: 60px;
   bottom: 0px;
@@ -2279,19 +2280,18 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   position: fixed;
   width: auto;
   height: 400px;
-  bottom: 60px;
+  bottom: 70px;
   left: 0;
   z-index: 1;
   display: none;
   padding-bottom: 30px;
+  background-color: #FFFFFF;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3); }
   .actionbar-modal .modal-header {
-    background-color: #BE2791;
-    color: #FFF;
-    font-size: 14pt;
+    font-size: 18pt;
     font-weight: bold;
     line-height: 18pt;
-    padding: 4px; }
+    padding: 8px; }
   .actionbar-modal .modal-content {
     background: #FFF;
     height: 100%;
@@ -3106,7 +3106,7 @@ pre.code-example {
         .navbar ul li a:hover {
           border-bottom: 6px solid #BE2791; }
   .navbar.navbar-dark {
-    background-color: #1F1F1F; }
+    background-color: #232527; }
     .navbar.navbar-dark a {
       color: #FFFFFF; }
     .navbar.navbar-dark ul li a {

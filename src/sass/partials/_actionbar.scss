@@ -17,6 +17,7 @@
   &.active {
     bottom: 0;
     box-shadow: none;
+    background-color: $dark-color;
     .icon {
       font-family: FontAwesome;
       &::before {
@@ -38,7 +39,7 @@
   width: 100%;
   bottom: 0;
   right: 58px;
-  background-color: $primary-color;
+  background-color: $dark-color;
   color: #FFF;
   height: 60px;
   bottom: 0px;
@@ -135,19 +136,18 @@
   position: fixed;
   width: auto;
   height: 400px;
-  bottom: 60px;
+  bottom: 70px;
   left: 0;
   z-index: 1;
   display: none;
   padding-bottom: 30px;
+  background-color: #FFFFFF;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
   .modal-header {
-    background-color: $primary-color;
-    color: #FFF;
-    font-size: 14pt;
+    font-size: 18pt;
     font-weight: bold;
     line-height: 18pt;
-    padding: 4px;
+    padding: 8px;
   }
   .modal-content {
     background: #FFF;
