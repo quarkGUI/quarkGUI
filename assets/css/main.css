@@ -3015,6 +3015,8 @@ ul.list {
     background-color: #fbeae9; }
   ul.list.list-clickable li:hover {
     cursor: pointer; }
+  ul.list.list-clickable .list-item-clicked {
+    background-color: #bcf4c3; }
 
 audio {
   background: #000;

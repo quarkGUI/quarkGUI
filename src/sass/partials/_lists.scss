@@ -17,6 +17,9 @@ ul.list {
     li:hover{
       cursor: pointer;
     }
+    .list-item-clicked{
+      @include active-transparent-color($success-color);
+    }
   }
 }
 
