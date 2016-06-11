@@ -34,7 +34,7 @@
       background-color: rgba(158, 158, 158, 0.2);
     }
     &:active {
-      @include active-button;
+      @include active-color($primary-color);
     }
     .sidenav-toggle-logo{
       line-height: 48px;

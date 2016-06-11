@@ -72,7 +72,7 @@
       &.active {
         background-color: #FFFFFF;
         .icon {
-          @include active-primary-button;
+          @include active-color($primary-color);
         }
       }
       .icon::after, .icon::before {
@@ -182,7 +182,7 @@
       &.active{
         background-color: #fff;
         .icon{
-          @include active-primary-button;
+          @include active-color($primary-color);
           &:before, &:after{
             opacity: 1;
           }

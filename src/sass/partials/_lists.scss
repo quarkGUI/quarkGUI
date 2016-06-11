@@ -9,7 +9,7 @@ ul.list {
   &.hover-list{
     li{
       &:hover{
-        @include hover-list;
+        @include hover-list($primary-color);
       }
     }
   }

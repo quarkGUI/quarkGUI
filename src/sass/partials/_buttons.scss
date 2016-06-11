@@ -22,7 +22,7 @@
     @include hover-flat-button;
   }
   &:not([disabled]):active {
-    @include active-button;
+    @include active-transparent-color($primary-color);
   }
   &[disabled] {
     color: rgba(0, 0, 0, 0.26);
@@ -44,7 +44,7 @@
   }
   &:not([disabled]):active {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
-    @include active-button;
+    @include active-transparent-color($primary-color);
   }
   &[disabled] {
     color: rgba(0, 0, 0, 0.26);
@@ -56,15 +56,33 @@
   color: #FFFFFF !important;
   -webkit-transition: background .2s .1s;
   transition: background .2s .1s;
+  &:not([disabled]):hover {
+    @include hover-color($primary-color);
+  }
   &:not([disabled]):active {
-    @include active-primary-button;
+    @include active-color($primary-color);
   }
   &.button-flat {
-    &:hover {
-      @include hover-primary-button;
-    }
     &:not([disabled]):active {
-      @include active-primary-button;
+      @include active-color($primary-color);
+    }
+  }
+}
+
+.button-success {
+  background-color: $success-color;
+  color: #FFFFFF !important;
+  -webkit-transition: background .2s .1s;
+  transition: background .2s .1s;
+  &:not([disabled]):hover {
+    @include hover-color($success-color);
+  }
+  &:not([disabled]):active {
+    @include active-color($success-color);
+  }
+  &.button-flat {
+    &:not([disabled]):active {
+      @include active-color($success-color);
     }
   }
 }
