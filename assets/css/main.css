@@ -2480,6 +2480,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   margin-top: 20px;
   margin-bottom: 5px;
   padding-left: 8px;
+  padding-bottom: 6px;
   border: none;
   border-bottom: 2px solid #eee;
   -webkit-transition: border .2s;
