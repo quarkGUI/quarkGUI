@@ -40,8 +40,6 @@
   content: "\f1c5";
 }
 
-
-
 .api-data {
   font-size: .8em;
   list-style: none;
@@ -58,17 +56,6 @@
 .api-data ul {
   list-style: none;
   padding-left: 12px;
-}
-
-a.tooltip:hover::after {
-  content: attr(title);
-  position: fixed;
-  bottom: 5px;
-  right: 5px;
-  background-color: #333;
-  color: #FFF;
-  text-decoration: none;
-  padding: 5px 10px;
 }
 
 .clearfix {

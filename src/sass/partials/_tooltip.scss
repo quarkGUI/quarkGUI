@@ -1,0 +1,29 @@
+.tooltip:hover::after {
+  content: attr(title);
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  background-color: $dark-color;
+  color: #FFF;
+  font-size: 12pt;
+  text-decoration: none;
+  padding: 5px 10px;
+  z-index: 4;
+}
+
+.action-menu-active {
+  .tooltip:hover::after {
+    bottom: 65px;
+    right: 5px;
+    left: initial;
+  }
+}
+
+@media (min-width: 1160px) {
+  .tooltip:hover:after,
+  .action-menu-active .tooltip:hover:after{
+    bottom: 5px;
+    right: 5px;
+    left: initial;
+  }
+}

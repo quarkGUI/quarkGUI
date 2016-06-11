@@ -48,7 +48,7 @@ $(document).ready(function () {
     if ($("#action-menu").length) {
         $("body").addClass("has-action-menu");
     }
-    
+
     $(".sidenav-toggle").click(function () {
         if ($("body").hasClass("sidebar-active")) {
             $("body").removeClass("sidebar-active");
@@ -95,6 +95,11 @@ $(document).ready(function () {
         resetToggle();
         $(this).toggleClass('active');
         $(".action-menu").toggleClass('active');
+        if ($(this).hasClass("active")) {
+            $("body").addClass("action-menu-active");
+        } else {
+            $("body").removeClass("action-menu-active");
+        }
     });
 });
 
