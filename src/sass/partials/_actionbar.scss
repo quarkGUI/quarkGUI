@@ -97,9 +97,6 @@
   }
 }
 
-
-
-
 .toggle-action-button.facebook .icon::after {
   content: "\f230";
 }
@@ -163,33 +160,33 @@
     display: none;
   }
   .action-menu,
-  .action-menu.active{
+  .action-menu.active {
     width: 60px;
     height: 100%;
     top: 64px;
     z-index: 2;
     left: 0;
     float: left;
-    .toggle-action-button{
+    .toggle-action-button {
       display: inline-block;
-      &:hover{
-        .icon{
-          &:before, &:after{
+      &:hover {
+        .icon {
+          &:before, &:after {
             opacity: 1;
           }
         }
       }
-      &.active{
+      &.active {
         background-color: #fff;
-        .icon{
+        .icon {
           @include active-color($primary-color);
-          &:before, &:after{
+          &:before, &:after {
             opacity: 1;
           }
         }
       }
-      .icon{
-        &:before, &:after{
+      .icon {
+        &:before, &:after {
           color: #FFFFFF;
           opacity: .8;
           transition: all .2s;
@@ -197,11 +194,26 @@
       }
     }
   }
-  .actionbar-modal{
+  .actionbar-modal {
     height: 100%;
     top: 64px;
-    left: 60px;
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.26);
     z-index: 2;
+    width: 0;
+    -webkit-transition: all .2s;
+    transition: all .2s .4s;
+    left: -40%;
+  }
+  body.modal-active {
+    .actionbar-modal {
+      width: 40%;
+      left: 60px;
+      -webkit-transition: all .2s;
+      transition: all .2s .4s;
+    }
+    .main-content {
+      margin-left: 40%;
+      padding-left: 60px;
+    }
   }
 }

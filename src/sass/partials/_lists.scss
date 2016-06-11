@@ -5,6 +5,9 @@ ul.list {
   li {
     padding: 10px 5px 2px;
     border-bottom: 1px solid #EEE;
+    small{
+      display: inline-block;
+    }
   }
   &.hover-list{
     li{
