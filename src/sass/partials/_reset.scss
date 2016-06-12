@@ -18,6 +18,21 @@ body {
   color: #212121;
 }
 
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e0e1e2;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+}
+
 a, a:visited{
   color: $primary-color;
   text-decoration: none;

@@ -70,7 +70,6 @@
     .toggle-action-button {
       display: inline-block;
       &.active {
-        background-color: #FFFFFF;
         .icon {
           @include active-color($primary-color);
         }

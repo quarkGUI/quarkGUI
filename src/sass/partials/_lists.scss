@@ -12,7 +12,7 @@ ul.list {
   &.hover-list{
     li{
       &:hover{
-        @include hover-list($primary-color);
+        @include bright-gray($dark-color);
       }
     }
   }
@@ -21,7 +21,7 @@ ul.list {
       cursor: pointer;
     }
     .list-item-clicked{
-      @include active-transparent-color($success-color);
+      @include bright-color($success-color);
     }
   }
 }

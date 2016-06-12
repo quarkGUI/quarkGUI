@@ -1,20 +1,12 @@
-@mixin active-transparent-color($color) {
-  background-color: lighten($color, 50);
+@mixin bright-gray($color) {
+  background-color: lighten($color, 80);
 }
-@mixin hover-flat-button() {
-  background-color: rgba(158, 158, 158, 0.2);
+@mixin bright-color($color) {
+  background-color: lighten($color, 50);
 }
 @mixin active-color($color) {
   background-color: lighten($color, 8);
 }
 @mixin hover-color($color) {
   background-color: lighten($color, 4);
-}
-
-@mixin hover-list($color) {
-  background-color: lighten($color, 50);
-}
-
-@mixin lighten(){
-  background-color: lighten(rgb(226, 68, 51), 2);
 }

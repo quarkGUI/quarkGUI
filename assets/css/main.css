@@ -2112,6 +2112,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #212121; }
 
+::-webkit-scrollbar {
+  width: 14px; }
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  border-radius: 0; }
+
+::-webkit-scrollbar-thumb {
+  background-color: #e0e1e2;
+  border-radius: 0;
+  -webkit-box-shadow: none; }
+
 a, a:visited {
   color: #C32A22;
   text-decoration: none; }
@@ -2235,10 +2247,8 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     right: 0; }
     .action-menu.active .toggle-action-button {
       display: inline-block; }
-      .action-menu.active .toggle-action-button.active {
-        background-color: #FFFFFF; }
-        .action-menu.active .toggle-action-button.active .icon {
-          background-color: #db3b32; }
+      .action-menu.active .toggle-action-button.active .icon {
+        background-color: #db3b32; }
       .action-menu.active .toggle-action-button .icon::after, .action-menu.active .toggle-action-button .icon::before {
         color: #FFF;
         opacity: .8;
@@ -2336,9 +2346,20 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   .actionbar-modal {
     height: 100%;
     top: 64px;
-    left: 60px;
     box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.26);
-    z-index: 2; } }
+    z-index: 2;
+    width: 0;
+    -webkit-transition: all .2s;
+    transition: all .2s .4s;
+    left: -40%; }
+  body.modal-active .actionbar-modal {
+    width: 40%;
+    left: 60px;
+    -webkit-transition: all .2s;
+    transition: all .2s .4s; }
+  body.modal-active .main-content {
+    margin-left: 40%;
+    padding-left: 60px; } }
 
 .float-right {
   float: right; }
@@ -2426,7 +2447,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   -webkit-transition: background .2s .1s;
   transition: background .2s .1s; }
   .button-flat:not([disabled]):hover {
-    background-color: rgba(158, 158, 158, 0.2); }
+    background-color: #f0f1f2; }
   .button-flat:not([disabled]):active {
     background-color: #fbeae9; }
   .button-flat[disabled] {
@@ -3012,8 +3033,10 @@ ul.list {
   ul.list li {
     padding: 10px 5px 2px;
     border-bottom: 1px solid #EEE; }
+    ul.list li small {
+      display: inline-block; }
   ul.list.hover-list li:hover {
-    background-color: #fbeae9; }
+    background-color: #f0f1f2; }
   ul.list.list-clickable li:hover {
     cursor: pointer; }
   ul.list.list-clickable .list-item-clicked {
@@ -3176,7 +3199,7 @@ pre.code-example {
         min-width: 200px;
         border-left: 2px solid transparent; }
         .left-menu > div ul li a:hover {
-          background-color: rgba(0, 0, 0, 0.1);
+          background-color: #f0f1f2;
           cursor: pointer; }
         .left-menu > div ul li a.active {
           border-left: 2px solid #C32A22; }
