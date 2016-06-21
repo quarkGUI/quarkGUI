@@ -2494,7 +2494,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   .button-success.button-flat:not([disabled]):active {
     background-color: #20ba32; }
 
-.input-group input[type="text"], .input-group input[type="password"] {
+.input-group input[type="text"], .input-group input[type="password"], .input-group input[type="number"] {
   width: 100%;
   font-size: 20px;
   height: 25px;
@@ -2507,7 +2507,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   -webkit-transition: border .2s;
   /* Safari */
   transition: border .2s; }
-  .input-group input[type="text"] + label, .input-group input[type="password"] + label {
+  .input-group input[type="text"] + label, .input-group input[type="password"] + label, .input-group input[type="number"] + label {
     color: #777;
     position: relative;
     bottom: 32.5px;
@@ -2519,22 +2519,38 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     height: 28px;
     display: block;
     cursor: text; }
-  .input-group input[type="text"]:focus, .input-group input[type="password"]:focus {
+  .input-group input[type="text"]::-webkit-input-placeholder, .input-group input[type="password"]::-webkit-input-placeholder, .input-group input[type="number"]::-webkit-input-placeholder {
+    opacity: 0; }
+  .input-group input[type="text"]::-moz-placeholder, .input-group input[type="password"]::-moz-placeholder, .input-group input[type="number"]::-moz-placeholder {
+    opacity: 0; }
+  .input-group input[type="text"]:-moz-placeholder, .input-group input[type="password"]:-moz-placeholder, .input-group input[type="number"]:-moz-placeholder {
+    opacity: 0; }
+  .input-group input[type="text"]:-ms-input-placeholder, .input-group input[type="password"]:-ms-input-placeholder, .input-group input[type="number"]:-ms-input-placeholder {
+    opacity: 0; }
+  .input-group input[type="text"]:focus, .input-group input[type="password"]:focus, .input-group input[type="number"]:focus {
     border-bottom: 2px solid #C32A22;
     outline: none; }
-  .input-group input[type="text"]:focus, .input-group input[type="text"].is-not-empty, .input-group input[type="password"]:focus, .input-group input[type="password"].is-not-empty {
+    .input-group input[type="text"]:focus::-webkit-input-placeholder, .input-group input[type="password"]:focus::-webkit-input-placeholder, .input-group input[type="number"]:focus::-webkit-input-placeholder {
+      opacity: 1; }
+    .input-group input[type="text"]:focus::-moz-placeholder, .input-group input[type="password"]:focus::-moz-placeholder, .input-group input[type="number"]:focus::-moz-placeholder {
+      opacity: 1; }
+    .input-group input[type="text"]:focus:-moz-placeholder, .input-group input[type="password"]:focus:-moz-placeholder, .input-group input[type="number"]:focus:-moz-placeholder {
+      opacity: 1; }
+    .input-group input[type="text"]:focus:-ms-input-placeholder, .input-group input[type="password"]:focus:-ms-input-placeholder, .input-group input[type="number"]:focus:-ms-input-placeholder {
+      opacity: 1; }
+  .input-group input[type="text"]:focus, .input-group input[type="text"].is-not-empty, .input-group input[type="password"]:focus, .input-group input[type="password"].is-not-empty, .input-group input[type="number"]:focus, .input-group input[type="number"].is-not-empty {
     margin-bottom: 5px; }
-  .input-group input[type="text"].is-not-empty + label, .input-group input[type="password"].is-not-empty + label {
+  .input-group input[type="text"].is-not-empty + label, .input-group input[type="password"].is-not-empty + label, .input-group input[type="number"].is-not-empty + label {
     bottom: 55px;
     font-size: 16px; }
-    .input-group input[type="text"].is-not-empty + label:after, .input-group input[type="password"].is-not-empty + label:after {
+    .input-group input[type="text"].is-not-empty + label:after, .input-group input[type="password"].is-not-empty + label:after, .input-group input[type="number"].is-not-empty + label:after {
       content: ":"; }
-  .input-group input[type="text"]:focus + label, .input-group input[type="password"]:focus + label {
+  .input-group input[type="text"]:focus + label, .input-group input[type="password"]:focus + label, .input-group input[type="number"]:focus + label {
     color: #C32A22;
     bottom: 55px;
     font-size: 16px;
     cursor: default; }
-    .input-group input[type="text"]:focus + label:after, .input-group input[type="password"]:focus + label:after {
+    .input-group input[type="text"]:focus + label:after, .input-group input[type="password"]:focus + label:after, .input-group input[type="number"]:focus + label:after {
       content: ":"; }
 
 .row {

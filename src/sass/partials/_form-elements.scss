@@ -1,6 +1,6 @@
 
 .input-group {
-  input[type="text"], input[type="password"] {
+  input[type="text"], input[type="password"], input[type="number"] {
     width: 100%;
     font-size: 20px;
     height: 25px;
@@ -24,9 +24,33 @@
       display: block;
       cursor: text;
     }
+    &::-webkit-input-placeholder {
+      opacity: 0;
+    }
+    &::-moz-placeholder {
+      opacity: 0;
+    }
+    &:-moz-placeholder {
+      opacity: 0;
+    }
+    &:-ms-input-placeholder {
+      opacity: 0;
+    }
     &:focus {
       border-bottom: 2px solid $primary-color;
       outline: none;
+      &::-webkit-input-placeholder {
+        opacity: 1;
+      }
+      &::-moz-placeholder {
+        opacity: 1;
+      }
+      &:-moz-placeholder {
+        opacity: 1;
+      }
+      &:-ms-input-placeholder {
+        opacity: 1;
+      }
     }
     &:focus, &.is-not-empty {
       margin-bottom: 5px;
