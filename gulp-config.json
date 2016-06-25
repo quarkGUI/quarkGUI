@@ -6,10 +6,10 @@
       "bower_components/imagesloaded/imagesloaded.pkgd.js"
     ],
     "css": [
-      "bower_components/components-font-awesome/css/font-awesome.min.css"
+      "bower_components/font-awesome/css/font-awesome.min.css"
     ],
     "fonts": [
-      "bower_components/components-font-awesome/fonts/*.{otf,eot,svg,ttf,woff,woff2}"
+      "bower_components/font-awesome/fonts/*.{otf,eot,svg,ttf,woff,woff2}"
     ]
   },
   "paths": {
