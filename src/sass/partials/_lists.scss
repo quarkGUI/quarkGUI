@@ -37,9 +37,15 @@ ul.list {
         font-family: FontAwesome;
         content: "\f142";
         float: right;
+        @media only screen and (min-width: 750px) {
+          content: none;
+        }
       }
       > a {
         display: none;
+        @media only screen and (min-width: 750px) {
+          display: inline-block;
+        }
       }
     }
   }
@@ -117,4 +123,3 @@ ul.list {
     cursor: move;
   }
 }
-
