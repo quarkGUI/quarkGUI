@@ -3060,7 +3060,8 @@ ul.list {
     ul.list li .list-item-content {
       display: inline-block; }
       ul.list li .list-item-content small {
-        display: block; }
+        display: block;
+        min-height: 16px; }
     ul.list li .list-item-buttons {
       float: right;
       line-height: 32px;

@@ -18,6 +18,7 @@ ul.list {
       display: inline-block;
       small {
         display: block;
+        min-height: 16px;
       }
     }
     .list-item-buttons {
