@@ -1,28 +1,80 @@
 ul.list {
   list-style: none;
-  padding: 0;
+  padding: 0 0 10px 0;
   margin: 0;
   li {
-    padding: 10px 5px 2px;
+    padding: 10px 5px;
     border-bottom: 1px solid #EEE;
-    small{
+    .list-item-divider {
       display: inline-block;
+      content: "";
+      width: 1px;
+      height: 32px;
+      background-color: #eee;
+      vertical-align: text-bottom;
+      margin: 0 4px;
+    }
+    .list-item-content {
+      display: inline-block;
+      small {
+        display: block;
+      }
+    }
+    .list-item-buttons {
+      float: right;
+      line-height: 32px;
+      font-size: 20px;
+      vertical-align: text-bottom;
+      .button {
+        line-height: 32px;
+        font-size: 20px;
+        margin: 0;
+      }
     }
   }
-  &.hover-list{
-    li{
-      &:hover{
+  &.hover-list {
+    li {
+      &:hover {
         @include bright-gray($dark-color);
       }
     }
   }
-  &.list-clickable{
-    li:hover{
+  &.list-clickable {
+    li {
+      transition: background-color .2s;
+    }
+    li:hover {
       cursor: pointer;
     }
-    .list-item-clicked{
+    .list-item-clicked {
       @include bright-color($success-color);
     }
+  }
+  .sortable-chosen {
+    background-color: rgba(195, 42, 34, 0.15);
+    cursor: move;
+    background-color: #FFF;
+    opacity: 1;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+    transform: scale(1.04);
+  }
+
+  .sortable-ghost {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+
+  .sortable-handle {
+    opacity: .5;
+    transition: all .2s;
+    font-size: 20px;
+    line-height: 34px;
+    vertical-align: text-bottom;
+  }
+
+  .sortable-handle:hover {
+    opacity: 1;
+    cursor: move;
   }
 }
 

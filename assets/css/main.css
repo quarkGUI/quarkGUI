@@ -3044,19 +3044,59 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
 
 ul.list {
   list-style: none;
-  padding: 0;
+  padding: 0 0 10px 0;
   margin: 0; }
   ul.list li {
-    padding: 10px 5px 2px;
+    padding: 10px 5px;
     border-bottom: 1px solid #EEE; }
-    ul.list li small {
+    ul.list li .list-item-divider {
+      display: inline-block;
+      content: "";
+      width: 1px;
+      height: 32px;
+      background-color: #eee;
+      vertical-align: text-bottom;
+      margin: 0 4px; }
+    ul.list li .list-item-content {
       display: inline-block; }
+      ul.list li .list-item-content small {
+        display: block; }
+    ul.list li .list-item-buttons {
+      float: right;
+      line-height: 32px;
+      font-size: 20px;
+      vertical-align: text-bottom; }
+      ul.list li .list-item-buttons .button {
+        line-height: 32px;
+        font-size: 20px;
+        margin: 0; }
   ul.list.hover-list li:hover {
     background-color: #f0f1f2; }
+  ul.list.list-clickable li {
+    transition: background-color .2s; }
   ul.list.list-clickable li:hover {
     cursor: pointer; }
   ul.list.list-clickable .list-item-clicked {
     background-color: #bcf4c3; }
+  ul.list .sortable-chosen {
+    background-color: rgba(195, 42, 34, 0.15);
+    cursor: move;
+    background-color: #FFF;
+    opacity: 1;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+    transform: scale(1.04); }
+  ul.list .sortable-ghost {
+    opacity: 0;
+    transform: scale(1.04); }
+  ul.list .sortable-handle {
+    opacity: .5;
+    transition: all .2s;
+    font-size: 20px;
+    line-height: 34px;
+    vertical-align: text-bottom; }
+  ul.list .sortable-handle:hover {
+    opacity: 1;
+    cursor: move; }
 
 audio {
   background: #000;
