@@ -3047,8 +3047,9 @@ ul.list {
   padding: 0 0 10px 0;
   margin: 0; }
   ul.list li {
-    padding: 10px 5px;
-    border-bottom: 1px solid #EEE; }
+    padding: 10px;
+    border-bottom: 1px solid #EEE;
+    transition: background-color .2s; }
     ul.list li .list-item-divider {
       display: inline-block;
       content: "";
@@ -3065,12 +3066,39 @@ ul.list {
     ul.list li .list-item-buttons {
       float: right;
       line-height: 32px;
-      font-size: 20px;
+      font-size: 26px;
       vertical-align: text-bottom; }
       ul.list li .list-item-buttons .button {
         line-height: 32px;
-        font-size: 20px;
+        font-size: 26px;
         margin: 0; }
+      ul.list li .list-item-buttons:after {
+        display: inline-block;
+        font-family: FontAwesome;
+        content: "\f142";
+        float: right; }
+      ul.list li .list-item-buttons > a {
+        display: none; }
+  ul.list li.list-item-menu-active {
+    background-color: #C32A22;
+    color: #FFFFFF; }
+    ul.list li.list-item-menu-active > *:not(.list-item-buttons) {
+      display: none; }
+    ul.list li.list-item-menu-active .list-item-buttons {
+      float: none;
+      line-height: 35px; }
+      ul.list li.list-item-menu-active .list-item-buttons > a {
+        display: inline-block;
+        color: #FFFFFF; }
+        ul.list li.list-item-menu-active .list-item-buttons > a:before, ul.list li.list-item-menu-active .list-item-buttons > a span:before {
+          opacity: .8;
+          transition: all .2s; }
+        ul.list li.list-item-menu-active .list-item-buttons > a:hover {
+          background: none; }
+          ul.list li.list-item-menu-active .list-item-buttons > a:hover:before, ul.list li.list-item-menu-active .list-item-buttons > a:hover span:before {
+            opacity: 1; }
+      ul.list li.list-item-menu-active .list-item-buttons:after {
+        content: "\f00d"; }
   ul.list.hover-list li:hover {
     background-color: #f0f1f2; }
   ul.list.list-clickable li {
@@ -3094,7 +3122,8 @@ ul.list {
     transition: all .2s;
     font-size: 20px;
     line-height: 34px;
-    vertical-align: text-bottom; }
+    vertical-align: text-bottom;
+    width: 34px; }
   ul.list .sortable-handle:hover {
     opacity: 1;
     cursor: move; }

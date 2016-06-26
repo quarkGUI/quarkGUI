@@ -3,8 +3,9 @@ ul.list {
   padding: 0 0 10px 0;
   margin: 0;
   li {
-    padding: 10px 5px;
+    padding: 10px;
     border-bottom: 1px solid #EEE;
+    transition: background-color .2s;
     .list-item-divider {
       display: inline-block;
       content: "";
@@ -24,12 +25,49 @@ ul.list {
     .list-item-buttons {
       float: right;
       line-height: 32px;
-      font-size: 20px;
+      font-size: 26px;
       vertical-align: text-bottom;
       .button {
         line-height: 32px;
-        font-size: 20px;
+        font-size: 26px;
         margin: 0;
+      }
+      &:after {
+        display: inline-block;
+        font-family: FontAwesome;
+        content: "\f142";
+        float: right;
+      }
+      > a {
+        display: none;
+      }
+    }
+  }
+  li.list-item-menu-active {
+    background-color: $primary-color;
+    color: #FFFFFF;
+    > *:not(.list-item-buttons) {
+      display: none;
+    }
+    .list-item-buttons {
+      float: none;
+      line-height: 35px;
+      > a {
+        display: inline-block;
+        color: #FFFFFF;
+        &:before, span:before {
+          opacity: .8;
+          transition: all .2s;
+        }
+        &:hover {
+          background: none;
+          &:before, span:before {
+            opacity: 1;
+          }
+        }
+      }
+      &:after {
+        content: "\f00d";
       }
     }
   }
@@ -71,6 +109,7 @@ ul.list {
     font-size: 20px;
     line-height: 34px;
     vertical-align: text-bottom;
+    width: 34px;
   }
 
   .sortable-handle:hover {
