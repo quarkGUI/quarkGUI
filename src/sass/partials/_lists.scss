@@ -48,6 +48,18 @@ ul.list {
         }
       }
     }
+    .list-item-button {
+      float: right;
+      line-height: 32px;
+      font-size: 26px;
+      vertical-align: text-bottom;
+      .button {
+        float: right;
+        line-height: 32px;
+        font-size: 26px;
+        vertical-align: text-bottom;
+      }
+    }
   }
   li.list-item-menu-active {
     background-color: $primary-color;
@@ -91,10 +103,11 @@ ul.list {
     li:hover {
       cursor: pointer;
     }
-    .list-item-clicked {
-      @include bright-color($success-color);
-    }
   }
+  .list-item-clicked {
+    @include bright-color($success-color);
+  }
+
   .sortable-chosen {
     background-color: rgba(195, 42, 34, 0.15);
     cursor: move;

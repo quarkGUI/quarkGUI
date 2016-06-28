@@ -86,3 +86,23 @@
     }
   }
 }
+
+li .modal-hover-add-button {
+  display: inline-block;
+  &:before {
+    font-family: FontAwesome;
+    content: "\f067";
+  }
+}
+
+@media only screen and (min-width: 1160px) {
+  li .modal-hover-add-button {
+    display: none;
+    &:before {
+      content: "\f061";
+    }
+  }
+  li:hover .modal-hover-add-button {
+    display: inline-block;
+  }
+}
