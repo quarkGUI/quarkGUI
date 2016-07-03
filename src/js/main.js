@@ -43,6 +43,14 @@ function resetToggle() {
 
 //var active_elements = (localStorage.getItem("active_elements") === null) ? {} : JSON.parse(localStorage.getItem("active_elements"));
 
+$(document).on("keyup", ".input-group input", function () {
+    $(this).removeClass("is-not-empty");
+    if ($(this).val() === "") {
+    } else {
+        $(this).addClass("is-not-empty");
+    }
+});
+
 $(document).ready(function () {
 
     if ($("#action-menu").length) {
@@ -56,14 +64,6 @@ $(document).ready(function () {
             $("body").addClass("sidebar-active");
         }
         window.setTimeout(updateMasonry, 300);
-    });
-
-    $(".input-group input").keyup(function () {
-        $(this).removeClass("is-not-empty");
-        if ($(this).val() === "") {
-        } else {
-            $(this).addClass("is-not-empty");
-        }
     });
 
     $(".input-group input").each(function () {
