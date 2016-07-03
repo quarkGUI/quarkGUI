@@ -567,6 +567,12 @@ $(document).ready(function () {
             $(this).addClass("is-not-empty");
         }
     });
+
+    $(".input-group input").each(function () {
+        if ($(this).val()) {
+            $(this).addClass("is-not-empty");
+        }
+    });
     /*
      $.each(active_elements, function (element_class, active) {
      toggleActionButton(element_class, active);
