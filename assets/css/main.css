@@ -2521,8 +2521,8 @@ footer {
 .input-group input[type="text"], .input-group input[type="password"], .input-group input[type="number"] {
   width: 100%;
   font-size: 20px;
-  height: 25px;
-  margin-top: 20px;
+  height: 32px;
+  margin-top: 10px;
   margin-bottom: 5px;
   padding-left: 8px;
   padding-bottom: 6px;
@@ -2530,7 +2530,8 @@ footer {
   border-bottom: 2px solid #eee;
   -webkit-transition: border .2s;
   /* Safari */
-  transition: border .2s; }
+  transition: border .2s;
+  color: transparent; }
   .input-group input[type="text"] + label, .input-group input[type="password"] + label, .input-group input[type="number"] + label {
     color: #777;
     position: relative;
@@ -2540,7 +2541,7 @@ footer {
     -webkit-transition: all .2s;
     /* Safari */
     transition: all .2s;
-    height: 28px;
+    height: 16px;
     display: block;
     cursor: text; }
   .input-group input[type="text"]::-webkit-input-placeholder, .input-group input[type="password"]::-webkit-input-placeholder, .input-group input[type="number"]::-webkit-input-placeholder {
@@ -2553,7 +2554,8 @@ footer {
     opacity: 0; }
   .input-group input[type="text"]:focus, .input-group input[type="password"]:focus, .input-group input[type="number"]:focus {
     border-bottom: 2px solid #C32A22;
-    outline: none; }
+    outline: none;
+    color: #777; }
     .input-group input[type="text"]:focus::-webkit-input-placeholder, .input-group input[type="password"]:focus::-webkit-input-placeholder, .input-group input[type="number"]:focus::-webkit-input-placeholder {
       opacity: 1; }
     .input-group input[type="text"]:focus::-moz-placeholder, .input-group input[type="password"]:focus::-moz-placeholder, .input-group input[type="number"]:focus::-moz-placeholder {
@@ -2563,7 +2565,8 @@ footer {
     .input-group input[type="text"]:focus:-ms-input-placeholder, .input-group input[type="password"]:focus:-ms-input-placeholder, .input-group input[type="number"]:focus:-ms-input-placeholder {
       opacity: 1; }
   .input-group input[type="text"]:focus, .input-group input[type="text"].is-not-empty, .input-group input[type="password"]:focus, .input-group input[type="password"].is-not-empty, .input-group input[type="number"]:focus, .input-group input[type="number"].is-not-empty {
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    color: #212121; }
   .input-group input[type="text"].is-not-empty + label, .input-group input[type="password"].is-not-empty + label, .input-group input[type="number"].is-not-empty + label {
     bottom: 55px;
     font-size: 16px; }
