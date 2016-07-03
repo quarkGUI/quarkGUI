@@ -3,11 +3,8 @@
   input[type="text"], input[type="password"], input[type="number"] {
     width: 100%;
     font-size: 20px;
-    height: 32px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 18px;
     padding-left: 8px;
-    padding-bottom: 6px;
     border: none;
     border-bottom: 2px solid #eee;
     -webkit-transition: border .2s; /* Safari */
@@ -55,11 +52,10 @@
       }
     }
     &:focus, &.is-not-empty {
-      margin-bottom: 5px;
       color: #212121;
     }
     &.is-not-empty + label {
-      bottom: 55px;
+      bottom: 50px;
       font-size: 16px;
       &:after {
         content: ":";
@@ -67,7 +63,7 @@
     }
     &:focus + label {
       color: $primary-color;
-      bottom: 55px;
+      bottom: 50px;
       font-size: 16px;
       cursor: default;
       &:after {
