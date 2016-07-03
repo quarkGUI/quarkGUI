@@ -2561,8 +2561,10 @@ footer {
       opacity: 1; }
     .input-group input[type="text"]:focus:-ms-input-placeholder, .input-group input[type="password"]:focus:-ms-input-placeholder, .input-group input[type="number"]:focus:-ms-input-placeholder {
       opacity: 1; }
-  .input-group input[type="text"]:focus, .input-group input[type="text"].is-not-empty, .input-group input[type="password"]:focus, .input-group input[type="password"].is-not-empty, .input-group input[type="number"]:focus, .input-group input[type="number"].is-not-empty {
+  .input-group input[type="text"].is-not-empty, .input-group input[type="password"].is-not-empty, .input-group input[type="number"].is-not-empty {
     color: #212121; }
+    .input-group input[type="text"].is-not-empty:focus, .input-group input[type="password"].is-not-empty:focus, .input-group input[type="number"].is-not-empty:focus {
+      color: #212121; }
   .input-group input[type="text"].is-not-empty + label, .input-group input[type="password"].is-not-empty + label, .input-group input[type="number"].is-not-empty + label {
     bottom: 50px;
     font-size: 16px; }

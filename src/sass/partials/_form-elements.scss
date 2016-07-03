@@ -51,8 +51,11 @@
         opacity: 1;
       }
     }
-    &:focus, &.is-not-empty {
+    &.is-not-empty {
       color: #212121;
+      &:focus {
+        color: #212121;
+      }
     }
     &.is-not-empty + label {
       bottom: 50px;

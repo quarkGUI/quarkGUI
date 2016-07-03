@@ -58,7 +58,7 @@ $(document).ready(function () {
         window.setTimeout(updateMasonry, 300);
     });
 
-    $(".input-group input").change(function () {
+    $(".input-group input").keyup(function () {
         $(this).removeClass("is-not-empty");
         if ($(this).val() === "") {
         } else {
