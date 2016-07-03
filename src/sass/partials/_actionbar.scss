@@ -89,9 +89,6 @@
         }
       }
     }
-    .main-content {
-      padding-bottom: 60px;
-    }
   }
 }
 
@@ -158,6 +155,10 @@
     overflow: auto;
     padding: 12px 6px;
   }
+}
+
+body.action-menu-active .main-content {
+  padding-bottom: 60px;
 }
 
 @media only screen and (min-width: 750px) {

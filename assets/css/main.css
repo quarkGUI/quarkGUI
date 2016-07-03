@@ -2268,8 +2268,6 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
         transition: all .2s; }
       .action-menu.active .toggle-action-button:hover .icon::after, .action-menu.active .toggle-action-button:hover .icon::before, .action-menu.active .toggle-action-button.active .icon::after, .action-menu.active .toggle-action-button.active .icon::before {
         opacity: 1; }
-    .action-menu.active .main-content {
-      padding-bottom: 60px; }
 
 @media (min-width: 768px) {
   .action-button {
@@ -2322,6 +2320,9 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     width: 100%;
     overflow: auto;
     padding: 12px 6px; }
+
+body.action-menu-active .main-content {
+  padding-bottom: 60px; }
 
 @media only screen and (min-width: 750px) {
   .actionbar-modal {
