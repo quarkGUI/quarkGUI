@@ -4,7 +4,7 @@ ul.list {
   margin: 0;
   li {
     padding: 10px;
-    border-bottom: 1px solid #EEE;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
     transition: background-color .2s;
     .list-item-divider {
       display: inline-block;

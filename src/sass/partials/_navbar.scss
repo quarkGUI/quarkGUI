@@ -36,7 +36,7 @@
     &:active {
       @include active-color($primary-color);
     }
-    .sidenav-toggle-logo{
+    .sidenav-toggle-logo {
       line-height: 48px;
     }
   }
@@ -47,6 +47,12 @@
     height: 30px;
     display: inline-block;
     margin: 4px 15px;
+  }
+  .navbar-page-title {
+    color: #FFFFFF;
+    font-size: 28px;
+    line-height: 48px;
+    vertical-align: bottom;
   }
   ul {
     list-style: none;
@@ -118,7 +124,8 @@
       img {
         height: 40px;
         width: auto;
-        margin-left: 10px;
+        margin-left: 25px;
+        margin-top: 5px;
       }
       .fa {
         font-size: 20pt;
@@ -136,7 +143,7 @@
           border-top: 1px solid rgba(0, 0, 0, .05);
           color: #212121;
           text-decoration: none;
-          padding: 5px 10px;
+          padding: 10px 20px;
           width: 100%;
           min-width: 200px;
           border-left: 2px solid transparent;
@@ -195,9 +202,12 @@ body.sidebar-active .left-menu {
     }
     a.sidenav-toggle {
       padding: 0 25px;
-      .sidenav-toggle-logo{
+      .sidenav-toggle-logo {
         line-height: 64px;
       }
+    }
+    .navbar-page-title {
+      line-height: 64px;
     }
   }
   .left-menu {

@@ -2152,9 +2152,6 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
 
 .container {
   padding: 0; }
-  @media (min-width: 550px) {
-    .container {
-      padding: 25px; } }
   @media (max-width: 549px) {
     .container > .row {
       margin-left: 0;
@@ -2162,19 +2159,21 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
       .container > .row > div {
         padding: 0; } }
 
-.main-content {
+.main-content, footer {
   -webkit-transition: all .2s;
-  transition: all .2s;
+  transition: all .2s; }
+
+.main-content {
   padding-top: 48px; }
 
 @media only screen and (min-width: 750px) {
-  body.sidebar-active .main-content {
+  body.sidebar-active .main-content, body.sidebar-active footer {
     margin-left: 245px; }
   .main-content {
     padding-top: 64px; } }
 
 @media (min-width: 1160px) {
-  body.has-action-menu .main-content {
+  body.has-action-menu .main-content, body.has-action-menu footer {
     margin-left: 60px; } }
 
 .z-1 {
@@ -2236,12 +2235,15 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     color: transparent;
     background-color: transparent;
     padding: 0;
-    margin-right: -4px; }
+    margin-right: -4px;
+    width: 60px;
+    height: 60px; }
     .action-menu .toggle-action-button .icon,
     .action-menu .toggle-action-button.active .icon {
       font-size: 28pt;
       line-height: 60px;
-      width: 60px; }
+      width: 60px;
+      margin-top: -1px; }
   .action-menu.active {
     width: 100%;
     right: 0; }
@@ -2288,10 +2290,10 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
 
 .actionbar-modal {
   position: fixed;
-  padding-top: 140px;
+  padding-top: 60px;
   width: 100%;
   height: 100%;
-  bottom: 70px;
+  bottom: 22px;
   left: 0;
   z-index: 1;
   display: none;
@@ -2361,7 +2363,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     left: 60px;
     -webkit-transition: all .2s;
     transition: all .2s .4s; }
-  body.modal-active .main-content {
+  body.modal-active .main-content, body.modal-active footer {
     margin-left: 40%;
     padding-left: 60px; } }
 
@@ -2511,6 +2513,10 @@ li .modal-hover-add-button {
       content: "\f061"; }
   li:hover .modal-hover-add-button {
     display: inline-block; } }
+
+footer {
+  background-color: #afb1b3;
+  padding: 16px; }
 
 .input-group input[type="text"], .input-group input[type="password"], .input-group input[type="number"] {
   width: 100%;
@@ -3066,7 +3072,7 @@ ul.list {
   margin: 0; }
   ul.list li {
     padding: 10px;
-    border-bottom: 1px solid #EEE;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     transition: background-color .2s; }
     ul.list li .list-item-divider {
       display: inline-block;
@@ -3242,6 +3248,11 @@ pre.code-example {
     height: 30px;
     display: inline-block;
     margin: 4px 15px; }
+  .navbar .navbar-page-title {
+    color: #FFFFFF;
+    font-size: 28px;
+    line-height: 48px;
+    vertical-align: bottom; }
   .navbar ul {
     list-style: none;
     padding: 0;
@@ -3300,7 +3311,8 @@ pre.code-example {
       .left-menu > div .sidenav-logo img {
         height: 40px;
         width: auto;
-        margin-left: 10px; }
+        margin-left: 25px;
+        margin-top: 5px; }
       .left-menu > div .sidenav-logo .fa {
         font-size: 20pt;
         padding: 11px 25px 11px 5px; }
@@ -3314,7 +3326,7 @@ pre.code-example {
         border-top: 1px solid rgba(0, 0, 0, 0.05);
         color: #212121;
         text-decoration: none;
-        padding: 5px 10px;
+        padding: 10px 20px;
         width: 100%;
         min-width: 200px;
         border-left: 2px solid transparent; }
@@ -3355,6 +3367,8 @@ body.sidebar-active .left-menu {
       padding: 0 25px; }
       .navbar a.sidenav-toggle .sidenav-toggle-logo {
         line-height: 64px; }
+    .navbar .navbar-page-title {
+      line-height: 64px; }
   .left-menu > div {
     top: 64px; }
   .left-menu .sidenav-logo {
