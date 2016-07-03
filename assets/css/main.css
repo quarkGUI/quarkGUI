@@ -2182,6 +2182,9 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
 .z-2 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
+.accordion {
+  padding: 10px 0; }
+
 .action-button {
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -3148,6 +3151,10 @@ ul.list {
     cursor: pointer; }
   ul.list .list-item-clicked {
     background-color: #bcf4c3; }
+  ul.list .list-hoverable li:hover li {
+    transition: background-color .2s; }
+  ul.list .list-hoverable li:hover li:hover {
+    background-color: #f0f1f2; }
   ul.list .sortable-chosen {
     background-color: rgba(195, 42, 34, 0.15);
     cursor: move;

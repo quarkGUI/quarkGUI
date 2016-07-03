@@ -107,6 +107,14 @@ ul.list {
   .list-item-clicked {
     @include bright-color($success-color);
   }
+  .list-hoverable li:hover {
+    li {
+      transition: background-color .2s;
+    }
+    li:hover {
+      @include bright-gray($dark-color);
+    }
+  }
 
   .sortable-chosen {
     background-color: rgba(195, 42, 34, 0.15);
