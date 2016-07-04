@@ -2190,7 +2190,14 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
 
 .accordion {
-  padding: 10px 0; }
+  padding: 10px 6px; }
+
+.sortable-list .accordion {
+  padding: 10px 6px; }
+
+@media only screen and (min-width: 550px) {
+  .sortable-list .accordion {
+    padding: 10px 50px; } }
 
 .action-button {
   -webkit-border-radius: 50%;
@@ -2537,7 +2544,7 @@ footer {
 .input-group input[type="text"], .input-group input[type="password"], .input-group input[type="number"] {
   width: 100%;
   font-size: 20px;
-  margin-top: 18px;
+  margin-top: 20px;
   padding-left: 8px;
   border: none;
   border-bottom: 2px solid #eee;
@@ -3100,10 +3107,16 @@ ul.list {
       vertical-align: text-bottom;
       margin: 0 4px; }
     ul.list li .list-item-content {
-      display: inline-block; }
+      display: inline-block;
+      font-size: 14pt;
+      line-height: 17px; }
       ul.list li .list-item-content small {
         display: block;
-        min-height: 16px; }
+        min-height: 16px;
+        font-size: 10pt; }
+      ul.list li .list-item-content.single-line {
+        line-height: 34px;
+        vertical-align: text-bottom; }
     ul.list li .list-item-buttons {
       float: right;
       line-height: 32px;
@@ -3181,10 +3194,23 @@ ul.list {
   ul.list .sortable-handle {
     opacity: .5;
     transition: all .2s;
+    width: 55px;
+    margin: -10px -7px -12px -14px;
     font-size: 20px;
-    line-height: 34px;
+    text-align: center;
     vertical-align: text-bottom;
-    width: 20px; }
+    height: 55px;
+    line-height: 55px;
+    display: inline-block;
+    -webkit-filter: none;
+    filter: none;
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+    transform: rotate(90deg);
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+    ul.list .sortable-handle:before {
+      content: "\f142 \202F \f142 \202F \f142 \202F \f142"; }
   ul.list .sortable-handle:hover {
     opacity: 1;
     cursor: move; }
