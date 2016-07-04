@@ -140,10 +140,24 @@ ul.list {
   .sortable-handle {
     opacity: .5;
     transition: all .2s;
+    width: 55px;
+    margin: -10px -7px -12px -14px;
     font-size: 20px;
-    line-height: 34px;
+    text-align: center;
     vertical-align: text-bottom;
-    width: 20px;
+    height: 55px;
+    line-height: 55px;
+    display: inline-block;
+    -webkit-filter: none;
+    filter: none;
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+    transform: rotate(90deg);
+    font-family: FontAwesome;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &:before {
+      content: "\f142 \202F \f142 \202F \f142 \202F \f142";
+    }
   }
 
   .sortable-handle:hover {
