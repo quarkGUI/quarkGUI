@@ -17,9 +17,16 @@ ul.list {
     }
     .list-item-content {
       display: inline-block;
+      font-size: 14pt;
+      line-height: 17px;
       small {
         display: block;
         min-height: 16px;
+        font-size: 10pt;
+      }
+      &.single-line {
+        line-height: 34px;
+        vertical-align: text-bottom;
       }
     }
     .list-item-buttons {
