@@ -1,3 +1,13 @@
-.accordion{
-  padding: 10px 0;
+.accordion {
+  padding: 10px 6px;
+}
+
+.sortable-list .accordion {
+  padding: 10px 6px;
+}
+
+@media only screen and (min-width: 550px) {
+  .sortable-list .accordion {
+    padding: 10px 50px;
+  }
 }
