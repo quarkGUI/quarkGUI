@@ -2162,7 +2162,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
       .container > .row > div {
         padding: 0; } }
 
-.main-content, footer {
+.main-content {
   -webkit-transition: all .2s;
   transition: all .2s; }
 
@@ -2174,13 +2174,13 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     max-height: 100%; }
 
 @media only screen and (min-width: 750px) {
-  body.sidebar-active .main-content, body.sidebar-active footer {
+  body.sidebar-active .main-content {
     margin-left: 245px; }
   .main-content {
     padding-top: 64px; } }
 
 @media (min-width: 1160px) {
-  body.has-action-menu .main-content, body.has-action-menu footer {
+  body.has-action-menu .main-content {
     margin-left: 60px; } }
 
 .z-1 {
@@ -2386,7 +2386,7 @@ body.action-menu-active .main-content {
     left: 60px;
     -webkit-transition: all .2s;
     transition: all .2s .4s; }
-  body.modal-active .main-content, body.modal-active footer {
+  body.modal-active .main-content {
     margin-left: 40%;
     padding-left: 60px; } }
 
@@ -2538,8 +2538,9 @@ li .modal-hover-add-button {
     display: inline-block; } }
 
 footer {
-  background-color: #afb1b3;
-  padding: 16px; }
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: #f0f1f2;
+  padding: 32px 16px; }
 
 .input-group input[type="text"], .input-group input[type="password"], .input-group input[type="number"] {
   width: 100%;

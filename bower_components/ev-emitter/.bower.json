@@ -33,6 +33,6 @@
     "commit": "049cc4a5f5a61642f7333f352b1ef1530636f697"
   },
   "_source": "https://github.com/metafizzy/ev-emitter.git",
-  "_target": "^1.0.0",
+  "_target": "~1.0.0",
   "_originalSource": "ev-emitter"
 }
