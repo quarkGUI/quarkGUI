@@ -2461,6 +2461,20 @@ body.action-menu-active .main-content {
     .box.youtube .box-header .icon::after {
       content: "\f167"; }
 
+.breadcrumbs {
+  padding-left: 0;
+  list-style: none; }
+  .breadcrumbs li {
+    display: inline-block; }
+    .breadcrumbs li:after {
+      font-family: FontAwesome;
+      content: "\f105";
+      display: inline-block;
+      font-size: .8em;
+      margin: 0 4px; }
+    .breadcrumbs li:last-child:after {
+      content: none; }
+
 .button {
   cursor: pointer;
   text-align: center;

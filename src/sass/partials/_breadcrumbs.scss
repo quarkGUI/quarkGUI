@@ -1,0 +1,17 @@
+.breadcrumbs {
+  padding-left: 0;
+  list-style: none;
+  li {
+    display: inline-block;
+    &:after {
+      font-family: FontAwesome;
+      content: "\f105";
+      display: inline-block;
+      font-size: .8em;
+      margin: 0 4px;
+    }
+    &:last-child:after {
+      content: none;
+    }
+  }
+}
