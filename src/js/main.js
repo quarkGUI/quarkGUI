@@ -107,6 +107,11 @@ $(document).ready(function () {
             $("body").removeClass("action-menu-active");
         }
     });
+
+    $(".main-content").click(function () {
+        resetToggle();
+        $("body").removeClass("modal-active");
+    });
 });
 
 $(window).on('load', function (e) {
