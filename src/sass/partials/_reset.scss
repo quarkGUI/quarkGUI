@@ -71,6 +71,11 @@ button, input[type="button"], input[type="submit"] {
   }
 }
 
+.content{
+  max-width: 1100px;
+  margin: auto;
+}
+
 .container {
   padding: 0;
   @media (max-width: 549px) {
