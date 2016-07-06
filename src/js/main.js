@@ -45,10 +45,17 @@ function resetToggle() {
 
 $(document).on("keyup", ".input-group input", function () {
     $(this).removeClass("is-not-empty");
-    if ($(this).val() === "") {
-    } else {
-        $(this).addClass("is-not-empty");
-    }
+    if ($(this).val() !== "") $(this).addClass("is-not-empty");
+});
+
+$(document).on("change", ".input-group input", function () {
+    $(this).removeClass("is-not-empty");
+    if ($(this).val() !== "") $(this).addClass("is-not-empty");
+});
+
+$(document).on("change", ".input-group select", function () {
+    $(this).removeClass("is-not-empty");
+    if ($(this).val()) $(this).addClass("is-not-empty");
 });
 
 $(document).ready(function () {
@@ -67,9 +74,10 @@ $(document).ready(function () {
     });
 
     $(".input-group input").each(function () {
-        if ($(this).val()) {
-            $(this).addClass("is-not-empty");
-        }
+        if ($(this).val())$(this).addClass("is-not-empty");
+    });
+    $(".input-group select").each(function () {
+        if ($(this).val()) $(this).addClass("is-not-empty");
     });
     /*
      $.each(active_elements, function (element_class, active) {
