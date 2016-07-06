@@ -2542,6 +2542,10 @@ footer {
   background-color: #f0f1f2;
   padding: 32px 16px; }
 
+form {
+  display: inline-block;
+  margin-bottom: 0; }
+
 .input-group input[type="text"], .input-group input[type="password"], .input-group input[type="number"] {
   width: 100%;
   font-size: 20px;
