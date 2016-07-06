@@ -85,3 +85,14 @@ form {
     }
   }
 }
+
+.select-wrapper:before {
+  font-family: FontAwesome;
+  content: "\f078";
+  position: absolute;
+  right: 40px;
+  top: 22px;
+  width: 0;
+  height: 0;
+  color: #777;
+}
