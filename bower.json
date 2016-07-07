@@ -21,8 +21,6 @@
   ],
   "devDependencies": {
     "jquery": "^3.0.0",
-    "masonry": "^4.0.0",
-    "imagesloaded": "^4.1.0",
     "font-awesome": "Font-Awesome#^4.6.3"
   }
 }

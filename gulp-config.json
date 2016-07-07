@@ -1,9 +1,7 @@
 {
   "vendorPaths": {
     "js": [
-      "bower_components/jquery/dist/jquery.min.js",
-      "bower_components/masonry/dist/masonry.pkgd.min.js",
-      "bower_components/imagesloaded/imagesloaded.pkgd.js"
+      "bower_components/jquery/dist/jquery.min.js"
     ],
     "css": [
       "bower_components/font-awesome/css/font-awesome.min.css"
@@ -15,8 +13,6 @@
   "paths": {
     "js": [
       "src/js/jquery.min.js",
-      "src/js/masonry.pkgd.min.js",
-      "src/js/imagesloaded.pkgd.js",
       "src/js/main.js"
     ],
     "css": [

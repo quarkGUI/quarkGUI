@@ -1,16 +1,3 @@
-function updateMasonry() {
-    var container = $('.masonry-row').masonry({
-        itemSelector: '.masonry-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true
-    });
-    container.imagesLoaded(function () {
-        container.masonry();
-    });
-    container.masonry('reloadItems');
-    container.masonry('layout');
-}
-
 var active_elements = {};
 
 
@@ -121,10 +108,3 @@ $(document).ready(function () {
         $("body").removeClass("modal-active");
     });
 });
-
-$(window).on('load', function (e) {
-    updateMasonry();
-});
-
-
-
