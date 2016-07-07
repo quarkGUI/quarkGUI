@@ -1,6 +1,10 @@
 form {
-  display: inline-block;
+  display: block;
   margin-bottom: 0;
+}
+
+.list-item-buttons form {
+  display: inline-block;
 }
 
 .input-group {
