@@ -2590,8 +2590,7 @@ form {
     -webkit-transition: all .2s;
     /* Safari */
     transition: all .2s;
-    height: 16px;
-    width: 0;
+    height: 0px;
     display: block;
     cursor: text; }
   .input-group input[type="text"]::-webkit-input-placeholder, .input-group input[type="password"]::-webkit-input-placeholder, .input-group input[type="number"]::-webkit-input-placeholder, .input-group select::-webkit-input-placeholder {
