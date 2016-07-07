@@ -8,9 +8,10 @@ form {
 }
 
 .input-group {
+  margin-bottom: 4px;
   input[type="text"], input[type="password"], input[type="number"], select {
     width: 100%;
-    height: 27px;
+    height: 30px;
     font-size: 20px;
     margin-top: 20px;
     padding-left: 8px;
@@ -27,7 +28,7 @@ form {
     + label {
       color: #777;
       position: relative;
-      bottom: 25.5px;
+      bottom: 27.5px;
       left: 8px;
       font-size: 20px;
       -webkit-transition: all .2s; /* Safari */
