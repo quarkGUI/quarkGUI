@@ -2143,7 +2143,8 @@ button, input[type="button"], input[type="submit"] {
   -moz-appearance: none;
   appearance: none;
   background: none;
-  border: none; }
+  border: none;
+  cursor: pointer; }
 
 button:active, button:focus, input[type="button"]:active, input[type="button"]:focus, input[type="submit"]:active, input[type="submit"]:focus {
   box-shadow: none;
