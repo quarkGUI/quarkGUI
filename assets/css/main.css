@@ -3237,19 +3237,6 @@ ul.list {
         line-height: 32px;
         font-size: 26px;
         margin: 0; }
-      ul.list li .list-item-buttons:after {
-        display: inline-block;
-        font-family: FontAwesome;
-        content: "\f142";
-        float: right; }
-        @media only screen and (min-width: 750px) {
-          ul.list li .list-item-buttons:after {
-            content: none; } }
-      ul.list li .list-item-buttons > a {
-        display: none; }
-        @media only screen and (min-width: 750px) {
-          ul.list li .list-item-buttons > a {
-            display: inline-block; } }
     ul.list li .list-item-button {
       float: right;
       line-height: 32px;
@@ -3260,34 +3247,56 @@ ul.list {
         line-height: 32px;
         font-size: 26px;
         vertical-align: text-bottom; }
-  ul.list li.list-item-menu-active {
-    background-color: #C32A22;
-    color: #FFFFFF; }
-    ul.list li.list-item-menu-active > *:not(.list-item-buttons) {
-      display: none; }
-    ul.list li.list-item-menu-active .list-item-buttons {
-      float: none;
-      line-height: 35px; }
-      ul.list li.list-item-menu-active .list-item-buttons > a {
-        display: inline-block;
-        color: #FFFFFF; }
-        ul.list li.list-item-menu-active .list-item-buttons > a:before, ul.list li.list-item-menu-active .list-item-buttons > a span:before {
-          opacity: .8;
-          transition: all .2s; }
-        ul.list li.list-item-menu-active .list-item-buttons > a:hover {
-          background: none; }
-          ul.list li.list-item-menu-active .list-item-buttons > a:hover:before, ul.list li.list-item-menu-active .list-item-buttons > a:hover span:before {
-            opacity: 1; }
-        ul.list li.list-item-menu-active .list-item-buttons > a.button-default {
-          color: #C32A22; }
-          ul.list li.list-item-menu-active .list-item-buttons > a.button-default:not([disabled]):hover {
-            background-color: #f0f1f2; }
-          ul.list li.list-item-menu-active .list-item-buttons > a.button-default:not([disabled]):active {
-            background-color: #fbeae9; }
-      ul.list li.list-item-menu-active .list-item-buttons:after {
-        content: "\f00d"; }
   ul.list.hover-list li:hover {
     background-color: #f0f1f2; }
+  ul.list.menu-list li .list-item-content {
+    max-width: calc(100% - 42px); }
+    @media only screen and (min-width: 750px) {
+      ul.list.menu-list li .list-item-content {
+        max-width: none; } }
+  ul.list.menu-list li .list-item-buttons .button, ul.list.menu-list li .list-item-buttons button {
+    display: none; }
+    @media only screen and (min-width: 750px) {
+      ul.list.menu-list li .list-item-buttons .button, ul.list.menu-list li .list-item-buttons button {
+        display: inline-block; } }
+  ul.list.menu-list li .list-item-buttons:after {
+    display: inline-block;
+    font-family: FontAwesome;
+    content: "\f142";
+    float: right;
+    min-width: 42px;
+    text-align: center; }
+    @media only screen and (min-width: 750px) {
+      ul.list.menu-list li .list-item-buttons:after {
+        content: none;
+        min-width: 0; } }
+  ul.list.menu-list li.list-item-menu-active {
+    background-color: #C32A22;
+    color: #FFFFFF; }
+    ul.list.menu-list li.list-item-menu-active > *:not(.list-item-buttons) {
+      display: none; }
+    ul.list.menu-list li.list-item-menu-active .list-item-buttons {
+      float: none;
+      line-height: 35px; }
+      ul.list.menu-list li.list-item-menu-active .list-item-buttons > a {
+        display: inline-block; }
+        ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button), ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button) {
+          color: #FFFFFF; }
+          ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button):before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button) span:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button):before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button) span:before {
+            opacity: .8;
+            transition: all .2s; }
+          ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button):hover, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button):hover {
+            background: none; }
+            ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button):hover:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button):hover span:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button):hover:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button):hover span:before {
+              opacity: 1; }
+        ul.list.menu-list li.list-item-menu-active .list-item-buttons > a.button-default {
+          color: #C32A22; }
+          ul.list.menu-list li.list-item-menu-active .list-item-buttons > a.button-default:not([disabled]):hover {
+            background-color: #f0f1f2; }
+          ul.list.menu-list li.list-item-menu-active .list-item-buttons > a.button-default:not([disabled]):active {
+            background-color: #fbeae9; }
+      ul.list.menu-list li.list-item-menu-active .list-item-buttons:after {
+        content: "\f00d"; }
   ul.list.list-clickable li {
     transition: background-color .2s; }
   ul.list.list-clickable li:hover {

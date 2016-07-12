@@ -39,21 +39,6 @@ ul.list {
         font-size: 26px;
         margin: 0;
       }
-      &:after {
-        display: inline-block;
-        font-family: FontAwesome;
-        content: "\f142";
-        float: right;
-        @media only screen and (min-width: 750px) {
-          content: none;
-        }
-      }
-      > a {
-        display: none;
-        @media only screen and (min-width: 750px) {
-          display: inline-block;
-        }
-      }
     }
     .list-item-button {
       float: right;
@@ -68,47 +53,79 @@ ul.list {
       }
     }
   }
-  li.list-item-menu-active {
-    background-color: $primary-color;
-    color: #FFFFFF;
-    > *:not(.list-item-buttons) {
-      display: none;
-    }
-    .list-item-buttons {
-      float: none;
-      line-height: 35px;
-      > a {
-        display: inline-block;
-        color: #FFFFFF;
-        &:before, span:before {
-          opacity: .8;
-          transition: all .2s;
-        }
-        &:hover {
-          background: none;
-          &:before, span:before {
-            opacity: 1;
-          }
-        }
-        &.button-default {
-          color: $primary-color;
-          &:not([disabled]):hover {
-            @include bright-gray($dark-color);
-          }
-          &:not([disabled]):active {
-            @include bright-color($primary-color);
-          }
-        }
-      }
-      &:after {
-        content: "\f00d";
-      }
-    }
-  }
   &.hover-list {
     li {
       &:hover {
         @include bright-gray($dark-color);
+      }
+    }
+  }
+  &.menu-list {
+    li {
+      .list-item-content {
+        max-width: calc(100% - 42px);
+        @media only screen and (min-width: 750px) {
+          max-width: none;
+        }
+      }
+      .list-item-buttons {
+        .button, button {
+          display: none;
+          @media only screen and (min-width: 750px) {
+            display: inline-block;
+          }
+        }
+        &:after {
+          display: inline-block;
+          font-family: FontAwesome;
+          content: "\f142";
+          float: right;
+          min-width: 42px;
+          text-align: center;
+          @media only screen and (min-width: 750px) {
+            content: none;
+            min-width: 0;
+          }
+        }
+      }
+    }
+    li.list-item-menu-active {
+      background-color: $primary-color;
+      color: #FFFFFF;
+      > *:not(.list-item-buttons) {
+        display: none;
+      }
+      .list-item-buttons {
+        float: none;
+        line-height: 35px;
+        > a {
+          display: inline-block;
+          &:not(.button), &:not(button) {
+            color: #FFFFFF;
+            &:before, span:before {
+              opacity: .8;
+              transition: all .2s;
+            }
+            &:hover {
+              background: none;
+              &:before, span:before {
+                opacity: 1;
+              }
+            }
+          }
+          &.button-default {
+            color: $primary-color;
+            &:not([disabled]):hover {
+              @include bright-gray($dark-color);
+            }
+            &:not([disabled]):active {
+              @include bright-color($primary-color);
+            }
+          }
+        }
+        &:after {
+          content: "\f00d";
+        }
       }
     }
   }
