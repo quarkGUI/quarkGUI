@@ -3297,8 +3297,8 @@ ul.list {
           background-color: #f0f1f2; }
         ul.list.menu-list li.list-item-menu-active .list-item-buttons.button-default:not([disabled]):active {
           background-color: #fbeae9; }
-    ul.list.menu-list li.list-item-menu-active:after {
-      content: "\f00d"; }
+      ul.list.menu-list li.list-item-menu-active .list-item-buttons:after {
+        content: "\f00d"; }
   ul.list.list-clickable li {
     transition: background-color .2s; }
   ul.list.list-clickable li:hover {

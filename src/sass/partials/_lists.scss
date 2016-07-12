@@ -128,9 +128,9 @@ ul.list {
             @include bright-color($primary-color);
           }
         }
-      }
-      &:after {
-        content: "\f00d";
+        &:after {
+          content: "\f00d";
+        }
       }
     }
   }
