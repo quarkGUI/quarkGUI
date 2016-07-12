@@ -2165,9 +2165,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
 
 .main-content {
   -webkit-transition: all .2s;
-  transition: all .2s; }
-
-.main-content {
+  transition: all .2s;
   padding-top: 48px;
   height: 100%; }
   .main-content > .container {
@@ -2513,6 +2511,10 @@ body.action-menu-active .main-content {
 
 .button-raised[disabled] {
   color: rgba(0, 0, 0, 0.26); }
+
+.button-default {
+  background-color: #f6f7f8;
+  border: 1px solid #e5e6e7; }
 
 .button-primary {
   background-color: #C32A22;
