@@ -3278,6 +3278,12 @@ ul.list {
           background: none; }
           ul.list li.list-item-menu-active .list-item-buttons > a:hover:before, ul.list li.list-item-menu-active .list-item-buttons > a:hover span:before {
             opacity: 1; }
+        ul.list li.list-item-menu-active .list-item-buttons > a.button-default {
+          color: #C32A22; }
+          ul.list li.list-item-menu-active .list-item-buttons > a.button-default:not([disabled]):hover {
+            background-color: #f0f1f2; }
+          ul.list li.list-item-menu-active .list-item-buttons > a.button-default:not([disabled]):active {
+            background-color: #fbeae9; }
       ul.list li.list-item-menu-active .list-item-buttons:after {
         content: "\f00d"; }
   ul.list.hover-list li:hover {

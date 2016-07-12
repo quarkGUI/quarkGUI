@@ -90,6 +90,15 @@ ul.list {
             opacity: 1;
           }
         }
+        &.button-default {
+          color: $primary-color;
+          &:not([disabled]):hover {
+            @include bright-gray($dark-color);
+          }
+          &:not([disabled]):active {
+            @include bright-color($primary-color);
+          }
+        }
       }
       &:after {
         content: "\f00d";
