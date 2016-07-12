@@ -2496,7 +2496,7 @@ body.action-menu-active .main-content {
     color: rgba(0, 0, 0, 0.26);
     background-color: transparent; }
   .button-flat.button-icon {
-    min-width: 38px;
+    min-width: 42px;
     margin: 0; }
     .button-flat.button-icon .fa {
       line-height: 32px; }
