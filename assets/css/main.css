@@ -2546,14 +2546,6 @@ li .modal-hover-add-button {
     font-family: FontAwesome;
     content: "\f067"; }
 
-@media only screen and (min-width: 1160px) {
-  li .modal-hover-add-button {
-    display: none; }
-    li .modal-hover-add-button:before {
-      content: "\f061"; }
-  li:hover .modal-hover-add-button {
-    display: inline-block; } }
-
 footer {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   background-color: #f0f1f2;
