@@ -98,37 +98,43 @@ ul.list {
       .list-item-buttons {
         float: none;
         line-height: 35px;
-        > a {
+        a, .button, button {
           display: inline-block;
-          &:not(.button), &:not(button) {
-            color: #FFFFFF;
+        }
+        .button, button {
+          &:before, span:before {
+            opacity: 1;
+          }
+        }
+        a:not(.button) {
+          color: #FFFFFF;
+          &:before, span:before {
+            opacity: .8;
+            transition: all .2s;
+          }
+          &:hover {
+            background: none;
             &:before, span:before {
-              opacity: .8;
-              transition: all .2s;
-            }
-            &:hover {
-              background: none;
-              &:before, span:before {
-                opacity: 1;
-              }
-            }
-          }
-          &.button-default {
-            color: $primary-color;
-            &:not([disabled]):hover {
-              @include bright-gray($dark-color);
-            }
-            &:not([disabled]):active {
-              @include bright-color($primary-color);
+              opacity: 1;
             }
           }
         }
-        &:after {
-          content: "\f00d";
+        &.button-default {
+          color: $primary-color;
+          &:not([disabled]):hover {
+            @include bright-gray($dark-color);
+          }
+          &:not([disabled]):active {
+            @include bright-color($primary-color);
+          }
         }
+      }
+      &:after {
+        content: "\f00d";
       }
     }
   }
+
   &.list-clickable {
     li {
       transition: background-color .2s;
@@ -137,9 +143,11 @@ ul.list {
       cursor: pointer;
     }
   }
+
   .list-item-clicked {
     @include bright-color($success-color);
   }
+
   .list-hoverable li:hover {
     li {
       transition: background-color .2s;
@@ -190,4 +198,5 @@ ul.list {
     opacity: 1;
     cursor: move;
   }
+
 }

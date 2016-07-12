@@ -3278,25 +3278,27 @@ ul.list {
     ul.list.menu-list li.list-item-menu-active .list-item-buttons {
       float: none;
       line-height: 35px; }
-      ul.list.menu-list li.list-item-menu-active .list-item-buttons > a {
+      ul.list.menu-list li.list-item-menu-active .list-item-buttons a, ul.list.menu-list li.list-item-menu-active .list-item-buttons .button, ul.list.menu-list li.list-item-menu-active .list-item-buttons button {
         display: inline-block; }
-        ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button), ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button) {
-          color: #FFFFFF; }
-          ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button):before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button) span:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button):before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button) span:before {
-            opacity: .8;
-            transition: all .2s; }
-          ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button):hover, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button):hover {
-            background: none; }
-            ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button):hover:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(.button):hover span:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button):hover:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons > a:not(button):hover span:before {
-              opacity: 1; }
-        ul.list.menu-list li.list-item-menu-active .list-item-buttons > a.button-default {
-          color: #C32A22; }
-          ul.list.menu-list li.list-item-menu-active .list-item-buttons > a.button-default:not([disabled]):hover {
-            background-color: #f0f1f2; }
-          ul.list.menu-list li.list-item-menu-active .list-item-buttons > a.button-default:not([disabled]):active {
-            background-color: #fbeae9; }
-      ul.list.menu-list li.list-item-menu-active .list-item-buttons:after {
-        content: "\f00d"; }
+      ul.list.menu-list li.list-item-menu-active .list-item-buttons .button:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons .button span:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons button:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons button span:before {
+        opacity: 1; }
+      ul.list.menu-list li.list-item-menu-active .list-item-buttons a:not(.button) {
+        color: #FFFFFF; }
+        ul.list.menu-list li.list-item-menu-active .list-item-buttons a:not(.button):before, ul.list.menu-list li.list-item-menu-active .list-item-buttons a:not(.button) span:before {
+          opacity: .8;
+          transition: all .2s; }
+        ul.list.menu-list li.list-item-menu-active .list-item-buttons a:not(.button):hover {
+          background: none; }
+          ul.list.menu-list li.list-item-menu-active .list-item-buttons a:not(.button):hover:before, ul.list.menu-list li.list-item-menu-active .list-item-buttons a:not(.button):hover span:before {
+            opacity: 1; }
+      ul.list.menu-list li.list-item-menu-active .list-item-buttons.button-default {
+        color: #C32A22; }
+        ul.list.menu-list li.list-item-menu-active .list-item-buttons.button-default:not([disabled]):hover {
+          background-color: #f0f1f2; }
+        ul.list.menu-list li.list-item-menu-active .list-item-buttons.button-default:not([disabled]):active {
+          background-color: #fbeae9; }
+    ul.list.menu-list li.list-item-menu-active:after {
+      content: "\f00d"; }
   ul.list.list-clickable li {
     transition: background-color .2s; }
   ul.list.list-clickable li:hover {
