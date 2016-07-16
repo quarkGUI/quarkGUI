@@ -2455,6 +2455,14 @@ body.action-menu-active .main-content {
     background-color: #cc181e; }
     .box.youtube .box-header .icon::after {
       content: "\f167"; }
+  .box.primary .box-header {
+    background-color: #C32A22; }
+    .box.primary .box-header .icon::after {
+      content: "\f167"; }
+  .box.dark .box-header {
+    background-color: #232527; }
+    .box.dark .box-header .icon::after {
+      content: "\f167"; }
 
 .breadcrumbs {
   padding-left: 0;

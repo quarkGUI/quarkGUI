@@ -12,10 +12,10 @@
   .box-header {
     font-size: .8em;
     color: #FFF;
-    a{
+    a {
       text-decoration: none;
     }
-    .icon{
+    .icon {
       color: #FFF;
       font-family: FontAwesome;
       font-size: 1.6em;
@@ -25,7 +25,7 @@
   &.facebook {
     .box-header {
       background-color: #3b5998;
-      .icon::after{
+      .icon::after {
         content: "\f230";
       }
     }
@@ -33,7 +33,7 @@
   &.instagram {
     .box-header {
       background-color: #125688;
-      .icon::after{
+      .icon::after {
         content: "\f16d";
       }
     }
@@ -41,7 +41,7 @@
   &.soundcloud {
     .box-header {
       background-color: #F50;
-      .icon::after{
+      .icon::after {
         content: "\f1be";
       }
     }
@@ -49,7 +49,7 @@
   &.twitter {
     .box-header {
       background-color: #55acee;
-      .icon::after{
+      .icon::after {
         content: "\f099";
       }
     }
@@ -57,7 +57,7 @@
   &.google {
     .box-header {
       background-color: #db4437;
-      .icon::after{
+      .icon::after {
         content: "\f0d5";
       }
     }
@@ -65,7 +65,23 @@
   &.youtube {
     .box-header {
       background-color: #cc181e;
-      .icon::after{
+      .icon::after {
+        content: "\f167";
+      }
+    }
+  }
+  &.primary {
+    .box-header {
+      background-color: $primary-color;
+      .icon::after {
+        content: "\f167";
+      }
+    }
+  }
+  &.dark {
+    .box-header {
+      background-color: $dark-color;
+      .icon::after {
         content: "\f167";
       }
     }
