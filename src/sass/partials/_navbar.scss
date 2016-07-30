@@ -60,7 +60,7 @@
     margin: 0;
     li {
       display: inline-block;
-      a {
+      a, > span {
         color: $primary-color;
         text-decoration: none;
         text-transform: uppercase;
@@ -81,7 +81,7 @@
   }
   &.navbar-dark {
     background-color: $dark-color;
-    a {
+    a, li.dropdown-menu > span {
       color: #FFFFFF;
     }
     ul li a {
@@ -93,7 +93,7 @@
   }
   &.navbar-primary {
     background-color: $primary-color;
-    a {
+    a, li.dropdown-menu > span  {
       color: #FFFFFF;
     }
     ul li a {
