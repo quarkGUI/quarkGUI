@@ -2424,6 +2424,10 @@ body.action-menu-active .main-content {
   .box .box-header {
     font-size: .8em;
     color: #FFF; }
+    .box .box-header .box-title {
+      font-size: 14pt;
+      line-height: 14pt;
+      margin: 0; }
     .box .box-header a {
       text-decoration: none; }
     .box .box-header .icon {
