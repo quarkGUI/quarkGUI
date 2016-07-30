@@ -58,9 +58,9 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    li {
+    li:not(.dropdown-menu) {
       display: inline-block;
-      a, > span {
+      a {
         color: $primary-color;
         text-decoration: none;
         text-transform: uppercase;
@@ -81,7 +81,7 @@
   }
   &.navbar-dark {
     background-color: $dark-color;
-    a, li.dropdown-menu > span {
+    a {
       color: #FFFFFF;
     }
     ul li a {
@@ -93,7 +93,7 @@
   }
   &.navbar-primary {
     background-color: $primary-color;
-    a, li.dropdown-menu > span  {
+    a {
       color: #FFFFFF;
     }
     ul li a {

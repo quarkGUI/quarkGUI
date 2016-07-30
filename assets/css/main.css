@@ -3436,9 +3436,9 @@ pre.code-example {
     list-style: none;
     padding: 0;
     margin: 0; }
-    .navbar ul li {
+    .navbar ul li:not(.dropdown-menu) {
       display: inline-block; }
-      .navbar ul li a, .navbar ul li > span {
+      .navbar ul li:not(.dropdown-menu) a {
         color: #C32A22;
         text-decoration: none;
         text-transform: uppercase;
@@ -3451,11 +3451,11 @@ pre.code-example {
         padding: 0 16px;
         -webkit-transition: border-color .2s;
         transition: border-color .2s; }
-        .navbar ul li a:hover, .navbar ul li > span:hover {
+        .navbar ul li:not(.dropdown-menu) a:hover {
           border-bottom: 6px solid #C32A22; }
   .navbar.navbar-dark {
     background-color: #232527; }
-    .navbar.navbar-dark a, .navbar.navbar-dark li.dropdown-menu > span {
+    .navbar.navbar-dark a {
       color: #FFFFFF; }
     .navbar.navbar-dark ul li a {
       color: #FFF; }
@@ -3463,7 +3463,7 @@ pre.code-example {
         border-bottom: 6px solid #FFF; }
   .navbar.navbar-primary {
     background-color: #C32A22; }
-    .navbar.navbar-primary a, .navbar.navbar-primary li.dropdown-menu > span {
+    .navbar.navbar-primary a {
       color: #FFFFFF; }
     .navbar.navbar-primary ul li a {
       color: #FFF; }
