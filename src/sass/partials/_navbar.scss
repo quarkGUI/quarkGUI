@@ -17,9 +17,6 @@
     img {
       height: 40px;
       width: auto;
-      @media only screen and (min-width: 1160px) {
-        height: 46px;
-      }
     }
   }
   .main-menu {
@@ -204,7 +201,7 @@ body.sidebar-active .left-menu {
       height: 50px;
     }
     .logo {
-      padding: 10px 0;
+      padding: 10.5px 0;
     }
     a.sidenav-toggle {
       padding: 0 25px;
@@ -235,6 +232,11 @@ body.sidebar-active .left-menu {
 @media only screen and (min-width: 1160px) {
   .navbar {
     padding: 0 25px;
+    .logo {
+      padding: 10.5px 0;
+      img {
+        height: 46px;
+      }
+    }
   }
 }
-

@@ -3508,9 +3508,6 @@ pre.code-example {
     .navbar .logo img {
       height: 40px;
       width: auto; }
-      @media only screen and (min-width: 1160px) {
-        .navbar .logo img {
-          height: 46px; } }
   .navbar .main-menu {
     display: inline-block; }
   .navbar a {
@@ -3650,7 +3647,7 @@ body.sidebar-active .left-menu {
     .navbar .menu-divider {
       height: 50px; }
     .navbar .logo {
-      padding: 10px 0; }
+      padding: 10.5px 0; }
     .navbar a.sidenav-toggle {
       padding: 0 25px; }
       .navbar a.sidenav-toggle .sidenav-toggle-logo {
@@ -3668,7 +3665,11 @@ body.sidebar-active .left-menu {
 
 @media only screen and (min-width: 1160px) {
   .navbar {
-    padding: 0 25px; } }
+    padding: 0 25px; }
+    .navbar .logo {
+      padding: 10.5px 0; }
+      .navbar .logo img {
+        height: 46px; } }
 
 input[type="checkbox"],
 input[type="radio"] {
