@@ -3490,6 +3490,8 @@ pre.code-example {
       @media only screen and (min-width: 1160px) {
         .navbar .logo img {
           height: 46px; } }
+  .navbar .main-menu {
+    display: inline-block; }
   .navbar a {
     color: #C32A22; }
   .navbar a.sidenav-toggle {
