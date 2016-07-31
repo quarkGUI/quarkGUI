@@ -3477,7 +3477,7 @@ pre.code-example {
   /* Safari */
   transition: all .2s; }
   .left-menu > div {
-    background-color: #FFF;
+    background-color: #fafbfc;
     padding: 0;
     position: fixed;
     height: 100%;
