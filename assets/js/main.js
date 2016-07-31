@@ -55,13 +55,23 @@ $(document).ready(function () {
         $("body").addClass("has-action-menu");
     }
 
+    // Toggle dropdown
+    $(document).mouseup(function (e) {
+        var container = $(".dropdown-menu");
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            container.removeClass("active");
+        } else {
+            container.toggleClass("active");
+        }
+    });
+
     $(".sidenav-toggle").click(function () {
         if ($("body").hasClass("sidebar-active")) {
             $("body").removeClass("sidebar-active");
         } else {
             $("body").addClass("sidebar-active");
         }
-       // window.setTimeout(updateMasonry, 300);
+        // window.setTimeout(updateMasonry, 300);
     });
 
     $(".input-group input").each(function () {
