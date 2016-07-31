@@ -14,6 +14,7 @@
     font-size: 20px;
     line-height: 64px;
     vertical-align: bottom;
+    display: inline-block;
     &.fa {
       width: 22px;
     }
@@ -96,6 +97,7 @@
 /* Navbar */
 .navbar ul li.dropdown-menu {
   .dropdown-content {
+    cursor: default;
     li {
       display: block;
       padding: 0;
