@@ -1,0 +1,100 @@
+.dropdown-menu {
+  > span {
+    color: $primary-color;
+    font-size: 20px;
+    line-height: 58px;
+    vertical-align: bottom;
+    &.fa {
+      width: 22px;
+    }
+  }
+  .dropdown-content {
+    display: none;
+    background-color: #FFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    li {
+      display: block;
+      padding: 0;
+      a {
+        color: #212121;
+        font-size: 14pt;
+        line-height: 19pt;
+        border-bottom: none;
+        padding: 10px 20px;
+        text-transform: initial;
+      }
+    }
+    .dropdown-title {
+      font-size: 14pt;
+      line-height: 14pt;
+      padding: 6px 10px;
+      background-color: #C32A22;
+      color: #FFF;
+      display: block
+    }
+    .separator {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .dropdown-content-container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .dropdown-profile-content {
+      padding-top: 10px;
+      .dropdown-profile-name {
+        font-size: 18pt;
+        line-height: 20pt;
+        display: block;
+      }
+      .dropdown-profile-email {
+        font-size: 12pt;
+        line-height: 12pt;
+        display: block;
+      }
+    }
+    .button.button-default,
+    .button.button-default:hover {
+      border: 1px solid #e5e6e7;
+      color: #212121;
+    }
+  }
+  &.active {
+    .dropdown-content {
+      display: block;
+      position: absolute;
+      top: 64px;
+      right: 14px;
+    }
+  }
+}
+
+/* Navbar */
+.navbar ul li.dropdown-menu {
+  .dropdown-content {
+    li {
+      display: block;
+      padding: 0;
+      a {
+        color: #212121;
+        font-size: 14pt;
+        line-height: 19pt;
+        border-bottom: none;
+        padding: 10px 20px;
+        text-transform: initial;
+      }
+    }
+    .dropdown-title {
+      font-size: 14pt;
+      line-height: 14pt;
+      padding: 6px 10px;
+      background-color: $primary-color;
+      color: #FFF;
+      display: block;
+    }
+  }
+}
+
+.navbar.navbar-dark .dropdown-menu > span {
+  color: #FFF;
+}
