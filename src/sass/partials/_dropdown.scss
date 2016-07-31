@@ -1,8 +1,18 @@
 .dropdown-menu {
+  padding: 0 16px;
+  cursor: pointer;
+  &:hover {
+    -webkit-transition: background .2s .1s;
+    transition: background .2s .1s;
+    background-color: rgba(158, 158, 158, 0.2);
+  }
+  &:active {
+    @include active-color($primary-color);
+  }
   > span {
     color: $primary-color;
     font-size: 20px;
-    line-height: 58px;
+    line-height: 64px;
     vertical-align: bottom;
     &.fa {
       width: 22px;
@@ -12,6 +22,19 @@
     display: none;
     background-color: $bright-white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: rgba(0, 0, 0, 0);
+      border-style: solid;
+      top: -5px;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 0 5px 5px;
+      border-bottom-color: $bright-white;
+    }
     li {
       display: block;
       padding: 0;

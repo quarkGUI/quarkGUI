@@ -2561,62 +2561,81 @@ li .modal-hover-add-button {
     font-family: FontAwesome;
     content: "\f067"; }
 
-.dropdown-menu > span {
-  color: #C32A22;
-  font-size: 20px;
-  line-height: 58px;
-  vertical-align: bottom; }
-  .dropdown-menu > span.fa {
-    width: 22px; }
-
-.dropdown-menu .dropdown-content {
-  display: none;
-  background-color: #fbfcfd;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
-  .dropdown-menu .dropdown-content li {
-    display: block;
-    padding: 0; }
-    .dropdown-menu .dropdown-content li a {
-      color: #212121;
+.dropdown-menu {
+  padding: 0 16px;
+  cursor: pointer; }
+  .dropdown-menu:hover {
+    -webkit-transition: background .2s .1s;
+    transition: background .2s .1s;
+    background-color: rgba(158, 158, 158, 0.2); }
+  .dropdown-menu:active {
+    background-color: #db3b32; }
+  .dropdown-menu > span {
+    color: #C32A22;
+    font-size: 20px;
+    line-height: 64px;
+    vertical-align: bottom; }
+    .dropdown-menu > span.fa {
+      width: 22px; }
+  .dropdown-menu .dropdown-content {
+    display: none;
+    background-color: #fbfcfd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
+    .dropdown-menu .dropdown-content::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      top: -5px;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 0 5px 5px;
+      border-bottom-color: #fbfcfd; }
+    .dropdown-menu .dropdown-content li {
+      display: block;
+      padding: 0; }
+      .dropdown-menu .dropdown-content li a {
+        color: #212121;
+        font-size: 14pt;
+        line-height: 19pt;
+        border-bottom: none;
+        padding: 10px 20px;
+        text-transform: initial; }
+    .dropdown-menu .dropdown-content .dropdown-title {
       font-size: 14pt;
-      line-height: 19pt;
-      border-bottom: none;
-      padding: 10px 20px;
-      text-transform: initial; }
-  .dropdown-menu .dropdown-content .dropdown-title {
-    font-size: 14pt;
-    line-height: 14pt;
-    padding: 6px 10px;
-    background-color: #C32A22;
-    color: #FFF;
-    display: block; }
-  .dropdown-menu .dropdown-content .separator {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    display: block; }
-  .dropdown-menu .dropdown-content .dropdown-content-container {
-    padding-left: 20px;
-    padding-right: 20px; }
-  .dropdown-menu .dropdown-content .dropdown-profile-content {
-    padding-top: 10px; }
-    .dropdown-menu .dropdown-content .dropdown-profile-content .dropdown-profile-name {
-      font-size: 18pt;
-      line-height: 20pt;
+      line-height: 14pt;
+      padding: 6px 10px;
+      background-color: #C32A22;
+      color: #FFF;
       display: block; }
-    .dropdown-menu .dropdown-content .dropdown-profile-content .dropdown-profile-email {
-      font-size: 12pt;
-      line-height: 12pt;
+    .dropdown-menu .dropdown-content .separator {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
       display: block; }
-  .dropdown-menu .dropdown-content .button.button-default,
-  .dropdown-menu .dropdown-content .button.button-default:hover {
-    border: 1px solid #e5e6e7;
-    color: #212121; }
-
-.dropdown-menu.active .dropdown-content {
-  display: block;
-  position: absolute;
-  top: 64px;
-  right: 14px; }
+    .dropdown-menu .dropdown-content .dropdown-content-container {
+      padding-left: 20px;
+      padding-right: 20px; }
+    .dropdown-menu .dropdown-content .dropdown-profile-content {
+      padding-top: 10px; }
+      .dropdown-menu .dropdown-content .dropdown-profile-content .dropdown-profile-name {
+        font-size: 18pt;
+        line-height: 20pt;
+        display: block; }
+      .dropdown-menu .dropdown-content .dropdown-profile-content .dropdown-profile-email {
+        font-size: 12pt;
+        line-height: 12pt;
+        display: block; }
+    .dropdown-menu .dropdown-content .button.button-default,
+    .dropdown-menu .dropdown-content .button.button-default:hover {
+      border: 1px solid #e5e6e7;
+      color: #212121; }
+  .dropdown-menu.active .dropdown-content {
+    display: block;
+    position: absolute;
+    top: 64px;
+    right: 14px; }
 
 /* Navbar */
 .navbar ul li.dropdown-menu .dropdown-content li {
