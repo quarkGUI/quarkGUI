@@ -2528,7 +2528,7 @@ body.action-menu-active .main-content {
   color: rgba(0, 0, 0, 0.26); }
 
 .button-default {
-  background-color: #f9fafb;
+  background-color: #f8f9fa;
   border: 1px solid #e5e6e7; }
 
 .button-primary {
@@ -2571,7 +2571,7 @@ li .modal-hover-add-button {
 
 .dropdown-menu .dropdown-content {
   display: none;
-  background-color: #FFF;
+  background-color: #fbfcfd;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
   .dropdown-menu .dropdown-content li {
     display: block;
@@ -2592,7 +2592,8 @@ li .modal-hover-add-button {
     display: block; }
   .dropdown-menu .dropdown-content .separator {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(0, 0, 0, 0.05); }
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: block; }
   .dropdown-menu .dropdown-content .dropdown-content-container {
     padding-left: 20px;
     padding-right: 20px; }
@@ -3562,7 +3563,7 @@ pre.code-example {
   /* Safari */
   transition: all .2s; }
   .left-menu > div {
-    background-color: #fafbfc;
+    background-color: #fbfcfd;
     padding: 0;
     position: fixed;
     height: 100%;
