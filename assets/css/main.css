@@ -2482,6 +2482,9 @@ body.action-menu-active .main-content {
     .breadcrumbs li:last-child:after {
       content: none; }
 
+.button-row {
+  margin: 8px -8px; }
+
 .button {
   cursor: pointer;
   text-align: center;
