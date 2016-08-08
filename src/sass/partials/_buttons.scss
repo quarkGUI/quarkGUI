@@ -55,13 +55,30 @@
   }
 }
 
-.button-default {
-  background-color: #f8f9fa;
-  border: 1px solid #e5e6e7;
+.button-default,
+.button-default:visited{
+  background-color: $default-color;
+  @include border-color($default-color);
+  color: #404244;
+  -webkit-transition: background .2s .1s;
+  transition: background .2s .1s;
+  &:not([disabled]):hover {
+    @include hover-color($default-color);
+  }
+  &:not([disabled]):active {
+    @include active-color($default-color);
+  }
+  &.button-flat {
+    &:not([disabled]):active {
+      @include active-color($default-color);
+    }
+  }
 }
 
-.button-primary {
+.button-primary,
+.button-primary:visited{
   background-color: $primary-color;
+  @include border-color($primary-color);
   color: #FFFFFF !important;
   -webkit-transition: background .2s .1s;
   transition: background .2s .1s;
@@ -78,8 +95,10 @@
   }
 }
 
-.button-success {
+.button-success,
+.button-success:visited{
   background-color: $success-color;
+  @include border-color($success-color);
   color: #FFFFFF !important;
   -webkit-transition: background .2s .1s;
   transition: background .2s .1s;

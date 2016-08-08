@@ -2527,32 +2527,55 @@ body.action-menu-active .main-content {
 .button-raised[disabled] {
   color: rgba(0, 0, 0, 0.26); }
 
-.button-default {
-  background-color: #f8f9fa;
-  border: 1px solid #e5e6e7; }
+.button-default,
+.button-default:visited {
+  background-color: #f0f1f2;
+  border: 1px solid #e5e7e9;
+  color: #404244;
+  -webkit-transition: background .2s .1s;
+  transition: background .2s .1s; }
+  .button-default:not([disabled]):hover,
+  .button-default:visited:not([disabled]):hover {
+    background-color: #fbfbfb; }
+  .button-default:not([disabled]):active,
+  .button-default:visited:not([disabled]):active {
+    background-color: white; }
+  .button-default.button-flat:not([disabled]):active,
+  .button-default:visited.button-flat:not([disabled]):active {
+    background-color: white; }
 
-.button-primary {
+.button-primary,
+.button-primary:visited {
   background-color: #C32A22;
+  border: 1px solid #b2261f;
   color: #FFFFFF !important;
   -webkit-transition: background .2s .1s;
   transition: background .2s .1s; }
-  .button-primary:not([disabled]):hover {
+  .button-primary:not([disabled]):hover,
+  .button-primary:visited:not([disabled]):hover {
     background-color: #d42e25; }
-  .button-primary:not([disabled]):active {
+  .button-primary:not([disabled]):active,
+  .button-primary:visited:not([disabled]):active {
     background-color: #db3b32; }
-  .button-primary.button-flat:not([disabled]):active {
+  .button-primary.button-flat:not([disabled]):active,
+  .button-primary:visited.button-flat:not([disabled]):active {
     background-color: #db3b32; }
 
-.button-success {
+.button-success,
+.button-success:visited {
   background-color: #1A9729;
+  border: 1px solid #178624;
   color: #FFFFFF !important;
   -webkit-transition: background .2s .1s;
   transition: background .2s .1s; }
-  .button-success:not([disabled]):hover {
+  .button-success:not([disabled]):hover,
+  .button-success:visited:not([disabled]):hover {
     background-color: #1da82e; }
-  .button-success:not([disabled]):active {
+  .button-success:not([disabled]):active,
+  .button-success:visited:not([disabled]):active {
     background-color: #20ba32; }
-  .button-success.button-flat:not([disabled]):active {
+  .button-success.button-flat:not([disabled]):active,
+  .button-success:visited.button-flat:not([disabled]):active {
     background-color: #20ba32; }
 
 li .modal-hover-add-button {
