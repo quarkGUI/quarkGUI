@@ -6,6 +6,7 @@
   cursor: pointer;
   text-align: center;
   min-width: 88px;
+  height: 34px;
   border-radius: 3px;
   font-size: 14px;
   font-weight: bold;
@@ -16,6 +17,7 @@
   padding: 0 6px;
   &.button-icon {
     min-width: 38px;
+    font-size: 14pt;
   }
 }
 
@@ -37,10 +39,6 @@
     min-width: 42px;
     font-weight: normal;
     margin: 0;
-    .fa {
-      vertical-align: middle;
-      font-size: 15pt;
-    }
   }
 }
 

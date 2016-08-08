@@ -2489,6 +2489,7 @@ body.action-menu-active .main-content {
   cursor: pointer;
   text-align: center;
   min-width: 88px;
+  height: 34px;
   border-radius: 3px;
   font-size: 14px;
   font-weight: bold;
@@ -2498,7 +2499,8 @@ body.action-menu-active .main-content {
   margin: 0 8px;
   padding: 0 6px; }
   .button.button-icon {
-    min-width: 38px; }
+    min-width: 38px;
+    font-size: 14pt; }
 
 .button-flat {
   -webkit-transition: all .2s .1s;
@@ -2515,9 +2517,6 @@ body.action-menu-active .main-content {
     min-width: 42px;
     font-weight: normal;
     margin: 0; }
-    .button-flat.button-icon .fa {
-      vertical-align: middle;
-      font-size: 15pt; }
 
 .button-raised:not([disabled]) {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -3397,8 +3396,6 @@ ul.list {
       font-size: 26px;
       vertical-align: text-bottom; }
       ul.list li .list-item-buttons .button {
-        line-height: 32px;
-        font-size: 26px;
         margin: 0; }
     ul.list li .list-item-button {
       float: right;
