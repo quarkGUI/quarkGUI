@@ -2516,7 +2516,8 @@ body.action-menu-active .main-content {
     font-weight: normal;
     margin: 0; }
     .button-flat.button-icon .fa {
-      line-height: 32px; }
+      vertical-align: middle;
+      font-size: 15pt; }
 
 .button-raised:not([disabled]) {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -3373,10 +3374,7 @@ ul.list {
       font-size: 26px;
       vertical-align: text-bottom; }
       ul.list li .list-item-button .button {
-        float: right;
-        line-height: 32px;
-        font-size: 26px;
-        vertical-align: text-bottom; }
+        float: right; }
   ul.list.hover-list li:hover {
     background-color: #f0f1f2; }
   ul.list.menu-list li .list-item-content {
