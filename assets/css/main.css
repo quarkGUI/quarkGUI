@@ -2531,19 +2531,19 @@ body.action-menu-active .main-content {
 
 .button-default,
 .button-default:visited {
-  background-color: #f0f1f2;
-  color: #404244;
+  background-color: #f4f5f6;
+  color: #333;
   -webkit-transition: all .2s .1s;
   transition: all .2s .1s; }
   .button-default:not([disabled]):hover,
   .button-default:visited:not([disabled]):hover {
-    background-color: #fbfbfb; }
+    background-color: #f8f9fa; }
   .button-default:not([disabled]):active,
   .button-default:visited:not([disabled]):active {
-    background-color: white; }
+    background-color: #fbfcfd; }
   .button-default.button-flat:not([disabled]):active,
   .button-default:visited.button-flat:not([disabled]):active {
-    background-color: white; }
+    background-color: #fbfcfd; }
 
 .button-primary,
 .button-primary:visited {

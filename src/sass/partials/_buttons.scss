@@ -59,18 +59,18 @@
 .button-default,
 .button-default:visited {
   background-color: $default-color;
-  color: #404244;
+  color: #333;
   -webkit-transition: all .2s .1s;
   transition: all .2s .1s;
   &:not([disabled]):hover {
-    @include hover-color($default-color);
+    background-color: #f8f9fa;
   }
   &:not([disabled]):active {
-    @include active-color($default-color);
+    background-color: #fbfcfd;
   }
   &.button-flat {
     &:not([disabled]):active {
-      @include active-color($default-color);
+      background-color: #fbfcfd;
     }
   }
 }
