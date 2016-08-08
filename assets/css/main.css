@@ -2578,6 +2578,38 @@ body.action-menu-active .main-content {
   .button-success:visited.button-flat:not([disabled]):active {
     background-color: #20ba32; }
 
+.button-info,
+.button-info:visited {
+  background-color: #166F77;
+  color: #FFFFFF !important;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s; }
+  .button-info:not([disabled]):hover,
+  .button-info:visited:not([disabled]):hover {
+    background-color: #197f88; }
+  .button-info:not([disabled]):active,
+  .button-info:visited:not([disabled]):active {
+    background-color: #1c8f99; }
+  .button-info.button-flat:not([disabled]):active,
+  .button-info:visited.button-flat:not([disabled]):active {
+    background-color: #1c8f99; }
+
+.button-warning,
+.button-warning:visited {
+  background-color: #C36E22;
+  color: #FFFFFF !important;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s; }
+  .button-warning:not([disabled]):hover,
+  .button-warning:visited:not([disabled]):hover {
+    background-color: #d47825; }
+  .button-warning:not([disabled]):active,
+  .button-warning:visited:not([disabled]):active {
+    background-color: #db8232; }
+  .button-warning.button-flat:not([disabled]):active,
+  .button-warning:visited.button-flat:not([disabled]):active {
+    background-color: #db8232; }
+
 li .modal-hover-add-button {
   display: inline-block; }
   li .modal-hover-add-button:before {

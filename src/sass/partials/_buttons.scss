@@ -115,6 +115,44 @@
   }
 }
 
+.button-info,
+.button-info:visited {
+  background-color: $info-color;
+  color: #FFFFFF !important;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
+  &:not([disabled]):hover {
+    @include hover-color($info-color);
+  }
+  &:not([disabled]):active {
+    @include active-color($info-color);
+  }
+  &.button-flat {
+    &:not([disabled]):active {
+      @include active-color($info-color);
+    }
+  }
+}
+
+.button-warning,
+.button-warning:visited {
+  background-color: $warning-color;
+  color: #FFFFFF !important;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
+  &:not([disabled]):hover {
+    @include hover-color($warning-color);
+  }
+  &:not([disabled]):active {
+    @include active-color($warning-color);
+  }
+  &.button-flat {
+    &:not([disabled]):active {
+      @include active-color($warning-color);
+    }
+  }
+}
+
 li .modal-hover-add-button {
   display: inline-block;
   &:before {
