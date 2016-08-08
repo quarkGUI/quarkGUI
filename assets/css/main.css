@@ -2488,10 +2488,10 @@ body.action-menu-active .main-content {
 .button {
   cursor: pointer;
   text-align: center;
-  text-transform: uppercase;
   min-width: 88px;
   border-radius: 3px;
   font-size: 14px;
+  font-weight: bold;
   color: #C32A22;
   line-height: 32px;
   display: inline-block;
@@ -2512,6 +2512,7 @@ body.action-menu-active .main-content {
     background-color: transparent; }
   .button-flat.button-icon {
     min-width: 42px;
+    font-weight: normal;
     margin: 0; }
     .button-flat.button-icon .fa {
       line-height: 32px; }
