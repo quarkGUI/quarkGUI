@@ -2503,7 +2503,7 @@ body.action-menu-active .main-content {
 .button-flat {
   -webkit-transition: all .2s .1s;
   transition: all .2s .1s;
-  border: 1px solid rgba(0, 0, 0, 0.1); }
+  border: 1px solid rgba(0, 0, 0, 0.07); }
   .button-flat:not([disabled]):hover {
     background-color: #f0f1f2; }
   .button-flat:not([disabled]):active {
