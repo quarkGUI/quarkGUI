@@ -20,8 +20,9 @@
 }
 
 .button-flat {
-  -webkit-transition: background .2s .1s;
-  transition: background .2s .1s;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
+  border: 1px solid rgba(0, 0, 0, .1);
   &:not([disabled]):hover {
     @include bright-gray($dark-color);
   }
@@ -57,12 +58,11 @@
 }
 
 .button-default,
-.button-default:visited{
+.button-default:visited {
   background-color: $default-color;
-  @include border-color($default-color);
   color: #404244;
-  -webkit-transition: background .2s .1s;
-  transition: background .2s .1s;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
   &:not([disabled]):hover {
     @include hover-color($default-color);
   }
@@ -77,12 +77,11 @@
 }
 
 .button-primary,
-.button-primary:visited{
+.button-primary:visited {
   background-color: $primary-color;
-  @include border-color($primary-color);
   color: #FFFFFF !important;
-  -webkit-transition: background .2s .1s;
-  transition: background .2s .1s;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
   &:not([disabled]):hover {
     @include hover-color($primary-color);
   }
@@ -97,12 +96,11 @@
 }
 
 .button-success,
-.button-success:visited{
+.button-success:visited {
   background-color: $success-color;
-  @include border-color($success-color);
   color: #FFFFFF !important;
-  -webkit-transition: background .2s .1s;
-  transition: background .2s .1s;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
   &:not([disabled]):hover {
     @include hover-color($success-color);
   }

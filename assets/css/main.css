@@ -2501,8 +2501,9 @@ body.action-menu-active .main-content {
     min-width: 38px; }
 
 .button-flat {
-  -webkit-transition: background .2s .1s;
-  transition: background .2s .1s; }
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
+  border: 1px solid rgba(0, 0, 0, 0.1); }
   .button-flat:not([disabled]):hover {
     background-color: #f0f1f2; }
   .button-flat:not([disabled]):active {
@@ -2531,10 +2532,9 @@ body.action-menu-active .main-content {
 .button-default,
 .button-default:visited {
   background-color: #f0f1f2;
-  border: 1px solid #e5e7e9;
   color: #404244;
-  -webkit-transition: background .2s .1s;
-  transition: background .2s .1s; }
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s; }
   .button-default:not([disabled]):hover,
   .button-default:visited:not([disabled]):hover {
     background-color: #fbfbfb; }
@@ -2548,10 +2548,9 @@ body.action-menu-active .main-content {
 .button-primary,
 .button-primary:visited {
   background-color: #C32A22;
-  border: 1px solid #b2261f;
   color: #FFFFFF !important;
-  -webkit-transition: background .2s .1s;
-  transition: background .2s .1s; }
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s; }
   .button-primary:not([disabled]):hover,
   .button-primary:visited:not([disabled]):hover {
     background-color: #d42e25; }
@@ -2565,10 +2564,9 @@ body.action-menu-active .main-content {
 .button-success,
 .button-success:visited {
   background-color: #1A9729;
-  border: 1px solid #178624;
   color: #FFFFFF !important;
-  -webkit-transition: background .2s .1s;
-  transition: background .2s .1s; }
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s; }
   .button-success:not([disabled]):hover,
   .button-success:visited:not([disabled]):hover {
     background-color: #1da82e; }
