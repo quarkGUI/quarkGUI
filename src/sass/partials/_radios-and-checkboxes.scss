@@ -3,10 +3,8 @@ input[type="radio"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   outline: none;
-  width: 18px;
-  height: 20px;
-  margin-bottom: 12px;
-  font-size: 20px;
+  margin: 4pt;
+  font-size: 14pt;
 }
 
 input[type="checkbox"]:before,
@@ -16,7 +14,7 @@ input[type="radio"]:before {
 
 input[type="checkbox"] + label,
 input[type="radio"] + label {
-  font-size: 20px;
+  font-size: 16pt;
 }
 
 input[type="checkbox"]:focus,
