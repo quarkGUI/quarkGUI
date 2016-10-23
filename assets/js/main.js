@@ -80,6 +80,17 @@ $(document).ready(function () {
     $(".input-group select").each(function () {
         if ($(this).val()) $(this).addClass("is-not-empty");
     });
+
+    // Update class for dynamically added input elements
+    document.addEventListener("DOMNodeInserted", function (event) {
+        var target = event.srcElement || event.target;
+        var elements = $(target).find(".input-group input");
+        if (elements.length > 0) {
+            elements.each(function () {
+                if ($(this).val() && $(this).hasClass("is-not-empty") === false) $(this).addClass("is-not-empty");
+            });
+        }
+    });
     /*
      $.each(active_elements, function (element_class, active) {
      toggleActionButton(element_class, active);
