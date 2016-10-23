@@ -3382,10 +3382,10 @@ ul.list {
     ul.list li .list-item-content {
       display: inline-block;
       font-size: 14pt;
-      line-height: 17px; }
+      line-height: 14pt; }
       ul.list li .list-item-content small {
         display: block;
-        min-height: 16px;
+        min-height: 19px;
         font-size: 10pt; }
       ul.list li .list-item-content.single-line {
         line-height: 34px;
@@ -3422,7 +3422,8 @@ ul.list {
     content: "\f142";
     float: right;
     min-width: 42px;
-    text-align: center; }
+    text-align: center;
+    line-height: 40px; }
     @media only screen and (min-width: 750px) {
       ul.list.menu-list li .list-item-buttons:after {
         content: none;
@@ -3455,7 +3456,8 @@ ul.list {
         ul.list.menu-list li.list-item-menu-active .list-item-buttons.button-default:not([disabled]):active {
           background-color: #fbeae9; }
       ul.list.menu-list li.list-item-menu-active .list-item-buttons:after {
-        content: "\f00d"; }
+        content: "\f00d";
+        line-height: 38px; }
   ul.list.list-clickable li {
     transition: background-color .2s; }
   ul.list.list-clickable li:hover {
