@@ -1,4 +1,5 @@
 var active_elements = {};
+var active_modals = {};
 
 
 function toggleActionButton(element_class, active) {
@@ -26,10 +27,10 @@ function toggleElements(element_class, active) {
 }
 
 function resetModalToggle() {
-    $(".toggle-modal-elements").each(function () {
+    $(".toggle-modal").each(function () {
         var element_class = $(this).val();
         var active = false;
-        active_elements[element_class] = active;
+        active_modals[element_class] = active;
         toggleActionButton(element_class, active);
         toggleElements(element_class, active);
     });
@@ -112,6 +113,11 @@ $(document).ready(function () {
                 $("body").addClass("modal-active");
             }
         }
+        var element_class = $(this).val();
+        var active = (active_modals[element_class]) ? false : true;
+        active_modals[element_class] = active;
+        toggleActionButton(element_class, active);
+        toggleElements(element_class, active);
     });
 
     $(".toggle-elements").click(function () {
