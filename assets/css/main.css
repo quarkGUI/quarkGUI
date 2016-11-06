@@ -2758,7 +2758,8 @@ li .modal-hover-add-button {
   .dropdown-menu .dropdown-content {
     display: none;
     background-color: #fbfcfd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    white-space: nowrap; }
     .dropdown-menu .dropdown-content::before {
       content: "";
       position: absolute;
@@ -2786,7 +2787,8 @@ li .modal-hover-add-button {
           line-height: 19pt;
           border-bottom: none;
           padding: 10px 20px;
-          text-transform: initial; }
+          text-transform: initial;
+          display: block !important; }
     .dropdown-menu .dropdown-content .dropdown-title {
       font-size: 14pt;
       line-height: 14pt;

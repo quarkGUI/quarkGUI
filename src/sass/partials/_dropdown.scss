@@ -23,6 +23,7 @@
     display: none;
     background-color: $bright-white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    white-space: nowrap;
     &::before {
       content: "";
       position: absolute;
@@ -52,6 +53,7 @@
           border-bottom: none;
           padding: 10px 20px;
           text-transform: initial;
+          display: block!important;
         }
       }
     }
