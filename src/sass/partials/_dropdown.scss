@@ -36,18 +36,26 @@
       border-width: 0 5px 5px;
       border-bottom-color: $bright-white;
     }
-    li {
-      display: block;
-      padding: 0;
-      a {
-        color: #212121;
-        font-size: 14pt;
-        line-height: 19pt;
-        border-bottom: none;
-        padding: 10px 20px;
-        text-transform: initial;
+    ul {
+      position: absolute;
+      background-color: $bright-white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+      width: auto;
+      min-width: 100%;
+      li {
+        display: block;
+        padding: 0;
+        a {
+          color: #212121;
+          font-size: 14pt;
+          line-height: 19pt;
+          border-bottom: none;
+          padding: 10px 20px;
+          text-transform: initial;
+        }
       }
     }
+
     .dropdown-title {
       font-size: 14pt;
       line-height: 14pt;
@@ -87,9 +95,9 @@
   &.active {
     .dropdown-content {
       display: block;
-      position: absolute;
-      top: 64px;
-      right: 14px;
+      position: relative;
+      top: 0px;
+      right: 0px;
     }
   }
 }

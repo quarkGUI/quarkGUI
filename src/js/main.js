@@ -62,10 +62,12 @@ $(document).ready(function () {
     // Toggle dropdown
     $(document).mouseup(function (e) {
         var container = $(".dropdown-menu");
+        console.log(e);
+        console.log($(this));
         if (!container.is(e.target) && container.has(e.target).length === 0) {
             container.removeClass("active");
         } else {
-            container.toggleClass("active");
+            $(e.target).closest(".dropdown-menu").toggleClass("active");
         }
     });
 
