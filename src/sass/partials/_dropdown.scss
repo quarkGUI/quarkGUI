@@ -38,9 +38,7 @@
       border-bottom-color: $bright-white;
     }
     ul {
-      position: absolute;
       background-color: $bright-white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
       width: auto;
       min-width: 100%;
       li {
@@ -53,7 +51,7 @@
           border-bottom: none;
           padding: 10px 20px;
           text-transform: initial;
-          display: block!important;
+          display: block !important;
         }
       }
     }
@@ -85,6 +83,7 @@
       .dropdown-profile-email {
         font-size: 12pt;
         line-height: 12pt;
+        margin-bottom: 8px;
         display: block;
       }
     }
