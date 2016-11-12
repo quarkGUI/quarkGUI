@@ -2719,12 +2719,21 @@ li .modal-hover-add-button {
     background-color: #db3b32; }
   .dropdown-menu > span {
     color: #C32A22;
-    font-size: 20px;
-    line-height: 64px;
+    font-size: 24px;
+    line-height: 48px;
     vertical-align: bottom;
     display: inline-block; }
+    @media only screen and (min-width: 750px) {
+      .dropdown-menu > span {
+        line-height: 64px; } }
     .dropdown-menu > span.fa {
       width: 22px; }
+    .dropdown-menu > span.fa-chevron-down {
+      font-size: 12pt;
+      line-height: 45px; }
+      @media only screen and (min-width: 750px) {
+        .dropdown-menu > span.fa-chevron-down {
+          line-height: 60px; } }
   .dropdown-menu .dropdown-content {
     display: none;
     background-color: #fbfcfd;
