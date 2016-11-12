@@ -2301,10 +2301,6 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   .main-content {
     padding-top: 64px; } }
 
-@media (min-width: 1160px) {
-  body.has-action-menu .main-content {
-    margin-left: 60px; } }
-
 .z-1 {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.37); }
 
@@ -2334,7 +2330,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   right: 16px;
   background-color: #C32A22;
   color: #FFF;
-  z-index: 3;
+  z-index: 4;
   -webkit-transition: all .2s;
   transition: all .2s; }
   .action-button.active {
@@ -2366,7 +2362,7 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   width: 0;
   -webkit-transition: all .2s;
   transition: all .2s;
-  z-index: 2; }
+  z-index: 3; }
   .action-menu .toggle-action-button {
     display: none; }
   .action-menu .toggle-action-button,
@@ -2438,6 +2434,9 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
   display: none;
   background-color: #FFFFFF;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3); }
+  .actionbar-modal .modal-container {
+    height: 100%;
+    overflow: auto; }
   .actionbar-modal .modal-header {
     font-size: 18pt;
     font-weight: bold;
@@ -2447,7 +2446,6 @@ button:active, button:focus, input[type="button"]:active, input[type="button"]:f
     background: #FFF;
     height: 100%;
     width: 100%;
-    overflow: auto;
     padding: 12px 6px; }
 
 body.action-menu-active .main-content {
@@ -2458,59 +2456,31 @@ body.action-menu-active .main-content {
     padding-top: 64px; } }
 
 @media (min-width: 1160px) {
-  .action-button {
-    display: none; }
-  .action-menu,
-  .action-menu.active {
-    width: 60px;
-    height: 100%;
-    top: 64px;
-    z-index: 2;
-    left: 0;
-    float: left;
-    -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3); }
-    .action-menu .toggle-action-button,
-    .action-menu.active .toggle-action-button {
-      display: inline-block; }
-      .action-menu .toggle-action-button:hover .icon:before, .action-menu .toggle-action-button:hover .icon:after,
-      .action-menu.active .toggle-action-button:hover .icon:before,
-      .action-menu.active .toggle-action-button:hover .icon:after {
-        opacity: 1; }
-      .action-menu .toggle-action-button.active,
-      .action-menu.active .toggle-action-button.active {
-        background-color: #fff; }
-        .action-menu .toggle-action-button.active .icon,
-        .action-menu.active .toggle-action-button.active .icon {
-          background-color: #db3b32; }
-          .action-menu .toggle-action-button.active .icon:before, .action-menu .toggle-action-button.active .icon:after,
-          .action-menu.active .toggle-action-button.active .icon:before,
-          .action-menu.active .toggle-action-button.active .icon:after {
-            opacity: 1; }
-      .action-menu .toggle-action-button .icon:before, .action-menu .toggle-action-button .icon:after,
-      .action-menu.active .toggle-action-button .icon:before,
-      .action-menu.active .toggle-action-button .icon:after {
-        color: #FFFFFF;
-        opacity: .8;
-        transition: all .2s; }
   .actionbar-modal {
-    height: 100%;
-    top: 64px;
     padding-top: 0;
-    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.26);
+    box-shadow: none;
     z-index: 2;
-    width: 0;
     -webkit-transition: all .2s;
     transition: all .2s .4s;
-    left: -40%; }
-  body.modal-active .actionbar-modal {
-    width: 40%;
-    left: 60px;
-    -webkit-transition: all .2s;
-    transition: all .2s .4s; }
-  body.modal-active .main-content {
-    margin-left: 40%;
-    padding-left: 60px; } }
+    background-color: rgba(33, 33, 33, 0.48); }
+    .actionbar-modal .modal-container {
+      max-height: calc(100% - 85px);
+      max-width: 900px;
+      margin: 85px auto;
+      overflow: visible; }
+    .actionbar-modal .modal-header {
+      background: #f4f5f6;
+      margin: 0;
+      padding: 6px 12px;
+      border-radius: 3px 3px 0 0;
+      box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12); }
+    .actionbar-modal .modal-content {
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: auto;
+      max-height: calc(100% - 90px);
+      border-radius: 0 0 3px 3px;
+      box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2), 0 13px 19px 2px rgba(0, 0, 0, 0.14), 0 5px 24px 4px rgba(0, 0, 0, 0.12); } }
 
 .float-right {
   float: right; }
@@ -3776,10 +3746,11 @@ pre.code-example {
 
 .left-menu {
   float: left;
-  width: 0;
+  width: 300px;
   -webkit-transition: all .2s;
   /* Safari */
-  transition: all .2s; }
+  transition: all .2s;
+  margin-left: -300px; }
   .left-menu > div {
     background-color: #fbfcfd;
     padding: 0;
@@ -3788,7 +3759,7 @@ pre.code-example {
     width: inherit;
     overflow: hidden;
     top: 0;
-    z-index: 2; }
+    z-index: 3; }
     .left-menu > div .sidenav-logo {
       height: 48px; }
       .left-menu > div .sidenav-logo img {
@@ -3827,7 +3798,7 @@ pre.code-example {
   padding: 0; }
 
 body.sidebar-active .left-menu {
-  width: 300px; }
+  margin-left: 0; }
   body.sidebar-active .left-menu > div {
     -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
     box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4); }
@@ -3852,18 +3823,19 @@ body.sidebar-active .left-menu {
         line-height: 64px; }
     .navbar .navbar-page-title {
       line-height: 64px; }
-  .left-menu > div {
-    top: 64px; }
-  .left-menu .sidenav-logo {
-    display: none; }
-  body.sidebar-active .left-menu {
-    width: 245px; }
-    body.sidebar-active .left-menu > div {
-      box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.26); } }
+  .left-menu {
+    width: 245px;
+    margin-left: -245px; }
+    .left-menu > div {
+      top: 64px; }
+    .left-menu .sidenav-logo {
+      display: none; }
+  body.sidebar-active .left-menu > div {
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.26); } }
 
 @media only screen and (min-width: 1160px) {
   .navbar {
-    padding: 0 25px; }
+    z-index: 3; }
     .navbar .logo {
       padding: 7.5px 0; }
       .navbar .logo img {
@@ -3925,13 +3897,6 @@ input[type="radio"]:checked:before {
   bottom: 65px;
   right: 5px;
   left: initial; }
-
-@media (min-width: 1160px) {
-  .tooltip:hover:after,
-  .action-menu-active .tooltip:hover:after {
-    bottom: 5px;
-    right: 5px;
-    left: initial; } }
 
 p {
   margin: .5em 0; }

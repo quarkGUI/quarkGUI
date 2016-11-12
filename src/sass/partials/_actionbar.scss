@@ -11,7 +11,7 @@
   right: 16px;
   background-color: $primary-color;
   color: #FFF;
-  z-index: 3;
+  z-index: 4;
   -webkit-transition: all .2s;
   transition: all .2s;
   &.active {
@@ -48,7 +48,7 @@
   width: 0;
   -webkit-transition: all .2s;
   transition: all .2s;
-  z-index: 2;
+  z-index: 3;
   .toggle-action-button {
     display: none;
   }
@@ -142,6 +142,10 @@
   display: none;
   background-color: #FFFFFF;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+  .modal-container {
+    height: 100%;
+    overflow: auto;
+  }
   .modal-header {
     font-size: 18pt;
     font-weight: bold;
@@ -152,7 +156,6 @@
     background: #FFF;
     height: 100%;
     width: 100%;
-    overflow: auto;
     padding: 12px 6px;
   }
 }
@@ -168,67 +171,34 @@ body.action-menu-active .main-content {
 }
 
 @media (min-width: 1160px) {
-  .action-button {
-    display: none;
-  }
-  .action-menu,
-  .action-menu.active {
-    width: 60px;
-    height: 100%;
-    top: 64px;
-    z-index: 2;
-    left: 0;
-    float: left;
-    -webkit-box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
-    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
-    .toggle-action-button {
-      display: inline-block;
-      &:hover {
-        .icon {
-          &:before, &:after {
-            opacity: 1;
-          }
-        }
-      }
-      &.active {
-        background-color: #fff;
-        .icon {
-          @include active-color($primary-color);
-          &:before, &:after {
-            opacity: 1;
-          }
-        }
-      }
-      .icon {
-        &:before, &:after {
-          color: #FFFFFF;
-          opacity: .8;
-          transition: all .2s;
-        }
-      }
-    }
-  }
+
   .actionbar-modal {
-    height: 100%;
-    top: 64px;
     padding-top: 0;
-    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.26);
+    box-shadow: none;
     z-index: 2;
-    width: 0;
     -webkit-transition: all .2s;
     transition: all .2s .4s;
-    left: -40%;
-  }
-  body.modal-active {
-    .actionbar-modal {
-      width: 40%;
-      left: 60px;
-      -webkit-transition: all .2s;
-      transition: all .2s .4s;
+    background-color: rgba(33, 33, 33, .48);
+    .modal-container {
+      max-height: calc(100% - 85px);
+      max-width: 900px;
+      margin: 85px auto;
+      overflow: visible;
     }
-    .main-content {
-      margin-left: 40%;
-      padding-left: 60px;
+    .modal-header {
+      background: $default-color;
+      margin: 0;
+      padding: 6px 12px;
+      border-radius: 3px 3px 0 0;
+      box-shadow: 0 7px 8px -4px rgba(0, 0, 0, .2), 0 13px 19px 2px rgba(0, 0, 0, .14), 0 5px 24px 4px rgba(0, 0, 0, .12);
+    }
+    .modal-content {
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: auto;
+      max-height: calc(100% - 90px);
+      border-radius: 0 0 3px 3px;
+      box-shadow: 0 7px 8px -4px rgba(0, 0, 0, .2), 0 13px 19px 2px rgba(0, 0, 0, .14), 0 5px 24px 4px rgba(0, 0, 0, .12);
     }
   }
 }
