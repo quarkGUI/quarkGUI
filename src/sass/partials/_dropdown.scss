@@ -143,3 +143,56 @@
 .navbar.navbar-dark .dropdown-menu > span {
   color: #FFF;
 }
+
+// Box header dropdowns
+.box-header-dropdown {
+  float: right;
+  list-style: none;
+  padding: 0;
+  .dropdown-menu {
+    top: 0;
+    right: 16px;
+    padding: 0;
+    &.active .dropdown-content {
+      top: 48px;
+      position: absolute;
+      &:before {
+        right: 20px;
+        left: initial;
+      }
+      ul {
+        padding: 0;
+        li {
+          &:last-child {
+            border-bottom: none;
+          }
+          button.link-button {
+            font-size: 14pt;
+            line-height: 19pt;
+            padding: 10px 20px;
+            display: block;
+            font-family: inherit;
+            color: $default-text-color;
+          }
+        }
+      }
+    }
+    > span.fa-chevron-down {
+      line-height: 48px;
+      width: 48px;
+      &:before {
+        padding: 0 16px;
+      }
+    }
+  }
+}
+
+.box.primary {
+  .box-header {
+    .dropdown-menu {
+      > span {
+        color: #FFFFFF;
+      }
+    }
+  }
+}

@@ -2825,6 +2825,40 @@ li .modal-hover-add-button {
 .navbar.navbar-dark .dropdown-menu > span {
   color: #FFF; }
 
+.box-header-dropdown {
+  float: right;
+  list-style: none;
+  padding: 0; }
+  .box-header-dropdown .dropdown-menu {
+    top: 0;
+    right: 16px;
+    padding: 0; }
+    .box-header-dropdown .dropdown-menu.active .dropdown-content {
+      top: 48px;
+      position: absolute; }
+      .box-header-dropdown .dropdown-menu.active .dropdown-content:before {
+        right: 20px;
+        left: initial; }
+      .box-header-dropdown .dropdown-menu.active .dropdown-content ul {
+        padding: 0; }
+        .box-header-dropdown .dropdown-menu.active .dropdown-content ul li:last-child {
+          border-bottom: none; }
+        .box-header-dropdown .dropdown-menu.active .dropdown-content ul li button.link-button {
+          font-size: 14pt;
+          line-height: 19pt;
+          padding: 10px 20px;
+          display: block;
+          font-family: inherit;
+          color: #212121; }
+    .box-header-dropdown .dropdown-menu > span.fa-chevron-down {
+      line-height: 48px;
+      width: 48px; }
+      .box-header-dropdown .dropdown-menu > span.fa-chevron-down:before {
+        padding: 0 16px; }
+
+.box.primary .box-header .dropdown-menu > span {
+  color: #FFFFFF; }
+
 footer {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   background-color: #f0f1f2;
