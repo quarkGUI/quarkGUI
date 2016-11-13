@@ -2807,6 +2807,8 @@ li .modal-hover-add-button {
   .navbar ul li.dropdown-menu .dropdown-content li {
     display: block;
     padding: 0; }
+    .navbar ul li.dropdown-menu .dropdown-content li:last-child {
+      border-bottom: none; }
     .navbar ul li.dropdown-menu .dropdown-content li a {
       color: #212121;
       font-size: 14pt;

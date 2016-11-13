@@ -120,6 +120,9 @@
     li {
       display: block;
       padding: 0;
+      &:last-child {
+        border-bottom: none;
+      }
       a {
         color: #212121;
         font-size: 14pt;
