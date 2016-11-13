@@ -3960,7 +3960,8 @@ input[type="radio"]:checked:before {
   text-transform: initial;
   text-decoration: none;
   padding: 5px 10px;
-  z-index: 4; }
+  z-index: 4;
+  font-weight: normal; }
 
 .action-menu-active .tooltip:hover::after {
   bottom: 65px;
