@@ -3566,6 +3566,12 @@ ul.list {
         float: right; }
   ul.list.hover-list li:hover {
     background-color: #f0f1f2; }
+  ul.list.box-list li a {
+    margin: -10px;
+    padding: 10px;
+    color: #212121; }
+  ul.list.box-list li .list-item-content {
+    display: block; }
   ul.list.menu-list li .list-item-content {
     max-width: calc(100% - 42px); }
     @media only screen and (min-width: 750px) {

@@ -55,6 +55,18 @@ ul.list {
       }
     }
   }
+  &.box-list {
+    li {
+      a {
+        margin: -10px;
+        padding: 10px;
+        color: $default-text-color;
+      }
+      .list-item-content {
+        display: block;
+      }
+    }
+  }
   &.menu-list {
     li {
       .list-item-content {
