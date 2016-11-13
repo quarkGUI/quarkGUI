@@ -2530,34 +2530,50 @@ body.action-menu-active .main-content {
       line-height: 15px; }
   .box.facebook .box-header {
     background-color: #3b5998; }
+    .box.facebook .box-header a {
+      color: #FFFFFF; }
     .box.facebook .box-header .icon::after {
       content: "\f230"; }
   .box.instagram .box-header {
     background-color: #125688; }
+    .box.instagram .box-header a {
+      color: #FFFFFF; }
     .box.instagram .box-header .icon::after {
       content: "\f16d"; }
   .box.soundcloud .box-header {
     background-color: #F50; }
+    .box.soundcloud .box-header a {
+      color: #FFFFFF; }
     .box.soundcloud .box-header .icon::after {
       content: "\f1be"; }
   .box.twitter .box-header {
     background-color: #55acee; }
+    .box.twitter .box-header a {
+      color: #FFFFFF; }
     .box.twitter .box-header .icon::after {
       content: "\f099"; }
   .box.google .box-header {
     background-color: #db4437; }
+    .box.google .box-header a {
+      color: #FFFFFF; }
     .box.google .box-header .icon::after {
       content: "\f0d5"; }
   .box.youtube .box-header {
     background-color: #cc181e; }
+    .box.youtube .box-header a {
+      color: #FFFFFF; }
     .box.youtube .box-header .icon::after {
       content: "\f167"; }
   .box.primary .box-header {
     background-color: #C32A22; }
+    .box.primary .box-header a {
+      color: #FFFFFF; }
     .box.primary .box-header .icon::after {
       content: "\f167"; }
   .box.dark .box-header {
     background-color: #232527; }
+    .box.dark .box-header a {
+      color: #FFFFFF; }
     .box.dark .box-header .icon::after {
       content: "\f167"; }
 
