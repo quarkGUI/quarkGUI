@@ -2861,6 +2861,8 @@ li .modal-hover-add-button {
         padding: 0; }
         .box-header-dropdown .dropdown-menu.active .dropdown-content ul li:last-child {
           border-bottom: none; }
+        .box-header-dropdown .dropdown-menu.active .dropdown-content ul li a {
+          color: #212121; }
         .box-header-dropdown .dropdown-menu.active .dropdown-content ul li button.link-button {
           font-size: 14pt;
           line-height: 19pt;

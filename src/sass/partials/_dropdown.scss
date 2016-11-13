@@ -169,6 +169,9 @@
           &:last-child {
             border-bottom: none;
           }
+          a {
+            color: $default-text-color;
+          }
           button.link-button {
             font-size: 14pt;
             line-height: 19pt;
