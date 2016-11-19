@@ -2427,28 +2427,28 @@ body.action-menu-active .main-content, body.action-menu-active .modal {
   padding-bottom: 60px; }
 
 .float-right {
-  float: right; }
+  float: right !important; }
 
 .float-left {
-  float: left; }
+  float: left !important; }
 
 .text-left {
-  text-align: left; }
+  text-align: left !important; }
 
 .text-center {
-  text-align: center; }
+  text-align: center !important; }
 
 .text-right {
-  text-align: right; }
+  text-align: right !important; }
 
 .clearfix {
   clear: both; }
 
 .inline {
-  display: inline-block; }
+  display: inline-block !important; }
 
 .block {
-  display: block; }
+  display: block !important; }
 
 .box {
   border-radius: 2px;
