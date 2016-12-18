@@ -1,0 +1,21 @@
+@font-face {
+	font-family: 'Lato';
+	src: url('/assets/fonts/Lato-Regular.ttf');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Lato';
+	src: url('/assets/fonts/Lato-Bold.ttf');
+	font-weight: bold;
+}
+
+body{
+	background-color: #FCFCFC;
+}
+
+:local(.box){
+	background-color: white;
+	padding: 1em;
+	border: 1px solid deeppink;
+}
