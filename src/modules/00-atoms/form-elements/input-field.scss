@@ -1,0 +1,27 @@
+@import "./src/style/abstracts/all";
+
+:local(.input){
+	width: 100%;
+    height: 30px;
+    font-size: 20px; 
+    margin-top: 20px;
+    padding-left: 8px;
+    border: none;
+    border-bottom: 2px solid #eee;
+    color: transparent;
+    background: none;
+    border-radius: 0;
+    @include transition(border .2s);
+    @include appearance(none);
+    @include placeholder {
+        opacity: 0;
+    }
+    &:focus {
+        border-bottom: 2px solid $primary-color;
+        outline: none;
+        color: #777;
+        @include placeholder {
+            opacity: 1;
+        }
+    }
+}
