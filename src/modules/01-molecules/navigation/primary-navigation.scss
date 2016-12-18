@@ -1,0 +1,27 @@
+@import "./src/style/abstracts/all";
+
+:local(.menu){
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li:not(.dropdown-menu) {
+    display: inline-block;
+    a, span {
+      color: $primary-color;
+      text-decoration: none;
+      text-transform: uppercase;
+      margin: 0 -2px;
+      display: inline-block;
+      font-size: 20px;
+      line-height: 52px;
+      vertical-align: bottom;
+      border-bottom: 6px solid transparent;
+      padding: 6px 16px 0;
+      -webkit-transition: border-color .2s;
+      transition: border-color .2s;
+      &:hover {
+        border-bottom: 6px solid $primary-color;
+      }
+    }
+  }
+}
