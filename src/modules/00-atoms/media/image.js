@@ -1,20 +1,9 @@
 var style = require('./image.scss');
 
-export default Image;
+export default function(imageInfo){
 
-export class Image {
-	constructor(imageInfo) {
-		var imageSrc = imageInfo.src;
-		
-		// Create the img element:
-		var image = document.createElement('img');
-
-		// Set src attribute
-		image.src = imageSrc;
-
-	    // Add class name for 'img' element
-		image.classList.add(style.image);
-
-    	this.content = image.outerHTML;
-  	}
-};
+	return `
+		<img class="${style.image}" src="${imageInfo.src}" />
+	`
+	
+}
