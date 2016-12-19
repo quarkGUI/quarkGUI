@@ -7,4 +7,13 @@ const element = `
 		<label for="" class="${style.label}">Label</label>
 	</div>
 `;
-export default element;
+export default function(inputField){
+
+	return `
+		<div class="${style.inputGroup}">
+			${InputField(inputField)}
+			<label for="${inputField.id}" class="${style.label}">${inputField.label}</label>
+		</div>
+	`
+
+};
