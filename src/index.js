@@ -28,7 +28,16 @@ app.innerHTML = `
 		<div id="content">
 			<h1>Home</h1>
 		</div>
-		${InputField}<br/>
+
+		${InputField({
+			id: 'input1',
+			name: '',
+			type: 'text',
+			placeholder: 'Example text here',
+			label: 'Input 1'
+		})}
+
+		<br/>
 		<div class="${style.box}">
 			DEV: ${DEVELOPMENT.toString()}<br/>
 			PROD: ${PRODUCTION.toString()}<br/>
