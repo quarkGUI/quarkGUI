@@ -2,16 +2,32 @@
 
 :local(.inputGroup){
 	margin-bottom: 4px;
-}
-:local(.label) {
-	color: #777;
-	position: relative;
-	bottom: 27.5px;
-	left: 8px;
-	font-size: 20px;
-	-webkit-transition: all .2s; /* Safari */
-	transition: all .2s;
-	height: 0px;
-	display: block;
-	cursor: text;
+	:local(.label) {
+		color: #777;
+		position: relative;
+		bottom: 27.5px;
+		left: 8px;
+		font-size: 20px;
+		-webkit-transition: all .2s; /* Safari */
+		transition: all .2s;
+		height: 0px;
+		display: block;
+		cursor: text;
+	}
+	.is-not-empty + label {
+      bottom: 50px;
+      font-size: 16px;
+      &:after {
+        content: ":";
+      }
+    }
+    :focus + label {
+      color: $primary-color;
+      bottom: 50px;
+      font-size: 16px;
+      cursor: default;
+      &:after {
+        content: ":";
+      }
+    }
 }

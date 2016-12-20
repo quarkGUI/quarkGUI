@@ -24,4 +24,10 @@
             opacity: 1;
         }
     }
+    &.is-not-empty {
+      color: #212121;
+      &:focus {
+        color: #212121;
+      }
+    }
 }
