@@ -1,19 +1,16 @@
 import InputField from '../../00-atoms/form-elements/input-field'
 var style = require('./input-field.scss');
 
-const element = `
-	<div class="${style.inputGroup}">
-		${InputField}
-		<label for="" class="${style.label}">Label</label>
-	</div>
-`;
 export default function(inputField){
+
+	var id 		= inputField.id 	!== undefined ? inputField.id 		: '';
+	var label	= inputField.label 	!== undefined ? inputField.label 	: '';
 
 	return `
 		<div class="${style.inputGroup}">
 			${InputField(inputField)}
-			<label for="${inputField.id}" class="${style.label}">${inputField.label}</label>
+			<label for="${id}" class="${style.label}">${label}</label>
 		</div>
-	`
+	`;
 
 };
