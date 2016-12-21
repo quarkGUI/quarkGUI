@@ -1,14 +1,14 @@
 # Header
 ```json
 {
-	"theme": "Header theme [default, primary, dark]"
+	"theme": "Header theme [default, primary, dark]",
 	"logo": {
 		"image": {
 			"src": "Image URL"
 		},
 		"url": "Link URL"
 	},
-	"primaryNavigation"{
+	"primaryNavigation": {
 		"listItems": [
 			{
 				"name": "Item name",
