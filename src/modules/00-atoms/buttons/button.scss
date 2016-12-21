@@ -143,19 +143,19 @@
 
 :local(.buttonThemeDanger),
 :local(.buttonThemeDanger):visited {
-  background-color: $warning-color;
+  background-color: $danger-color;
   color: #FFFFFF !important;
   -webkit-transition: all .2s .1s;
   transition: all .2s .1s;
   &:not([disabled]):hover {
-    @include hover-color($warning-color);
+    @include hover-color($danger-color);
   }
   &:not([disabled]):active {
-    @include active-color($warning-color);
+    @include active-color($danger-color);
   }
   &:local(.buttonTypeFlat) {
     &:not([disabled]):active {
-      @include active-color($warning-color);
+      @include active-color($danger-color);
     }
   }
 }
