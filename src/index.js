@@ -1,48 +1,8 @@
-var style = require('./style/globalStyle.scss');
 
-import InputField from './modules/01-molecules/form-elements/input-field';
-import Header from './modules/02-organisms/global/header';
+import TestPage from './modules/04-pages/test-page';
 
 var app = document.getElementById('app');
-app.innerHTML = `
-
-		${Header({
-			logo: {
-				image: {
-					src: require('./img/svg/flowgig-logo-black.svg')
-				},
-				url: '/'
-			},
-			listItems: [
-				{
-					name: "testlink1",
-					link: "https://github.com/"
-				}, 
-				{
-					name: "testlink2",
-					link: "https://github.com/"
-				}
-			]
-		})}
-
-		<div id="content">
-			<h1>Home</h1>
-		</div>
-
-		${InputField({
-			id: 'input1',
-			name: '',
-			type: 'text',
-			placeholder: 'Example text here',
-			label: 'Input 1'
-		})}
-
-		<br/>
-		<div class="${style.box}">
-			DEV: ${DEVELOPMENT.toString()}<br/>
-			PROD: ${PRODUCTION.toString()}<br/>
-		</div>
-`;
+app.innerHTML = TestPage();
 
 if(DEVELOPMENT) {
 	if(module.hot) {
