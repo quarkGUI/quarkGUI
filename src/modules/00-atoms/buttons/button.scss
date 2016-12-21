@@ -1,0 +1,161 @@
+@import "./src/style/abstracts/all";
+
+:local(.button) {
+	cursor: pointer;
+	text-align: center;
+	min-width: 88px;
+	height: 34px;
+	border: 1px solid rgba(0, 0, 0, .07);
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: bold;
+	color: $primary-color;
+	line-height: 32px;
+	display: inline-block;
+	margin: 0 8px;
+	padding: 0 6px;
+}
+
+:local(.buttonTypeFlat) {
+	-webkit-transition: all .2s .1s;
+	transition: all .2s .1s;
+
+	&:not([disabled]):hover {
+		@include bright-gray($dark-color);
+	}
+	&:not([disabled]):active {
+		@include bright-color($primary-color);
+	}
+	&[disabled] {
+		color: rgba(0, 0, 0, 0.26);
+		background-color: transparent;
+	}
+}
+
+:local(.buttonTypeRaised) {
+	&:not([disabled]) {
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+		transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), background-color .4s cubic-bezier(.25, .8, .25, 1);
+	}
+	&:not([disabled]):active {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
+		@include bright-color($primary-color);
+	}
+	&[disabled] {
+		color: rgba(0, 0, 0, 0.26);
+	}
+}
+
+:local(.buttonThemeDefault),
+:local(.buttonThemeDefault):visited {
+	background-color: $default-color;
+	color: #333;
+	-webkit-transition: all .2s .1s;
+	transition: all .2s .1s;
+	&:not([disabled]):hover {
+		background-color: #f8f9fa;
+	}
+	&:not([disabled]):active {
+		background-color: #fbfcfd;
+	}
+	&:local(.buttonTypeFlat) {
+		&:not([disabled]):active {
+			background-color: #fbfcfd;
+		}
+	}
+}
+
+:local(.buttonThemePrimary),
+:local(.buttonThemePrimary):visited {
+	background-color: $primary-color;
+	color: #FFFFFF !important;
+	-webkit-transition: all .2s .1s;
+	transition: all .2s .1s;
+	&:not([disabled]):hover {
+		@include hover-color($primary-color);
+	}
+	&:not([disabled]):active {
+		@include active-color($primary-color);
+	}
+	&:local(.buttonTypeFlat) {
+		&:not([disabled]):active {
+			@include active-color($primary-color);
+		}
+	}
+}
+
+:local(.buttonThemeInfo),
+:local(.buttonThemeInfo):visited {
+  background-color: $info-color;
+  color: #FFFFFF !important;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
+  &:not([disabled]):hover {
+    @include hover-color($info-color);
+  }
+  &:not([disabled]):active {
+    @include active-color($info-color);
+  }
+  &:local(.buttonTypeFlat) {
+    &:not([disabled]):active {
+      @include active-color($info-color);
+    }
+  }
+}
+
+:local(.buttonThemeSuccess),
+:local(.buttonThemeSuccess):visited {
+  background-color: $success-color;
+  color: #FFFFFF !important;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
+  &:not([disabled]):hover {
+    @include hover-color($success-color);
+  }
+  &:not([disabled]):active {
+    @include active-color($success-color);
+  }
+  &:local(.buttonTypeFlat) {
+    &:not([disabled]):active {
+      @include active-color($success-color);
+    }
+  }
+}
+
+:local(.buttonThemeWarning),
+:local(.buttonThemeWarning):visited {
+  background-color: $warning-color;
+  color: #FFFFFF !important;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
+  &:not([disabled]):hover {
+    @include hover-color($warning-color);
+  }
+  &:not([disabled]):active {
+    @include active-color($warning-color);
+  }
+  &:local(.buttonTypeFlat) {
+    &:not([disabled]):active {
+      @include active-color($warning-color);
+    }
+  }
+}
+
+:local(.buttonThemeDanger),
+:local(.buttonThemeDanger):visited {
+  background-color: $warning-color;
+  color: #FFFFFF !important;
+  -webkit-transition: all .2s .1s;
+  transition: all .2s .1s;
+  &:not([disabled]):hover {
+    @include hover-color($warning-color);
+  }
+  &:not([disabled]):active {
+    @include active-color($warning-color);
+  }
+  &:local(.buttonTypeFlat) {
+    &:not([disabled]):active {
+      @include active-color($warning-color);
+    }
+  }
+}
