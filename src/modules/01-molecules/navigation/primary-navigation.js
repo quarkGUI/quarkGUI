@@ -8,11 +8,21 @@ function createListElements(listItems){
 	return listElements;
 }
 
-export default function(listItems){
+export default function(primaryNavigation){
+
+	var theme = primaryNavigation.theme !== undefined ? primaryNavigation.theme : '';
+	
+	var listElements = '';
+	if (primaryNavigation.listItems !== undefined) listElements = createListElements(primaryNavigation.listItems);
+
+	var themeClass = style.listThemeDefault;
+	if (theme == 'primary')	themeClass = style.listThemePrimary;
+	if (theme == 'dark') 	themeClass = style.listThemeDark;
+
 
 	return `
-		<ul class="${style.menu}">
-			${createListElements(listItems)}
+		<ul class="${style.list} ${themeClass}">
+			${listElements}
 		</ul>
 	`
 

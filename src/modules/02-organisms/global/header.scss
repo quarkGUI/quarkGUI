@@ -7,6 +7,18 @@
   width: 100%;
   z-index: 2;
   top: 0;
+  &:local(.headerThemeDefault){
+    background-color: #FFFFFF;
+    color: $primary-color;
+  }
+  &:local(.headerThemePrimary){
+    background-color: $primary-color;
+    color: #FFFFFF;
+  }
+  &:local(.headerThemeDark){
+    background-color: $dark-color;
+    color: #FFFFFF;
+  }
   :local(.logo) {
     display: block;
     padding: 2px 0;
@@ -53,7 +65,30 @@
     line-height: 48px;
     vertical-align: bottom;
   }
-
+  &:local(.navbarThemePrimary) {
+    background-color: $primary-color;
+    a {
+      color: #FFFFFF;
+    }
+    ul li a {
+      color: #FFF;
+      &:hover {
+        border-bottom: 6px solid #FFF;
+      }
+    }
+  }
+  &:local(.navbarThemeDark) {
+    background-color: $dark-color;
+    a {
+      color: #FFFFFF;
+    }
+    ul li a {
+      color: #FFF;
+      &:hover {
+        border-bottom: 6px solid #FFF;
+      }
+    }
+  }
 }
 
 @media only screen and (min-width: $screen-xs) {
