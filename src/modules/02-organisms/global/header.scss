@@ -69,30 +69,6 @@
     line-height: 48px;
     vertical-align: bottom;
   }
-  &:local(.navbarThemePrimary) {
-    background-color: $primary-color;
-    a {
-      color: #FFFFFF;
-    }
-    ul li a {
-      color: #FFF;
-      &:hover {
-        border-bottom: 6px solid #FFF;
-      }
-    }
-  }
-  &:local(.navbarThemeDark) {
-    background-color: $dark-color;
-    a {
-      color: #FFFFFF;
-    }
-    ul li a {
-      color: #FFF;
-      &:hover {
-        border-bottom: 6px solid #FFF;
-      }
-    }
-  }
 }
 
 @media only screen and (min-width: $screen-xs) {
