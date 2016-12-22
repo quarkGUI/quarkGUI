@@ -47,8 +47,12 @@
     &:active {
       @include active-color($primary-color);
     }
-    :local(.sidenavToggleLogo) {
+    &:after{
       line-height: 48px;
+      display: inline-block;
+      font-family: FontAwesome;
+      content: "\f0c9";
+      
     }
   }
   :local(.menu-divider) {
@@ -113,7 +117,7 @@
     }
     :local(.sidenavToggle) {
       padding: 0 25px;
-      :local(.sidenavToggleLogo) {
+      &:after {
         line-height: 64px;
       }
     }
