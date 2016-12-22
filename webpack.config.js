@@ -27,7 +27,7 @@ var plugins = PRODUCTION
 		      		comments: false,
 		    	}
 		  	}),*/
-			new ExtractTextPlugin('style-[contenthash:10].css'),
+			new ExtractTextPlugin('style/style-[contenthash:10].css'),
 			new HTMLWebpackPlugin({
 				template: 'index-template.html'
 			})
@@ -86,10 +86,10 @@ module.exports = {
 			exclude: '/node_modules/'
 		}, { 
 			test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-			loader: "url-loader?limit=10000&mimetype=application/font-woff" 
+			loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[hash:12].[ext]" 
 		}, { 
 			test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-			loader: "file-loader" 
+			loader: "file-loader?name=fonts/[hash:12].[ext]" 
 		}
     
 		],
@@ -98,6 +98,6 @@ module.exports = {
 	output: {
 		path: path.join(__dirname, 'dist'),
 		publicPath: PRODUCTION ? '/' : '/dist/',
-		filename: PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js'
+		filename: PRODUCTION ? 'scripts/bundle.[hash:12].min.js' : 'bundle.js'
 	}
 };
