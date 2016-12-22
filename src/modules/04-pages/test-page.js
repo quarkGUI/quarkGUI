@@ -2,6 +2,7 @@ var style = require('../../style/globalStyle.scss');
 
 import InputField from '../01-molecules/form-elements/input-field';
 import Header from '../02-organisms/global/header';
+import Sidebar from '../02-organisms/global/sidebar';
 import Button from '../00-atoms/buttons/button';
 
 export default function(){
@@ -17,6 +18,27 @@ export default function(){
 			},
 			primaryNavigation: {
 				theme: '',
+				listItems: [
+					{
+						name: "testlink1",
+						link: "https://github.com/"
+					}, 
+					{
+						name: "testlink2",
+						link: "https://github.com/"
+					}
+				]
+			}
+		})}
+
+		${Sidebar({
+			logo: {
+				image: {
+					src: require('../../img/svg/flowgig-logo-black.svg')
+				},
+				url: '/'
+			},
+			sidebarNavigation: {
 				listItems: [
 					{
 						name: "testlink1",
