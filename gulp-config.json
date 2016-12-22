@@ -1,0 +1,11 @@
+{
+  "paths": {
+    "css": [
+      "node_modules/font-awesome/css/font-awesome.css"
+    ],
+    "fonts": [
+      "node_modules/font-awesome/fonts/*.{otf,eot,svg,ttf,woff,woff2}"
+    ],
+    "source": "./src"
+  }
+}
