@@ -74,23 +74,16 @@ module.exports = {
 			test: /\.scss$/,
 			loader: sassLoader,
 			exclude: '/node_modules/'
-		}, {
-			test: /\.woff$/,
-			// Inline small woff files and output them below font/.
-			// Set mimetype just in case.
-			use: 'url-loader',
-			options: {
-				name: 'fonts/[hash].[ext]',
-			    limit: 5000,
-			    mimetype: 'application/font-woff'
-			}
-		}, {
-			test: /\.ttf$|\.eot$/,
-			use: 'file-loader',
-			options: {
-				name: 'fonts/[hash].[ext]'
-			}
-		}]
+		}, { 
+			test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+			loader: "url-loader?limit=10000&mimetype=application/font-woff" 
+		}, { 
+			test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+			loader: "file-loader" 
+		}
+    
+		],
+
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
