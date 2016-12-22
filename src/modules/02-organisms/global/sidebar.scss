@@ -1,0 +1,62 @@
+@import "./src/style/abstracts/all";
+
+:local(.sidebar) {
+  float: left;
+  width: 300px;
+  -webkit-transition: all .2s; /* Safari */
+  transition: all .2s;
+  margin-left: -300px;
+  :local(.sidebarContent) {
+    background-color: $bright-white;
+    padding: 0;
+    position: fixed;
+    height: 100%;
+    width: inherit;
+    overflow: hidden;
+    top: 0;
+    z-index: 3;
+    .sidenav-logo {
+      height: 48px;
+      img {
+        height: 40px;
+        width: auto;
+        margin-left: 25px;
+        margin-top: 5px;
+      }
+      .fa {
+        font-size: 20pt;
+        padding: 11px 25px 11px 5px;
+      }
+    }
+  }
+}
+
+body.sidebar-active :local(.sidebar) {
+  margin-left: 0;
+  :local(.sidebarContent) {
+    -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+  }
+}
+
+
+@media only screen and (min-width: 750px) {
+  :local(.sidebar) {
+    width: 245px;
+    margin-left: -245px;
+    :local(.sidebarContent) {
+      top: 64px;
+    }
+    .sidenav-logo {
+      display: none;
+    }
+  }
+  body.sidebar-active .left-menu {
+    > div {
+      box-shadow: 2px 3px 5px rgba(0, 0, 0, .26);
+    }
+  }
+}
+
+
+
