@@ -12,7 +12,8 @@ export default function(){
 			theme: 'primary',
 			logo: {
 				image: {
-					src: require('../../img/svg/flowgig-logo-black.svg')
+					src: require('../../img/svg/flowgig-logo-black.svg'),
+					alt: 'logo'
 				},
 				url: '/'
 			},
