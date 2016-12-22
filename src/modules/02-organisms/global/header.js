@@ -3,6 +3,10 @@ import Image from '../../00-atoms/media/image';
 
 var style = require('./header.scss');
 
+function toggleSidebar(){
+	
+}
+
 export default function(headerItems){
 
 	var theme = headerItems.theme !== undefined ? headerItems.theme	: '';
@@ -25,9 +29,19 @@ export default function(headerItems){
 	var primaryNavigation = {};
 	if (headerItems.primaryNavigation !== undefined) primaryNavigation = PrimaryNavigation(headerItems.primaryNavigation);
 
+
+	document.addEventListener('DOMContentLoaded', function() {
+		var element = document.getElementById('sidebarToggle') !== undefined ? document.getElementById('sidebarToggle') : false;
+		if (element){
+			element.onclick = function(){
+				document.body.classList.toggle('sidebar-active');				
+			};
+		}
+	}, false);
+
 	return `
 		<header class="${style.navbar} ${themeClass}">
-			<a class="${style.sidenavToggle}"></a>
+			<a id="sidebarToggle" class="${style.sidenavToggle}"></a>
 			<a href="${logoUrl}" class="${style.logo}">
 				${logoImage}
 			</a>
