@@ -1,0 +1,20 @@
+@import "./src/style/abstracts/all";
+
+:local(.input){
+    outline: none;
+    margin: 4pt;
+    font-size: 14pt;
+    @include appearance(none);
+    &:before{
+        font-family: FontAwesome;
+        content: "\f10c";
+    }
+    &:checked{
+        &:before{
+            content: "\f192";
+        }
+    }
+    &:focus {
+        color: $primary-color;
+    }
+}
