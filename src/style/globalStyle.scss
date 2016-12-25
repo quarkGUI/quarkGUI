@@ -18,6 +18,16 @@ body{
 	margin: 0;
 }
 
+h1{ font-size: 2.5em }
+h2{ font-size: 1.9em }
+h3{ font-size: 1.3em }
+
+main{
+	margin-top: 64px;
+	padding: 25px;
+	font-size: 14pt;
+}
+
 :local(.box){
 	background-color: white;
 	padding: 1em;
