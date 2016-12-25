@@ -4,6 +4,8 @@ import InputField from '../01-molecules/form-elements/input-field';
 import Header from '../02-organisms/global/header';
 import Sidebar from '../02-organisms/global/sidebar';
 import Button from '../00-atoms/buttons/button';
+import Checkbox from '../01-molecules/form-elements/checkbox';
+import RadioButton from '../01-molecules/form-elements/radio-button';
 
 export default function(){
 
@@ -56,10 +58,34 @@ export default function(){
 		<div id="content">
 			<h1>Home</h1>
 		</div>
-
-
-
 		<br/>
+		<h2>Checkboxes</h2>
+		${Checkbox({
+			id: 'checkbox1',
+			name: 'checkboxes',
+			value: 'one',
+			label: 'Checkbox 1'
+		})}
+		${Checkbox({
+			id: 'checkbox2',
+			name: 'checkboxes',
+			value: 'two',
+			label: 'Checkbox 2'
+		})}
+		<br/>
+		<h2>Radio buttons</h2>
+		${RadioButton({
+			id: 'radio1',
+			name: 'radio-buttons',
+			value: 'one',
+			label: 'Radio button 1'
+		})}
+		${RadioButton({
+			id: 'radio2',
+			name: 'radio-buttons',
+			value: 'two',
+			label: 'Radio button 2'
+		})}
 		<h2>Buttons</h2>
 		<h3>Flat buttons</h3>
 		${Button({
