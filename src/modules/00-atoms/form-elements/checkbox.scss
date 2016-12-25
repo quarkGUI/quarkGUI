@@ -2,8 +2,10 @@
 
 :local(.input){
     outline: none;
-    margin: 4pt;
+    margin: 0 0 0 6pt;
     font-size: 14pt;
+    width: 1em;
+    cursor: pointer;
     @include appearance(none);
     &:before{
         font-family: FontAwesome;

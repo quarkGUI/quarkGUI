@@ -1,8 +1,8 @@
 # Radio button
 ```json
 {
-	"id": "ID for input field",
-	"name": "Name for input field",
-	"value": "Value for input field"
+	"id": "ID for the radio button",
+	"name": "Name for the radio button",
+	"value": "Value for the radio button"
 }
 ```
