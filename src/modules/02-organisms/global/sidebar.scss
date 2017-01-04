@@ -3,8 +3,7 @@
 :local(.sidebar) {
   float: left;
   width: 300px;
-  -webkit-transition: all .2s; /* Safari */
-  transition: all .2s;
+  @include transition(all .2s);
   margin-left: -300px;
   :local(.sidebarContent) {
     background-color: $bright-white;
@@ -34,8 +33,7 @@
 body.sidebar-active :local(.sidebar) {
   margin-left: 0;
   :local(.sidebarContent) {
-    -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
-    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+    @include box-shadow(0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4));
   }
 }
 
@@ -51,9 +49,9 @@ body.sidebar-active :local(.sidebar) {
       display: none;
     }
   }
-  body.sidebar-active .left-menu {
-    > div {
-      box-shadow: 2px 3px 5px rgba(0, 0, 0, .26);
+  body.sidebar-active :local(.sidebar) {
+    :local(.sidebarContent) {
+      @include box-shadow(2px 3px 5px rgba(0, 0, 0, .26));
     }
   }
 }

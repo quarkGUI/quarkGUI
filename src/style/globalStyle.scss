@@ -14,7 +14,7 @@
 }
 
 * {
-	box-sizing: border-box;
+	@include box-sizing(border-box);
 }
 
 @include scrollbar(14px, #e0e1e2, transparent, 0)
@@ -26,7 +26,8 @@ html {
 }
 
 body{
-	background-color: #FCFCFC;
+	background-color: $body-background;
+	color: $default-text-color;
 	font-family: 'Lato';
 	margin: 0;
 	padding: 0;
@@ -41,11 +42,10 @@ h3{ font-size: 1.3em }
 main{
 	padding: 25px;
 	font-size: 14pt;
-	@include transition(all 2s);
 	height: 100%;
 	overflow: auto;
-
 	margin-top: 48px;
+	@include transition(all 2s);
 	@include calc(height, '100% - 48px');
 
 	@media only screen and (min-width: $screen-sm) {
