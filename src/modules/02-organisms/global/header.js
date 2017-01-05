@@ -3,10 +3,6 @@ import Image from '../../00-atoms/media/image';
 
 var style = require('./header.scss');
 
-function toggleSidebar(){
-	
-}
-
 export default function(headerItems){
 
 	var theme = headerItems.theme !== undefined ? headerItems.theme	: '';
