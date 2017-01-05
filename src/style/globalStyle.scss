@@ -45,7 +45,7 @@ main{
 	height: 100%;
 	overflow: auto;
 	margin-top: 48px;
-	@include transition(all 2s);
+	@include transition(all .2s);
 	@include calc(height, '100% - 48px');
 
 	@media only screen and (min-width: $screen-sm) {
