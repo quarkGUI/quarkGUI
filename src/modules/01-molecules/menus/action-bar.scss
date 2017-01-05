@@ -1,0 +1,30 @@
+@import "./src/style/abstracts/all";
+
+:local(.actionBar){
+	height: 40px;
+}
+
+:local(.actionBarThemeDefault){
+  background-color: $default-color;
+  color: #333;
+}
+
+:local(.actionBarThemePrimary){
+  background-color: $primary-color;
+}
+
+:local(.actionBarThemeInfo) {
+  background-color: $info-color;
+}
+
+:local(.actionBarThemeSuccess) {
+  background-color: $success-color;
+}
+
+:local(.actionBarThemeWarning) {
+  background-color: $warning-color;
+}
+
+:local(.actionBarThemeDanger) {
+  background-color: $danger-color;
+}
