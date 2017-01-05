@@ -1,28 +1,68 @@
 @import "./src/style/abstracts/all";
 
+:local(.button) {
+	display: none;
+}
 
+:local(.button),
+:local(.button).active {
+	color: transparent;
+	background-color: transparent;
+	padding: 0;
+	margin-right: -4px;
+	width: 60px;
+	height: 60px;
+	.icon {
+		font-size: 28pt;
+		line-height: 60px;
+		width: 60px;
+		margin-top: -1px;
+	}
+}
+
+body.action-menu-active {
+	:local(.button) {
+		display: inline-block;
+		&.active {
+			.icon {
+				@include active-color($primary-color);
+			}
+		}
+		:local(.icon)::after, :local(.icon)::before {
+			color: #FFF;
+			opacity: .8;
+			-webkit-transition: all .2s;
+			transition: all .2s;
+		}
+		&:hover, &.active {
+			:local(.icon)::after, :local(.icon)::before {
+				opacity: 1;
+			}
+		}
+	}
+}
 
 :local(.buttonThemeDefault){
-  background-color: $default-color;
-  color: #333;
+	background-color: $default-color;
+	color: #333;
 }
 
 :local(.buttonThemePrimary){
-  background-color: $primary-color;
+	background-color: $primary-color;
 }
 
 :local(.buttonThemeInfo) {
-  background-color: $info-color;
+	background-color: $info-color;
 }
 
 :local(.buttonThemeSuccess) {
-  background-color: $success-color;
+	background-color: $success-color;
 }
 
 :local(.buttonThemeWarning) {
-  background-color: $warning-color;
+	background-color: $warning-color;
 }
 
 :local(.buttonThemeDanger) {
-  background-color: $danger-color;
+	background-color: $danger-color;
 }
