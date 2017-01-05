@@ -1,0 +1,28 @@
+@import "./src/style/abstracts/all";
+
+
+
+:local(.buttonThemeDefault){
+  background-color: $default-color;
+  color: #333;
+}
+
+:local(.buttonThemePrimary){
+  background-color: $primary-color;
+}
+
+:local(.buttonThemeInfo) {
+  background-color: $info-color;
+}
+
+:local(.buttonThemeSuccess) {
+  background-color: $success-color;
+}
+
+:local(.buttonThemeWarning) {
+  background-color: $warning-color;
+}
+
+:local(.buttonThemeDanger) {
+  background-color: $danger-color;
+}
