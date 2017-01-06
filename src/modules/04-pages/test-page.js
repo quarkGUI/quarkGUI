@@ -4,6 +4,7 @@ import Header from '../03-templates/header';
 import Sidebar from '../03-templates/sidebar';
 import Atoms from '../03-templates/atoms';
 import Molecules from '../03-templates/molecules';
+import Organisms from '../03-templates/organisms';
 
 export default function(){
 
@@ -23,6 +24,7 @@ export default function(){
 			${Molecules()}
 
 			<h2>Organisms</h2>
+			${Organisms()}
 
 			<h2>Templates</h2>
 

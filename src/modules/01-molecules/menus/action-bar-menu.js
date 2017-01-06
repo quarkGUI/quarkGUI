@@ -1,6 +1,6 @@
 import ToggleButton from '../../00-atoms/buttons/toggle-button';
 
-var style = require('./action-bar.scss');
+var style = require('./action-bar-menu.scss');
 
 function createActionBarElements(toggleButtons){
 	var toggleButtonElements = "";
@@ -10,16 +10,12 @@ function createActionBarElements(toggleButtons){
 	return toggleButtonElements;
 }
 
-export default function(actionBar){
-	var id    = actionBar.id    !== undefined ? actionBar.id    : '';
-	var theme = actionBar.theme !== undefined ? actionBar.theme : '';
+export default function(actionBarMenu){
+	var id    = actionBarMenu.id    !== undefined ? actionBarMenu.id    : '';
+	var theme = actionBarMenu.theme !== undefined ? actionBarMenu.theme : '';
 	
 	var toggleButtonElements = '';
-	if (actionBar.toggleButtons !== undefined) toggleButtonElements = createActionBarElements(actionBar.toggleButtons);
-
-	var themeClass = style.listThemeDefault;
-	if (theme == 'primary')	themeClass = style.listThemePrimary;
-	if (theme == 'dark') 	themeClass = style.listThemeDark;
+	if (actionBarMenu.toggleButtons !== undefined) toggleButtonElements = createActionBarElements(actionBarMenu.toggleButtons);
 
 	var themeClass = style.actionBarThemeDefault
 	if (theme == 'primary')	themeClass = style.actionBarThemePrimary;
