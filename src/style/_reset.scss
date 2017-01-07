@@ -12,6 +12,11 @@ body{
 	padding: 0;
 }
 
+a, a:focus, a:hover{
+	text-decoration: none;
+	outline: none;
+}
+
 button, 
 input[type="button"], 
 input[type="submit"]{
