@@ -1,4 +1,5 @@
 @import "abstracts/all";
+@import "reset";
 @import "font-awesome";
 
 @font-face {
@@ -13,24 +14,18 @@
 	font-weight: bold;
 }
 
-* {
-	@include box-sizing(border-box);
-}
+
 
 @include scrollbar(14px, #e0e1e2, transparent, 0)
 
 html {
 	height: 100%;
-	margin: 0;
-	padding: 0;
 }
 
 body{
 	background-color: $body-background;
 	color: $default-text-color;
 	font-family: 'Lato';
-	margin: 0;
-	padding: 0;
 	height: 100%;
 	overflow: hidden;
 }
