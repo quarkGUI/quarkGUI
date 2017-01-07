@@ -2,16 +2,17 @@ var style = require('./button.scss');
 
 export default function(button){
 
-	var id 			= button.id 		!== undefined ? button.id 			: '';
-	var type		= button.type 		!== undefined ? button.type 		: '';
-	var theme		= button.theme 		!== undefined ? button.theme 		: '';
-	var content		= button.content 	!== undefined ? button.content		: '';
-	var iconClass	= button.iconClass	!== undefined ? button.iconClass	: '';
+	var id        = button.id        !== undefined ? button.id        : '';
+	var type      = button.type      !== undefined ? button.type      : '';
+	var theme     = button.theme     !== undefined ? button.theme     : '';
+	var link      = button.link      !== undefined ? button.link      : '#';
+	var content   = button.content   !== undefined ? button.content   : '';
+	var iconClass = button.iconClass !== undefined ? button.iconClass : '';
 
-	var icon = (iconClass !== '') ? `<span class="${iconClass}"></span>` : '';
+	var icon = (iconClass !== '') ? `<span class="${style.icon} ${iconClass}"></span>` : '';
 
 	var typeClass = style.buttonTypeFlat;
-	if (type == 'raised') 	typeClass = style.buttonTypeRaised;
+	if (type == 'raised') typeClass = style.buttonTypeRaised;
 
 	var themeClass = style.buttonThemeDefault
 	if (theme == 'primary')	themeClass = style.buttonThemePrimary;
@@ -22,7 +23,7 @@ export default function(button){
 
 
 	return `
-		<a id="${id}" class="${style.button} ${typeClass} ${themeClass}">${icon} ${content}</a>
+		<a id="${id}" href="${link}"" class="${style.button} ${typeClass} ${themeClass}">${icon} ${content}</a>
 	`
 
 }

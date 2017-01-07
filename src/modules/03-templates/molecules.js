@@ -3,10 +3,33 @@ var style = require('../../style/globalStyle.scss');
 import InputField from '../01-molecules/form-elements/input-field';
 import Checkbox from '../01-molecules/form-elements/checkbox';
 import RadioButton from '../01-molecules/form-elements/radio-button';
+import ButtonRow from '../01-molecules/buttons/button-row';
 
 export default function(){
 
 	return ` 
+		<h3>Buttons</h3>
+		<h4>Button row</h4>
+		${ButtonRow({
+			id: 'button-row1',
+			buttons: [
+				{
+					id: 'buttonrow-button1',
+					content: '',
+					iconClass: 'fa fa-home'
+				},
+				{
+					id: 'buttonrow-button1',
+					content: 'Home'
+				},
+				{
+					id: 'buttonrow-button1',
+					content: 'Home',
+					iconClass: 'fa fa-home'
+				}
+			]
+		})}
+
 		<h3>Form elements</h3>
 		<h4>Input field</h4>
 		${InputField({
