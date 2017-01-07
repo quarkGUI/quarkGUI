@@ -35,7 +35,7 @@ node_modules
 /.idea
 .idea/
 #Ignore MacOS files
-.DS_Store
+#.DS_Store
 
 #Ignore distribution directory
 /dist
