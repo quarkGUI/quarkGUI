@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HTMLWebpackPlugin = require('html-webpack-plugin');
 
+
 var DEVELOPMENT = process.env.NODE_ENV === 'development';
 var PRODUCTION = process.env.NODE_ENV === 'production';
 
@@ -16,7 +17,7 @@ var entry = PRODUCTION
 
 var plugins = PRODUCTION 
 	? 	[
-			/*new webpack.optimize.UglifyJsPlugin({
+			new webpack.optimize.UglifyJsPlugin({
 				compress: {
 					warnings: false,
 		      		unused: true,
@@ -26,7 +27,7 @@ var plugins = PRODUCTION
 		    	output: {
 		      		comments: false,
 		    	}
-		  	}),*/
+		  	}),
 			new ExtractTextPlugin('style/style-[contenthash:10].css'),
 			new HTMLWebpackPlugin({
 				template: 'index-template.html'
