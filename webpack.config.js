@@ -5,9 +5,14 @@ var HTMLWebpackPlugin = require('html-webpack-plugin');
 
 
 var DEVELOPMENT = process.env.NODE_ENV === 'development';
-var PRODUCTION = process.env.NODE_ENV === 'production';
+var PRODUCTION  = process.env.NODE_ENV === 'production';
+var DOCS        = process.env.NODE_ENV === 'docs';
 
-var entry = PRODUCTION
+var outputPath = DOCS ? 'docs' : 'dist';
+
+var ouputPublicPath = DOCS ? '/Simple-GUI-Template/' : '/';
+
+var entry = PRODUCTION || DOCS
 	?	[ './src/index.js' ]
 	: 	[ 
 			'./src/index.js',
@@ -15,7 +20,7 @@ var entry = PRODUCTION
 			'webpack-dev-server/client?http://localhost:8080'
 		];
 
-var plugins = PRODUCTION 
+var plugins = PRODUCTION || DOCS
 	? 	[
 			new webpack.optimize.UglifyJsPlugin({
 				compress: {
@@ -42,18 +47,19 @@ plugins.push(
 	new webpack.DefinePlugin({
 		DEVELOPMENT: JSON.stringify(DEVELOPMENT),
 		PRODUCTION: JSON.stringify(PRODUCTION),
+		DOCS: JSON.stringify(DOCS),
 	})
 );
 
-const cssIdentifier = PRODUCTION ? '[hash:base64:10]' : '[path][name]---[local]';
+const cssIdentifier = PRODUCTION || DOCS ? '[hash:base64:10]' : '[path][name]---[local]';
 
-const cssLoader = PRODUCTION
+const cssLoader = PRODUCTION || DOCS
 	?	ExtractTextPlugin.extract({
 			loader: 'css-loader?localIdentName=' + cssIdentifier
 		})
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier];
 
-const sassLoader = PRODUCTION
+const sassLoader = PRODUCTION || DOCS
 	?	ExtractTextPlugin.extract({
 			loader: 'css-loader!sass-loader?localIdentName=' + cssIdentifier
 		})
@@ -95,8 +101,8 @@ module.exports = {
 
 	},
 	output: {
-		path: path.join(__dirname, 'dist'),
-		publicPath: PRODUCTION ? '/' : '/dist/',
-		filename: PRODUCTION ? 'scripts/bundle.[hash:12].min.js' : 'bundle.js'
+		path: path.join(__dirname, outputPath),
+		publicPath: PRODUCTION || DOCS ? ouputPublicPath : '/dist/',
+		filename: PRODUCTION || DOCS ? 'scripts/bundle.[hash:12].min.js' : 'bundle.js'
 	}
 };
