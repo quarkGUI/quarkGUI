@@ -69,7 +69,7 @@ module.exports = {
 			loaders: ['babel-loader'],
 			exclude: '/node_modules/'
 		}, {
-			test: /\.(png|jpg|gif|svg)$/,
+			test: /\.(png|jpg|gif)$/,
 			loaders: ['url-loader?limit=10000&name=images/[ext]/[hash:12].[ext]'],
 			exclude: '/node_modules/'
 		}, {
@@ -84,8 +84,11 @@ module.exports = {
 			test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
 			loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[hash:12].[ext]" 
 		}, { 
-			test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+			test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
 			loader: "file-loader?name=fonts/[hash:12].[ext]" 
+		}, { 
+			test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+			loader: "svg-url-loader?noquotes&limit=1024&prefix=svg/[hash:12].[ext]"
 		}
     
 		],
