@@ -9,7 +9,7 @@ export default function(){
 			theme: 'primary',
 			logo: {
 				image: {
-					src: require('../../img/svg/flowgig-logo-black.svg'),
+					src: '/src/img/svg/GUI-Blocks-vertical-white.svg',
 					alt: 'logo'
 				},
 				url: '/'
