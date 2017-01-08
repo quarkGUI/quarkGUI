@@ -37,12 +37,6 @@ export default function(){
 
 				<h2 id="pages">Pages</h2>
 				
-
-
-				<div class="${style.box}">
-					DEV: ${DEVELOPMENT.toString()}<br/>
-					PROD: ${PRODUCTION.toString()}<br/>
-				</div>
 			</div>
 		</main>
 `
