@@ -59,12 +59,7 @@ const sassLoader = PRODUCTION
 		})
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier, 'sass-loader'];
 
-	/* loader: ExtractTextPlugin.extract('css-loader!sass-loader'), */
-
 module.exports = {
-	externals: {
-		'jquery': 'jQuery'
-	},
 	devtool: 'source-map',
 	entry: entry,
 	plugins: plugins,
