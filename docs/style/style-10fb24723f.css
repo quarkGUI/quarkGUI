@@ -2414,7 +2414,7 @@ main {
   font-size: 14pt;
   height: 100%;
   overflow: auto;
-  margin-top: 96px;
+  margin-top: 48px;
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   -webkit-transition: all 0.2s;
@@ -2424,7 +2424,7 @@ main {
   height: calc(100% - 48px); }
   @media only screen and (min-width: 768px) {
     main {
-      margin-top: 112px;
+      margin-top: 64px;
       height: -moz-calc(100% - 64px);
       height: -webkit-calc(100% - 64px);
       height: calc(100% - 64px); } }
@@ -3125,4 +3125,4 @@ body.action-menu-active ._3SBmjbIvYFiNc78vwC3vd5 {
       font-size: 26px;
       vertical-align: text-bottom; }
 
-/*# sourceMappingURL=style-3a951e3030.css.map*/
+/*# sourceMappingURL=style-10fb24723f.css.map*/

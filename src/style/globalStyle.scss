@@ -38,12 +38,12 @@ main{
 	font-size: 14pt;
 	height: 100%;
 	overflow: auto;
-	margin-top: 96px;
+	margin-top: 48px;
 	@include transition(all .2s);
 	@include calc(height, '100% - 48px');
 
 	@media only screen and (min-width: $screen-sm) {
-		margin-top: 112px;
+		margin-top: 64px;
 		@include calc(height, '100% - 64px');
 	}
 
