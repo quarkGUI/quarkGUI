@@ -6,35 +6,43 @@ import Atoms from '../03-templates/atoms';
 import Molecules from '../03-templates/molecules';
 import Organisms from '../03-templates/organisms';
 
+
 export default function(){
+
+
 
 	return ` 
 		${Header()}
 
 		${Sidebar()}
 
-		<main>
-			<div id="content">
+		<main id="mainContent">
+			<div class="${style.mainContent}">
 				<h1>Home</h1>
-			</div>
-			<h2>Atoms</h2>
-			${Atoms()}
 
-			<h2>Molecules</h2>
-			${Molecules()}
+				<section id="atoms">
+					<h2>Atoms</h2>
+					${Atoms()}
+				</section>
 
-			<h2>Organisms</h2>
-			${Organisms()}
+				<span>Atoms</span>
 
-			<h2>Templates</h2>
+				<h2 id="molecules">Molecules</h2>
+				${Molecules()}
 
-			<h2>Pages</h2>
-			
+				<h2 id="organisms">Organisms</h2>
+				${Organisms()}
+
+				<h2 id="templates">Templates</h2>
+
+				<h2 id="pages">Pages</h2>
+				
 
 
-			<div class="${style.box}">
-				DEV: ${DEVELOPMENT.toString()}<br/>
-				PROD: ${PRODUCTION.toString()}<br/>
+				<div class="${style.box}">
+					DEV: ${DEVELOPMENT.toString()}<br/>
+					PROD: ${PRODUCTION.toString()}<br/>
+				</div>
 			</div>
 		</main>
 `

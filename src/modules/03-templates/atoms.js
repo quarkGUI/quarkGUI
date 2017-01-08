@@ -8,95 +8,96 @@ import RadioButton from '../00-atoms/form-elements/radio-button';
 export default function(){
 
 	return ` 
-		<h3>Buttons</h3>
+		<section id="atoms-buttons">
+			<h3>Buttons</h3>
 
-		<h4>Flat buttons</h4>
-		${Button({
-			id: 'button1',
-			type: 'flat',
-			theme: '',
-			content: 'Default button'
-		})}
+			<h4>Flat buttons</h4>
+			${Button({
+				id: 'button1',
+				type: 'flat',
+				theme: '',
+				content: 'Default button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'flat',
-			theme: 'primary',
-			content: 'Primary button'
-		})}
+			${Button({
+				id: 'button1',
+				type: 'flat',
+				theme: 'primary',
+				content: 'Primary button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'flat',
-			theme: 'info',
-			content: 'Info button'
-		})}
+			${Button({
+				id: 'button1',
+				type: 'flat',
+				theme: 'info',
+				content: 'Info button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'flat',
-			theme: 'success',
-			content: 'Success button'
-		})}
+			${Button({
+				id: 'button1',
+				type: 'flat',
+				theme: 'success',
+				content: 'Success button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'flat',
-			theme: 'warning',
-			content: 'Warning button'
-		})}
+			${Button({
+				id: 'button1',
+				type: 'flat',
+				theme: 'warning',
+				content: 'Warning button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'flat',
-			theme: 'danger',
-			content: 'Danger button'
-		})}
+			${Button({
+				id: 'button1',
+				type: 'flat',
+				theme: 'danger',
+				content: 'Danger button'
+			})}
 
-		<h4>Raised buttons</h4>
-		${Button({
-			id: 'button1',
-			type: 'raised',
-			theme: '',
-			content: 'Default button'
-		})}
+			<h4>Raised buttons</h4>
+			${Button({
+				id: 'button1',
+				type: 'raised',
+				theme: '',
+				content: 'Default button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'raised',
-			theme: 'primary',
-			content: 'Primary button'
-		})}
+			${Button({
+				id: 'button1',
+				type: 'raised',
+				theme: 'primary',
+				content: 'Primary button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'raised',
-			theme: 'info',
-			content: 'Info button'
-		})}
+			${Button({
+				id: 'button1',
+				type: 'raised',
+				theme: 'info',
+				content: 'Info button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'raised',
-			theme: 'success',
-			content: 'Success button'
-		})}
+			${Button({
+				id: 'button1',
+				type: 'raised',
+				theme: 'success',
+				content: 'Success button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'raised',
-			theme: 'warning',
-			content: 'Warning button'
-		})}
+			${Button({
+				id: 'button1',
+				type: 'raised',
+				theme: 'warning',
+				content: 'Warning button'
+			})}
 
-		${Button({
-			id: 'button1',
-			type: 'raised',
-			theme: 'danger',
-			content: 'Danger button'
-		})}
-
-		<h3>Form elements</h3>
+			${Button({
+				id: 'button1',
+				type: 'raised',
+				theme: 'danger',
+				content: 'Danger button'
+			})}
+		</section>
+		<h3 id="atoms-form-elements">Form elements</h3>
 		<h4>Input field</h4>
 		${InputField({
 			id: 'atom-input1',

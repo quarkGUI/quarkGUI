@@ -9,7 +9,7 @@ export default function(){
 			theme: 'primary',
 			logo: {
 				image: {
-					src: '/src/img/svg/GUI-Blocks-vertical-white.svg',
+					src: require('../../img/svg/GUI-blocks-vertical-white.svg'),
 					alt: 'logo'
 				},
 				url: '/'
@@ -18,12 +18,16 @@ export default function(){
 				theme: '',
 				listItems: [
 					{
-						name: "testlink1",
-						link: "https://github.com/"
+						name: "Atoms",
+						link: "#atoms"
 					}, 
 					{
-						name: "testlink2",
-						link: "https://github.com/"
+						name: "Molecules",
+						link: "#molecules"
+					}, 
+					{
+						name: "Organisms",
+						link: "#organisms"
 					}
 				]
 			}
