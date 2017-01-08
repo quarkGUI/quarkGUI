@@ -1,0 +1,53 @@
+@import "./src/style/abstracts/all";
+
+:local(.actionBar){
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	right: 58px;
+	padding: 0;
+	margin: 0;
+	color: #FFF;
+	height: 60px;
+	bottom: 0px;
+	-webkit-box-shadow: 0 -6px 10px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 -6px 10px 0 rgba(0, 0, 0, 0.3);
+	width: 0;
+	-webkit-transition: all .2s;
+	transition: all .2s;
+	z-index: 3;
+}
+
+body.action-menu-active {
+	:local(.actionBar){
+		width: 100%;
+		right: 0;
+		
+	}
+}
+
+
+:local(.actionBarThemeDefault){
+	background-color: $default-color;
+	color: #333;
+}
+
+:local(.actionBarThemePrimary){
+	background-color: $primary-color;
+}
+
+:local(.actionBarThemeInfo) {
+	background-color: $info-color;
+}
+
+:local(.actionBarThemeSuccess) {
+	background-color: $success-color;
+}
+
+:local(.actionBarThemeWarning) {
+	background-color: $warning-color;
+}
+
+:local(.actionBarThemeDanger) {
+	background-color: $danger-color;
+}

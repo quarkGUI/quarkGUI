@@ -1,0 +1,156 @@
+@import "./src/style/abstracts/all";
+
+:local(.button) {
+	display: none;
+}
+
+:local(.button),
+:local(.button).active {
+	color: transparent;
+	background-color: transparent;
+	padding: 0;
+	margin-right: -4px;
+	width: 60px;
+	height: 60px;
+	:local(.icon) {
+		font-size: 28pt;
+		line-height: 60px;
+		width: 60px;
+		margin-top: -1px;
+		@include transition(all, .2s);
+	}
+}
+
+:local(.buttonThemeDefault){
+	:local(.icon) {
+		background-color: $default-color;
+		color: #333;
+	}
+}
+
+:local(.buttonThemePrimary){
+	:local(.icon) {
+		background-color: $primary-color;
+	}
+}
+
+:local(.buttonThemeInfo) {
+	:local(.icon) {
+		background-color: $info-color;
+	}
+}
+
+:local(.buttonThemeSuccess) {
+	:local(.icon) {
+		background-color: $success-color;
+	}
+}
+
+:local(.buttonThemeWarning) {
+	:local(.icon) {
+		background-color: $warning-color;
+	}
+}
+
+:local(.buttonThemeDanger) {
+	:local(.icon) {
+		background-color: $danger-color;
+	}
+}
+
+body.action-menu-active {
+	:local(.button) {
+		display: inline-block;
+		
+		:local(.icon)::after, :local(.icon)::before {
+			color: #FFF;
+			opacity: .8;
+			@include transition(all, .2s);
+		}
+		&:hover, &.active {
+			:local(.icon)::after, :local(.icon)::before {
+				opacity: 1;
+			}
+		}
+	}
+
+	:local(.buttonThemeDefault){
+		&.active {
+			:local(.icon) {
+				@include active-color($default-color);
+			}
+		}
+		&:hover:not(.active){
+			:local(.icon){
+				@include hover-color($default-color);
+			}
+		}
+	}
+
+	:local(.buttonThemePrimary){
+		&.active {
+			:local(.icon) {
+				@include active-color($primary-color);
+			}
+		}
+		&:hover:not(.active){
+			:local(.icon){
+				@include hover-color($primary-color);
+			}
+		}
+	}
+
+	:local(.buttonThemeInfo) {
+		&.active {
+			:local(.icon) {
+				@include active-color($info-color);
+			}
+		}
+		&:hover:not(.active){
+			:local(.icon){
+				@include hover-color($info-color);
+			}
+		}
+	}
+
+	:local(.buttonThemeSuccess) {
+		&.active {
+			:local(.icon) {
+				@include active-color($success-color);
+			}
+		}
+		&:hover:not(.active){
+			:local(.icon){
+				@include hover-color($success-color);
+			}
+		}
+	}
+
+	:local(.buttonThemeWarning) {
+		&.active {
+			:local(.icon) {
+				@include active-color($warning-color);
+			}
+		}
+		&:hover:not(.active){
+			:local(.icon){
+				@include hover-color($warning-color);
+			}
+		}
+	}
+
+	:local(.buttonThemeDanger) {
+		&.active {
+			:local(.icon) {
+				@include active-color($danger-color);
+			}
+		}
+		&:hover:not(.active){
+			:local(.icon){
+				@include hover-color($danger-color);
+			}
+		}
+	}
+
+
+}

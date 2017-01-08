@@ -1,0 +1,26 @@
+@mixin scrollbar($size, $foreground-color, $background-color, $border-radius) {
+
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: none;
+    border-radius: $border-radius;
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+    border-radius: $border-radius;
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}

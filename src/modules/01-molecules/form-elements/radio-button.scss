@@ -1,0 +1,16 @@
+@import "./src/style/abstracts/all";
+
+:local(.inputGroup){
+	margin-bottom: 4px;
+	:local(.label) {
+		font-size: 16pt;
+		cursor: pointer;
+	}
+}
+
+input[type="radio"]:focus,
+input[type="radio"]:focus + label,
+:local(.inputGroup):active input[type="radio"],
+:local(.inputGroup):active input[type="radio"] + label{
+	color: $primary-color;
+}

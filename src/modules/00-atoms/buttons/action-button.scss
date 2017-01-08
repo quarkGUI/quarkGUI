@@ -1,0 +1,58 @@
+@import "./src/style/abstracts/all";
+
+:local(.button) {
+  cursor: pointer;
+  position: fixed;
+  width: 56px;
+  height: 56px;
+  bottom: 16px;
+  right: 16px;
+  color: #FFF;
+  z-index: 4;
+  @include border-radius(50%);
+  @include box-shadow(0 6px 10px 0 rgba(0, 0, 0, 0.3));
+  @include transition(all .2s);
+
+  &.active {
+    bottom: 0;
+    @include box-shadow(none);
+    :local(.icon) {
+      font-family: FontAwesome;
+      &::before {
+        content: "\f00d";
+      }
+    }
+  }
+  :local(.icon) {
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    font-size: 28pt;
+    line-height: 56px;
+  }
+}
+
+:local(.buttonThemeDefault){
+  background-color: $default-color;
+  color: #333;
+}
+
+:local(.buttonThemePrimary){
+  background-color: $primary-color;
+}
+
+:local(.buttonThemeInfo) {
+  background-color: $info-color;
+}
+
+:local(.buttonThemeSuccess) {
+  background-color: $success-color;
+}
+
+:local(.buttonThemeWarning) {
+  background-color: $warning-color;
+}
+
+:local(.buttonThemeDanger) {
+  background-color: $danger-color;
+}

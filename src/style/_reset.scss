@@ -1,0 +1,32 @@
+* {
+	@include box-sizing(border-box);
+}
+
+html {
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+}
+
+a, a:focus, a:hover{
+	text-decoration: none;
+	outline: none;
+}
+
+button, 
+input[type="button"], 
+input[type="submit"]{
+	border: none;
+	cursor: pointer;
+	&:focus{
+		outline: none;
+	}
+}
+
+input{
+	@include appearance(none);
+}

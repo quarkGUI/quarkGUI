@@ -1,4 +1,20 @@
-# Simple-GUI-Template
+# Simple-GUI-Template (webpack branch)
+Test of Webpack, Sass and Atomic Design
+
 
 ## Installation
-* Install with [Bower](http://bower.io): `bower install simple-gui-template`.
+
+```
+npm install
+```
+
+## Run with development environment
+
+```
+npm run dev
+```
+
+## Build for production
+```
+npm run build
+```

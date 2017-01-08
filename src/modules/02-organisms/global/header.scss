@@ -1,0 +1,116 @@
+@import "./src/style/abstracts/all";
+
+:local(.navbar) {
+  position: fixed;
+  background-color: #FFF;
+  height: 48px;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  &:local(.headerThemeDefault){
+    background-color: #FFFFFF;
+    color: $primary-color;
+  }
+  &:local(.headerThemePrimary){
+    background-color: $primary-color;
+    color: #FFFFFF;
+  }
+  &:local(.headerThemeDark){
+    background-color: $dark-color;
+    color: #FFFFFF;
+  }
+  :local(.logo) {
+    display: block;
+    padding: 2px 0;
+    vertical-align: bottom;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    text-align: center;
+    img {
+      height: 40px;
+      width: auto;
+    }
+  }
+  :local(.sidenavToggle) {
+    font-size: 20pt;
+    display: inline-block;
+    vertical-align: bottom;
+    padding: 0 15px;
+    cursor: pointer;
+    &:hover {
+      -webkit-transition: background .2s .1s;
+      transition: background .2s .1s;
+      background-color: rgba(158, 158, 158, 0.2);
+    }
+    &:active {
+      @include active-color($primary-color);
+    }
+    &:after{
+      line-height: 48px;
+      display: inline-block;
+      font-family: FontAwesome;
+      content: "\f0c9";
+      
+    }
+  }
+  :local(.menu-divider) {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    width: 1px;
+    height: 30px;
+    display: inline-block;
+    margin: 4px 15px;
+  }
+  :local(.navbar-page-title) {
+    color: #FFFFFF;
+    font-size: 28px;
+    line-height: 48px;
+    vertical-align: bottom;
+  }
+}
+
+@media only screen and (min-width: $screen-xs) {
+  :local(.navbar) {
+    :local(.logo) {
+      position: static;
+      display: inline-block;
+      width: auto;
+      text-align: left;
+    }
+  }
+}
+
+@media only screen and (min-width: $screen-sm) {
+  :local(.navbar)  {
+    height: 64px;
+    :local(.menu-divider) {
+      height: 50px;
+    }
+    :local(.logo) {
+      padding: 10.5px 0;
+    }
+    :local(.sidenavToggle) {
+      padding: 0 25px;
+      &:after {
+        line-height: 64px;
+      }
+    }
+    :local(.navbar-page-title) {
+      line-height: 64px;
+    }
+  }
+}
+
+@media only screen and (min-width: $screen-lg) {
+  :local(.navbar) {
+    z-index: 3;
+    :local(.logo) {
+      padding: 7.5px 0;
+      img {
+        height: 46px;
+      }
+    }
+  }
+}
