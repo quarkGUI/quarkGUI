@@ -55,7 +55,7 @@
       
     }
   }
-  :local(.menu-divider) {
+  :local(.menuDivider) {
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 1px solid rgba(0, 0, 0, 0.08);
     width: 1px;
@@ -63,7 +63,7 @@
     display: inline-block;
     margin: 4px 15px;
   }
-  :local(.navbar-page-title) {
+  :local(.navbarPageTitle) {
     color: #FFFFFF;
     font-size: 28px;
     line-height: 48px;
@@ -85,7 +85,7 @@
 @media only screen and (min-width: $screen-sm) {
   :local(.navbar)  {
     height: 64px;
-    :local(.menu-divider) {
+    :local(.menuDivider) {
       height: 50px;
     }
     :local(.logo) {
@@ -97,7 +97,7 @@
         line-height: 64px;
       }
     }
-    :local(.navbar-page-title) {
+    :local(.navbarPageTitle) {
       line-height: 64px;
     }
   }

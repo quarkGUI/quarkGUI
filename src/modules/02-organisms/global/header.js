@@ -41,6 +41,7 @@ export default function(headerItems){
 			<a href="${logoUrl}" class="${style.logo}">
 				${logoImage}
 			</a>
+			<span class="${style.menuDivider}"></span>
 			${primaryNavigation}
 		</header>
 	`
