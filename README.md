@@ -1,4 +1,4 @@
-# Simple-GUI-Template (webpack branch)
+# Simple-GUI-Template
 Test of Webpack, Sass and Atomic Design
 
 
