@@ -6,7 +6,7 @@ export default function(){
 
 	return ` 
 		${Header({
-			theme: 'primary',
+			theme: 'dark',
 			logo: {
 				image: {
 					src: require('../../img/svg/GUI-blocks-vertical-white.svg'),
@@ -15,19 +15,18 @@ export default function(){
 				url: '/'
 			},
 			primaryNavigation: {
-				theme: '',
 				listItems: [
 					{
 						name: "Atoms",
-						link: "#atoms"
+						link: ""
 					}, 
 					{
 						name: "Molecules",
-						link: "#molecules"
+						link: ""
 					}, 
 					{
 						name: "Organisms",
-						link: "#organisms"
+						link: ""
 					}
 				]
 			}
