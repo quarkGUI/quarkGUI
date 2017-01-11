@@ -1,0 +1,29 @@
+@import "./src/style/abstracts/all";
+
+:local(.listNavigation) {
+  list-style: none;
+  font-size: 14pt;
+  margin: 0;
+  padding: 0;
+  background-color: $bright-white;
+  > li {
+    > a {
+      display: block;
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+      border-top: 1px solid rgba(0, 0, 0, .05);
+      color: #212121;
+      text-decoration: none;
+      padding: 10px 20px;
+      width: 100%;
+      min-width: 200px;
+      border-left: 2px solid transparent;
+      &:hover {
+        @include bright-gray($dark-color);
+        cursor: pointer;
+      }
+      &.active {
+        border-left: 2px solid $primary-color;
+      }
+    }
+  }
+}
