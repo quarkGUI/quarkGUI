@@ -57,13 +57,14 @@ const cssIdentifier = PRODUCTION || DOCS ? '[hash:base64:10]' : '[path][name]---
 
 const cssLoader = PRODUCTION || DOCS
 	?	ExtractTextPlugin.extract({
-			loader: 'css-loader?localIdentName=' + cssIdentifier
+			loader: 'css-loader?minimize!localIdentName=' + cssIdentifier
 		})
+
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier];
 
 const sassLoader = PRODUCTION || DOCS
 	?	ExtractTextPlugin.extract({
-			loader: 'css-loader!sass-loader?localIdentName=' + cssIdentifier
+			loader: 'css-loader?minimize!sass-loader?localIdentName=' + cssIdentifier
 		})
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier, 'sass-loader'];
 
