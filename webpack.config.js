@@ -9,8 +9,9 @@ var PRODUCTION  = process.env.NODE_ENV === 'production';
 var DOCS        = process.env.NODE_ENV === 'docs';
 
 var outputPath = DOCS ? 'docs' : 'dist';
-
 var ouputPublicPath = DOCS ? '/Simple-GUI-Template/' : '/';
+var cssFileName = PRODUCTION ? 'style-[contenthash:10].css' : 'styles.css';
+var scriptFileName = PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js';
 
 var entry = PRODUCTION || DOCS
 	?	[ './src/index.js' ]
@@ -19,6 +20,7 @@ var entry = PRODUCTION || DOCS
 			'webpack/hot/dev-server',
 			'webpack-dev-server/client?http://localhost:8080'
 		];
+
 
 var plugins = PRODUCTION || DOCS
 	? 	[
@@ -33,13 +35,13 @@ var plugins = PRODUCTION || DOCS
 		      		comments: false,
 		    	}
 		  	}),
-			new ExtractTextPlugin('style/style-[contenthash:10].css'),
+			new ExtractTextPlugin('style/' + cssFileName),
 			new HTMLWebpackPlugin({
 				template: 'index-template.html'
 			})
 		]
 	: 	[ 
-			new ExtractTextPlugin('styles.css'), 
+			new ExtractTextPlugin(cssFileName), 
 			new webpack.HotModuleReplacementPlugin() 
 		];
 
@@ -103,6 +105,6 @@ module.exports = {
 	output: {
 		path: path.join(__dirname, outputPath),
 		publicPath: PRODUCTION || DOCS ? ouputPublicPath : '/dist/',
-		filename: PRODUCTION || DOCS ? 'scripts/bundle.[hash:12].min.js' : 'bundle.js'
+		filename: PRODUCTION || DOCS ? 'scripts/' + scriptFileName : scriptFileName
 	}
 };
