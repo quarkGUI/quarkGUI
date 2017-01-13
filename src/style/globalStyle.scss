@@ -20,12 +20,17 @@
 
 html {
 	height: 100%;
+	&.webfont-loaded{
+		body{
+			font-family: 'Lato';
+		}
+	}
 }
 
 body{
 	background-color: $body-background;
 	color: $default-text-color;
-	font-family: 'Lato';
+	font-family: arial, sans-serif;
 	height: 100%;
 	overflow: hidden;
 }
