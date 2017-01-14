@@ -1,0 +1,9 @@
+@import "./src/style/abstracts/all";
+
+:local(.row) {
+  @include make-row;
+}
+
+:local(.clearFix){
+	clear: both;
+}
