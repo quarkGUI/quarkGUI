@@ -42,7 +42,6 @@ export default function(primaryNavigation){
 
 	document.addEventListener('DOMContentLoaded', function() {
 		var navigationElements = document.getElementsByClassName(style.hasDropdown) !== undefined ? document.getElementsByClassName(style.hasDropdown) : false;
-		console.log(navigationElements);
 		if (navigationElements){
 			for (var i = 0; i < navigationElements.length; i++) {
 				var dropdownElements = navigationElements[i].getElementsByClassName(style.dropdownContent);
