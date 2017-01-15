@@ -5,13 +5,15 @@ var style = require('./list-menu.scss');
 function createTitleElement(listItem){
 	var title    = listItem.title    !== undefined ? listItem.title    : false;
 	var subTitle = listItem.subTitle !== undefined ? listItem.subTitle : false;
+	var link     = listItem.link     !== undefined ? listItem.link     : false;
 
 	var singleLineClass = title && !subTitle ? style.singleLine : '';
 
 	var subTitleElement = (subTitle) ? `<small>${subTitle}</small>` : '';
 
-	var titleElement = (title) ? `<span class="${style.listItemTitle} ${singleLineClass}">${title} ${subTitleElement}</span>` : '';
-	
+	var titleElement = '';
+	if (title && link) titleElement = `<a href="${link}" class="${style.listItemTitle} ${singleLineClass}">${title} ${subTitleElement}</a>`;
+	else if (title) titleElement = `<span class="${style.listItemTitle} ${singleLineClass}">${title} ${subTitleElement}</span>`;
 	return titleElement;
 }
 
@@ -43,14 +45,17 @@ function createListElements(listItems){
 
 
 export default function(listMenu){
-	var id        = listMenu.id        !== undefined ? listMenu.id        : '';
-	var listItems = listMenu.listItems !== undefined ? listMenu.listItems : false;
+	var id         = listMenu.id        !== undefined ? listMenu.id        : '';
+	var listItems  = listMenu.listItems !== undefined ? listMenu.listItems : false;
+	var hover      = listMenu.hover     !== undefined ? listMenu.hover     : false;
+
+	var hoverClass = hover ? style.hover : '';
 
 	var listElements = '';
 	if (listItems) listElements = createListElements(listItems);
 
 	return `
-		<ul id="${id}" class="${style.listMenu}">
+		<ul id="${id}" class="${style.listMenu} ${hoverClass}">
 			${listElements}
 		</ul>
 	`
