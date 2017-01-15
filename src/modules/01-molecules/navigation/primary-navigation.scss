@@ -48,7 +48,7 @@
     }
   }
   :local(.hasDropdown){
-    
+    display: inherit;
   }
   .active :local(.dropdownContent){
     display: block;

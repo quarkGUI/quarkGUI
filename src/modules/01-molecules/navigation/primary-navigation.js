@@ -4,13 +4,10 @@ import ListNavigation from './list-navigation';
 var style = require('./primary-navigation.scss');
 
 function hasDropdown(listItem){
-	return listItem.dropdownContent !== undefined;
+	return listItem.dropdownContent !== undefined && listItem.dropdownContent !== '';
 }
 
-
 function createListElements(listItems){
-
-
 	var listElements = "";
 	listItems.forEach(function(listItem){
 		var dropdownContent = '';
@@ -19,7 +16,7 @@ function createListElements(listItems){
 		if (hasDropdown(listItem)){
 			dropdownContent = `<div class="${style.dropdownContent}">${ListNavigation(listItem.dropdownContent)}<div>`;
 			dropdownClass = `${style.hasDropdown}`;
-			listElement = `<li onclick="this.classList.toggle('active')" class="${listItem.dropdownClass}"><span>${listItem.name}</span>${dropdownContent}</li>`;
+			listElement = `<li class="${dropdownClass}"><span>${listItem.name}</span>${dropdownContent}</li>`;
 		}else{
 			listElement = `<li><a href="${listItem.link}">${listItem.name}</a></li>`;
 		}
@@ -39,16 +36,28 @@ export default function(primaryNavigation){
 	if (theme == 'primary')	themeClass = style.listThemePrimary;
 	if (theme == 'dark') 	themeClass = style.listThemeDark;
 
-
 	document.addEventListener('DOMContentLoaded', function() {
 		var navigationElements = document.getElementsByClassName(style.hasDropdown) !== undefined ? document.getElementsByClassName(style.hasDropdown) : false;
 		if (navigationElements){
 			for (var i = 0; i < navigationElements.length; i++) {
-				var dropdownElements = navigationElements[i].getElementsByClassName(style.dropdownContent);
+				var navigationElement = navigationElements[i];
+				var dropdownElements = navigationElement.getElementsByClassName(style.dropdownContent);
 				var dropdownElement = dropdownElements[0];
+
+				document.onclick = function(event){
+					for (var i = 0; i < navigationElements.length; i++) {
+						navigationElements[i].classList.remove('active');
+					}
+					var parentNodeClassList = event.target.parentNode.classList;
+					parentNodeClassList.forEach(function (className){
+						if (className == style.hasDropdown) parentNodeClassList.add('active');
+					});
+				}
+
 				var navigationElementWidth = navigationElements[i].offsetWidth;
 				var dropdownElementWidth = dropdownElements[0].offsetWidth;
 				var widthDif = navigationElementWidth - dropdownElementWidth;
+
 				dropdownElement.style.marginLeft = widthDif/2 + 'px';
 			}
 		}
