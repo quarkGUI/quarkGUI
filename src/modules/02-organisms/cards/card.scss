@@ -1,0 +1,68 @@
+@import "./src/style/abstracts/all";
+
+:local(.card){
+	background-color: #FFF;
+	margin-bottom: 15px;
+	@include box-shadow(0 1px 3px 0 rgba(0, 0, 0, 0.37));
+	&:local(.cardThemeDefault){
+		:local(.cardHeader){
+			background-color: $default-color;
+			color: #333;
+		}
+	}
+	&:local(.cardThemePrimary){
+		:local(.cardHeader){
+			background-color: $primary-color;
+		}
+	}
+	&:local(.cardThemeInfo){
+		:local(.cardHeader){
+			background-color: $info-color;
+		}
+	}
+	&:local(.cardThemeSuccess){
+		:local(.cardHeader){
+			background-color: $success-color;
+		}
+	}
+	&:local(.cardThemeWarning){
+		:local(.cardHeader){
+			background-color: $warning-color;
+		}
+	}
+	&:local(.cardThemeDanger){
+		:local(.cardHeader){
+			background-color: $danger-color;
+		}
+	}
+	:local(.cardHeader){
+		font-size: .8em;
+		color: #FFF;
+		padding: 15px;
+		:local(.cardHeaderTitle) {
+			font-size: 14pt;
+			line-height: 14pt;
+			margin: 0;
+		}
+		a {
+			text-decoration: none;
+		}
+		:local(.cardHeaderIcon) {
+			color: #FFF;
+			font-family: FontAwesome;
+			font-size: 1.6em;
+			line-height: 15px;
+		}
+	}
+
+	:local(.cardThumbnail){
+		img{
+			border-bottom: 1px solid #ccc;
+		}
+	}
+
+	:local(.cardBody) {
+		padding: 15px;
+	}
+	
+}
