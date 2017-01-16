@@ -90,15 +90,16 @@ module.exports = {
 			loader: sassLoader,
 			exclude: '/node_modules/'
 		}, { 
-			test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-			loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[hash:12].[ext]" 
-		}, { 
 			test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
 			loader: "file-loader?name=fonts/[hash:12].[ext]" 
 		}, { 
 			test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
 			loader: "svg-url-loader?noquotes&limit=1024&prefix=svg/[hash:12].[ext]"
-		}
+		},
+		{
+        	test: /\.(woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        	loader: 'base64-font-loader'
+      	}
     
 		],
 

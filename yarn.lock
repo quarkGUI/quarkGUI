@@ -806,6 +806,12 @@ balanced-match@^0.4.1, balanced-match@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
 
+base64-font-loader:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/base64-font-loader/-/base64-font-loader-0.0.4.tgz#344ed6d7e3c4969433641f67bb0daf549320b824"
+  dependencies:
+    loader-utils "~0.2.5"
+
 base64-js@^1.0.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
