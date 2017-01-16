@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HTMLWebpackPlugin = require('html-webpack-plugin');
+var CompressionPlugin = require("compression-webpack-plugin");
 
 
 var DEVELOPMENT = process.env.NODE_ENV === 'development';
@@ -38,7 +39,14 @@ var plugins = PRODUCTION || DOCS
 			new ExtractTextPlugin('style/' + cssFileName),
 			new HTMLWebpackPlugin({
 				template: 'index-template.html'
-			})
+			}),
+			new CompressionPlugin({
+		      asset: "[path].gz[query]",
+		      algorithm: "gzip",
+		      test: /\.js$|\.css$|\.html$/,
+		      threshold: 10240,
+		      minRatio: 0.8
+		    })
 		]
 	: 	[ 
 			new ExtractTextPlugin(cssFileName), 
