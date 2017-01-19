@@ -1,5 +1,5 @@
 {
-  "name": "webpack-sass-atomic-design",
+  "name": "simple-gui-template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && NODE_ENV=production webpack",
     "docs": "rimraf docs && NODE_ENV=docs webpack",
-    "dev": "NODE_ENV=development node dev-server.js"
+    "dev": "NODE_ENV=development node dev-server.js",
+    "win-build": "rimraf dist && SET NODE_ENV=production&& webpack",
+    "win-docs": "rimraf docs && SET NODE_ENV=docs&& webpack",
+    "win-dev": "SET NODE_ENV=development&& node dev-server.js"
   },
   "repository": {
     "type": "git",
