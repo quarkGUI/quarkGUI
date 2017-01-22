@@ -82,8 +82,16 @@ export default function(){
 						toggleType: '',
 						title: '',
 						targetClass: 'src-style-globalStyle---box',
-						theme: 'warning',
+						theme: 'primary',
 						iconClass: 'fa fa-search'
+					},
+					{
+						id: 'togglebutton4',
+						toggleType: '',
+						title: '',
+						targetClass: 'src-style-globalStyle---box',
+						theme: 'primary',
+						iconClass: 'fa fa-list'
 					}
 				]
 			}
