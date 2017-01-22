@@ -45,7 +45,7 @@
       background-color: rgba(158, 158, 158, 0.2);
     }
     &:active {
-      @include active-color($primary-color);
+      background-color: active-color($primary-color);
     }
     &:after{
       line-height: 48px;

@@ -77,12 +77,12 @@ body.action-menu-active {
 	:local(.buttonThemeDefault){
 		&.active {
 			:local(.icon) {
-				@include active-color($default-color);
+				background-color: active-color($default-color);
 			}
 		}
 		&:hover:not(.active){
 			:local(.icon){
-				@include hover-color($default-color);
+				background-color: hover-color($default-color);
 			}
 		}
 	}
@@ -90,12 +90,12 @@ body.action-menu-active {
 	:local(.buttonThemePrimary){
 		&.active {
 			:local(.icon) {
-				@include active-color($primary-color);
+				background-color: active-color($primary-color);
 			}
 		}
 		&:hover:not(.active){
 			:local(.icon){
-				@include hover-color($primary-color);
+				background-color: hover-color($primary-color);
 			}
 		}
 	}
@@ -103,12 +103,12 @@ body.action-menu-active {
 	:local(.buttonThemeInfo) {
 		&.active {
 			:local(.icon) {
-				@include active-color($info-color);
+				background-color: active-color($info-color);
 			}
 		}
 		&:hover:not(.active){
 			:local(.icon){
-				@include hover-color($info-color);
+				background-color: hover-color($info-color);
 			}
 		}
 	}
@@ -116,12 +116,12 @@ body.action-menu-active {
 	:local(.buttonThemeSuccess) {
 		&.active {
 			:local(.icon) {
-				@include active-color($success-color);
+				background-color: active-color($success-color);
 			}
 		}
 		&:hover:not(.active){
 			:local(.icon){
-				@include hover-color($success-color);
+				background-color: hover-color($success-color);
 			}
 		}
 	}
@@ -129,12 +129,12 @@ body.action-menu-active {
 	:local(.buttonThemeWarning) {
 		&.active {
 			:local(.icon) {
-				@include active-color($warning-color);
+				background-color: active-color($warning-color);
 			}
 		}
 		&:hover:not(.active){
 			:local(.icon){
-				@include hover-color($warning-color);
+				background-color: hover-color($warning-color);
 			}
 		}
 	}
@@ -142,12 +142,12 @@ body.action-menu-active {
 	:local(.buttonThemeDanger) {
 		&.active {
 			:local(.icon) {
-				@include active-color($danger-color);
+				background-color: active-color($danger-color);
 			}
 		}
 		&:hover:not(.active){
 			:local(.icon){
-				@include hover-color($danger-color);
+				background-color: hover-color($danger-color);
 			}
 		}
 	}

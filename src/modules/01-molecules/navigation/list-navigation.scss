@@ -16,7 +16,7 @@
       min-width: 200px;
       border-left: 2px solid transparent;
       &:hover {
-        @include bright-gray($dark-color);
+        background-color: bright-gray($dark-color);
         cursor: pointer;
       }
       &.active {

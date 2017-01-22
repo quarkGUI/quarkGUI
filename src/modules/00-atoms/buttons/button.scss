@@ -24,10 +24,10 @@
 	@include transition(all .2s .1s);
 
 	&:not([disabled]):hover {
-		@include bright-gray($dark-color);
+		background-color: bright-gray($dark-color);
 	}
 	&:not([disabled]):active {
-		@include bright-color($primary-color);
+		background-color: bright-color($primary-color);
 	}
 	&[disabled] {
 		color: rgba(0, 0, 0, 0.26);
@@ -42,7 +42,7 @@
 	}
 	&:not([disabled]):active {
 		@include box-shadow(0 4px 8px 0 rgba(0, 0, 0, .4));
-		@include bright-color($primary-color);
+		background-color: bright-color($primary-color);
 	}
 	&[disabled] {
 		color: rgba(0, 0, 0, 0.26);
@@ -55,14 +55,14 @@
 	color: #333;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
-		background-color: #f8f9fa;
+		background-color: $default-hover-color;
 	}
 	&:not([disabled]):active {
-		background-color: #fbfcfd;
+		background-color: $default-active-color;
 	}
 	&:local(.buttonTypeFlat) {
 		&:not([disabled]):active {
-			background-color: #fbfcfd;
+			background-color: $default-active-color;
 		}
 	}
 }
@@ -73,14 +73,14 @@
 	color: #FFFFFF !important;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
-		@include hover-color($primary-color);
+		background-color: hover-color($primary-color);
 	}
 	&:not([disabled]):active {
-		@include active-color($primary-color);
+		background-color: active-color($primary-color);
 	}
 	&:local(.buttonTypeFlat) {
 		&:not([disabled]):active {
-			@include active-color($primary-color);
+			background-color: active-color($primary-color);
 		}
 	}
 }
@@ -91,14 +91,14 @@
 	color: #FFFFFF !important;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
-		@include hover-color($info-color);
+		background-color: hover-color($info-color);
 	}
 	&:not([disabled]):active {
-		@include active-color($info-color);
+		background-color: active-color($info-color);
 	}
 	&:local(.buttonTypeFlat) {
 		&:not([disabled]):active {
-			@include active-color($info-color);
+			background-color: active-color($info-color);
 		}
 	}
 }
@@ -109,14 +109,14 @@
 	color: #FFFFFF !important;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
-		@include hover-color($success-color);
+		background-color: hover-color($success-color);
 	}
 	&:not([disabled]):active {
-		@include active-color($success-color);
+		background-color: active-color($success-color);
 	}
 	&:local(.buttonTypeFlat) {
 		&:not([disabled]):active {
-			@include active-color($success-color);
+			background-color: active-color($success-color);
 		}
 	}
 }
@@ -127,14 +127,14 @@
 	color: #FFFFFF !important;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
-		@include hover-color($warning-color);
+		background-color: hover-color($warning-color);
 	}
 	&:not([disabled]):active {
-		@include active-color($warning-color);
+		background-color: active-color($warning-color);
 	}
 	&:local(.buttonTypeFlat) {
 		&:not([disabled]):active {
-			@include active-color($warning-color);
+			background-color: active-color($warning-color);
 		}
 	}
 }
@@ -145,14 +145,14 @@
 	color: #FFFFFF !important;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
-		@include hover-color($danger-color);
+		background-color: hover-color($danger-color);
 	}
 	&:not([disabled]):active {
-		@include active-color($danger-color);
+		background-color: active-color($danger-color);
 	}
 	&:local(.buttonTypeFlat) {
 		&:not([disabled]):active {
-			@include active-color($danger-color);
+			background-color: active-color($danger-color);
 		}
 	}
 }

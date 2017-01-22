@@ -6,7 +6,7 @@
 	margin: 0;
 	&:local(.hover){
 		:local(.listItem):hover{
-			@include bright-gray($dark-color);
+			background-color: bright-gray($dark-color);
 		}
 	}
 	:local(.listItem){
