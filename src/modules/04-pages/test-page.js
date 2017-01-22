@@ -2,6 +2,7 @@ var style = require('../../style/globalStyle.scss');
 
 import Header from '../03-templates/header';
 import Sidebar from '../03-templates/sidebar';
+import Global from '../03-templates/global';
 import Atoms from '../03-templates/atoms';
 import Molecules from '../03-templates/molecules';
 import Organisms from '../03-templates/organisms';
@@ -20,22 +21,24 @@ export default function(){
 			<div class="${style.mainContent}">
 				<h1>Home</h1>
 
+				<section id="global">
+					${Global()}
+				</section>
+
 				<section id="atoms">
 					<h2>Atoms</h2>
 					${Atoms()}
 				</section>
 
-				<span>Atoms</span>
+				<section id="molecules">
+					<h2>Molecules</h2>
+					${Molecules()}
+				</section>
 
-				<h2 id="molecules">Molecules</h2>
-				${Molecules()}
-
-				<h2 id="organisms">Organisms</h2>
-				${Organisms()}
-
-				<h2 id="templates">Templates</h2>
-
-				<h2 id="pages">Pages</h2>
+				<section id="organisms">
+					<h2>Organisms</h2>
+					${Organisms()}
+				</section>
 				
 			</div>
 		</main>

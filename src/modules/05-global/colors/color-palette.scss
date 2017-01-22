@@ -1,0 +1,235 @@
+@import "./src/style/abstracts/all";
+
+
+
+:local(.colorPalette){
+	:local(.color){
+		padding: 8px;
+		text-align: center;
+		:local(.colorCode):before{
+			color: #FFF;
+		}
+		:local(.colorCode):after{
+			text-transform: uppercase;
+			color: #FFF;
+		}
+	}
+
+	:local(.normalState){
+		:local(.color){
+			:local(.colorCode):before{
+				content: "normal";
+				display: block;
+			}
+		}
+	}
+
+	:local(.hoverState){
+		:local(.color){
+			:local(.colorCode):before{
+				content: "hover";
+				display: block;
+			}
+		}
+	}
+
+	:local(.activeState){
+		:local(.color){
+			:local(.colorCode):before{
+				content: "active";
+				display: block;
+			}
+		}
+	}
+
+	:local(.colorCode){
+	}
+
+	&:local(.defaultColor){
+		:local(.colorCode):before,
+		:local(.colorCode):after{
+			color: $default-text-color;
+		}
+		:local(.normalState){
+			:local(.color){
+				background-color: $default-color;
+				:local(.colorCode):after{
+					content: "" + $default-color + "";
+				}
+			}
+			
+		}
+		:local(.hoverState){
+			:local(.color){
+				background-color: $default-hover-color;
+				:local(.colorCode):after{
+					content: "" + $default-hover-color + "";
+				}
+			}
+			
+		}
+		:local(.activeState){
+			:local(.color){
+				background-color: $default-active-color;
+				:local(.colorCode):after{
+					content: "" + $default-active-color "";
+				}
+			}
+			
+		}
+	}
+
+	&:local(.primaryColor){
+		:local(.normalState){
+			:local(.color){
+				background-color: $primary-color;
+				:local(.colorCode):after{
+					content: "" + $primary-color + "";
+				}
+			}
+			
+		}
+		:local(.hoverState){
+			:local(.color){
+				background-color: hover-color($primary-color);
+				:local(.colorCode):after{
+					content: "" + hover-color($primary-color) + "";
+				}
+			}
+			
+		}
+		:local(.activeState){
+			:local(.color){
+				background-color: active-color($primary-color);
+				:local(.colorCode):after{
+					content: "" + active-color($primary-color) + "";
+				}
+			}
+			
+		}
+	}
+
+	&:local(.infoColor){
+		:local(.normalState){
+			:local(.color){
+				background-color: $info-color;
+				:local(.colorCode):after{
+					content: "" + $info-color + "";
+				}
+			}
+			
+		}
+		:local(.hoverState){
+			:local(.color){
+				background-color: hover-color($info-color);
+				:local(.colorCode):after{
+					content: "" + hover-color($info-color) + "";
+				}
+			}
+			
+		}
+		:local(.activeState){
+			:local(.color){
+				background-color: active-color($info-color);
+				:local(.colorCode):after{
+					content: "" + active-color($info-color) + "";
+				}
+			}
+			
+		}
+	}
+
+	&:local(.successColor){
+		:local(.normalState){
+			:local(.color){
+				background-color: $success-color;
+				:local(.colorCode):after{
+					content: "" + $success-color + "";
+				}
+			}
+			
+		}
+		:local(.hoverState){
+			:local(.color){
+				background-color: hover-color($success-color);
+				:local(.colorCode):after{
+					content: "" + hover-color($success-color) + "";
+				}
+			}
+			
+		}
+		:local(.activeState){
+			:local(.color){
+				background-color: active-color($success-color);
+				:local(.colorCode):after{
+					content: "" + active-color($success-color) + "";
+				}
+			}
+			
+		}
+	}
+
+	&:local(.warningColor){
+		:local(.normalState){
+			:local(.color){
+				background-color: $warning-color;
+				:local(.colorCode):after{
+					content: "" + $warning-color + "";
+				}
+			}
+			
+		}
+		:local(.hoverState){
+			:local(.color){
+				background-color: hover-color($warning-color);
+				:local(.colorCode):after{
+					content: "" + hover-color($warning-color) + "";
+				}
+			}
+			
+		}
+		:local(.activeState){
+			:local(.color){
+				background-color: active-color($warning-color);
+				:local(.colorCode):after{
+					content: "" + active-color($warning-color) + "";
+				}
+			}
+			
+		}
+	}
+
+	&:local(.dangerColor){
+		:local(.normalState){
+			:local(.color){
+				background-color: $danger-color;
+				:local(.colorCode):after{
+					content: "" + $danger-color + "";
+				}
+			}
+			
+		}
+		:local(.hoverState){
+			:local(.color){
+				background-color: hover-color($danger-color);
+				:local(.colorCode):after{
+					content: "" + hover-color($danger-color) + "";
+				}
+			}
+			
+		}
+		:local(.activeState){
+			:local(.color){
+				background-color: active-color($danger-color);
+				:local(.colorCode):after{
+					content: "" + active-color($danger-color) + "";
+				}
+			}
+			
+		}
+	}
+}
+
+.card :local(.colorPalette){
+	margin: -15px;
+}
