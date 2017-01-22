@@ -16,7 +16,7 @@ export default function(card){
 	if (theme == 'danger') 	themeClass = style.cardThemeDanger;
 
 	return `
-		<div class="${style.card} ${themeClass}">
+		<div class="card ${style.card} ${themeClass}">
 			<div class="${style.cardHeader}">
 				<span class="${style.cardHeaderTitle}">${title}</span>
 			</div>
