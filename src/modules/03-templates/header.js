@@ -6,7 +6,7 @@ export default function(){
 
 	return ` 
 		${Header({
-			theme: 'dark',
+			theme: 'primary',
 			logo: {
 				image: {
 					src: require('../../img/svg/GUI-blocks-vertical-white.svg'),
