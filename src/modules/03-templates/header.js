@@ -9,7 +9,7 @@ export default function(){
 			theme: 'primary',
 			logo: {
 				image: {
-					src: require('../../img/svg/GUI-blocks-vertical-white.svg'),
+					src: require('../../img/svg/quark-GUI-logo-white.svg'),
 					alt: 'logo'
 				},
 				url: '/'
