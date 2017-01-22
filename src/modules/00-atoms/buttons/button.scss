@@ -53,6 +53,7 @@
 :local(.buttonThemeDefault):visited {
 	background-color: $default-color;
 	color: #333;
+	border: 1px solid border-color($default-color);
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
 		background-color: $default-hover-color;
