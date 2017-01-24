@@ -1,6 +1,7 @@
 var style = require('../../style/globalStyle.scss');
 
 import InputField from '../00-atoms/form-elements/input-field';
+import SelectList from '../00-atoms/form-elements/select-list';
 import Button from '../00-atoms/buttons/button';
 import Checkbox from '../00-atoms/form-elements/checkbox';
 import RadioButton from '../00-atoms/form-elements/radio-button';
@@ -8,7 +9,6 @@ import RadioButton from '../00-atoms/form-elements/radio-button';
 export default function(){
 
 	return ` 
-		<section id="atoms-buttons">
 			<h3>Buttons</h3>
 
 			<h4>Flat buttons</h4>
@@ -96,7 +96,7 @@ export default function(){
 				theme: 'danger',
 				content: 'Danger button'
 			})}
-		</section>
+
 		<h3 id="atoms-form-elements">Form elements</h3>
 		<h4>Input field</h4>
 		${InputField({
@@ -128,6 +128,24 @@ export default function(){
 			id: 'atom-radio2',
 			name: 'atom-radio-buttons',
 			value: 'two'
+		})}
+
+		<h4>Select list</h4>
+		${SelectList({
+			id: 'atom-select1',
+			name: 'atom-selectname1',
+			type: 'text',
+			placeholder: 'Placeholder text here',
+			options: [
+				{
+					name: 'first',
+					value: 'first'
+				},
+				{
+					name: 'second',
+					value: 'second'
+				}
+			]
 		})}
 `
 	
