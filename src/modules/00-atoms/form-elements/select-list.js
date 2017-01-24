@@ -38,31 +38,27 @@ export default function(selectList){
 		var selectListElement = document.getElementById(id) !== undefined ? document.getElementById(id) : false;
 		var inputFieldElement = document.getElementById(inputField.id) !== undefined ? document.getElementById(inputField.id) : false;
 		var dropdownListElement = document.getElementById(dropdownList.id) !== undefined ? document.getElementById(dropdownList.id) : false;
+		
 		if (inputFieldElement){
 			inputFieldElement.onfocus = function(){
 				dropdownListElement.classList.add("active");
+				dropdownListElement.classList.remove("transparent")
 				var dropdownElementHeight = dropdownListElement.offsetHeight;
 				dropdownListElement.style.marginBottom = 0-dropdownElementHeight + 'px';
 			};
-			
-			// Custom onblur function
-			if (selectListElement){
-				selectListElement.onclick = function(event){
-					var parentNodeClassList = event.target.parentNode.classList;
-					var targetIsNotSelectList = true;
-					
-					if (event.target.id == inputField.id) { // Check if target is input field;
-						targetIsNotSelectList = false;
-					}else{ // Check if target is dropdown list
-						parentNodeClassList.forEach(function (className){
-							if (className == style.dropdownList) targetIsNotSelectList = false;
-						});
-					}
 
-					if (targetIsNotSelectList) dropdownListElement.classList.remove("active");
-				}
+			inputFieldElement.onblur = function(event){
+				dropdownListElement.classList.add("transparent")
+				setTimeout(function(){ 
+					if (inputFieldElement !== document.activeElement){
+						dropdownListElement.classList.remove("active")
+						dropdownListElement.classList.remove("transparent")
+					}
+				}, 1000);
+				
 			}
 		}
+
 		if (dropdownListElement){
 			dropdownListElement.addEventListener('click', function (e) {
 			    var target = e.target; // Clicked element

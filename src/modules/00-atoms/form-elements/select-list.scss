@@ -12,6 +12,9 @@
     &.active {
         display: block;
     }
+    &.transparent{
+        opacity: 0;
+    }
     > li {
         display: block;
         color: #212121;
