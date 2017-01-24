@@ -35,6 +35,7 @@ export default function(selectList){
 	if (options) optionElements = createOptionElements(selectList.options);
 
 	document.addEventListener('DOMContentLoaded', function() {
+		var selectListElement = document.getElementById(id) !== undefined ? document.getElementById(id) : false;
 		var inputFieldElement = document.getElementById(inputField.id) !== undefined ? document.getElementById(inputField.id) : false;
 		var dropdownListElement = document.getElementById(dropdownList.id) !== undefined ? document.getElementById(dropdownList.id) : false;
 		if (inputFieldElement){
@@ -45,19 +46,21 @@ export default function(selectList){
 			};
 			
 			// Custom onblur function
-			document.onclick = function(event){
-				var parentNodeClassList = event.target.parentNode.classList;
-				var targetIsNotSelectList = true;
-				
-				if (event.target.id == inputField.id) { // Check if target is input field;
-					targetIsNotSelectList = false;
-				}else{ // Check if target is dropdown list
-					parentNodeClassList.forEach(function (className){
-						if (className == style.dropdownList) targetIsNotSelectList = false;
-					});
-				}
+			if (selectListElement){
+				selectListElement.onclick = function(event){
+					var parentNodeClassList = event.target.parentNode.classList;
+					var targetIsNotSelectList = true;
+					
+					if (event.target.id == inputField.id) { // Check if target is input field;
+						targetIsNotSelectList = false;
+					}else{ // Check if target is dropdown list
+						parentNodeClassList.forEach(function (className){
+							if (className == style.dropdownList) targetIsNotSelectList = false;
+						});
+					}
 
-				if (targetIsNotSelectList) dropdownListElement.classList.remove("active");
+					if (targetIsNotSelectList) dropdownListElement.classList.remove("active");
+				}
 			}
 		}
 		if (dropdownListElement){
@@ -79,10 +82,12 @@ export default function(selectList){
 	}, false);
 
 	return `
-		${InputField(inputField)}
-		<ul id="${dropdownList.id}" class="${style.dropdownList}">
-			${optionElements}
-		</ul>
+		<div id="${id}">
+			${InputField(inputField)}
+			<ul id="${dropdownList.id}" class="${style.dropdownList}">
+				${optionElements}
+			</ul>
+		</div>
 	`;
 
 }
