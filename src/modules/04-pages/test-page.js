@@ -21,7 +21,7 @@ export default function(){
 			<div class="${style.mainContent}">
 				<h1>Home</h1>
 
-				<section id="global">
+				<section>
 					${Global()}
 				</section>
 
