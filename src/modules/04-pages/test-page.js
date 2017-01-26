@@ -6,6 +6,7 @@ import Global from '../03-templates/global';
 import Atoms from '../03-templates/atoms';
 import Molecules from '../03-templates/molecules';
 import Organisms from '../03-templates/organisms';
+import Footer from '../03-templates/footer';
 
 
 export default function(){
@@ -39,9 +40,10 @@ export default function(){
 					<h2>Organisms</h2>
 					${Organisms()}
 				</section>
-				
 			</div>
+			${Footer()}
 		</main>
+
 `
 	
 }
