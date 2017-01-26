@@ -29,6 +29,9 @@
     visibility: hidden;
     position: absolute;
     top: 48px;
+    a{
+      color: $default-text-color;
+    }
     @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.26));
     @media only screen and (min-width: $screen-sm) {
       top: 64px;
@@ -65,6 +68,7 @@
         border-bottom: 6px solid $primary-color;
       }
     }
+    :local(.dropdownContent) a{color: $default-text-color;}
   }
   &:local(.listThemePrimary){
     background-color: $primary-color;
@@ -77,6 +81,7 @@
         border-bottom: 6px solid #FFF;
       }
     }
+    :local(.dropdownContent) a{color: $default-text-color;}
   }
   &:local(.listThemeDark){
     background-color: $dark-color;
@@ -89,5 +94,8 @@
         border-bottom: 6px solid #FFF;
       }
     }
+    :local(.dropdownContent) a{color: $default-text-color;}
   }
 }
+
+:local(.dropdownContent) a{color: $default-text-color;}

@@ -11,18 +11,29 @@
   &:local(.headerThemeDefault){
     background-color: #FFFFFF;
     color: $primary-color;
+    a{
+      color: $primary-color;
+    }
   }
   &:local(.headerThemePrimary){
     background-color: $primary-color;
     color: #FFFFFF;
+    a{
+      color: #FFFFFF;
+    }
   }
   &:local(.headerThemeDark){
     background-color: $dark-color;
     color: #FFFFFF;
+    color: #FFFFFF;
+    a{
+      color: #FFFFFF;
+    }
   }
   :local(.logo) {
     display: block;
     padding: 2px 0;
+    margin-left: 15px;
     vertical-align: bottom;
     width: 100%;
     position: absolute;
