@@ -20,7 +20,7 @@ export default function(){
 
 		<main id="mainContent">
 			<div class="${style.mainContent}">
-				<h1>Home</h1>
+				<h1>quarkGUI</h1>
 
 				<section>
 					${Global()}

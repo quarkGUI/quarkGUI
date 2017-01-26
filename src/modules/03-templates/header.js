@@ -10,7 +10,7 @@ export default function(){
 			logo: {
 				image: {
 					src: require('../../img/svg/quark-GUI-logo-white.svg'),
-					alt: 'logo'
+					alt: 'quarkGUI logo'
 				},
 				url: '/'
 			},
