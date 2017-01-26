@@ -17,11 +17,11 @@ export default function(){
 			primaryNavigation: {
 				listItems: [
 					{
-						name: "Atoms",
+						name: "Link",
 						link: "#"
 					}, 
 					{
-						name: "Molecules",
+						name: "Dropdown",
 						link: "#",
 						dropdownContent: {
 							listItems: [
@@ -44,30 +44,6 @@ export default function(){
 							]
 						}
 
-					}, 
-					{
-						name: "Organisms",
-						link: "#",
-						dropdownContent: {
-							listItems: [
-								{
-									name: "Header",
-									link: "#"
-								},
-								{
-									name: "Sidebar",
-									link: "#"
-								},
-								{
-									name: "Action bar",
-									link: "#"
-								},
-								{
-									name: "List menu",
-									link: "#"
-								}
-							]
-						}
 					}
 				]
 			}
