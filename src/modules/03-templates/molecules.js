@@ -3,6 +3,7 @@ var style = require('../../style/globalStyle.scss');
 import InputField from '../01-molecules/form-elements/input-field';
 import Checkbox from '../01-molecules/form-elements/checkbox';
 import RadioButton from '../01-molecules/form-elements/radio-button';
+import SelectList from '../01-molecules/form-elements/select-list';
 import ButtonRow from '../01-molecules/buttons/button-row';
 
 export default function(){
@@ -67,6 +68,25 @@ export default function(){
 			name: 'molecule-radio-buttons',
 			value: 'two',
 			label: 'Radio button 2'
+		})}
+
+		<h4>Select list</h4>
+		${SelectList({
+			id: 'molecule-select1',
+			name: 'molecule-selectname1',
+			type: 'text',
+			placeholder: 'Placeholder text here',
+			label: 'Label for select list',
+			options: [
+				{
+					name: 'first',
+					value: 'first'
+				},
+				{
+					name: 'second',
+					value: 'second'
+				}
+			]
 		})}
 `
 	

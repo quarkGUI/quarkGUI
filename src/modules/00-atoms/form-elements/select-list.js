@@ -20,6 +20,8 @@ export default function(selectList){
 	var placeholder = selectList.placeholder !== undefined ? selectList.placeholder	: '';
 	var options     = selectList.options     !== undefined ? selectList.options     : false;
 
+	var labelElement = selectList.labelElement !== undefined ? selectList.labelElement : '';
+
 	var inputField = {
 		id: selectList.id + '-input',
 		type: 'text',
@@ -40,6 +42,11 @@ export default function(selectList){
 		var dropdownListElement = document.getElementById(dropdownList.id) !== undefined ? document.getElementById(dropdownList.id) : false;
 		
 		if (inputFieldElement){
+			inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
+			inputFieldElement.onkeyup = function(){
+				inputFieldElement.value.length ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");				
+			};
+
 			inputFieldElement.onfocus = function(){
 				dropdownListElement.classList.add("active");
 				dropdownListElement.classList.remove("transparent")
@@ -79,7 +86,7 @@ export default function(selectList){
 
 	return `
 		<div id="${id}">
-			${InputField(inputField)}
+			${InputField(inputField)} ${labelElement}
 			<ul id="${dropdownList.id}" class="${style.dropdownList}">
 				${optionElements}
 			</ul>
