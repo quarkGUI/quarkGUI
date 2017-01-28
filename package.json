@@ -44,5 +44,8 @@
   "bugs": {
     "url": "https://github.com/benjamindehli/webpack-sass-atomic-design/issues"
   },
-  "homepage": "https://github.com/benjamindehli/webpack-sass-atomic-design#readme"
+  "homepage": "https://github.com/benjamindehli/webpack-sass-atomic-design#readme",
+  "dependencies": {
+    "dragula": "^3.7.2"
+  }
 }
