@@ -1,0 +1,24 @@
+@import "./src/style/abstracts/all";
+@import "node_modules/dragula/dist/dragula";
+
+:local(.dragableList){
+	font-size: 14pt;
+	background-color: $bright-white;
+	:local(.listItem) {
+		color: $default-text-color;
+		padding: 10px;
+		border-bottom: 1px solid rgba(0, 0, 0, .1);
+		@include transition(background-color .2s);
+		&:hover {
+			background-color: bright-gray($dark-color);
+			cursor: pointer;
+		}
+		&.active {
+			border-left: 2px solid $primary-color;
+		}
+		a{
+			color: $default-text-color;
+			text-decoration: none;
+		}
+	}
+}

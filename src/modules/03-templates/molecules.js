@@ -5,6 +5,7 @@ import Checkbox from '../01-molecules/form-elements/checkbox';
 import RadioButton from '../01-molecules/form-elements/radio-button';
 import SelectList from '../01-molecules/form-elements/select-list';
 import ButtonRow from '../01-molecules/buttons/button-row';
+import DragableList from '../01-molecules/lists/dragable-list';
 
 export default function(){
 
@@ -86,6 +87,18 @@ export default function(){
 					name: 'second',
 					value: 'second'
 				}
+			]
+		})}
+
+
+		<h3>Lists</h3>
+		<h4>Dragable list</h4>
+		${DragableList({
+			id: 'dragable-list1',
+			listItems: [
+				{ content: `first list item content` },
+				{ content: `second list item content` },
+				{ content: `third list item content` }
 			]
 		})}
 `
