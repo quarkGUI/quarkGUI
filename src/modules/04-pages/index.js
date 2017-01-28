@@ -11,7 +11,7 @@ export default function(){
 		<main id="mainContent">
 			<div class="${style.mainContent}">
 				<h1>quarkGUI</h1>
-				<p>Description</p>
+				<p></p>
 				<h2>Modules</h2>
 				${ListMenu({
 					id: 'index-listmenu',

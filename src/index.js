@@ -14,7 +14,7 @@ Object.keys(fontFamilies).forEach(function(family) {
 		fontFamilies[family].map(function(config) {
 			return new FontFaceObserver(family, config).load()
 		})
-		); 
+	); 
 }); 
 
 Promise.all(fontObservers).then(function() { 
@@ -30,12 +30,8 @@ var app = document.getElementById('app');
 app.innerHTML = IndexPage();
 
 
-
-
-
 function initModuleTargetUrls(){
 	var pageLinks = document.getElementsByClassName('loadPage') !== undefined ? document.getElementsByClassName('loadPage') : false;
-	console.log("initModuleTargetUrls");
 	if (pageLinks){
 		for (var i = 0; i < pageLinks.length; i++) {
 			pageLinks[i].addEventListener('click', (event) => {
@@ -48,9 +44,7 @@ function initModuleTargetUrls(){
 					System.import('' + targetPage)
 						.then(pageModule => {
 							document.getElementById('mainContent').innerHTML = pageModule.default;
-							// Create the event
 							var event = new CustomEvent("module-lazy-loaded", { "detail": "One or more modules has been lazy loaded" });
-							// Dispatch/Trigger/Fire the event
 							document.dispatchEvent(event);
 						})
 				}
@@ -58,16 +52,6 @@ function initModuleTargetUrls(){
 		}
 	}
 }
-
-
-
-// Add an event listener
-/*document.addEventListener("module-lazy-loaded", function(e) {
-  console.log(e.detail); // Prints "Example of an event"
-  initModuleTargetUrls();
-});
-
-*/
 
 
 document.addEventListener('DOMContentLoaded', function() {
