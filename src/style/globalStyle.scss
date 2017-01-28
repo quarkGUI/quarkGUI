@@ -1,6 +1,6 @@
 @import "abstracts/all";
-@import "reset";
 @import "helpers";
+@import "reset";
 @import "font-awesome";
 
 @font-face {
@@ -44,6 +44,7 @@ h3{ font-size: 1.3em }
 
 a{
 	color: $primary-color;
+	cursor: pointer;
 	&:hover{
 		color: hover-color($primary-color);
 	}
