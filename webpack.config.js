@@ -15,16 +15,23 @@ var cssFileName = PRODUCTION ? 'style-[contenthash:10].css' : 'styles.css';
 var scriptFileName = PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js';
 
 var entry = PRODUCTION || DOCS
-	?	[ './src/index.js' ]
-	: 	[ 
-			'./src/index.js',
-			'webpack/hot/dev-server',
-			'webpack-dev-server/client?http://localhost:8080'
-		];
+	?	{
+			vendor: ['dragula'],
+			app: [ './src/index.js' ]
+		}
+	: 	{
+			vendor: ['dragula'],
+			app: [ 
+				'./src/index.js',
+				'webpack/hot/dev-server',
+				'webpack-dev-server/client?http://localhost:8080'
+			]
+		};
 
 
 var plugins = PRODUCTION || DOCS
 	? 	[
+		    new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename: "scripts/vendor.[hash:12].min.js"}),
 			new webpack.optimize.UglifyJsPlugin({
 				compress: {
 					warnings: false,
@@ -49,6 +56,7 @@ var plugins = PRODUCTION || DOCS
 		    })
 		]
 	: 	[ 
+			new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename: "vendor.js"}),
 			new ExtractTextPlugin(cssFileName), 
 			new webpack.HotModuleReplacementPlugin() 
 		];
