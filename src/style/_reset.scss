@@ -1,5 +1,7 @@
 * {
-	@include box-sizing(border-box);
+	-webkit-box-sizing: border-box; // Safari <= 5
+	-moz-box-sizing: border-box; // Firefox <= 19
+	box-sizing: border-box;
 }
 
 html {
@@ -28,5 +30,7 @@ input[type="submit"]{
 }
 
 input{
-	@include appearance(none);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }

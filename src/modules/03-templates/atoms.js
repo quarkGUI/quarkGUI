@@ -9,9 +9,9 @@ import RadioButton from '../00-atoms/form-elements/radio-button';
 export default function(){
 
 	return ` 
-			<h3>Buttons</h3>
+			<h2>Buttons</h2>
 
-			<h4>Flat buttons</h4>
+			<h3>Flat buttons</h3>
 			${Button({
 				id: 'button1',
 				type: 'flat',
@@ -54,7 +54,7 @@ export default function(){
 				content: 'Danger button'
 			})}
 
-			<h4>Raised buttons</h4>
+			<h3>Raised buttons</h3>
 			${Button({
 				id: 'button1',
 				type: 'raised',
@@ -97,8 +97,8 @@ export default function(){
 				content: 'Danger button'
 			})}
 
-		<h3 id="atoms-form-elements">Form elements</h3>
-		<h4>Input field</h4>
+		<h2>Form elements</h2>
+		<h3>Input field</h3>
 		${InputField({
 			id: 'atom-input1',
 			name: 'atom-inputname1',
@@ -106,7 +106,7 @@ export default function(){
 			placeholder: 'Placeholder text here'
 		})}
 
-		<h4>Checkbox</h4>
+		<h3>Checkbox</h3>
 		${Checkbox({
 			id: 'atom-checkbox1',
 			name: 'atom-checkboxes',
@@ -118,7 +118,7 @@ export default function(){
 			value: 'two'
 		})}
 
-		<h4>Radio button</h4>
+		<h3>Radio button</h3>
 		${RadioButton({
 			id: 'atom-radio1',
 			name: 'atom-radio-buttons',
@@ -130,7 +130,7 @@ export default function(){
 			value: 'two'
 		})}
 
-		<h4>Select list</h4>
+		<h3>Select list</h3>
 		${SelectList({
 			id: 'atom-select1',
 			name: 'atom-selectname1',

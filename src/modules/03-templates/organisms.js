@@ -9,8 +9,8 @@ import Grid from '../01-molecules/sections/grid';
 export default function(){
 
 	return ` 
-		<h3>Menus</h3>
-		<h4>List menu</h4>
+		<h2>Menus</h2>
+		<h3>List menu</h3>
 		${ListMenu({
 			id: 'list-menu1',
 			listItems: [
@@ -57,7 +57,7 @@ export default function(){
 				}
 			]
 		})}
-		<h4>Action bar</h4>
+		<h3>Action bar</h3>
 		${ActionBar({
 			theme: 'primary',
 			actionButton:{
@@ -97,8 +97,8 @@ export default function(){
 			}
 		})}
 
-		<h3>Cards</h3>
-		<h4>Card</h4>
+		<h2>Cards</h2>
+		<h3>Card</h3>
 		${Grid({
 			gridItems:[
 				{

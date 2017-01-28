@@ -15,12 +15,23 @@ export default function(){
 			sidebarNavigation: {
 				listItems: [
 					{
-						name: "testlink1",
-						link: "https://github.com/"
+						id: "loadPageGlobal",
+						name: "Global",
+						link: "./modules/04-pages/global"
+					},
+					{
+						id: "loadPageAtoms",
+						name: "Atoms",
+						link: "./modules/04-pages/atoms"
 					}, 
 					{
-						name: "testlink2",
-						link: "https://github.com/"
+						id: "loadPageMolecules",
+						name: "Molecules",
+						link: "./modules/04-pages/molecules"
+					}, {
+						id: "loadPageOrganisms",
+						name: "Organisms",
+						link: "./modules/04-pages/organisms"
 					}
 				]
 			}

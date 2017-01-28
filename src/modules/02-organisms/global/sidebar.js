@@ -16,6 +16,7 @@ export default function(sidebarItems){
 
 	return `
 		<aside class="${style.sidebar}">
+			<div class="${style.sidebarOverlay}"></div>
 			<div class="${style.sidebarContent}">
 				${sidebarNavigation}
 			</div>

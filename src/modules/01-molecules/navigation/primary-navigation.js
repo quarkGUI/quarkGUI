@@ -16,7 +16,7 @@ function createListElements(listItems){
 		if (hasDropdown(listItem)){
 			dropdownContent = `<div class="${style.dropdownContent}">${ListNavigation(listItem.dropdownContent)}<div>`;
 			dropdownClass = `${style.hasDropdown}`;
-			listElement = `<li class="${dropdownClass}"><span>${listItem.name}</span>${dropdownContent}</li>`;
+			listElement = `<li class="overlay-element ${dropdownClass}"><span>${listItem.name}</span>${dropdownContent}</li>`;
 		}else{
 			listElement = `<li><a href="${listItem.link}">${listItem.name}</a></li>`;
 		}
@@ -27,6 +27,7 @@ function createListElements(listItems){
 
 export default function(primaryNavigation){
 
+	var id    = primaryNavigation.id    !== undefined ? primaryNavigation.id    : '';
 	var theme = primaryNavigation.theme !== undefined ? primaryNavigation.theme : '';
 	
 	var listElements = '';
@@ -44,16 +45,6 @@ export default function(primaryNavigation){
 				var dropdownElements = navigationElement.getElementsByClassName(style.dropdownContent);
 				var dropdownElement = dropdownElements[0];
 
-				document.onclick = function(event){
-					for (var i = 0; i < navigationElements.length; i++) {
-						navigationElements[i].classList.remove('active');
-					}
-					var parentNodeClassList = event.target.parentNode.classList;
-					parentNodeClassList.forEach(function (className){
-						if (className == style.hasDropdown) parentNodeClassList.add('active');
-					});
-				}
-
 				var navigationElementWidth = navigationElements[i].offsetWidth;
 				var dropdownElementWidth = dropdownElements[0].offsetWidth;
 				var widthDif = navigationElementWidth - dropdownElementWidth;
@@ -65,7 +56,7 @@ export default function(primaryNavigation){
 
 
 	return `
-		<ul class="${style.list} ${themeClass}">
+		<ul id="${id}"" class="${style.list} ${themeClass}">
 			${listElements}
 		</ul>
 	`

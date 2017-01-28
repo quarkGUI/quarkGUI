@@ -3,7 +3,12 @@ var style = require('./sidebar-navigation.scss');
 function createListElements(listItems){
 	var listElements = "";
 	listItems.forEach(function(listItem){
-		listElements += `<li><a href="${listItem.link}">${listItem.name}</a></li>`;
+		var id         =   listItem.id       !== undefined ? `id="${listItem.id}"` : '';
+		var name       = listItem.name       !== undefined ? listItem.name : '';
+		var link       = listItem.link       !== undefined ? `href="${listItem.link}"` : '';
+		var moduleLink = listItem.moduleLink !== undefined ? `data-module-target="${listItem.moduleLink}"` : '';
+
+		listElements += `<li><a class="loadPage" ${id} ${link} ${moduleLink}>${name}</a></li>`;
 	});
 	return listElements;
 }

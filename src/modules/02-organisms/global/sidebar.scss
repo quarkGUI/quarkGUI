@@ -1,11 +1,24 @@
 @import "./src/style/abstracts/all";
 
+:local(.sidebarOverlay){
+  display: none;
+  position: fixed;
+  background-color: rgba(0,0,0,.2);
+  width: 100%;
+  height: 100%;
+  @media only screen and (min-width: $screen-sm) {
+    top: 64px;
+  }
+}
+.active :local(.sidebarOverlay){
+  display: block;
+}
 :local(.sidebar) {
-  float: left;
-  width: 300px;
-  @include transition(all .2s);
-  margin-left: -300px;
+  position: fixed;
+
   :local(.sidebarContent) {
+    width: 300px;
+    left: -300px;
     background-color: $bright-white;
     padding: 0;
     position: fixed;
@@ -14,6 +27,7 @@
     overflow: hidden;
     top: 0;
     z-index: 3;
+    @include transition(all .2s);
     .sidenav-logo {
       height: 48px;
       img {
@@ -30,26 +44,27 @@
   }
 }
 
-body.sidebar-active :local(.sidebar) {
-  margin-left: 0;
+.active :local(.sidebar) {
+
   :local(.sidebarContent) {
+    left: 0;
     @include box-shadow(0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4));
   }
 }
 
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: $screen-sm) {
   :local(.sidebar) {
-    width: 245px;
-    margin-left: -245px;
     :local(.sidebarContent) {
       top: 64px;
+      width: 245px;
+      left: -245px;
     }
     .sidenav-logo {
       display: none;
     }
   }
-  body.sidebar-active :local(.sidebar) {
+  .active :local(.sidebar) {
     :local(.sidebarContent) {
       @include box-shadow(2px 3px 5px rgba(0, 0, 0, .26));
     }

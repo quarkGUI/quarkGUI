@@ -1,14 +1,21 @@
 import PrimaryNavigation from '../../01-molecules/navigation/primary-navigation';
 import Image from '../../00-atoms/media/image';
+import Sidebar from './sidebar';
 
 var style = require('./header.scss');
 
 export default function(headerItems){
 
-	var theme = headerItems.theme !== undefined ? headerItems.theme	: '';
-	var logoUrl = headerItems.logo.url !== undefined ? headerItems.logo.url	: '';
+	var id            = headerItems.id              !== undefined ? headerItems.id              : '';
+	var theme         = headerItems.theme           !== undefined ? headerItems.theme	        : '';
+	var logoUrl       = headerItems.logo.link       !== undefined ? headerItems.logo.link	    : false;
+	var logoId        = headerItems.logo.id         !== undefined ? headerItems.logo.id         : '';
 	var primaryNavigationObj = headerItems.primaryNavigation !== undefined ? headerItems.primaryNavigation : {};
 	
+	primaryNavigationObj.id = id + '-primary-navigation';
+
+	var logoUrlAttribute = logoUrl ? `href="${logoUrl}"` : '';
+
 	var logoImage = '';
 	if (headerItems.logo.image !== undefined) logoImage = Image(headerItems.logo.image);
 
@@ -27,18 +34,16 @@ export default function(headerItems){
 
 
 	document.addEventListener('DOMContentLoaded', function() {
-		var element = document.getElementById('sidebarToggle') !== undefined ? document.getElementById('sidebarToggle') : false;
-		if (element){
-			element.onclick = function(){
-				document.body.classList.toggle('sidebar-active');				
-			};
-		}
+		var sidebarToggleElement = document.getElementById('sidebarToggle') !== undefined ? document.getElementById('sidebarToggle') : false;
+		
 	}, false);
 
 	return `
 		<header class="${style.navbar} ${themeClass}">
-			<a id="sidebarToggle" class="${style.sidenavToggle}"></a>
-			<a href="${logoUrl}" class="${style.logo}">
+			<div id="sidebarToggle" class="overlay-element ${style.sidenavToggle}">
+				${Sidebar(headerItems.sidebar)}
+			</div>
+			<a id="${logoId}" ${logoUrlAttribute} class="${style.logo}">
 				${logoImage}
 			</a>
 			<span class="${style.menuDivider}"></span>

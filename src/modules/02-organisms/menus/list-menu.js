@@ -3,9 +3,12 @@ import ButtonRow from '../../01-molecules/buttons/button-row';
 var style = require('./list-menu.scss');
 
 function createTitleElement(listItem){
-	var title    = listItem.title    !== undefined ? listItem.title    : false;
-	var subTitle = listItem.subTitle !== undefined ? listItem.subTitle : false;
-	var link     = listItem.link     !== undefined ? listItem.link     : false;
+	var title      = listItem.title      !== undefined ? listItem.title      : false;
+	var subTitle   = listItem.subTitle   !== undefined ? listItem.subTitle   : false;
+	var link       = listItem.link       !== undefined ? listItem.link       : false;
+	var moduleLink = listItem.moduleLink !== undefined ? listItem.moduleLink : false;
+
+	var moduleLinkAttribute = moduleLink ? `data-module-target="${moduleLink}"` : '';
 
 	var singleLineClass = title && !subTitle ? style.singleLine : '';
 
@@ -13,7 +16,8 @@ function createTitleElement(listItem){
 
 	var titleElement = '';
 	if (title && link) titleElement = `<a href="${link}" class="${style.listItemTitle} ${singleLineClass}">${title} ${subTitleElement}</a>`;
-	else if (title) titleElement = `<span class="${style.listItemTitle} ${singleLineClass}">${title} ${subTitleElement}</span>`;
+	else if (title && moduleLink) titleElement = `<a ${moduleLinkAttribute} class="loadPage ${style.listItemTitle} ${singleLineClass}">${title} ${subTitleElement}</a>`;
+	else if (title) titleElement = `<span class="${style.listItemTitle} ${singleLineClass}" ${moduleLinkAttribute}>${title} ${subTitleElement}</span>`;
 	return titleElement;
 }
 

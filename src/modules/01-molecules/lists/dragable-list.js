@@ -11,6 +11,12 @@ function createListElements(listItems){
 	return listElements;
 }
 
+function initDragula(containers){
+	var dragula = Dragula(containers, {});
+	dragula.on('drop', function(element, container) {
+
+	});
+}
 
 export default function(dragableList){
 
@@ -22,13 +28,13 @@ export default function(dragableList){
 
 	document.addEventListener('DOMContentLoaded', function() {
 		var containers = [document.getElementById(id)];
-		var dragula = Dragula(containers, {});
-
-		dragula.on('drop', function(element, container) {
-
-		});
-
+		initDragula(containers);
 	}, false);
+
+	document.addEventListener("module-lazy-loaded", function(e) {
+  		var containers = [document.getElementById(id)];
+		initDragula(containers);
+	});
 
 	return `
 		<div id="${id}" class="${style.dragableList}">

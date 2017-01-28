@@ -5,13 +5,14 @@ import Checkbox from '../01-molecules/form-elements/checkbox';
 import RadioButton from '../01-molecules/form-elements/radio-button';
 import SelectList from '../01-molecules/form-elements/select-list';
 import ButtonRow from '../01-molecules/buttons/button-row';
+import Modal from '../01-molecules/messaging/modal';
 import DragableList from '../01-molecules/lists/dragable-list';
 
 export default function(){
 
 	return ` 
-		<h3>Buttons</h3>
-		<h4>Button row</h4>
+		<h2>Buttons</h2>
+		<h3>Button row</h3>
 		${ButtonRow({
 			id: 'button-row1',
 			buttons: [
@@ -32,8 +33,8 @@ export default function(){
 			]
 		})}
 
-		<h3>Form elements</h3>
-		<h4>Input field</h4>
+		<h2>Form elements</h2>
+		<h3>Input field</h3>
 		${InputField({
 			id: 'molecule-input1',
 			name: 'molecule-inputname1',
@@ -42,7 +43,7 @@ export default function(){
 			label: 'Input 1'
 		})}
 
-		<h4>Checkbox</h4>
+		<h3>Checkbox</h3>
 		${Checkbox({
 			id: 'molecule-checkbox1',
 			name: 'molecule-checkboxes',
@@ -57,7 +58,7 @@ export default function(){
 			label: 'Checkbox 2'
 		})}
 
-		<h4>Radio button</h4>
+		<h3>Radio button</h3>
 		${RadioButton({
 			id: 'molecule-radio1',
 			name: 'molecule-radio-buttons',
@@ -71,7 +72,7 @@ export default function(){
 			label: 'Radio button 2'
 		})}
 
-		<h4>Select list</h4>
+		<h3>Select list</h3>
 		${SelectList({
 			id: 'molecule-select1',
 			name: 'molecule-selectname1',
@@ -90,9 +91,16 @@ export default function(){
 			]
 		})}
 
+		<h2>Messaging</h2>
+		<h3>Modal</h3>
+		${Modal({
+			id: 'modal1',
+			title: 'Modal title',
+			content: `<p>modal content</p>`
+		})}
 
-		<h3>Lists</h3>
-		<h4>Dragable list</h4>
+		<h2>Lists</h2>
+		<h3>Dragable list</h3>
 		${DragableList({
 			id: 'dragable-list1',
 			listItems: [
