@@ -40,6 +40,17 @@ export default function(selectList){
 		var selectListElement = document.getElementById(id) !== undefined ? document.getElementById(id) : false;
 		var inputFieldElement = document.getElementById(inputField.id) !== undefined ? document.getElementById(inputField.id) : false;
 		var dropdownListElement = document.getElementById(dropdownList.id) !== undefined ? document.getElementById(dropdownList.id) : false;
+
+		if (selectListElement){
+			var labelElement = selectListElement.getElementsByTagName("LABEL").length ? selectListElement.getElementsByTagName("LABEL") : false;
+			if (labelElement){
+				labelElement[0].onclick = function(){
+					if (inputFieldElement){
+						inputFieldElement.focus();
+					}
+				}
+			}
+		}
 		
 		if (inputFieldElement){
 			inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
