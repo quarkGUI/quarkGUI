@@ -59,6 +59,7 @@ export default function(selectList){
 			};
 
 			inputFieldElement.onfocus = function(){
+				selectListElement.classList.add("active");
 				dropdownListElement.classList.add("active");
 				dropdownListElement.classList.remove("transparent")
 				var dropdownElementHeight = dropdownListElement.offsetHeight;
@@ -66,6 +67,7 @@ export default function(selectList){
 			};
 
 			inputFieldElement.onblur = function(event){
+				selectListElement.classList.remove("active");
 				dropdownListElement.classList.add("transparent")
 				setTimeout(function(){ 
 					if (inputFieldElement !== document.activeElement){
@@ -96,7 +98,7 @@ export default function(selectList){
 	}, false);
 
 	return `
-		<div id="${id}">
+		<div id="${id}" class="${style.dropdownContainer}">
 			${InputField(inputField)} ${labelElement}
 			<ul id="${dropdownList.id}" class="${style.dropdownList}">
 				${optionElements}
