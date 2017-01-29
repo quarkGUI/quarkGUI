@@ -12,7 +12,7 @@
 	:local(.listItem){
 		padding: 10px;
 		border-bottom: 1px solid rgba(0, 0, 0, .1);
-		@include transition(background-color .2s);
+		@include transition(background-color .2s ease-in-out);
 		&:last-child{
 			border-bottom: none;
 		}

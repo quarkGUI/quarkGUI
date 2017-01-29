@@ -16,6 +16,7 @@
       width: 100%;
       min-width: 200px;
       border-left: 2px solid transparent;
+      @include transition(background-color .2s ease-in-out);
       &:hover {
         background-color: bright-gray($dark-color);
         cursor: pointer;
