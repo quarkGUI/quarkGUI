@@ -64,18 +64,18 @@ export default function(){
 					listItems: [
 						{
 							name: "Global",
-							moduleLink: "./modules/04-pages/global"
+							moduleLink: "global"
 						},
 						{
 							name: "Atoms",
-							moduleLink: "./modules/04-pages/atoms"
+							moduleLink: "atoms"
 						}, 
 						{
 							name: "Molecules",
-							moduleLink: "./modules/04-pages/molecules"
+							moduleLink: "molecules"
 						}, {
 							name: "Organisms",
-							moduleLink: "./modules/04-pages/organisms"
+							moduleLink: "organisms"
 						}
 					]
 				}

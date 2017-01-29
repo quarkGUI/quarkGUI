@@ -19,19 +19,19 @@ export default function(){
 					listItems: [
 						{
 							title: 'Global',
-							moduleLink: './modules/04-pages/global'
+							moduleLink: 'global'
 						},
 						{
 							title: 'Atoms',
-							moduleLink: './modules/04-pages/atoms'
+							moduleLink: 'atoms'
 						},
 						{
 							title: 'Molecules',
-							moduleLink: './modules/04-pages/molecules'
+							moduleLink: 'molecules'
 						},
 						{
 							title: 'Organisms',
-							moduleLink: './modules/04-pages/organisms'
+							moduleLink: 'organisms'
 						},
 					]
 				})}

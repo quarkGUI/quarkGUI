@@ -17,7 +17,7 @@ var scriptFileName = PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js';
 var entry = PRODUCTION || DOCS
 	?	{
 			vendor: ['dragula'],
-			app: [ './src/index.js' ]
+			app: './src/index.js'
 		}
 	: 	{
 			vendor: ['dragula'],

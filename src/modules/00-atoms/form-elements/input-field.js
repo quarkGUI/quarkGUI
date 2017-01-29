@@ -8,7 +8,7 @@ export default function(inputField){
 	var value		= inputField.value 			!== undefined ? inputField.value 		: '';
 	var placeholder	= inputField.placeholder 	!== undefined ? inputField.placeholder	: '';
 
-	document.addEventListener('DOMContentLoaded', function() {
+	document.addEventListener("module-lazy-loaded", function(e) {
 		var element = document.getElementById(id) !== undefined ? document.getElementById(id) : false;
 		if (element){
 			element.value ? element.classList.add("is-not-empty") : element.classList.remove("is-not-empty");

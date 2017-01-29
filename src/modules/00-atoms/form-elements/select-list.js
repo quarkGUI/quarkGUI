@@ -36,7 +36,7 @@ export default function(selectList){
 	var optionElements = '';
 	if (options) optionElements = createOptionElements(selectList.options);
 
-	document.addEventListener('DOMContentLoaded', function() {
+	document.addEventListener("module-lazy-loaded", function(e) {
 		var selectListElement = document.getElementById(id) !== undefined ? document.getElementById(id) : false;
 		var inputFieldElement = document.getElementById(inputField.id) !== undefined ? document.getElementById(inputField.id) : false;
 		var dropdownListElement = document.getElementById(dropdownList.id) !== undefined ? document.getElementById(dropdownList.id) : false;

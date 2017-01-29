@@ -6,13 +6,15 @@ export default function(inputField){
 	var name 		= inputField.name 			!== undefined ? inputField.name 		: '';
 	var value		= inputField.value 			!== undefined ? inputField.value 		: '';
 
-	document.addEventListener('DOMContentLoaded', function() {
+	document.addEventListener("module-lazy-loaded", function(e) {
 		if (id !== ''){
-			var iconElement = document.getElementById('checkbox-toggle-' + id);
+			var iconElement = document.getElementById('checkbox-toggle-' + id) !== undefined ? document.getElementById('checkbox-toggle-' + id) : false;
 			var checkboxElement = document.getElementById(id);
-			iconElement.onclick = function(){
-				checkboxElement.checked = checkboxElement.checked ? false : true;		
-			};
+			if (iconElement){
+				iconElement.onclick = function(){
+					checkboxElement.checked = checkboxElement.checked ? false : true;		
+				};
+			}
 		}
 	}, false);
 

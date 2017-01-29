@@ -15,7 +15,7 @@ export default function(button){
 	if (theme == 'warning')	themeClass = style.buttonThemeWarning;
 	if (theme == 'danger') 	themeClass = style.buttonThemeDanger;
 
-	document.addEventListener('DOMContentLoaded', function() {
+	document.addEventListener("module-lazy-loaded", function(e) {
 		var element = document.getElementById(id) !== undefined ? document.getElementById(id) : false;
 		if (element){
 			element.onclick = function(){

@@ -25,6 +25,18 @@ Promise.all(fontObservers).then(function() {
 
 
 import IndexPage from './modules/04-pages/index';
+import GlobalPage from './modules/04-pages/global';
+import AtomsPage from './modules/04-pages/atoms';
+import MoleculesPage from './modules/04-pages/molecules';
+import OrganismsPage from './modules/04-pages/organisms';
+
+var pages = {
+	'index': IndexPage,
+	'global': GlobalPage,
+	'atoms': AtomsPage,
+	'molecules': MoleculesPage,
+	'organisms': OrganismsPage
+}
 
 var app = document.getElementById('app');
 app.innerHTML = IndexPage();
@@ -41,12 +53,9 @@ function initModuleTargetUrls(){
 					targetPage = event.target.parentNode.getAttribute('data-module-target');
 				}
 				if (targetPage !== null){
-					System.import('' + targetPage)
-						.then(pageModule => {
-							document.getElementById('mainContent').innerHTML = pageModule.default;
-							var event = new CustomEvent("module-lazy-loaded", { "detail": "One or more modules has been lazy loaded" });
-							document.dispatchEvent(event);
-						})
+					document.getElementById('mainContent').innerHTML = pages[targetPage];
+					var event = new CustomEvent("module-lazy-loaded", { "detail": "One or more modules has been lazy loaded" });
+					document.dispatchEvent(event);
 				}
 			});
 		}
