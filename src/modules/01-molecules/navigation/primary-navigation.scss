@@ -16,7 +16,7 @@
     margin: 0 -2px;
     display: inline-block;
     font-size: 18px;
-    line-height: 36px;
+    line-height: 35px;
     vertical-align: bottom;
     border-bottom: 6px solid transparent;
     padding: 6px 16px 0;
@@ -24,7 +24,7 @@
     @include transition(border-color .2s);
     @media only screen and (min-width: $screen-sm) {
       font-size: 20px;
-      line-height: 52px;
+      line-height: 50px;
     }
   }
 }
