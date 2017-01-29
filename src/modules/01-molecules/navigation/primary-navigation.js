@@ -16,7 +16,10 @@ function createListElements(listItems){
 		if (hasDropdown(listItem)){
 			dropdownContent = `<div class="${style.dropdownContent}">${ListNavigation(listItem.dropdownContent)}<div>`;
 			dropdownClass = `${style.hasDropdown}`;
-			listElement = `<li class="overlay-element ${dropdownClass}"><span>${listItem.name}</span>${dropdownContent}</li>`;
+			listElement = `<li class="overlay-element ${dropdownClass}">
+						       <span class="${style.dropdownTitle}">${listItem.name}</span>
+						       ${dropdownContent}
+						    </li>`;
 		}else{
 			listElement = `<li><a href="${listItem.link}">${listItem.name}</a></li>`;
 		}
@@ -47,6 +50,7 @@ export default function(primaryNavigation){
 
 				var navigationElementWidth = navigationElements[i].offsetWidth;
 				var dropdownElementWidth = dropdownElements[0].offsetWidth;
+				var dropdownElementHeight = dropdownElements[0].offsetHeight;
 				var widthDif = navigationElementWidth - dropdownElementWidth;
 
 				dropdownElement.style.marginLeft = widthDif/2 + 'px';

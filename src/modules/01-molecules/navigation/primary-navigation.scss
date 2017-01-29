@@ -55,6 +55,30 @@
 }
 :local(.hasDropdown){
   display: inherit;
+  :local(.dropdownTitle){
+    &:after{
+      font-family: FontAwesome;
+      content: "\f078";
+      margin-left: 3px;
+      font-size: 14px;
+      display: inline-block;
+      
+      vertical-align: bottom;
+      @include transition(transform .2s ease-in-out, margin-bottom .2s ease-in-out);
+      @media only screen and (min-width: $screen-sm) {
+       margin-left: 6px;
+       font-size: 16px;
+     }
+   }
+ }
+ &.active{
+  :local(.dropdownTitle){
+    &:after{
+      transform: rotate(180deg);
+      margin-bottom: -2px;
+    }
+  }
+}
 }
 .active :local(.dropdownContent){
   display: block;
