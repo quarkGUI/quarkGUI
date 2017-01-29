@@ -15,9 +15,10 @@
     &.transparent{
         opacity: 0;
     }
+    
     > li {
         display: block;
-        color: #212121;
+        color: $default-text-color;
         text-decoration: none;
         padding: 10px 20px;
         width: 100%;
