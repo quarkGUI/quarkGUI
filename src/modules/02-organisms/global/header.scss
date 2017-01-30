@@ -34,7 +34,7 @@
     display: block;
     padding: 2px 0;
     margin-left: 15px;
-    vertical-align: bottom;
+    vertical-align: top;
     width: 100%;
     position: absolute;
     top: 0;
@@ -48,7 +48,7 @@
   :local(.sidenavToggle) {
     font-size: 20pt;
     display: inline-block;
-    vertical-align: bottom;
+    vertical-align: top;
     padding: 0 15px;
     cursor: pointer;
     &:hover {
@@ -71,9 +71,9 @@
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     border-right: 1px solid rgba(0, 0, 0, 0.08);
     width: 1px;
-    height: 30px;
+    height: 34px;
     display: inline-block;
-    margin: 4px 15px;
+    margin: 7px 15px;
   }
   :local(.navbarPageTitle) {
     color: #FFFFFF;
@@ -119,7 +119,7 @@
   :local(.navbar) {
     z-index: 3;
     :local(.logo) {
-      padding: 7.5px 0;
+      padding: 8.5px 0;
       img {
         height: 46px;
       }
