@@ -27,6 +27,7 @@
     position: relative;
     &.active {
         display: block;
+        z-index: 2;
     }
     &.transparent{
         opacity: 0;

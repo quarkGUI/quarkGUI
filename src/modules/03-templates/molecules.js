@@ -77,8 +77,8 @@ export default function(){
 			id: 'molecule-select1',
 			name: 'molecule-selectname1',
 			type: 'text',
-			placeholder: 'Placeholder text here',
-			label: 'Label for select list',
+			placeholder: 'Choose an option',
+			label: 'Normal select list',
 			options: [
 				{
 					name: 'first',
@@ -87,6 +87,49 @@ export default function(){
 				{
 					name: 'second',
 					value: 'second'
+				},
+				{
+					name: 'third',
+					value: 'third'
+				},
+				{
+					name: 'fourth',
+					value: 'fourth'
+				},
+				{
+					name: 'fifth',
+					value: 'fifth'
+				}
+			]
+		})}
+
+		${SelectList({
+			id: 'molecule-select2',
+			name: 'molecule-selectname2',
+			type: 'text',
+			placeholder: 'Type here',
+			label: 'Searchable select list',
+			searchable: true,
+			options: [
+				{
+					name: 'first',
+					value: 'first'
+				},
+				{
+					name: 'second',
+					value: 'second'
+				},
+				{
+					name: 'third',
+					value: 'third'
+				},
+				{
+					name: 'fourth',
+					value: 'fourth'
+				},
+				{
+					name: 'fifth',
+					value: 'fifth'
 				}
 			]
 		})}

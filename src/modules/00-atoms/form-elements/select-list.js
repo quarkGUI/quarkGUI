@@ -11,6 +11,11 @@ function createOptionElements(options){
 	return optionElements;
 }
 
+function updateDropdownListHeight(dropdownListElement){
+	var dropdownElementHeight = dropdownListElement.offsetHeight;
+	dropdownListElement.style.marginBottom = 0-dropdownElementHeight + 'px';
+}
+
 export default function(selectList){
 
 	var id          = selectList.id          !== undefined ? selectList.id          : '';
@@ -19,6 +24,8 @@ export default function(selectList){
 	var value       = selectList.value       !== undefined ? selectList.value       : '';
 	var placeholder = selectList.placeholder !== undefined ? selectList.placeholder	: '';
 	var options     = selectList.options     !== undefined ? selectList.options     : false;
+	var searchable  = selectList.searchable  !== undefined ? selectList.searchable  : false;
+
 
 	var labelElement = selectList.labelElement !== undefined ? selectList.labelElement : '';
 
@@ -40,7 +47,6 @@ export default function(selectList){
 		var selectListElement = document.getElementById(id) !== undefined ? document.getElementById(id) : false;
 		var inputFieldElement = document.getElementById(inputField.id) !== undefined ? document.getElementById(inputField.id) : false;
 		var dropdownListElement = document.getElementById(dropdownList.id) !== undefined ? document.getElementById(dropdownList.id) : false;
-
 		if (selectListElement){
 			var labelElement = selectListElement.getElementsByTagName("LABEL").length ? selectListElement.getElementsByTagName("LABEL") : false;
 			if (labelElement){
@@ -54,16 +60,33 @@ export default function(selectList){
 		
 		if (inputFieldElement){
 			inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
-			inputFieldElement.onkeyup = function(){
-				inputFieldElement.value.length ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");				
-			};
+			if (searchable){
+				inputFieldElement.addEventListener("keyup", function(e) {
+					inputFieldElement.value.length ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
+					    var filter = inputFieldElement.value.toUpperCase();
+					    var listItems = dropdownListElement.getElementsByTagName('li');
+					    for (var i = 0; i < listItems.length; i++) {
+					        if (listItems[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+					            listItems[i].style.display = "";
+					        } else {
+					            listItems[i].style.display = "none";
+					        }
+					    }
+					    updateDropdownListHeight(dropdownListElement);
+				});
+			}else{
+				inputFieldElement.readOnly = true;
+				inputFieldElement.addEventListener("keydown", function(e) {
+					e.preventDefault();
+					return false;
+				});
+			}
 
 			inputFieldElement.onfocus = function(){
 				selectListElement.classList.add("active");
 				dropdownListElement.classList.add("active");
 				dropdownListElement.classList.remove("transparent")
-				var dropdownElementHeight = dropdownListElement.offsetHeight;
-				dropdownListElement.style.marginBottom = 0-dropdownElementHeight + 'px';
+				updateDropdownListHeight(dropdownListElement);
 			};
 
 			inputFieldElement.onblur = function(event){

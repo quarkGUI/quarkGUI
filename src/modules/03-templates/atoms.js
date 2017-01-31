@@ -135,7 +135,7 @@ export default function(){
 			id: 'atom-select1',
 			name: 'atom-selectname1',
 			type: 'text',
-			placeholder: 'Placeholder text here',
+			placeholder: 'Choose an option',
 			options: [
 				{
 					name: 'first',
@@ -144,6 +144,48 @@ export default function(){
 				{
 					name: 'second',
 					value: 'second'
+				},
+				{
+					name: 'third',
+					value: 'third'
+				},
+				{
+					name: 'fourth',
+					value: 'fourth'
+				},
+				{
+					name: 'fifth',
+					value: 'fifth'
+				}
+			]
+		})}
+
+		${SelectList({
+			id: 'atom-select2',
+			name: 'atom-selectname2',
+			type: 'text',
+			placeholder: 'Type here',
+			searchable: true,
+			options: [
+				{
+					name: 'first',
+					value: 'first'
+				},
+				{
+					name: 'second',
+					value: 'second'
+				},
+				{
+					name: 'third',
+					value: 'third'
+				},
+				{
+					name: 'fourth',
+					value: 'fourth'
+				},
+				{
+					name: 'fifth',
+					value: 'fifth'
 				}
 			]
 		})}
