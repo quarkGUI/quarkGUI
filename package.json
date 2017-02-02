@@ -46,6 +46,7 @@
   },
   "homepage": "https://github.com/benjamindehli/webpack-sass-atomic-design#readme",
   "dependencies": {
-    "dragula": "^3.7.2"
+    "dragula": "^3.7.2",
+    "gulp-real-favicon": "^0.2.2"
   }
 }
