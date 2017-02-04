@@ -6,7 +6,7 @@ export default function(){
 
 	var indexUrl = '/';
 	if(DOCS){
-		indexUrl = '/Simple-GUI-Template/';
+		indexUrl = '/quarkGUI/';
 	}
 
 	return ` 
