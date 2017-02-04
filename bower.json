@@ -1,0 +1,17 @@
+{
+  "name": "quarkGUI",
+  "description": "Webpack GUI framework based on atomic design",
+  "main": "index.js",
+  "authors": [
+    "Benjamin Dehli <superelg@gmail.com>"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/benjamindehli/quarkGUI",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
