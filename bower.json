@@ -1,5 +1,5 @@
 {
-  "name": "quarkGUI",
+  "name": "quark-gui",
   "description": "Webpack GUI framework based on atomic design",
   "main": "src/index.js",
   "authors": [
