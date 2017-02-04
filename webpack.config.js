@@ -10,7 +10,7 @@ var PRODUCTION  = process.env.NODE_ENV === 'production';
 var DOCS        = process.env.NODE_ENV === 'docs';
 
 var outputPath = DOCS ? 'docs' : 'dist';
-var ouputPublicPath = DOCS ? '/Simple-GUI-Template/' : '/';
+var ouputPublicPath = DOCS ? '/quarkGUI/' : '/';
 var cssFileName = PRODUCTION ? 'style-[contenthash:10].css' : 'styles.css';
 var scriptFileName = PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js';
 

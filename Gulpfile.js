@@ -31,7 +31,7 @@ gulp.task('generate-favicon', function(done) {
 	realFavicon.generateFavicon({
 		masterPicture: './src/img/svg/quark-GUI-logo-icon.svg',
 		dest: './docs/img/favicons/',
-		iconsPath: '/Simple-GUI-Template/img/favicons/',
+		iconsPath: '/quarkGUI/img/favicons/',
 		design: {
 			ios: {
 				pictureAspect: 'backgroundAndMargin',

@@ -1,4 +1,4 @@
-# Simple-GUI-Template
+# quarkGUI
 Test of Webpack, Sass and Atomic Design
 
 
