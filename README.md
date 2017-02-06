@@ -2,6 +2,10 @@
 Webpack GUI framework based on atomic design
 
 
+[![Coverage Status](https://coveralls.io/repos/github/benjamindehli/quarkGUI/badge.svg?branch=master)](https://coveralls.io/github/benjamindehli/quarkGUI?branch=master)
+
+[![Build Status](https://travis-ci.org/benjamindehli/quarkGUI.svg?branch=master)](https://travis-ci.org/benjamindehli/quarkGUI)
+
 ## Installation
 
 - Clone the repo: `git clone https://github.com/benjamindehli/quarkGUI.git`
