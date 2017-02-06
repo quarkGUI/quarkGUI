@@ -4,7 +4,7 @@
   "description": "Webpack GUI framework based on atomic design",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vows test/* --spec",
     "build": "rimraf dist && NODE_ENV=production webpack",
     "docs": "rimraf docs && NODE_ENV=docs webpack",
     "dev": "NODE_ENV=development node dev-server.js",
@@ -38,6 +38,7 @@
     "style-loader": "^0.13.1",
     "svg-url-loader": "^2.0.1",
     "url-loader": "^0.5.7",
+    "vows": "^0.8.1",
     "webpack": "^2.1.0-beta.28",
     "webpack-dev-server": "^2.2.0-rc.0"
   },
