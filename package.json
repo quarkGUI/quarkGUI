@@ -22,7 +22,7 @@
     "type": "git",
     "url": "git+https://github.com/benjamindehli/quarkGUI.git"
   },
-  "author": "Benjamin Dehli <superelg@gmail.com>",
+  "author": "Benjamin Dehli <superelg@gmail.com> (https://github.com/benjamindehli)",
   "license": "GPL-3.0",
   "devDependencies": {
     "babel-core": "^6.21.0",
