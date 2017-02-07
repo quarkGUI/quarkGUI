@@ -1,6 +1,7 @@
 'use strict';
 
-
-module.exports = function() {
-  console.log("test");
-};
+module.exports = {
+	atoms:     require("./src/modules/atoms"),
+	molecules: require("./src/modules/molecules"),
+	organisms: require("./src/modules/organisms")
+}
