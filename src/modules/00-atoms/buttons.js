@@ -1,5 +1,5 @@
 module.exports = {
-	button: function(id, type, theme, content){
+	button: function(id, type, theme, link, content, iconClass){
 		var button = require("./buttons/button");
 		return button.default({
 			id:        id        !== undefined ? id        : '',
