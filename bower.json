@@ -1,6 +1,19 @@
 {
   "name": "quark-gui",
   "description": "Webpack GUI framework based on atomic design",
+  "keywords": [
+    "atomic",
+    "gui",
+    "gui-template",
+    "gui-toolkit",
+    "webpack",
+    "responsive",
+    "front-end",
+    "framework",
+    "web",
+    "js",
+    "sass",
+  ],
   "main": "index.js",
   "authors": [
     "Benjamin Dehli <superelg@gmail.com> (https://github.com/benjamindehli)"
