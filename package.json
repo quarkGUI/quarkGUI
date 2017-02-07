@@ -33,9 +33,9 @@
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.10.0",
-    "font-awesome": "^4.7.0",
     "fontfaceobserver": "^2.0.7",
     "gulp": "^3.9.1",
+    "gulp-real-favicon": "^0.2.2",
     "gulp-rename": "^1.2.2",
     "html-webpack-plugin": "^2.24.1",
     "node-sass": "^4.0.0",
@@ -54,6 +54,6 @@
   "homepage": "https://github.com/benjamindehli/quarkGUI#readme",
   "dependencies": {
     "dragula": "^3.7.2",
-    "gulp-real-favicon": "^0.2.2"
+    "font-awesome": "^4.7.0"
   }
 }
