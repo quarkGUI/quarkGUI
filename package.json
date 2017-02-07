@@ -13,7 +13,7 @@
     "framework",
     "web",
     "js",
-    "sass",
+    "sass"
   ],
   "main": "index.js",
   "files": [
