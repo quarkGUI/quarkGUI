@@ -107,7 +107,7 @@ module.exports = {
 				return require("./src/modules/02-organisms/global/sidebar").default(sidebar);
 			}
 		},
-		cards: {
+		menus: {
 			actionBar: function(actionBar) {
 				return require("./src/modules/02-organisms/menus/action-bar").default(actionBar);
 			},
