@@ -1,3 +1,9 @@
+/*!
+ * quarkGUI v0.3.13 (https://github.com/benjamindehli/quarkGUI)
+ * Copyright(c) 2016-2017 Benjamin Dehli (https://github.com/benjamindehli)
+ * Licenced under GNU General Public License
+ */
+
 'use strict';
 
 module.exports = {
