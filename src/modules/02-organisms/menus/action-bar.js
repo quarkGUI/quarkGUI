@@ -1,8 +1,6 @@
 import ActionButton from '../../00-atoms/buttons/action-button';
 import ActionBarMenu from '../../01-molecules/menus/action-bar-menu';
 
-var style = require('./action-bar.scss');
-
 export default function(actionBar){
 	var theme = actionBar.theme !== undefined ? actionBar.theme	: 'default';
 
