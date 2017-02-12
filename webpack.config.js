@@ -73,14 +73,14 @@ const cssIdentifier = PRODUCTION || DOCS ? '[hash:base64:10]' : '[path][name]---
 
 const cssLoader = PRODUCTION || DOCS
 	?	ExtractTextPlugin.extract({
-			loader: 'css-loader?minimize!localIdentName=' + cssIdentifier
+			use: 'css-loader?minimize!localIdentName=' + cssIdentifier
 		})
 
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier];
 
 const sassLoader = PRODUCTION || DOCS
 	?	ExtractTextPlugin.extract({
-			loader: 'css-loader?minimize!sass-loader?localIdentName=' + cssIdentifier
+			use: 'css-loader?minimize!sass-loader?localIdentName=' + cssIdentifier
 		})
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier, 'sass-loader'];
 
@@ -103,17 +103,17 @@ module.exports = {
 			exclude: '/node_modules/'
 		}, {
 			test: /\.scss$/,
-			loader: sassLoader,
+			use: sassLoader,
 			exclude: '/node_modules/'
 		}, { 
 			test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-			loader: "file-loader?name=fonts/[hash:12].[ext]" 
+			use: "file-loader?name=fonts/[hash:12].[ext]" 
 		}, { 
 			test: /\.svg(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-			loader: "svg-url-loader?noquotes&limit=1024&prefix=svg/[hash:12].[ext]"
+			use: "svg-url-loader?noquotes&limit=1024&prefix=svg/[hash:12].[ext]"
 		},{  
       		test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,  
-      		loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[hash:12].[ext]"  
+      		use: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[hash:12].[ext]"  
     	}
     
 		],
