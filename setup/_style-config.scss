@@ -1,0 +1,49 @@
+/* COLORS */
+$body-background: #f9f9f9;
+$bright-white: #fbfcfd;
+
+$default-color: #f4f5f6;
+$default-hover-color: #f8f9fa;
+$default-active-color: #fbfcfd;
+
+$primary-color: #3D6183;
+$info-color: #347B78;
+$success-color: #4AA345;
+$warning-color: #CA9B55;
+$danger-color: #C85457;
+$dark-color: #232527;
+
+$default-text-color: #212121;
+
+
+/* FONTS */
+$heading-font: "Lato",sans-serif;
+$normal-font: "Lato",sans-serif;
+
+
+/* GRID */
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
+$grid-margin-bottom: 15px;
+
+
+/* PATHS */
+$assets-directory: "/dist/";
+
+
+/* SIZES */
+$main-content-max-width: 1100px;
+
+
+/* VIEWPORTS */
+$screen-xs: 480px !default;
+$screen-xs-min: $screen-xs !default;
+$screen-sm: 768px !default;
+$screen-sm-min: $screen-sm !default;
+$screen-md: 992px !default;
+$screen-md-min: $screen-md !default;
+$screen-lg: 1200px !default;
+$screen-lg-min: $screen-lg !default;
+$screen-xs-max: ($screen-sm-min - 1) !default;
+$screen-sm-max: ($screen-md-min - 1) !default;
+$screen-md-max: ($screen-lg-min - 1) !default;
