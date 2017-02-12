@@ -1,6 +1,8 @@
 # quarkGUI
 
 [![Build Status](https://travis-ci.org/benjamindehli/quarkGUI.svg?branch=master)](https://travis-ci.org/benjamindehli/quarkGUI) [![Coverage Status](https://coveralls.io/repos/github/benjamindehli/quarkGUI/badge.svg?branch=master)](https://coveralls.io/github/benjamindehli/quarkGUI?branch=master)
+[![npm version](https://badge.fury.io/js/quark-gui.svg)](https://badge.fury.io/js/quark-gui)
+[![Bower version](https://badge.fury.io/bo/quark-gui.svg)](https://badge.fury.io/bo/quark-gui)
 
 Webpack GUI framework based on atomic design
 
