@@ -4,9 +4,13 @@
  * Licenced under GNU General Public License
  */
 
+
 'use strict';
 
+require("font-awesome-webpack!font-awesome-webpack/font-awesome.config.js");
+
 module.exports = {
+
 	atoms: {
 		buttons: {
 			actionButton: function(actionButton) {
