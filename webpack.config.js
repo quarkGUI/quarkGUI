@@ -16,11 +16,11 @@ var scriptFileName = PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js';
 
 var entry = PRODUCTION || DOCS
 	?	{
-			vendor: ['dragula'],
+			vendor: ['dragula', 'font-awesome-webpack!./font-awesome.config.js'],
 			app: './src/index.js'
 		}
 	: 	{
-			vendor: ['dragula'],
+			vendor: ['dragula', 'font-awesome-webpack!./font-awesome.config.js'],
 			app: [ 
 				'./src/index.js',
 				'webpack/hot/dev-server',
@@ -84,12 +84,19 @@ const sassLoader = PRODUCTION || DOCS
 		})
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier, 'sass-loader'];
 
+const lessLoader = PRODUCTION || DOCS
+	?	ExtractTextPlugin.extract({
+			use: 'css-loader?minimize!less-loader?localIdentName=' + cssIdentifier
+		})
+	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier, 'less-loader'];
+
 module.exports = {
 	devtool: 'source-map',
 	entry: entry,
 	plugins: plugins,
 	module: {
-		loaders: [{
+		loaders: [
+		{
 			test: /\.js$/,
 			loaders: ['babel-loader'],
 			exclude: '/node_modules/'
@@ -105,6 +112,10 @@ module.exports = {
 			test: /\.scss$/,
 			use: sassLoader,
 			exclude: '/node_modules/'
+		}, {
+			test: /\.less$/,
+			use: lessLoader,
+			exclude: '/node_modules/'
 		}, { 
 			test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
 			use: "file-loader?name=fonts/[hash:12].[ext]" 
@@ -115,8 +126,7 @@ module.exports = {
       		test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,  
       		use: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[hash:12].[ext]"  
     	}
-    
-		],
+    	],
 
 	},
 	output: {
