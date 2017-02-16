@@ -2,7 +2,6 @@
 @import "abstracts/all";
 @import "helpers";
 @import "reset";
-@import "font-awesome";
 
 @font-face {
 	font-family: 'Lato';
@@ -18,7 +17,6 @@
 	src: url('../fonts/Lato-Bold.woff') format('woff'), url('../fonts/Lato-Bold.ttf') format('truetype');
 	font-weight: bold;
 }
-
 
 
 @include scrollbar(14px, #e0e1e2, transparent, 0)
