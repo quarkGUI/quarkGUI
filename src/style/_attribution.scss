@@ -1,5 +1,5 @@
 /*!
- * quarkGUI v0.3.19 (https://github.com/benjamindehli/quarkGUI)
+ * quarkGUI v0.3.20 (https://github.com/benjamindehli/quarkGUI)
  * Copyright(c) 2016-2017 Benjamin Dehli (https://github.com/benjamindehli)
  * Licenced under GNU General Public License
  */
