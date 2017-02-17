@@ -94,12 +94,19 @@ module.exports = {
 	devtool: 'source-map',
 	entry: entry,
 	plugins: plugins,
+	resolve: {
+		extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+  	},
 	module: {
 		loaders: [
 		{
 			test: /\.js$/,
 			loaders: ['babel-loader'],
 			exclude: '/node_modules/'
+		}, {
+			test: /\.ts(x?)$/,
+      		exclude: /node_modules/,
+      		loader: 'babel-loader!ts-loader'
 		}, {
 			test: /\.(png|jpg|gif)$/,
 			loaders: ['url-loader?limit=10000&name=images/[ext]/[hash:12].[ext]'],
