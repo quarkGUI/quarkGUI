@@ -30,8 +30,8 @@ class ToggleButton {
 	private addListener(id:string, targetClass: string){
 		document.addEventListener("module-lazy-loaded", function(e) {
 			let elementIsDefined: boolean = document.getElementById(id) !== undefined;
-
-			if (elementIsDefined){
+			let elementIsNotNull: boolean = document.getElementById(id) !== null;
+			if (elementIsDefined && elementIsNotNull){
 				let element = document.getElementById(id);
 				element.onclick = function(){
 					let targetElements:HTMLCollection = document.getElementsByClassName(targetClass);

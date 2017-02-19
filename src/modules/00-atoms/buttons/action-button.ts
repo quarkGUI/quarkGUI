@@ -25,7 +25,8 @@ class ActionButton {
 	private addListener(id: string){
 		document.addEventListener("module-lazy-loaded", function(e) {
 			let elementIsDefined: boolean = document.getElementById(id) !== undefined;
-			if (elementIsDefined){
+			let elementIsNotNull: boolean = document.getElementById(id) !== null;
+			if (elementIsDefined && elementIsNotNull){
 				let element = document.getElementById(id);
 				element.onclick = function(){
 					if (element.classList.contains('active')){
