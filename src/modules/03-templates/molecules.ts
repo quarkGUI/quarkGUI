@@ -4,7 +4,7 @@ import * as InputField from '../01-molecules/form-elements/input-field';
 import * as Checkbox from '../01-molecules/form-elements/checkbox';
 import * as RadioButton from '../01-molecules/form-elements/radio-button';
 import SelectList from '../01-molecules/form-elements/select-list';
-import ButtonRow from '../01-molecules/buttons/button-row';
+import * as ButtonRow from '../01-molecules/buttons/button-row';
 import Modal from '../01-molecules/messaging/modal';
 import DragableList from '../01-molecules/lists/dragable-list';
 
@@ -13,7 +13,7 @@ export default function(){
 	return ` 
 		<h2>Buttons</h2>
 		<h3>Button row</h3>
-		${ButtonRow({
+		${ButtonRow.getModule({
 			id: 'button-row1',
 			buttons: [
 				{
