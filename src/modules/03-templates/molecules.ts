@@ -1,8 +1,8 @@
 var style = require('../../style/globalStyle.scss');
 
-import InputField from '../01-molecules/form-elements/input-field';
-import Checkbox from '../01-molecules/form-elements/checkbox';
-import RadioButton from '../01-molecules/form-elements/radio-button';
+import * as InputField from '../01-molecules/form-elements/input-field';
+import * as Checkbox from '../01-molecules/form-elements/checkbox';
+import * as RadioButton from '../01-molecules/form-elements/radio-button';
 import SelectList from '../01-molecules/form-elements/select-list';
 import ButtonRow from '../01-molecules/buttons/button-row';
 import Modal from '../01-molecules/messaging/modal';
@@ -35,7 +35,7 @@ export default function(){
 
 		<h2>Form elements</h2>
 		<h3>Input field</h3>
-		${InputField({
+		${InputField.getModule({
 			id: 'molecule-input1',
 			name: 'molecule-inputname1',
 			type: 'text',
@@ -44,14 +44,14 @@ export default function(){
 		})}
 
 		<h3>Checkbox</h3>
-		${Checkbox({
+		${Checkbox.getModule({
 			id: 'molecule-checkbox1',
 			name: 'molecule-checkboxes',
 			value: 'one',
 			label: 'Checkbox 1'
 		})}
 
-		${Checkbox({
+		${Checkbox.getModule({
 			id: 'molecule-checkbox2',
 			name: 'molecule-checkboxes',
 			value: 'two',
@@ -59,13 +59,13 @@ export default function(){
 		})}
 
 		<h3>Radio button</h3>
-		${RadioButton({
+		${RadioButton.getModule({
 			id: 'molecule-radio1',
 			name: 'molecule-radio-buttons',
 			value: 'one',
 			label: 'Radio button 1'
 		})}
-		${RadioButton({
+		${RadioButton.getModule({
 			id: 'molecule-radio2',
 			name: 'molecule-radio-buttons',
 			value: 'two',
