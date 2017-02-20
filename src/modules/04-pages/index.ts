@@ -1,4 +1,4 @@
-var style = require('../../style/globalStyle.scss');
+const Style = require<any>("../../style/globalStyle.scss");
 
 import Header from '../03-templates/header';
 import ListMenu from '../02-organisms/menus/list-menu';
@@ -9,7 +9,7 @@ export default function(){
 	return ` 
 		${Header()}
 		<main id="mainContent">
-			<div class="${style.mainContent}">
+			<div class="${Style.mainContent}">
 				<h1>quarkGUI</h1>
 				<p></p>
 				<h2>Modules</h2>

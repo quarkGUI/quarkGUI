@@ -1,10 +1,10 @@
-var style = require('../../style/globalStyle.scss');
+const Style = require<any>("../../style/globalStyle.scss");
 
 import Atoms from '../03-templates/atoms';
 import Footer from '../03-templates/footer';
 
 const page = `
-	<div class="${style.mainContent}">
+	<div class="${Style.mainContent}">
 		<h1>Atoms</h1>
 		${Atoms()}
 	</div>

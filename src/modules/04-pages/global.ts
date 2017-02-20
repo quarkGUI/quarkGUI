@@ -1,10 +1,10 @@
-var style = require('../../style/globalStyle.scss');
+const Style = require<any>("../../style/globalStyle.scss");
 
 import Global from '../03-templates/global';
 import Footer from '../03-templates/footer';
 
 const page = `
-	<div class="${style.mainContent}">
+	<div class="${Style.mainContent}">
 		<h1>Global</h1>
 		${Global()}
 	</div>
