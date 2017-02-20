@@ -3,7 +3,7 @@ var style = require('../../style/globalStyle.scss');
 import * as InputField from '../01-molecules/form-elements/input-field';
 import * as Checkbox from '../01-molecules/form-elements/checkbox';
 import * as RadioButton from '../01-molecules/form-elements/radio-button';
-import SelectList from '../01-molecules/form-elements/select-list';
+import * as SelectList from '../01-molecules/form-elements/select-list';
 import * as ButtonRow from '../01-molecules/buttons/button-row';
 import Modal from '../01-molecules/messaging/modal';
 import DragableList from '../01-molecules/lists/dragable-list';
@@ -73,7 +73,7 @@ export default function(){
 		})}
 
 		<h3>Select list</h3>
-		${SelectList({
+		${SelectList.getModule({
 			id: 'molecule-select1',
 			name: 'molecule-selectname1',
 			type: 'text',
@@ -103,7 +103,7 @@ export default function(){
 			]
 		})}
 
-		${SelectList({
+		${SelectList.getModule({
 			id: 'molecule-select2',
 			name: 'molecule-selectname2',
 			type: 'text',
