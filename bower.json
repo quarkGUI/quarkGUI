@@ -14,7 +14,7 @@
     "js",
     "sass"
   ],
-  "main": "index.js",
+  "main": "index.ts",
   "authors": [
     "Benjamin Dehli <superelg@gmail.com> (https://github.com/benjamindehli)"
   ],

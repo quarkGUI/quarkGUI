@@ -15,10 +15,10 @@
     "js",
     "sass"
   ],
-  "main": "index.js",
+  "main": "index.ts",
   "files": [
     "setup",
-    "src/modules/**/*.{js,scss}",
+    "src/modules/**/*.{ts,js,scss}",
     "src/style/**/*.scss",
     "src/fonts/**/*.{woff,woff2,eot,svg,ttf}",
     "LICENSE"
