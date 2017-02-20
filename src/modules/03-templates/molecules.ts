@@ -6,7 +6,7 @@ import * as RadioButton from '../01-molecules/form-elements/radio-button';
 import * as SelectList from '../01-molecules/form-elements/select-list';
 import * as ButtonRow from '../01-molecules/buttons/button-row';
 import Modal from '../01-molecules/messaging/modal';
-import DragableList from '../01-molecules/lists/dragable-list';
+import * as DragableList from '../01-molecules/lists/dragable-list';
 
 export default function(){
 
@@ -144,7 +144,7 @@ export default function(){
 
 		<h2>Lists</h2>
 		<h3>Dragable list</h3>
-		${DragableList({
+		${DragableList.getModule({
 			id: 'dragable-list1',
 			listItems: [
 				{ content: `first list item content` },
