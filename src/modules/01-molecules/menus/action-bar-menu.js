@@ -5,7 +5,7 @@ var style = require('./action-bar-menu.scss');
 function createActionBarElements(toggleButtons){
 	var toggleButtonElements = "";
 	toggleButtons.forEach(function(toggleButton){
-		toggleButtonElements += `${ToggleButton(toggleButton)}`;
+		toggleButtonElements += `${ToggleButton.getModule(toggleButton)}`;
 	});
 	return toggleButtonElements;
 }

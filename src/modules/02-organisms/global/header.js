@@ -17,7 +17,7 @@ export default function(headerItems){
 	var logoUrlAttribute = logoUrl ? `href="${logoUrl}"` : '';
 
 	var logoImage = '';
-	if (headerItems.logo.image !== undefined) logoImage = Image(headerItems.logo.image);
+	if (headerItems.logo.image !== undefined) logoImage = Image.getModule(headerItems.logo.image);
 
 	var themeClass = style.headerThemeDefault;
 	if (theme == 'primary'){

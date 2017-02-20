@@ -10,7 +10,7 @@ export default function(selectList){
 
 	return `
 		<div class="${style.inputGroup}">
-			${SelectList(selectList)}
+			${SelectList.getModule(selectList)}
 		</div>
 	`;
 

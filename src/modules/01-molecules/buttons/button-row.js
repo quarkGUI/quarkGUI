@@ -14,7 +14,7 @@ export default function(buttonRow){
 	var id = buttonRow.id !== undefined ? buttonRow.id : '';
 
 	var buttonElements = '';
-	if (buttonRow.buttons !== undefined) buttonElements = createButtonElements(buttonRow.buttons);
+	//if (buttonRow.buttons !== undefined) buttonElements = createButtonElements(buttonRow.buttons);
 
 	return `
 		<span id="${id}" class="${style.buttonRow}">

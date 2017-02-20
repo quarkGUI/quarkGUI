@@ -9,7 +9,7 @@ export default function(footer){
 	var content = footer.content !== undefined ? footer.content : '';
 	
 	var logoImage = '';
-	if (footer.logo.image !== undefined) logoImage = Image(footer.logo.image);
+	if (footer.logo.image !== undefined) logoImage = Image.getModule(footer.logo.image);
 
 	var themeClass = style.footerThemeDefault;
 	if (theme == 'primary'){

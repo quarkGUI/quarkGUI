@@ -7,7 +7,7 @@ export default function(actionBar){
 	if (actionBar.actionButton !== undefined) actionBar.actionButton.theme = theme;
 	if (actionBar.actionBarMenu !== undefined) actionBar.actionBarMenu.theme = theme;
 
-	var actionButtonElement  = actionBar.actionButton  !== undefined ? ActionButton(actionBar.actionButton)    : '';
+	var actionButtonElement  = actionBar.actionButton  !== undefined ? ActionButton.getModule(actionBar.actionButton)    : '';
 	var actionBarMenuElement = actionBar.actionBarMenu !== undefined ? ActionBarMenu(actionBar.actionBarMenu) : '';
 	
 

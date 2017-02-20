@@ -9,7 +9,7 @@ export default function(sidebarItems){
 	var sidebarNavigationObj = sidebarItems.sidebarNavigation !== undefined ? sidebarItems.sidebarNavigation : {};
 	
 	var logoImage = '';
-	if (sidebarItems.logo.image !== undefined) logoImage = Image(sidebarItems.logo.image);
+	if (sidebarItems.logo.image !== undefined) logoImage = Image.getModule(sidebarItems.logo.image);
 
 	var sidebarNavigation = {};
 	if (sidebarItems.sidebarNavigation !== undefined) sidebarNavigation = SidebarNavigation(sidebarItems.sidebarNavigation);
