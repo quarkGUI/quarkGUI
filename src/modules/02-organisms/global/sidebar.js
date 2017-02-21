@@ -12,7 +12,7 @@ export default function(sidebarItems){
 	if (sidebarItems.logo.image !== undefined) logoImage = Image.getModule(sidebarItems.logo.image);
 
 	var sidebarNavigation = {};
-	if (sidebarItems.sidebarNavigation !== undefined) sidebarNavigation = SidebarNavigation(sidebarItems.sidebarNavigation);
+	if (sidebarItems.sidebarNavigation !== undefined) sidebarNavigation = SidebarNavigation.getModule(sidebarItems.sidebarNavigation);
 
 	return `
 		<aside class="${style.sidebar}">
