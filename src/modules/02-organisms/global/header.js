@@ -30,7 +30,7 @@ export default function(headerItems){
 	}
 
 	var primaryNavigation = {};
-	if (headerItems.primaryNavigation !== undefined) primaryNavigation = PrimaryNavigation(headerItems.primaryNavigation);
+	if (headerItems.primaryNavigation !== undefined) primaryNavigation = PrimaryNavigation.getModule(headerItems.primaryNavigation);
 
 
 	document.addEventListener('DOMContentLoaded', function() {
