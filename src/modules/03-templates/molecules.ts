@@ -5,7 +5,7 @@ import * as Checkbox from '../01-molecules/form-elements/checkbox';
 import * as RadioButton from '../01-molecules/form-elements/radio-button';
 import * as SelectList from '../01-molecules/form-elements/select-list';
 import * as ButtonRow from '../01-molecules/buttons/button-row';
-import Modal from '../01-molecules/messaging/modal';
+import * as Modal from '../01-molecules/messaging/modal';
 import * as DragableList from '../01-molecules/lists/dragable-list';
 
 export default function(){
