@@ -1,6 +1,6 @@
 var style = require('../../style/globalStyle.scss');
 
-import Grid from '../01-molecules/sections/grid';
+import * as Grid from '../01-molecules/sections/grid';
 import ColorPalette from '../05-global/colors/color-palette';
 
 export default function(){
@@ -9,14 +9,14 @@ export default function(){
 		<h2>Colors</h2>
 		<h3>Color palette</h3>
 		
-		${Grid({
+		${Grid.getModule({
 			gridItems:[
 				{
 					sizes: {
-						xs: '6',
-						sm: '4',
-						md: '3',
-						lg: '3'
+						phone: 6,
+						tablet: 4,
+						tabletLandscape: 3,
+						screen: 3
 					},
 					content: `
 						<h5>Default color</h5>
@@ -25,10 +25,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '6',
-						sm: '4',
-						md: '3',
-						lg: '3'
+						phone: 6,
+						tablet: 4,
+						tabletLandscape: 3,
+						screen: 3
 					},
 					content: `
 						<h5>Primary color</h5>
@@ -37,10 +37,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '6',
-						sm: '4',
-						md: '3',
-						lg: '3'
+						phone: 6,
+						tablet: 4,
+						tabletLandscape: 3,
+						screen: 3
 					},
 					content: `
 						<h5>Info color</h5>
@@ -49,10 +49,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '6',
-						sm: '4',
-						md: '3',
-						lg: '3'
+						phone: 6,
+						tablet: 4,
+						tabletLandscape: 3,
+						screen: 3
 					},
 					content: `
 						<h5>Success color</h5>
@@ -61,10 +61,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '6',
-						sm: '4',
-						md: '3',
-						lg: '3'
+						phone: 6,
+						tablet: 4,
+						tabletLandscape: 3,
+						screen: 3
 					},
 					content: `
 						<h5>Warning color</h5>
@@ -73,10 +73,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '6',
-						sm: '4',
-						md: '3',
-						lg: '3'
+						phone: 6,
+						tablet: 4,
+						tabletLandscape: 3,
+						screen: 3
 					},
 					content: `
 						<h5>Danger color</h5>

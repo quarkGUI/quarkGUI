@@ -1,9 +1,9 @@
 var style = require('../../style/globalStyle.scss');
 
-import ActionBar from '../02-organisms/menus/action-bar';
+import * as ActionBar from '../02-organisms/menus/action-bar';
 import ListMenu from '../02-organisms/menus/list-menu';
 import Card from '../02-organisms/cards/card';
-import Grid from '../01-molecules/sections/grid';
+import * as Grid from '../01-molecules/sections/grid';
 
 
 export default function(){
@@ -58,7 +58,7 @@ export default function(){
 			]
 		})}
 		<h3>Action bar</h3>
-		${ActionBar({
+		${ActionBar.getModule({
 			theme: 'primary',
 			actionButton:{
 				id: 'actionbutton1',
@@ -67,7 +67,6 @@ export default function(){
 			},
 			actionBarMenu: {
 				id: 'action-bar1',
-				theme: 'info',
 				toggleButtons: [
 					{
 						id: 'togglebutton2',
@@ -99,14 +98,14 @@ export default function(){
 
 		<h2>Cards</h2>
 		<h3>Card</h3>
-		${Grid({
+		${Grid.getModule({
 			gridItems:[
 				{
 					sizes: {
-						xs: '12',
-						sm: '6',
-						md: '4',
-						lg: '4'
+						phone: 12,
+						tablet: 6,
+						tabletLandscape: 4,
+						screen: 4
 					},
 					content: Card({
 						id: 'card1',
@@ -137,10 +136,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '12',
-						sm: '6',
-						md: '4',
-						lg: '4'
+						phone: 12,
+						tablet: 6,
+						tabletLandscape: 4,
+						screen: 4
 					},
 					content: Card({
 						id: 'card2',
@@ -172,10 +171,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '12',
-						sm: '6',
-						md: '4',
-						lg: '4'
+						phone: 12,
+						tablet: 6,
+						tabletLandscape: 4,
+						screen: 4
 					},
 					content: Card({
 						id: 'card3',
@@ -207,10 +206,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '12',
-						sm: '6',
-						md: '4',
-						lg: '4'
+						phone: 12,
+						tablet: 6,
+						tabletLandscape: 4,
+						screen: 4
 					},
 					content: Card({
 						id: 'card4',
@@ -242,10 +241,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '12',
-						sm: '6',
-						md: '4',
-						lg: '4'
+						phone: 12,
+						tablet: 6,
+						tabletLandscape: 4,
+						screen: 4
 					},
 					content: Card({
 						id: 'card5',
@@ -277,10 +276,10 @@ export default function(){
 				},
 				{
 					sizes: {
-						xs: '12',
-						sm: '6',
-						md: '4',
-						lg: '4'
+						phone: 12,
+						tablet: 6,
+						tabletLandscape: 4,
+						screen: 4
 					},
 					content: Card({
 						id: 'card6',
