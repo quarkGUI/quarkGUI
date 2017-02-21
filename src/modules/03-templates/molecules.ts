@@ -136,7 +136,7 @@ export default function(){
 
 		<h2>Messaging</h2>
 		<h3>Modal</h3>
-		${Modal({
+		${Modal.getModule({
 			id: 'modal1',
 			title: 'Modal title',
 			content: `<p>modal content</p>`
