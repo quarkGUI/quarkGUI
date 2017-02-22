@@ -1,11 +1,11 @@
 var style = require('../../style/globalStyle.scss');
 
-import Footer from '../02-organisms/global/footer';
+import * as Footer from '../02-organisms/global/footer';
 
 export default function(){
 
 	return ` 
-		${Footer({
+		${Footer.getModule({
 			logo: {
 				image: {
 					src: require('../../img/svg/quark-GUI-logo-primary.svg'),
