@@ -1,4 +1,4 @@
-import ButtonRow from '../../01-molecules/buttons/button-row';
+import * as ButtonRow from '../../01-molecules/buttons/button-row';
 
 var style = require('./list-menu.scss');
 
@@ -24,7 +24,7 @@ function createTitleElement(listItem){
 function createButtonRowElement(listItem){
 	var buttonRow = listItem.buttonRow !== undefined ? listItem.buttonRow : false;
 
-	var buttonRowElement = (buttonRow) ? `<span class="${style.listItemButtonRow}">${ButtonRow(buttonRow)}</span>` : '';
+	var buttonRowElement = (buttonRow) ? `<span class="${style.listItemButtonRow}">${ButtonRow.getModule(buttonRow)}</span>` : '';
 	
 	return buttonRowElement;
 

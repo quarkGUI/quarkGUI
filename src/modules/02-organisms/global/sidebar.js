@@ -1,5 +1,5 @@
-import SidebarNavigation from '../../01-molecules/navigation/sidebar-navigation';
-import Image from '../../00-atoms/media/image';
+import * as SidebarNavigation from '../../01-molecules/navigation/sidebar-navigation';
+import * as Image from '../../00-atoms/media/image';
 
 var style = require('./sidebar.scss');
 

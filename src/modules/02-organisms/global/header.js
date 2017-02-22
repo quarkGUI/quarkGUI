@@ -1,5 +1,5 @@
-import PrimaryNavigation from '../../01-molecules/navigation/primary-navigation';
-import Image from '../../00-atoms/media/image';
+import * as PrimaryNavigation from '../../01-molecules/navigation/primary-navigation';
+import * as Image from '../../00-atoms/media/image';
 import Sidebar from './sidebar';
 
 var style = require('./header.scss');
