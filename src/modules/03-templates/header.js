@@ -1,6 +1,6 @@
 var style = require('../../style/globalStyle.scss');
 
-import Header from '../02-organisms/global/header';
+import * as Header from '../02-organisms/global/header';
 
 export default function(){
 
@@ -10,7 +10,7 @@ export default function(){
 	}
 
 	return ` 
-		${Header({
+		${Header.getModule({
 			id: 'main-header',
 			theme: 'primary',
 			logo: {
