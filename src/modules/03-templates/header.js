@@ -54,12 +54,6 @@ export default function(){
 				]
 			},
 			sidebar: {
-				logo: {
-					image: {
-						src: require('../../img/svg/quark-GUI-logo-primary.svg')
-					},
-					url: '/'
-				},
 				sidebarNavigation: {
 					listItems: [
 						{

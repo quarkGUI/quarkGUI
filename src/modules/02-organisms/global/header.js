@@ -1,6 +1,6 @@
 import * as PrimaryNavigation from '../../01-molecules/navigation/primary-navigation';
 import * as Image from '../../00-atoms/media/image';
-import Sidebar from './sidebar';
+import * as Sidebar from './sidebar';
 
 var style = require('./header.scss');
 
@@ -41,7 +41,7 @@ export default function(headerItems){
 	return `
 		<header class="${style.navbar} ${themeClass}">
 			<div id="sidebarToggle" class="overlay-element ${style.sidenavToggle}">
-				${Sidebar(headerItems.sidebar)}
+				${Sidebar.getModule(headerItems.sidebar)}
 			</div>
 			<a id="${logoId}" ${logoUrlAttribute} class="${style.logo}">
 				${logoImage}
