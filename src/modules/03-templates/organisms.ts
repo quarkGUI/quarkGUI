@@ -1,7 +1,7 @@
 var style = require('../../style/globalStyle.scss');
 
 import * as ActionBar from '../02-organisms/menus/action-bar';
-import ListMenu from '../02-organisms/menus/list-menu';
+import * as ListMenu from '../02-organisms/menus/list-menu';
 import * as Card from '../02-organisms/cards/card';
 import * as Grid from '../01-molecules/sections/grid';
 
@@ -11,7 +11,7 @@ export default function(){
 	return ` 
 	<h2>Menus</h2>
 	<h3>List menu</h3>
-	${ListMenu({
+	${ListMenu.getModule({
 		id: 'list-menu1',
 		listItems: [
 		{
@@ -109,7 +109,7 @@ export default function(){
 			},
 			content: Card.getModule({
 				title: 'Default card',
-				content: ListMenu({
+				content: ListMenu.getModule({
 					id: 'card-list-menu1',
 					hover: true,
 					listItems: [
@@ -143,7 +143,7 @@ export default function(){
 			content: Card.getModule({
 				title: 'Primary card',
 				theme: 'primary',
-				content: ListMenu({
+				content: ListMenu.getModule({
 					id: 'card-list-menu2',
 					hover: true,
 					listItems: [
@@ -177,7 +177,7 @@ export default function(){
 			content: Card.getModule({
 				title: 'Info card',
 				theme: 'info',
-				content: ListMenu({
+				content: ListMenu.getModule({
 					id: 'card-list-menu3',
 					hover: true,
 					listItems: [
@@ -211,7 +211,7 @@ export default function(){
 			content: Card.getModule({
 				title: 'Success card',
 				theme: 'success',
-				content: ListMenu({
+				content: ListMenu.getModule({
 					id: 'card-list-menu4',
 					hover: true,
 					listItems: [
@@ -245,7 +245,7 @@ export default function(){
 			content: Card.getModule({
 				title: 'Warning card',
 				theme: 'warning',
-				content: ListMenu({
+				content: ListMenu.getModule({
 					id: 'card-list-menu5',
 					hover: true,
 					listItems: [
@@ -279,7 +279,7 @@ export default function(){
 			content: Card.getModule({
 				title: 'Danger card',
 				theme: 'danger',
-				content: ListMenu({
+				content: ListMenu.getModule({
 					id: 'card-list-menu6',
 					hover: true,
 					listItems: [
