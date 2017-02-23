@@ -1,7 +1,7 @@
 var style = require('../../style/globalStyle.scss');
 
 import * as Grid from '../01-molecules/sections/grid';
-import ColorPalette from '../05-global/colors/color-palette';
+import * as ColorPalette from '../05-global/colors/color-palette';
 
 export default function(){
 
@@ -20,7 +20,7 @@ export default function(){
 					},
 					content: `
 						<h5>Default color</h5>
-						${ColorPalette({color: 'default'})}	
+						${ColorPalette.getModule({color: 'default'})}	
 					`
 				},
 				{
@@ -32,7 +32,7 @@ export default function(){
 					},
 					content: `
 						<h5>Primary color</h5>
-						${ColorPalette({color: 'primary'})}	
+						${ColorPalette.getModule({color: 'primary'})}	
 					`
 				},
 				{
@@ -44,7 +44,7 @@ export default function(){
 					},
 					content: `
 						<h5>Info color</h5>
-						${ColorPalette({color: 'info'})}	
+						${ColorPalette.getModule({color: 'info'})}	
 					`
 				},
 				{
@@ -56,7 +56,7 @@ export default function(){
 					},
 					content: `
 						<h5>Success color</h5>
-						${ColorPalette({color: 'success'})}	
+						${ColorPalette.getModule({color: 'success'})}	
 					`
 				},
 				{
@@ -68,7 +68,7 @@ export default function(){
 					},
 					content: `
 						<h5>Warning color</h5>
-						${ColorPalette({color: 'warning'})}	
+						${ColorPalette.getModule({color: 'warning'})}	
 					`
 				},
 				{
@@ -80,7 +80,7 @@ export default function(){
 					},
 					content: `
 						<h5>Danger color</h5>
-						${ColorPalette({color: 'danger'})}	
+						${ColorPalette.getModule({color: 'danger'})}	
 					`
 				}
 			]
