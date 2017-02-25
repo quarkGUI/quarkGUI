@@ -1,8 +1,6 @@
 import * as InputField from './input-field'
 const Style = require<any>("./select-list.scss");
 
-var style = require('./select-list.scss');
-
 class SelectList {
 	id: string;
 	name: string;
