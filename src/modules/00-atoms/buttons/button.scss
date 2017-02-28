@@ -70,7 +70,7 @@
 :local(.buttonThemePrimary),
 :local(.buttonThemePrimary):visited {
 	background-color: $primary-color;
-	color: #FFFFFF !important;
+	color: #FFFFFF;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
 		background-color: hover-color($primary-color);
@@ -88,7 +88,7 @@
 :local(.buttonThemeInfo),
 :local(.buttonThemeInfo):visited {
 	background-color: $info-color;
-	color: #FFFFFF !important;
+	color: #FFFFFF;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
 		background-color: hover-color($info-color);
@@ -106,7 +106,7 @@
 :local(.buttonThemeSuccess),
 :local(.buttonThemeSuccess):visited {
 	background-color: $success-color;
-	color: #FFFFFF !important;
+	color: #FFFFFF;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
 		background-color: hover-color($success-color);
@@ -124,7 +124,7 @@
 :local(.buttonThemeWarning),
 :local(.buttonThemeWarning):visited {
 	background-color: $warning-color;
-	color: #FFFFFF !important;
+	color: #FFFFFF;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
 		background-color: hover-color($warning-color);
@@ -142,7 +142,7 @@
 :local(.buttonThemeDanger),
 :local(.buttonThemeDanger):visited {
 	background-color: $danger-color;
-	color: #FFFFFF !important;
+	color: #FFFFFF;
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
 		background-color: hover-color($danger-color);
