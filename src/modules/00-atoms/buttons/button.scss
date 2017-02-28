@@ -12,7 +12,7 @@
 	display: inline-block;
 	margin: 0 8px;
 	padding: 0 6px;
-	@include border-radius(3px);
+	@include border-radius(2px);
 }
 
 :local(.icon){
