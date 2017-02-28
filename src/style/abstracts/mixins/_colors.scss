@@ -1,8 +1,11 @@
 ﻿@function bright-gray($color) {
 	@return lighten($color, 80);
 }
+@function bright-gray-active($color) {
+	@return lighten($color, 70);
+}
 @function bright-color($color) {
-	@return lighten($color, 50);
+	@return lighten($color, 40);
 }
 @function active-color($color) {
 	@return lighten($color, 8);

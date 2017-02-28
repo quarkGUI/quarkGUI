@@ -1,0 +1,75 @@
+@import "../../../../src/style/abstracts/all";
+:local(.dropdownContainer) {
+    &:after{
+      font-family: FontAwesome;
+      content: "\f078";
+      position: relative;
+      float: right;
+      top: -25px;
+      right: 8px;
+      @include transition(transform .2s ease-in-out, top .2s ease-in-out);
+  }
+}
+:local(.dropdownContainer).active{
+    &:after{
+        top: -23px;
+        transform: rotate(180deg);
+    }
+}
+:local(.dropdownList) {
+    display: none;
+    font-size: 14pt;
+    margin: 0;
+    padding: 0;
+    background-color: $bright-white;
+    @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.26));
+    position: relative;
+    &.active {
+        display: block;
+        z-index: 2;
+    }
+    &.transparent{
+        opacity: 0;
+    }
+    :local(.callendar){
+        max-width: 400px;
+        margin: auto;
+        display: inline-block;
+        :local(.dayName){
+            width: 14.285%;
+            text-align: center;
+            display: inline-block;
+        }
+        :local(.day){
+            width: 14.285%;
+            text-align: center;
+            display: inline-block;
+            line-height: 36px;
+            border-radius: 3px;
+            &:hover {
+                background-color: bright-gray($dark-color);
+                cursor: pointer;
+            }
+            &.active {
+                color: $primary-color;
+                border: 1px solid $primary-color;
+            } 
+        }
+
+    }
+    :local(.clock){
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    > li {
+        display: block;
+        color: $default-text-color;
+        text-decoration: none;
+        padding: 10px 20px;
+        width: 100%;
+        min-width: 200px;
+        border-left: 2px solid transparent;
+        
+    }
+}

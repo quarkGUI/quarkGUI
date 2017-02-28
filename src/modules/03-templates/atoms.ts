@@ -5,6 +5,7 @@ import * as InputField from '../00-atoms/form-elements/input-field';
 import * as SelectList from '../00-atoms/form-elements/select-list';
 import * as Checkbox from '../00-atoms/form-elements/checkbox';
 import * as RadioButton from '../00-atoms/form-elements/radio-button';
+import * as DatePicker from '../00-atoms/form-elements/date-picker';
 
 export default function(){
 
@@ -208,6 +209,13 @@ export default function(){
 					value: 'fifth'
 				}
 			]
+		})}
+
+		${DatePicker.getModule({
+			id: 'atom-date-picker1',
+			name: 'atom-date-picker1',
+			type: 'text',
+			placeholder: 'Type here',
 		})}
 `
 	
