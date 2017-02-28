@@ -80,6 +80,43 @@ export default function(){
 				type: "raised"
 			})}
 
+			<h3>Minimal buttons</h3>
+			${Button.getModule({
+				content: "Default button",
+				id: "button13",
+				type: "minimal"
+			})}
+			${Button.getModule({
+				content: "Primary button",
+				id: "button14",
+				theme: "primary",
+				type: "minimal"
+			})}
+			${Button.getModule({
+				content: "Info button",
+				id: "button15",
+				theme: "info",
+				type: "minimal"
+			})}
+			${Button.getModule({
+				content: "Success button",
+				id: "button16",
+				theme: "success",
+				type: "minimal"
+			})}
+			${Button.getModule({
+				content: "Warning button",
+				id: "button17",
+				theme: "warning",
+				type: "minimal"
+			})}
+			${Button.getModule({
+				content: "Danger button",
+				id: "button18",
+				theme: "danger",
+				type: "minimal"
+			})}
+
 		<h2>Form elements</h2>
 		<h3>Input field</h3>
 		${InputField.getModule({

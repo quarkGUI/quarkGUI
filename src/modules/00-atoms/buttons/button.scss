@@ -48,6 +48,72 @@
 	}
 }
 
+:local(.buttonTypeMinimal) {
+	background: none;
+	border: none;
+	color: $primary-color;
+	&:local(.buttonThemeDefault),
+	&:local(.buttonThemeDefault):visited,
+	&:local(.buttonThemePrimary),
+	&:local(.buttonThemePrimary):visited,
+	&:local(.buttonThemeInfo),
+	&:local(.buttonThemeInfo):visited,
+	&:local(.buttonThemeSuccess),
+	&:local(.buttonThemeSuccess):visited,
+	&:local(.buttonThemeWarning),
+	&:local(.buttonThemeWarning):visited,
+	&:local(.buttonThemeDanger),
+	&:local(.buttonThemeDanger):visited{
+		background: none;
+		border: none;
+		&:not([disabled]):hover {
+			background-color: bright-gray($dark-color);
+		}
+	}
+	&:local(.buttonThemeDefault),
+	&:local(.buttonThemeDefault):visited {
+		color: $primary-color;
+		&:not([disabled]):active {
+			background-color: bright-gray-active($dark-color);
+		}
+	}
+	&:local(.buttonThemePrimary),
+	&:local(.buttonThemePrimary):visited {
+		color: $primary-color;
+		&:not([disabled]):active {
+			background-color: bright-color($primary-color);
+		}
+	}
+	&:local(.buttonThemeInfo),
+	&:local(.buttonThemeInfo):visited {
+		color: $info-color;
+		&:not([disabled]):active {
+			background-color: bright-color($info-color);
+		}
+	}
+	&:local(.buttonThemeSuccess),
+	&:local(.buttonThemeSuccess):visited {
+		color: $success-color;
+		&:not([disabled]):active {
+			background-color: bright-color($success-color);
+		}
+	}
+	&:local(.buttonThemeWarning),
+	&:local(.buttonThemeWarning):visited {
+		color: $warning-color;
+		&:not([disabled]):active {
+			background-color: bright-color($warning-color);
+		}
+	}
+	&:local(.buttonThemeDanger),
+	&:local(.buttonThemeDanger):visited {
+		color: $danger-color;
+		&:not([disabled]):active {
+			background-color: bright-color($danger-color);
+		}
+	}
+}
+
 :local(.buttonThemeDefault),
 :local(.buttonThemeDefault):visited {
 	background-color: $default-color;

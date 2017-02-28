@@ -31,6 +31,7 @@ class Button {
 	private getTypeClass(type: string){
 		let typeClass = Style.buttonTypeFlat;
 		if (type == "raised") typeClass = Style.buttonTypeRaised;
+		if (type == "minimal") typeClass = Style.buttonTypeMinimal;
 		return typeClass;
 	}
 
