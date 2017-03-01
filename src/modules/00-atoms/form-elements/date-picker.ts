@@ -125,35 +125,35 @@ class DatePicker {
 		${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-right"})}
 		`;
 		let yearSelectorElement: string = `
-		${Button.getModule({iconClass: "fa fa-chevron-left"})}
+		${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-left"})}
 		<span>${activeDate.year}</span>
-		${Button.getModule({iconClass: "fa fa-chevron-right"})}
+		${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-right"})}
 		`;
-		let dateSelectorElement: string = `<div>${yearSelectorElement}${monthSelectorElement}</div>`;
+		let dateSelectorElement: string = `<div class="${Style.monthSelector}">${monthSelectorElement}</div><div class="${Style.yearSelector}">${yearSelectorElement}</div>`;
 		return dateSelectorElement;
 	}
 
 	private createTimeSelectorElement(activeDate){
 		let hourSelectorElement: string = `
 		<div style="width: 50%">
-			${Button.getModule({iconClass: "fa fa-chevron-up"})}
+			${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-up"})}
 			${InputField.getModule({
 				id: "dsjkl",
 				name: "dsdf",
 				type: "number"
 			})}
-			${Button.getModule({iconClass: "fa fa-chevron-down"})}
+			${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-down"})}
 		</div>
 		`;
 		let minuteSelectorElement: string = `
 		<div style="width: 50%">
-			${Button.getModule({iconClass: "fa fa-chevron-up"})}
+			${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-up"})}
 			${InputField.getModule({
 				id: "dsddjkl",
 				name: "ddddsdf",
 				type: "number"
 			})}
-			${Button.getModule({iconClass: "fa fa-chevron-down"})}
+			${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-down"})}
 		</div>
 		`;
 		let timeSelectorElement: string = `<div>${hourSelectorElement}${minuteSelectorElement}</div>`;
@@ -224,14 +224,18 @@ class DatePicker {
 		return `
 		<div id="${this.id}" class="${Style.dropdownContainer}">
 		${InputField.getModule(inputField)} ${this.labelElement}
-		<div id="${dropdownList.id}" class="${Style.dropdownList}">
-			<div class="${Style.callendar}">
-				${dateSelectorElement}
-				${dayNameElements}
-				${callendarElement}
-			</div>
-			<div class="${Style.clock}">
-				${timeSelectorElement}
+		<div id="${dropdownList.id}" class="${Style.modalOverlay}">
+			<div class="${Style.modalContainer}">
+				<span class="${Style.toggleTab} ${Style.toggleTabCallendar}"></span>
+				<span class="${Style.toggleTab} ${Style.toggleTabClock}"></span>
+				<div class="${Style.callendar}">
+					${dateSelectorElement}
+					${dayNameElements}
+					${callendarElement}
+				</div>
+				<div class="${Style.clock}">
+					${timeSelectorElement}
+				</div>
 			</div>
 		</div>
 		</div>

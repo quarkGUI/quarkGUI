@@ -16,20 +16,62 @@
         transform: rotate(180deg);
     }
 }
-:local(.dropdownList) {
+:local(.modalOverlay){
+    position: fixed;
+    background-color: rgba(0,0,0,.2);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
     display: none;
-    font-size: 14pt;
-    margin: 0;
-    padding: 0;
-    background-color: $bright-white;
-    @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.26));
-    position: relative;
     &.active {
         display: block;
         z-index: 2;
     }
     &.transparent{
         opacity: 0;
+    }
+}
+:local(.modalContainer) {
+    font-size: 14pt;
+    margin: 70px auto 0;
+    padding: 0;
+    width: 360px;
+    background-color: $bright-white;
+    @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.26));
+    
+    :local(.toggleTab){
+        width: 50%;
+        display: inline-block;
+        float: left;
+        font-size: 36px;
+        text-align: center;
+        &:before{
+            font-family: FontAwesome;
+        }
+        &:local(.toggleTabCallendar){
+            &:before{
+                content: "\f073";
+            }
+        }
+        &:local(.toggleTabClock){
+            &:before{
+                content: "\f017";
+            }
+        }
+    }
+
+    :local(.yearSelector){
+        font-size: 20px;
+        a {
+            vertical-align: middle;
+        }
+    }
+    :local(.monthSelector){
+        font-size: 36px;
+        a {
+            vertical-align: middle;
+        }
     }
     :local(.callendar){
         max-width: 400px;
