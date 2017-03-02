@@ -89,14 +89,14 @@ class DatePicker {
 				};
 
 				inputFieldElement.onblur = function(event){
-					selectListElement.classList.remove("active");
+					/*selectListElement.classList.remove("active");
 					dropdownListElement.classList.add("transparent")
 					setTimeout(function(){ 
 						if (inputFieldElement !== document.activeElement){
 							dropdownListElement.classList.remove("active")
 							dropdownListElement.classList.remove("transparent")
 						}
-					}, 1000);
+					}, 1000);*/
 
 				}
 				if (dropdownListElementIsDefined){
@@ -112,13 +112,28 @@ class DatePicker {
 							inputFieldElement.classList.add("is-not-empty");
 						}
 					});
+					// Tab toggle buttons
+					let toggleTabCallendarElementList: NodeListOf<Element> = dropdownListElement.getElementsByClassName(Style.toggleTabCallendar);
+					let toggleTabCallendarElement: HTMLElement = <HTMLElement>toggleTabCallendarElementList.item(0);
+					toggleTabCallendarElement.addEventListener('click', function (e){
+						dropdownListElement.classList.remove("active-tab-clock");
+						dropdownListElement.classList.add("active-tab-callendar");
+					})
+
+					let toggleTabClockElementList: NodeListOf<Element> = dropdownListElement.getElementsByClassName(Style.toggleTabClock);
+					let toggleTabClockElement: HTMLElement = <HTMLElement>toggleTabClockElementList.item(0);
+					toggleTabClockElement.addEventListener('click', function (e){
+						dropdownListElement.classList.remove("active-tab-callendar");
+						dropdownListElement.classList.add("active-tab-clock");
+					})
+					
 				}
 			}
 		}, false);
 	}
 
 	private createDateSelectorElement(activeDate){
-		let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 		let monthSelectorElement: string = `
 		${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-left"})}
 		<span>${monthNames[activeDate.month - 1]}</span>
@@ -131,6 +146,24 @@ class DatePicker {
 		`;
 		let dateSelectorElement: string = `<div class="${Style.monthSelector}">${monthSelectorElement}</div><div class="${Style.yearSelector}">${yearSelectorElement}</div>`;
 		return dateSelectorElement;
+	}
+
+	private createPreviewElement(selectedDate){
+		let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		let dayNumbers = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st'];
+		let dayNames: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+		let dateString: string = `${monthNames[selectedDate.month - 1]} - ${selectedDate.year}`;
+		let dayNumberString: string = dayNumbers[selectedDate.day - 1];
+		let dayNameString: string = dayNames[selectedDate.weekDay];
+		let datePreviewElement: string = `
+											<div class="${Style.preview}">
+												<div class="${Style.previewDate}">${dateString}</div>
+												<div class="${Style.previewDayNumber}">${dayNumberString}</div>
+												<div class="${Style.previewDayName}">${dayNameString}</div>
+												<div>12:04</div>
+											</div>`;
+		
+		return datePreviewElement;
 	}
 
 	private createTimeSelectorElement(activeDate){
@@ -171,7 +204,7 @@ class DatePicker {
 
 	private createMonthElement(selectedDate, activeDate){
 		let daysInMonth: number = new Date(selectedDate.year, selectedDate.month, 0).getDate();
-		let firstDay: number = new Date(selectedDate.year, selectedDate.month, 1).getDay();
+		let firstDay: number = new Date(selectedDate.year, selectedDate.month - 1, 1).getDay();
 		
 		let dayElements: string = "";
 		let days: any[] = [];
@@ -212,6 +245,7 @@ class DatePicker {
 		let dropdownList = {
 			id: this.id + '-dropdownList'
 		}
+		let previewElement = this.createPreviewElement(this.selectedDate);
 		let dateSelectorElement = this.createDateSelectorElement(this.activeDate);
 		let timeSelectorElement = this.createTimeSelectorElement(this.activeDate);
 		let dayNameElements = this.createDayNameElements();
@@ -224,10 +258,12 @@ class DatePicker {
 		return `
 		<div id="${this.id}" class="${Style.dropdownContainer}">
 		${InputField.getModule(inputField)} ${this.labelElement}
-		<div id="${dropdownList.id}" class="${Style.modalOverlay}">
+		<div id="${dropdownList.id}" class="${Style.modalOverlay} active-tab-callendar">
 			<div class="${Style.modalContainer}">
 				<span class="${Style.toggleTab} ${Style.toggleTabCallendar}"></span>
 				<span class="${Style.toggleTab} ${Style.toggleTabClock}"></span>
+				<div class="clearfix"></div>
+				${previewElement}
 				<div class="${Style.callendar}">
 					${dateSelectorElement}
 					${dayNameElements}

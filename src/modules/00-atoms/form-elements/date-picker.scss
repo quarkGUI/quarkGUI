@@ -18,11 +18,13 @@
 }
 :local(.modalOverlay){
     position: fixed;
-    background-color: rgba(0,0,0,.2);
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
+    padding-top: 48px;
+    padding-bottom: 0;
+    background-color: #FFFFFF;
     display: none;
     &.active {
         display: block;
@@ -31,7 +33,18 @@
     &.transparent{
         opacity: 0;
     }
+    @media only screen and (min-width: $screen-sm){
+        padding-top: 64px;
+    }
+    @media (min-width: $screen-lg){
+        padding-top: 0;
+        z-index: 2;
+        background-color: rgba(33, 33, 33, 0.48);
+        @include box-shadow(none);
+        @include transition(all .2s .4s);
+    }
 }
+
 :local(.modalContainer) {
     font-size: 14pt;
     margin: 70px auto 0;
@@ -61,22 +74,37 @@
         }
     }
 
-    :local(.yearSelector){
-        font-size: 20px;
-        a {
-            vertical-align: middle;
+    :local(.preview){
+        background-color: $primary-color;
+        color: #FFF;
+        text-align: center;
+        padding: 24px 0;
+        :local(.previewDate){
+            font-size: 18px;
         }
-    }
+        :local(.previewDayNumber){
+            font-size: 46px;
+        }
+        :local(.previewDayName){
+            font-size: 22px;
+        }
+    };
+
+    :local(.yearSelector),
     :local(.monthSelector){
-        font-size: 36px;
+        font-size: 20px;
+        width: 50%;
+        float: left;
+        padding: 6px 0;
         a {
             vertical-align: middle;
         }
     }
+
     :local(.callendar){
+        display: none;
         max-width: 400px;
         margin: auto;
-        display: inline-block;
         :local(.dayName){
             width: 14.285%;
             text-align: center;
@@ -100,7 +128,7 @@
 
     }
     :local(.clock){
-        display: inline-block;
+        display: none;
         vertical-align: top;
     }
     
@@ -113,5 +141,24 @@
         min-width: 200px;
         border-left: 2px solid transparent;
         
+    }
+}
+
+.active-tab-callendar{
+    :local(.toggleTabCallendar){
+        background-color: $primary-color;
+        color: #FFF;
+    }
+    :local(.callendar){
+        display: inline-block;
+    }
+}
+.active-tab-clock{
+    :local(.toggleTabClock){
+        background-color: $primary-color;
+        color: #FFF;
+    }
+    :local(.clock){
+        display: inline-block;
     }
 }
