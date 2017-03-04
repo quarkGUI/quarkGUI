@@ -13,6 +13,7 @@
 		"docs/",
 		"lib/",
 		"typings/",
+		"src/index.js",
 		"dev-server.js",
 		"gulpfile.js",
 		"webpack.config.js"
