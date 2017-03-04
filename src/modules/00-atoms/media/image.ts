@@ -1,6 +1,6 @@
 const Style = require<any>("./image.scss");
 
-class Image {
+export class Image {
 	src: string;
 	alt: string = "";
 
@@ -14,7 +14,7 @@ class Image {
 	}
 }
 
-interface IImage {
+export interface IImage {
 	src: string;
 	alt?: string; 
 }

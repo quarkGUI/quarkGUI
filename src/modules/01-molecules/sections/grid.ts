@@ -2,7 +2,7 @@ import * as GridItem from '../../00-atoms/sections/grid-item';
 
 const Style = require<any>("./grid.scss");
 
-class Grid {
+export class Grid {
 	gridItems: IGridItem[];
 	constructor(grid: IGrid) {
 		this.gridItems = grid.gridItems;
@@ -18,19 +18,19 @@ class Grid {
 	}
 }
 
-interface ISizes{
+export interface ISizes{
 	phone?: number;
 	tablet?: number;
 	tabletLandscape?: number;
 	screen?: number;
 }
 
-interface IGridItem{
+export interface IGridItem{
 	content: string;
 	sizes: ISizes;
 }
 
-interface IGrid{
+export interface IGrid{
 	gridItems: IGridItem[];
 }
 

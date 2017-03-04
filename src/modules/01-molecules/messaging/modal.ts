@@ -1,6 +1,6 @@
 const Style = require<any>("./modal.scss");
 
-class Modal {
+export class Modal {
 	id: string;
 	title: string = "";
 	content: string;
@@ -22,7 +22,7 @@ class Modal {
 	}
 }
 
-interface IModal {
+export interface IModal {
 	id: string;
 	title?: string;
 	content: string;

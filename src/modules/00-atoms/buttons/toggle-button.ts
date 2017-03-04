@@ -1,6 +1,6 @@
 const Style = require<any>("./toggle-button.scss");
 
-class ToggleButton {
+export class ToggleButton {
 	id: string;
 	targetClass: string;
 	toggleType: string = "";
@@ -64,7 +64,7 @@ class ToggleButton {
 	}
 }
 
-interface IToggleButton {
+export interface IToggleButton {
 	id: string;
 	targetClass: string;
 	toggleType?: string;

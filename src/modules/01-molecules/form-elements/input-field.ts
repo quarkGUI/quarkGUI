@@ -1,7 +1,7 @@
 import * as AtomInputField from '../../00-atoms/form-elements/input-field'
 const Style = require<any>("./input-field.scss");
 
-class InputField {
+export class InputField {
 	id: string;
 	name: string;
 	type: string = "text";
@@ -35,7 +35,7 @@ class InputField {
 	}
 }
 
-interface IInputField{
+export interface IInputField{
 	id: string;
 	name: string;
 	type?: string;

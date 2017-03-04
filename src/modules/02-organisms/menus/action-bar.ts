@@ -1,7 +1,7 @@
 import * as ActionButton from '../../00-atoms/buttons/action-button';
 import * as ActionBarMenu from '../../01-molecules/menus/action-bar-menu';
 
-class ActionBar {
+export class ActionBar {
 	theme: string = "default";
 	actionButton: IActionButton;
 	actionBarMenu: IActionBarMenu;
@@ -22,14 +22,14 @@ class ActionBar {
 
 }
 
-interface IActionButton {
+export interface IActionButton {
 	id: string; 
 	theme?: string;
 	iconClass?: string; 
 }
 
 
-interface IToggleButton {
+export interface IToggleButton {
 	id: string;
 	targetClass: string;
 	toggleType?: string;
@@ -38,13 +38,13 @@ interface IToggleButton {
 	iconClass?: string; 
 }
 
-interface IActionBarMenu {
+export interface IActionBarMenu {
 	id: string;
 	theme?: string;
 	toggleButtons?: IToggleButton[];
 }
 
-interface IActionBar{
+export interface IActionBar{
 	theme?: string;
 	actionButton: IActionButton;
 	actionBarMenu: IActionBarMenu;

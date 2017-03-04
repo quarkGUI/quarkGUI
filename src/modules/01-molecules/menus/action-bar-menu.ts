@@ -2,7 +2,7 @@ import * as ToggleButton from '../../00-atoms/buttons/toggle-button';
 
 const Style = require<any>("./action-bar-menu.scss");
 
-class ActionBarMenu {
+export class ActionBarMenu {
 	id: string;
 	theme: string = "";
 	toggleButtons: IToggleButton[] = [];
@@ -35,7 +35,7 @@ class ActionBarMenu {
 }
 
 
-interface IToggleButton {
+export interface IToggleButton {
 	id: string;
 	targetClass: string;
 	toggleType?: string;
@@ -44,7 +44,7 @@ interface IToggleButton {
 	iconClass?: string; 
 }
 
-interface IActionBarMenu {
+export interface IActionBarMenu {
 	id: string;
 	theme?: string;
 	toggleButtons?: IToggleButton[];

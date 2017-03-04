@@ -2,7 +2,7 @@ import * as Image from '../../00-atoms/media/image';
 
 const Style = require<any>('./footer.scss');
 
-class Footer {
+export class Footer {
 	theme: string = "default";
 	content: string = "";
 	logo: ILogo;
@@ -39,17 +39,17 @@ class Footer {
 	}
 }
 
-interface IImage {
+export interface IImage {
 	src: any;
 	alt?: string; 
 }
 
-interface ILogo {
+export interface ILogo {
 	image: IImage;
 	url?: string;
 }
 
-interface IFooter {
+export interface IFooter {
 	theme?: string;
 	content?: string;
 	logo?: ILogo;

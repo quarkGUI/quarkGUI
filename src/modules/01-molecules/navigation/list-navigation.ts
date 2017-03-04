@@ -1,6 +1,6 @@
 const Style = require<any>("./list-navigation.scss");
 
-class ListNavigation {
+export class ListNavigation {
 	listItems: IListItem[];
 	constructor(listNavigation: IListNavigation) {
 		this.listItems = listNavigation.listItems;
@@ -17,12 +17,12 @@ class ListNavigation {
 	}
 }
 
-interface IListItem {
+export interface IListItem {
 	name: string;
 	link: string;
 }
 
-interface IListNavigation{
+export interface IListNavigation{
 	listItems: IListItem[];
 }
 

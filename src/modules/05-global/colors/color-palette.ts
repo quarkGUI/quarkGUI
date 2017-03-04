@@ -1,6 +1,6 @@
 const Style = require<any>("./color-palette.scss");
 
-class ColorPalette {
+export class ColorPalette {
 	color: string;
 
     constructor(colorPalette: IColorPalette) {
@@ -41,7 +41,7 @@ class ColorPalette {
     }
 }
 
-interface IColorPalette {
+export interface IColorPalette {
 	color: string;
 }
 

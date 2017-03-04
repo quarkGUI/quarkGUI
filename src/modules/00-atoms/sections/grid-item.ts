@@ -1,6 +1,6 @@
 const Style = require<any>("./grid-item.scss");
 
-class GridItem {
+export class GridItem {
 	content: string = "";
 	sizes: ISizeClasses = {
 		phone: "",
@@ -26,21 +26,21 @@ class GridItem {
 	}
 }
 
-interface ISizeClasses{
+export interface ISizeClasses{
 	phone?: string;
 	tablet?: string;
 	tabletLandscape?: string;
 	screen?: string;
 }
 
-interface ISizes{
+export interface ISizes{
 	phone?: number;
 	tablet?: number;
 	tabletLandscape?: number;
 	screen?: number;
 }
 
-interface IGridItem{
+export interface IGridItem{
 	content: string;
 	sizes: ISizes;
 }

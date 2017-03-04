@@ -1,6 +1,6 @@
 const Style = require<any>('./card.scss');
 
-class Card {
+export class Card {
 	theme: string = "default";
 	title: string = "";
 	content: string = "";
@@ -35,7 +35,7 @@ class Card {
 	}
 }
 
-interface ICard {
+export interface ICard {
 	theme?: string;
 	title?: string;
 	content?: string;

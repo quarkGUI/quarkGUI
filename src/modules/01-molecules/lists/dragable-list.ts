@@ -2,7 +2,7 @@ import * as Dragula from 'dragula';
 
 const Style = require<any>("./dragable-list.scss");
 
-class DragableList {
+export class DragableList {
 	id: string;
 	listItems: IListItems[];
 	constructor(dragableList: IDragableList) {
@@ -50,11 +50,11 @@ class DragableList {
 	}
 }
 
-interface IListItems{
+export interface IListItems{
 	content: string;
 }
 
-interface IDragableList{
+export interface IDragableList{
 	id: string;
 	listItems: IListItems[];
 }

@@ -1,6 +1,6 @@
 const Style = require<any>('./sidebar-navigation.scss');
 
-class SidebarNavigation {
+export class SidebarNavigation {
 	listItems: IListItem[];
 	constructor(sidebarNavigation: ISidebarNavigation) {
 		this.listItems = sidebarNavigation.listItems;
@@ -24,14 +24,14 @@ class SidebarNavigation {
 	}
 }
 
-interface IListItem {
+export interface IListItem {
 	name: string;
 	link: string;
 	id?: string;
 	moduleLink?: string;
 }
 
-interface ISidebarNavigation {
+export interface ISidebarNavigation {
 	listItems: IListItem[];
 }
 

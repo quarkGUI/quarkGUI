@@ -2,7 +2,7 @@ import * as Button from '../../00-atoms/buttons/button'
 
 const Style = require<any>("./button-row.scss");
 
-class ButtonRow {
+export class ButtonRow {
 	id: string;
 	buttons: IButton[];
 	constructor(buttonRow: IButtonRow) {
@@ -20,7 +20,7 @@ class ButtonRow {
 	}
 }
 
-interface IButton {
+export interface IButton {
 	id: string; 
 	type?: string; 
 	theme?: string;
@@ -29,7 +29,7 @@ interface IButton {
 	content?: string;
 }
 
-interface IButtonRow{
+export interface IButtonRow{
 	id: string;
 	buttons: IButton[];
 }

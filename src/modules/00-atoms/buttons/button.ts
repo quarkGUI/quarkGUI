@@ -1,6 +1,6 @@
 const Style = require<any>("./button.scss");
 
-class Button {
+export class Button {
 	id: string = "";
 	link: string = "#";
 	icon: string = "";
@@ -44,7 +44,7 @@ class Button {
 	}
 }
 
-interface IButton {
+export interface IButton {
 	id?: string; 
 	type?: string; 
 	theme?: string;

@@ -4,7 +4,7 @@ import * as Sidebar from './sidebar';
 
 const Style = require<any>('./header.scss');
 
-class Header {
+export class Header {
 	id: string;
 	theme: string = "default";
 	logo: ILogo;
@@ -68,49 +68,49 @@ class Header {
 	}
 }
 
-interface IImage {
+export interface IImage {
 	src: any;
 	alt?: string; 
 }
 
-interface ILogo {
+export interface ILogo {
 	image: IImage;
 	url?: string;
 }
 
-interface ISidebarListItem {
+export interface ISidebarListItem {
 	name: string;
 	link: string;
 	id?: string;
 	moduleLink?: string;
 }
 
-interface ISidebarNavigation {
+export interface ISidebarNavigation {
 	listItems: ISidebarListItem[];
 }
 
-interface ISidebar{
+export interface ISidebar{
 	sidebarNavigation?: ISidebarNavigation;
 	logo?: ILogo;
 }
 
-interface IDropdownContent {
+export interface IDropdownContent {
 	listItems: IListItem[];
 }
 
-interface IListItem {
+export interface IListItem {
 	name: string;
 	link: string;
 	dropdownContent?: IDropdownContent;
 }
 
-interface IPrimaryNavigation {
+export interface IPrimaryNavigation {
 	id?: string;
 	theme?: string;
 	listItems?: IListItem[];
 }
 
-interface IHeader {
+export interface IHeader {
 	id: string;
 	theme?: string;
 	logo?: ILogo;

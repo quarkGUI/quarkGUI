@@ -1,6 +1,6 @@
 const Style = require<any>("./action-button.scss");
 
-class ActionButton {
+export class ActionButton {
 	id: string;
 	icon: string;
 	themeClass: string = Style.buttonThemeDefault;
@@ -50,7 +50,7 @@ class ActionButton {
 
 }
 
-interface IActionButton {
+export interface IActionButton {
 	id: string; 
 	theme?: string;
 	iconClass?: string; 

@@ -2,7 +2,7 @@ import * as ListNavigation from './list-navigation';
 
 const Style = require<any>('./primary-navigation.scss');
 
-class PrimaryNavigation {
+export class PrimaryNavigation {
 	id: string = "";
 	theme: string = "default";
 	listItems: IListItem[] = [];
@@ -72,17 +72,17 @@ class PrimaryNavigation {
 
 }
 
-interface IDropdownContent {
+export interface IDropdownContent {
 	listItems: IListItem[];
 }
 
-interface IListItem {
+export interface IListItem {
 	name: string;
 	link: string;
 	dropdownContent?: IDropdownContent;
 }
 
-interface IPrimaryNavigation {
+export interface IPrimaryNavigation {
 	id?: string;
 	theme?: string;
 	listItems?: IListItem[];

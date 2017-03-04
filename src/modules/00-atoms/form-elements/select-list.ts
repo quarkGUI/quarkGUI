@@ -1,7 +1,7 @@
 import * as InputField from './input-field'
 const Style = require<any>("./select-list.scss");
 
-class SelectList {
+export class SelectList {
 	id: string;
 	name: string;
 	searchable: boolean = false;
@@ -147,12 +147,12 @@ class SelectList {
 	}
 }
 
-interface IOptions{
+export interface IOptions{
 	name: string;
 	value: any;
 }
 
-interface ISelectList{
+export interface ISelectList{
 	id: string;
 	name: string;
 	searchable?: boolean;

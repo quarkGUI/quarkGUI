@@ -1,6 +1,6 @@
 const Style = require<any>("./checkbox.scss");
 
-class Checkbox {
+export class Checkbox {
 	id: string;
 	name: string;
 	value: string;
@@ -33,7 +33,7 @@ class Checkbox {
 	}
 }
 
-interface ICheckbox{
+export interface ICheckbox{
 	id: string;
 	name: string;
 	value: string;

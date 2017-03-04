@@ -2,7 +2,7 @@ import * as AtomSelectList from '../../00-atoms/form-elements/select-list'
 
 const Style = require<any>("./select-list.scss");
 
-class SelectList {
+export class SelectList {
 	id: string;
 	name: string;
 	searchable?: boolean;
@@ -44,12 +44,12 @@ class SelectList {
 	}
 }
 
-interface IOptions{
+export interface IOptions{
 	name: string;
 	value: any;
 }
 
-interface ISelectList{
+export interface ISelectList{
 	id: string;
 	name: string;
 	searchable?: boolean;

@@ -2,7 +2,7 @@ import * as InputField from './input-field'
 import * as Button from '../buttons/button'
 const Style = require<any>("./date-picker.scss");
 
-class DatePicker {
+export class DatePicker {
 	id: string;
 	name: string;
 	type: string = "text";
@@ -280,12 +280,12 @@ class DatePicker {
 }
 
 
-interface IOptions{
+export interface IOptions{
 	name: string;
 	value: any;
 }
 
-interface IDatePicker{
+export interface IDatePicker{
 	id: string;
 	name: string;
 	searchable?: boolean;

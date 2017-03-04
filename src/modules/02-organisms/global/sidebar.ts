@@ -3,7 +3,7 @@ import * as Image from '../../00-atoms/media/image';
 
 const Style = require<any>('./sidebar.scss');
 
-class Sidebar {
+export class Sidebar {
 	sidebarNavigation: ISidebarNavigation;
 	logo: ILogo;
 	constructor(sidebar: ISidebar) {
@@ -35,28 +35,28 @@ class Sidebar {
 	}
 }
 
-interface IImage {
+export interface IImage {
 	src: any;
 	alt?: string; 
 }
 
-interface ILogo {
+export interface ILogo {
 	image: IImage;
 	url?: string;
 }
 
-interface IListItem {
+export interface IListItem {
 	name: string;
 	link: string;
 	id?: string;
 	moduleLink?: string;
 }
 
-interface ISidebarNavigation {
+export interface ISidebarNavigation {
 	listItems: IListItem[];
 }
 
-interface ISidebar{
+export interface ISidebar{
 	sidebarNavigation?: ISidebarNavigation;
 	logo?: ILogo;
 }

@@ -2,7 +2,7 @@ import * as ButtonRow from '../../01-molecules/buttons/button-row';
 
 const Style = require<any>('./list-menu.scss');
 
-class ListMenu {
+export class ListMenu {
 	id: string = "";
 	listItems: IListItem[];
 	hover: boolean = false;
@@ -59,7 +59,7 @@ class ListMenu {
 	}
 }
 
-interface IButton {
+export interface IButton {
 	id: string; 
 	type?: string; 
 	theme?: string;
@@ -68,12 +68,12 @@ interface IButton {
 	content?: string;
 }
 
-interface IButtonRow{
+export interface IButtonRow{
 	id: string;
 	buttons: IButton[];
 }
 
-interface IListItem {
+export interface IListItem {
 	title?: string;
 	subTitle?: string;
 	link?: string;
@@ -81,7 +81,7 @@ interface IListItem {
 	buttonRow?: IButtonRow;
 }
 
-interface IListMenu {
+export interface IListMenu {
 	id?: string;
 	listItems?: IListItem[];
 	hover?: boolean;

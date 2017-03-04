@@ -1,6 +1,6 @@
 const Style = require<any>("./radio-button.scss");
 
-class RadioButton {
+export class RadioButton {
 	id: string;
 	name: string;
 	value: string;
@@ -34,7 +34,7 @@ class RadioButton {
 }
 
 
-interface IRadioButton{
+export interface IRadioButton{
 	id: string;
 	name: string;
 	value: string;
