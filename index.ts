@@ -9,6 +9,6 @@
 
  require("font-awesome-webpack!font-awesome-webpack/font-awesome.config.js");
  
- import Modules = require("./src/modules");
+ import * as Modules from "./src/modules";
 
  export = Modules;
