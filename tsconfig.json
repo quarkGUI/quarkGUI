@@ -1,5 +1,20 @@
 {
 	"compilerOptions": {
-		"allowJs":true
-	}
+		"outDir": "lib/",
+		"rootDir": "./",
+		"module": "commonjs",
+		"target": "es6",
+		"declaration": true,
+		"declarationDir": "typings/"
+	},
+	"exclude": [
+		"node_modules",
+		"test/",
+		"docs/",
+		"lib/",
+		"typings/",
+		"dev-server.js",
+		"gulpfile.js",
+		"webpack.config.js"
+	]
 }
