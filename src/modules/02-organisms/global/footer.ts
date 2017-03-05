@@ -39,13 +39,8 @@ export class Footer {
 	}
 }
 
-export interface IImage {
-	src: any;
-	alt?: string; 
-}
-
 export interface ILogo {
-	image: IImage;
+	image: Image.IImage;
 	url?: string;
 }
 

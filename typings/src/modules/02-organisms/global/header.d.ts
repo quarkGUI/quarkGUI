@@ -1,53 +1,26 @@
+import * as PrimaryNavigation from '../../01-molecules/navigation/primary-navigation';
+import * as Image from '../../00-atoms/media/image';
+import * as Sidebar from './sidebar';
 export declare class Header {
     id: string;
     theme: string;
     logo: ILogo;
-    primaryNavigation: IPrimaryNavigation;
-    sidebar: ISidebar;
+    primaryNavigation: PrimaryNavigation.IPrimaryNavigation;
+    sidebar: Sidebar.ISidebar;
     constructor(header: IHeader);
     private AddListener();
     private getThemeClass(theme);
     createModuleElement(): string;
 }
-export interface IImage {
-    src: any;
-    alt?: string;
-}
 export interface ILogo {
-    image: IImage;
+    image: Image.IImage;
     url?: string;
-}
-export interface ISidebarListItem {
-    name: string;
-    link: string;
-    id?: string;
-    moduleLink?: string;
-}
-export interface ISidebarNavigation {
-    listItems: ISidebarListItem[];
-}
-export interface ISidebar {
-    sidebarNavigation?: ISidebarNavigation;
-    logo?: ILogo;
-}
-export interface IDropdownContent {
-    listItems: IListItem[];
-}
-export interface IListItem {
-    name: string;
-    link: string;
-    dropdownContent?: IDropdownContent;
-}
-export interface IPrimaryNavigation {
-    id?: string;
-    theme?: string;
-    listItems?: IListItem[];
 }
 export interface IHeader {
     id: string;
     theme?: string;
     logo?: ILogo;
-    primaryNavigation?: IPrimaryNavigation;
-    sidebar?: ISidebar;
+    primaryNavigation?: PrimaryNavigation.IPrimaryNavigation;
+    sidebar?: Sidebar.ISidebar;
 }
 export declare function getModule(header: IHeader): string;

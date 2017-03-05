@@ -76,9 +76,7 @@ export interface IDropdownContent {
 	listItems: IListItem[];
 }
 
-export interface IListItem {
-	name: string;
-	link: string;
+export interface IListItem extends ListNavigation.IListItem{
 	dropdownContent?: IDropdownContent;
 }
 

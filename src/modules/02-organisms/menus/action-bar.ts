@@ -3,8 +3,8 @@ import * as ActionBarMenu from '../../01-molecules/menus/action-bar-menu';
 
 export class ActionBar {
 	theme: string = "default";
-	actionButton: IActionButton;
-	actionBarMenu: IActionBarMenu;
+	actionButton: ActionButton.IActionButton;
+	actionBarMenu: ActionBarMenu.IActionBarMenu;
 	constructor(actionBar: IActionBar) {
 		if (actionBar.theme !== undefined) this.theme = actionBar.theme;
 		this.actionButton = actionBar.actionButton;
@@ -22,32 +22,10 @@ export class ActionBar {
 
 }
 
-export interface IActionButton {
-	id: string; 
-	theme?: string;
-	iconClass?: string; 
-}
-
-
-export interface IToggleButton {
-	id: string;
-	targetClass: string;
-	toggleType?: string;
-	title?: string;
-	theme?: string;
-	iconClass?: string; 
-}
-
-export interface IActionBarMenu {
-	id: string;
-	theme?: string;
-	toggleButtons?: IToggleButton[];
-}
-
 export interface IActionBar{
 	theme?: string;
-	actionButton: IActionButton;
-	actionBarMenu: IActionBarMenu;
+	actionButton: ActionButton.IActionButton;
+	actionBarMenu: ActionBarMenu.IActionBarMenu;
 }
 
 export function getModule(actionBar: IActionBar){

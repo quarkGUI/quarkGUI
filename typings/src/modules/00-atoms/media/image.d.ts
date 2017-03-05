@@ -5,7 +5,7 @@ export declare class Image {
     createModuleElement(): string;
 }
 export interface IImage {
-    src: string;
+    src: any;
     alt?: string;
 }
 export declare function getModule(image: IImage): string;

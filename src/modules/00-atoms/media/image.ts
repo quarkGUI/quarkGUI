@@ -15,7 +15,7 @@ export class Image {
 }
 
 export interface IImage {
-	src: string;
+	src: any;
 	alt?: string; 
 }
 

@@ -1,3 +1,4 @@
+import * as ButtonRow from '../../01-molecules/buttons/button-row';
 export declare class ListMenu {
     id: string;
     listItems: IListItem[];
@@ -7,24 +8,12 @@ export declare class ListMenu {
     private createButtonRowElement(listItem);
     createModuleElement(): string;
 }
-export interface IButton {
-    id: string;
-    type?: string;
-    theme?: string;
-    link?: string;
-    iconClass?: string;
-    content?: string;
-}
-export interface IButtonRow {
-    id: string;
-    buttons: IButton[];
-}
 export interface IListItem {
     title?: string;
     subTitle?: string;
     link?: string;
     moduleLink?: string;
-    buttonRow?: IButtonRow;
+    buttonRow?: ButtonRow.IButtonRow;
 }
 export interface IListMenu {
     id?: string;

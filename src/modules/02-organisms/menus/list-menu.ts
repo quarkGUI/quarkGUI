@@ -59,26 +59,12 @@ export class ListMenu {
 	}
 }
 
-export interface IButton {
-	id: string; 
-	type?: string; 
-	theme?: string;
-	link ?: string; 
-	iconClass?: string; 
-	content?: string;
-}
-
-export interface IButtonRow{
-	id: string;
-	buttons: IButton[];
-}
-
 export interface IListItem {
 	title?: string;
 	subTitle?: string;
 	link?: string;
 	moduleLink?: string;
-	buttonRow?: IButtonRow;
+	buttonRow?: ButtonRow.IButtonRow;
 }
 
 export interface IListMenu {

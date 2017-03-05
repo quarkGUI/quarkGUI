@@ -1,3 +1,5 @@
+import * as ListNavigation from './list-navigation';
+
 const Style = require<any>('./sidebar-navigation.scss');
 
 export class SidebarNavigation {
@@ -24,9 +26,7 @@ export class SidebarNavigation {
 	}
 }
 
-export interface IListItem {
-	name: string;
-	link: string;
+export interface IListItem extends ListNavigation.IListItem{
 	id?: string;
 	moduleLink?: string;
 }

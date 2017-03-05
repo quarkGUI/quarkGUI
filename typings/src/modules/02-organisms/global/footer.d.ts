@@ -1,3 +1,4 @@
+import * as Image from '../../00-atoms/media/image';
 export declare class Footer {
     theme: string;
     content: string;
@@ -6,12 +7,8 @@ export declare class Footer {
     private getThemeClass(theme);
     createModuleElement(): string;
 }
-export interface IImage {
-    src: any;
-    alt?: string;
-}
 export interface ILogo {
-    image: IImage;
+    image: Image.IImage;
     url?: string;
 }
 export interface IFooter {

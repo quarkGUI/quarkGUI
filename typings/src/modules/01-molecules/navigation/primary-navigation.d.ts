@@ -1,3 +1,4 @@
+import * as ListNavigation from './list-navigation';
 export declare class PrimaryNavigation {
     id: string;
     theme: string;
@@ -11,9 +12,7 @@ export declare class PrimaryNavigation {
 export interface IDropdownContent {
     listItems: IListItem[];
 }
-export interface IListItem {
-    name: string;
-    link: string;
+export interface IListItem extends ListNavigation.IListItem {
     dropdownContent?: IDropdownContent;
 }
 export interface IPrimaryNavigation {
