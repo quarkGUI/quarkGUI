@@ -1,15 +1,10 @@
 import * as AtomCheckbox from '../../00-atoms/form-elements/checkbox'
 const Style = require<any>("./checkbox.scss");
 
-export class Checkbox {
-	id: string;
-	name: string;
-	value: string;
+export class Checkbox extends AtomCheckbox.Checkbox{
 	label: string = "";
 	constructor(checkbox: ICheckbox) {
-		this.id = checkbox.id;
-		this.name = checkbox.name;
-		this.value = checkbox.value;
+		super({id: checkbox.id, name: checkbox.name, value: checkbox.value});
 		if(checkbox.label !== undefined) this.label = checkbox.label;
 	}
 
@@ -28,10 +23,7 @@ export class Checkbox {
 	}
 }
 
-export interface ICheckbox{
-	id: string;
-	name: string;
-	value: string;
+export interface ICheckbox extends AtomCheckbox.ICheckbox{
 	label?: string;
 }
 

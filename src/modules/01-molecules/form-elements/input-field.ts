@@ -1,19 +1,13 @@
 import * as AtomInputField from '../../00-atoms/form-elements/input-field'
 const Style = require<any>("./input-field.scss");
 
-export class InputField {
-	id: string;
-	name: string;
-	type: string = "text";
-	value: any = "";
-	placeholder: string = "";
+export class InputField extends AtomInputField.InputField{
 	label: string = "";
 	constructor(inputField: IInputField) {
-		this.id = inputField.id;
-		this.name = inputField.name;
-		if (inputField.type !== undefined) this.type = inputField.type;
-		if (inputField.value !== undefined) this.value = inputField.value;
-		if (inputField.placeholder !== undefined) this.placeholder = inputField.placeholder;
+		super({id: inputField.id, name: inputField.name});
+		if (inputField.type !== undefined) super.type = inputField.type;
+		if (inputField.value !== undefined) super.value = inputField.value;
+		if (inputField.placeholder !== undefined) super.placeholder = inputField.placeholder;
 		if (inputField.label !== undefined) this.label = inputField.label;
 	}
 
@@ -35,12 +29,7 @@ export class InputField {
 	}
 }
 
-export interface IInputField{
-	id: string;
-	name: string;
-	type?: string;
-	value?: any;
-	placeholder?: string;
+export interface IInputField extends AtomInputField.IInputField{
 	label?: string;
 }
 

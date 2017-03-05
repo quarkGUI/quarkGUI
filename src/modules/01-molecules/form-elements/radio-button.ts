@@ -1,15 +1,10 @@
 import * as AtomRadioButton from '../../00-atoms/form-elements/radio-button';
 const Style = require<any>("./radio-button.scss");
 
-export class RadioButton {
-	id: string;
-	name: string;
-	value: string;
+export class RadioButton extends AtomRadioButton.RadioButton{
 	label: string = "";
 	constructor(radioButton: IRadioButton) {
-		this.id = radioButton.id;
-		this.name = radioButton.name;
-		this.value = radioButton.value;
+		super({id: radioButton.id, name: radioButton.name, value: radioButton.value});
 		if(radioButton.label !== undefined) this.label = radioButton.label;
 	}
 
@@ -20,18 +15,15 @@ export class RadioButton {
 			value: this.value
 		};
 		return `
-			<div class="${Style.inputGroup}">
-				${AtomRadioButton.getModule(radioButton)}
-				<label for="${this.id}" class="${Style.label}">${this.label}</label>
-			</div>
+		<div class="${Style.inputGroup}">
+		${AtomRadioButton.getModule(radioButton)}
+		<label for="${this.id}" class="${Style.label}">${this.label}</label>
+		</div>
 		`;
 	}
 }
 
-export interface IRadioButton{
-	id: string;
-	name: string;
-	value: string;
+export interface IRadioButton extends AtomRadioButton.IRadioButton{
 	label?: string;
 }
 

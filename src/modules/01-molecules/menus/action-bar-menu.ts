@@ -5,7 +5,7 @@ const Style = require<any>("./action-bar-menu.scss");
 export class ActionBarMenu {
 	id: string;
 	theme: string = "";
-	toggleButtons: IToggleButton[] = [];
+	toggleButtons: ToggleButton.IToggleButton[] = [];
 	constructor(actionBarMenu: IActionBarMenu) {
 		this.id = actionBarMenu.id;
 		if (actionBarMenu.theme !== undefined) this.theme = actionBarMenu.theme;
@@ -34,20 +34,10 @@ export class ActionBarMenu {
 	}
 }
 
-
-export interface IToggleButton {
-	id: string;
-	targetClass: string;
-	toggleType?: string;
-	title?: string;
-	theme?: string;
-	iconClass?: string; 
-}
-
 export interface IActionBarMenu {
 	id: string;
 	theme?: string;
-	toggleButtons?: IToggleButton[];
+	toggleButtons?: ToggleButton.IToggleButton[];
 }
 
 export function getModule(actionBarMenu: IActionBarMenu){

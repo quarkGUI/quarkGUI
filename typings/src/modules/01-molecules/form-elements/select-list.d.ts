@@ -1,27 +1,11 @@
-export declare class SelectList {
-    id: string;
-    name: string;
-    searchable?: boolean;
-    type?: string;
-    value?: any;
-    placeholder?: string;
+import * as AtomSelectList from '../../00-atoms/form-elements/select-list';
+export declare class SelectList extends AtomSelectList.SelectList {
     label?: string;
-    options?: IOptions[];
+    options?: AtomSelectList.IOptions[];
     constructor(selectList: ISelectList);
     createModuleElement(): string;
 }
-export interface IOptions {
-    name: string;
-    value: any;
-}
-export interface ISelectList {
-    id: string;
-    name: string;
-    searchable?: boolean;
-    type?: string;
-    value?: any;
-    placeholder?: string;
+export interface ISelectList extends AtomSelectList.ISelectList {
     label?: string;
-    options?: IOptions[];
 }
 export declare function getModule(selectList: ISelectList): string;

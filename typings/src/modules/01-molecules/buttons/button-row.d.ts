@@ -1,19 +1,12 @@
+import * as Button from '../../00-atoms/buttons/button';
 export declare class ButtonRow {
     id: string;
-    buttons: IButton[];
+    buttons: Button.IButton[];
     constructor(buttonRow: IButtonRow);
     createModuleElement(): string;
 }
-export interface IButton {
-    id: string;
-    type?: string;
-    theme?: string;
-    link?: string;
-    iconClass?: string;
-    content?: string;
-}
 export interface IButtonRow {
     id: string;
-    buttons: IButton[];
+    buttons: Button.IButton[];
 }
 export declare function getModule(buttonRow: IButtonRow): string;

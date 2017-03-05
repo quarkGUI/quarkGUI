@@ -2,23 +2,16 @@ import * as AtomSelectList from '../../00-atoms/form-elements/select-list'
 
 const Style = require<any>("./select-list.scss");
 
-export class SelectList {
-	id: string;
-	name: string;
-	searchable?: boolean;
-	type?: string;
-	value?: any;
-	placeholder?: string;
+export class SelectList extends AtomSelectList.SelectList {
 	label?: string;
-	options?: IOptions[];
+	options?: AtomSelectList.IOptions[];
 
 	constructor(selectList: ISelectList) {
-		this.id = selectList.id;
-		this.name = selectList.name;
-		if (selectList.searchable !== undefined) this.searchable = selectList.searchable;
-		if (selectList.type !== undefined) this.type = selectList.type;
-		if (selectList.value !== undefined) this.value = selectList.value;
-		if (selectList.placeholder !== undefined) this.placeholder = selectList.placeholder;
+		super({id: selectList.id, name: selectList.name});
+		if (selectList.searchable !== undefined) super.searchable = selectList.searchable;
+		if (selectList.type !== undefined) super.type = selectList.type;
+		if (selectList.value !== undefined) super.value = selectList.value;
+		if (selectList.placeholder !== undefined) super.placeholder = selectList.placeholder;
 		if (selectList.label !== undefined) this.label = selectList.label;
 		if (selectList.options !== undefined) this.options = selectList.options;
 	}
@@ -44,20 +37,8 @@ export class SelectList {
 	}
 }
 
-export interface IOptions{
-	name: string;
-	value: any;
-}
-
-export interface ISelectList{
-	id: string;
-	name: string;
-	searchable?: boolean;
-	type?: string;
-	value?: any;
-	placeholder?: string;
+export interface ISelectList extends AtomSelectList.ISelectList{
 	label?: string;
-	options?: IOptions[];
 }
 
 export function getModule(selectList: ISelectList){

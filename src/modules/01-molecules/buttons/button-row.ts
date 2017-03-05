@@ -2,9 +2,9 @@ import * as Button from '../../00-atoms/buttons/button'
 
 const Style = require<any>("./button-row.scss");
 
-export class ButtonRow {
+export class ButtonRow{
 	id: string;
-	buttons: IButton[];
+	buttons: Button.IButton[];
 	constructor(buttonRow: IButtonRow) {
 		this.id = buttonRow.id;
 		this.buttons = buttonRow.buttons;
@@ -20,18 +20,9 @@ export class ButtonRow {
 	}
 }
 
-export interface IButton {
-	id: string; 
-	type?: string; 
-	theme?: string;
-	link ?: string; 
-	iconClass?: string; 
-	content?: string;
-}
-
 export interface IButtonRow{
 	id: string;
-	buttons: IButton[];
+	buttons: Button.IButton[];
 }
 
 export function getModule(buttonRow: IButtonRow){
