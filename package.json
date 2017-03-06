@@ -22,7 +22,6 @@
     "src/**/*.{ts,js,scss}",
     "src/fonts/**/*.{woff,woff2,eot,svg,ttf}",
     "lib/**/*.{js,d.ts}",
-    "typings/**/*.d.ts",
     "LICENSE"
   ],
   "scripts": {
