@@ -5,8 +5,13 @@
 		"module": "commonjs",
 		"target": "es6",
 		"declaration": true,
-		"declarationDir": "lib/"
+		"declarationDir": "lib/",
+		"baseUrl": "."
 	},
+	"files": [
+    	"src/main.ts",
+    	"Global.d.ts"
+	],
 	"exclude": [
 		"node_modules",
 		"test/",
