@@ -15,12 +15,13 @@
     "js",
     "sass"
   ],
-  "main": "index.ts",
+  "main": "./lib/main.js",
+  "types": "./lib/main.d.ts",
   "files": [
     "setup",
     "src/**/*.{ts,js,scss}",
     "src/fonts/**/*.{woff,woff2,eot,svg,ttf}",
-    "lib/**/*.js",
+    "lib/**/*.{js,d.ts}",
     "typings/**/*.d.ts",
     "LICENSE"
   ],

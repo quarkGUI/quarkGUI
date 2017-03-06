@@ -5,7 +5,7 @@
 		"module": "commonjs",
 		"target": "es6",
 		"declaration": true,
-		"declarationDir": "typings/"
+		"declarationDir": "lib/"
 	},
 	"exclude": [
 		"node_modules",
