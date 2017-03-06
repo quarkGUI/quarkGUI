@@ -1,4 +1,4 @@
-const Style = require<any>("./button.scss");
+const Style = require<any>("../../../../src/modules/00-atoms/buttons/button.scss");
 
 export class Button {
 	id: string = "";

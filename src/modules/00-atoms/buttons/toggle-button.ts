@@ -1,4 +1,4 @@
-const Style = require<any>("./toggle-button.scss");
+const Style = require<any>("../../../../src/modules/00-atoms/buttons/toggle-button.scss");
 
 export class ToggleButton {
 	id: string;
