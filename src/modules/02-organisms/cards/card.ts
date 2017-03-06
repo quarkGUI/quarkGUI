@@ -1,4 +1,4 @@
-const Style = require<any>('./card.scss');
+const Style = require<any>('../../../../src/modules/02-organisms/cards/card.scss');
 
 export class Card {
 	theme: string = "default";

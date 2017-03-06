@@ -1,5 +1,5 @@
 import * as InputField from './input-field'
-const Style = require<any>("./select-list.scss");
+const Style = require<any>("../../../../src/modules/00-atoms/form-elements/select-list.scss");
 
 export class SelectList {
 	id: string;

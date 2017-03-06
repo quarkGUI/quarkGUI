@@ -1,6 +1,6 @@
 import * as ToggleButton from '../../00-atoms/buttons/toggle-button';
 
-const Style = require<any>("./action-bar-menu.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/menus/action-bar-menu.scss");
 
 export class ActionBarMenu {
 	id: string;

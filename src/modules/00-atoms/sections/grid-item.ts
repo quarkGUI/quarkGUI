@@ -1,4 +1,4 @@
-const Style = require<any>("./grid-item.scss");
+const Style = require<any>("../../../../src/modules/00-atoms/sections/grid-item.scss");
 
 export class GridItem {
 	content: string = "";

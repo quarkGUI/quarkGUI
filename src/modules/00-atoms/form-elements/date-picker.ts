@@ -1,6 +1,6 @@
 import * as InputField from './input-field'
 import * as Button from '../buttons/button'
-const Style = require<any>("./date-picker.scss");
+const Style = require<any>("../../../../src/modules/00-atoms/form-elements/date-picker.scss");
 
 export class DatePicker {
 	id: string;

@@ -1,6 +1,6 @@
 import * as ListNavigation from './list-navigation';
 
-const Style = require<any>('./primary-navigation.scss');
+const Style = require<any>('../../../../src/modules/01-molecules/navigation/primary-navigation.scss');
 
 export class PrimaryNavigation {
 	id: string = "";

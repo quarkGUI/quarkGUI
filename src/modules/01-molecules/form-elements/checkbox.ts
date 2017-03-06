@@ -1,5 +1,5 @@
 import * as AtomCheckbox from '../../00-atoms/form-elements/checkbox'
-const Style = require<any>("./checkbox.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/form-elements/checkbox.scss");
 
 export class Checkbox extends AtomCheckbox.Checkbox{
 	label: string = "";

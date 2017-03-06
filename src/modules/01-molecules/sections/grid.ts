@@ -1,6 +1,6 @@
 import * as GridItem from '../../00-atoms/sections/grid-item';
 
-const Style = require<any>("./grid.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/sections/grid.scss");
 
 export class Grid {
 	gridItems: IGridItem[];

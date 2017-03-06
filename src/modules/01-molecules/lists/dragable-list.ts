@@ -1,6 +1,6 @@
 import * as Dragula from 'dragula';
 
-const Style = require<any>("./dragable-list.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/lists/dragable-list.scss");
 
 export class DragableList {
 	id: string;

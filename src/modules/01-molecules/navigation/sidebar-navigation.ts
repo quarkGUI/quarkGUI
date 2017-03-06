@@ -1,6 +1,6 @@
 import * as ListNavigation from './list-navigation';
 
-const Style = require<any>('./sidebar-navigation.scss');
+const Style = require<any>('../../../../src/modules/01-molecules/navigation/sidebar-navigation.scss');
 
 export class SidebarNavigation {
 	listItems: IListItem[];

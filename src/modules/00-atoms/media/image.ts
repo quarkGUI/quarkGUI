@@ -1,4 +1,4 @@
-const Style = require<any>("./image.scss");
+const Style = require<any>("../../../../src/modules/00-atoms/media/image.scss");
 
 export class Image {
 	src: string;

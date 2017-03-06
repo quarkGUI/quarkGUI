@@ -1,5 +1,5 @@
 import * as AtomInputField from '../../00-atoms/form-elements/input-field'
-const Style = require<any>("./input-field.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/form-elements/input-field.scss");
 
 export class InputField extends AtomInputField.InputField{
 	label: string = "";

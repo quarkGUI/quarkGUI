@@ -1,4 +1,4 @@
-const Style = require<any>("./checkbox.scss");
+const Style = require<any>("../../../../src/modules/00-atoms/form-elements/checkbox.scss");
 
 export class Checkbox {
 	id: string;

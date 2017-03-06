@@ -1,4 +1,4 @@
-const Style = require<any>("./color-palette.scss");
+const Style = require<any>("../../../../src/modules/05-global/colors/color-palette.scss");
 
 export class ColorPalette {
 	color: string;

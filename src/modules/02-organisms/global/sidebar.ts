@@ -1,7 +1,7 @@
 import * as SidebarNavigation from '../../01-molecules/navigation/sidebar-navigation';
 import * as Image from '../../00-atoms/media/image';
 
-const Style = require<any>('./sidebar.scss');
+const Style = require<any>('../../../../src/modules/02-organisms/global/sidebar.scss');
 
 export class Sidebar {
 	sidebarNavigation: ISidebarNavigation;

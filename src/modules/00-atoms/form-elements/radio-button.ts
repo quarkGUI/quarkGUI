@@ -1,4 +1,4 @@
-const Style = require<any>("./radio-button.scss");
+const Style = require<any>("../../../../src/modules/00-atoms/form-elements/radio-button.scss");
 
 export class RadioButton {
 	id: string;

@@ -1,4 +1,4 @@
-const Style = require<any>("./list-navigation.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/navigation/list-navigation.scss");
 
 export class ListNavigation {
 	listItems: IListItem[];

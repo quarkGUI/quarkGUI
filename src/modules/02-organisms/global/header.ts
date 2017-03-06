@@ -2,7 +2,7 @@ import * as PrimaryNavigation from '../../01-molecules/navigation/primary-naviga
 import * as Image from '../../00-atoms/media/image';
 import * as Sidebar from './sidebar';
 
-const Style = require<any>('./header.scss');
+const Style = require<any>('../../../../src/modules/02-organisms/global/header.scss');
 
 export class Header {
 	id: string;

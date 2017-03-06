@@ -1,6 +1,6 @@
 import * as ButtonRow from '../../01-molecules/buttons/button-row';
 
-const Style = require<any>('./list-menu.scss');
+const Style = require<any>('../../../../src/modules/02-organisms/menus/list-menu.scss');
 
 export class ListMenu {
 	id: string = "";

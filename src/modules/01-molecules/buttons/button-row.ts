@@ -1,6 +1,6 @@
 import * as Button from '../../00-atoms/buttons/button'
 
-const Style = require<any>("./button-row.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/buttons/button-row.scss");
 
 export class ButtonRow{
 	id: string;

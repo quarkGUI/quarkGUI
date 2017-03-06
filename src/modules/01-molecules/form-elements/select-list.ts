@@ -1,6 +1,6 @@
 import * as AtomSelectList from '../../00-atoms/form-elements/select-list'
 
-const Style = require<any>("./select-list.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/form-elements/select-list.scss");
 
 export class SelectList extends AtomSelectList.SelectList {
 	label?: string;

@@ -1,4 +1,4 @@
-const Style = require<any>("./input-field.scss");
+const Style = require<any>("../../../../src/modules/00-atoms/form-elements/input-field.scss");
 
 export class InputField {
 	id: string;

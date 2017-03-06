@@ -1,5 +1,5 @@
 import * as AtomRadioButton from '../../00-atoms/form-elements/radio-button';
-const Style = require<any>("./radio-button.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/form-elements/radio-button.scss");
 
 export class RadioButton extends AtomRadioButton.RadioButton{
 	label: string = "";

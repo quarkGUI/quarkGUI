@@ -1,4 +1,4 @@
-const Style = require<any>("./modal.scss");
+const Style = require<any>("../../../../src/modules/01-molecules/messaging/modal.scss");
 
 export class Modal {
 	id: string;
