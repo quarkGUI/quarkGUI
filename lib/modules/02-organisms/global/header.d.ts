@@ -8,7 +8,7 @@ export declare class Header {
     primaryNavigation: PrimaryNavigation.IPrimaryNavigation;
     sidebar: Sidebar.ISidebar;
     constructor(header: IHeader);
-    private AddListener();
+    private addListener();
     private getThemeClass(theme);
     createModuleElement(): string;
 }

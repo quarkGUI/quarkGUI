@@ -64,6 +64,7 @@ export class PrimaryNavigation {
 	}
 
 	public createModuleElement(){
+		this.addListener();
 		let listItemElements: string = this.createListElements(this.listItems);
 		let themeClass: string = this.getThemeClass(this.theme);
 		return `<ul id="${this.id}"" class="${Style.list} ${themeClass}">${listItemElements}</ul>`

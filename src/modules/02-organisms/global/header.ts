@@ -17,7 +17,7 @@ export class Header {
 		if (header.sidebar !== undefined) this.sidebar = header.sidebar;
 	}
 
-	private AddListener(){
+	private addListener(){
 		document.addEventListener('DOMContentLoaded', function() {
 			let sidebarToggleElement = document.getElementById('sidebarToggle') !== undefined ? document.getElementById('sidebarToggle') : false;
 			
@@ -32,6 +32,7 @@ export class Header {
 	}
 
 	public createModuleElement() {
+		this.addListener();
 		let themeClass: string = this.getThemeClass(this.theme);
 		let logoImage = "";
 		let logoUrl = "#";
