@@ -73,6 +73,6 @@
     "dragula": "^3.7.2",
     "font-awesome": "^4.7.0",
     "font-awesome-webpack": "^0.0.4",
-    "less-loader": "^2.2.3"
+    "less-loader": "^3.0.0"
   }
 }
