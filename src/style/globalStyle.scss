@@ -70,7 +70,8 @@ main{
 		@include calc(height, '100% - 64px');
 	}
 
-	:local(.mainContent){
+	:local(.mainContent),
+	> *{
 		max-width: $main-content-max-width;
 		padding: 25px;
 		margin: auto;
