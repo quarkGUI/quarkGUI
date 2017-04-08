@@ -2,8 +2,6 @@
 	"compilerOptions": {
 		"outDir": "lib/",
 		"rootDirs": ["./"],
-		"module": "commonjs",
-		"target": "es6",
 		"declaration": true,
 		"declarationDir": "lib/",
 		"baseUrl": "."
