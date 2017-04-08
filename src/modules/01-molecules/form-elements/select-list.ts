@@ -8,10 +8,10 @@ export class SelectList extends AtomSelectList.SelectList {
 
 	constructor(selectList: ISelectList) {
 		super({id: selectList.id, name: selectList.name});
-		if (selectList.searchable !== undefined) super.searchable = selectList.searchable;
-		if (selectList.type !== undefined) super.type = selectList.type;
-		if (selectList.value !== undefined) super.value = selectList.value;
-		if (selectList.placeholder !== undefined) super.placeholder = selectList.placeholder;
+		if (selectList.searchable !== undefined) this.searchable = selectList.searchable;
+		if (selectList.type !== undefined) this.type = selectList.type;
+		if (selectList.value !== undefined) this.value = selectList.value;
+		if (selectList.placeholder !== undefined) this.placeholder = selectList.placeholder;
 		if (selectList.label !== undefined) this.label = selectList.label;
 		if (selectList.options !== undefined) this.options = selectList.options;
 	}
