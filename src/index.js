@@ -39,9 +39,9 @@ function initModuleTargetUrls(){
 
 document.addEventListener('DOMContentLoaded', function() {
 	initModuleTargetUrls();
-
-	var overlayElements = document.getElementsByClassName('overlay-element') !== undefined ? document.getElementsByClassName('overlay-element') : false;
-	if (overlayElements){
+	var overlayElementsIsDefined = document.getElementsByClassName('overlay-element') !== undefined;
+	if (overlayElementsIsDefined){
+		var overlayElements =  document.getElementsByClassName('overlay-element');
 		for (var i = 0; i < overlayElements.length; i++) {
 			var overlayElement = overlayElements[i];
 
