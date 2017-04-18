@@ -7,6 +7,7 @@
 
  'use strict';
 
+ import * as Init from "./init";
  require("font-awesome-webpack!font-awesome-webpack/font-awesome.config.js");
 
  import * as Atoms from "./modules/atoms";
@@ -15,4 +16,4 @@
  import * as Globals from "./modules/global";
 
 
-export {Atoms, Molecules, Organisms, Globals}
+ export {Atoms, Molecules, Organisms, Globals, Init}
