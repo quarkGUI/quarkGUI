@@ -7,6 +7,7 @@
 
  'use strict';
 
+ const Style = require<any>("../src/style/globalStyle.scss");
  import * as Init from "./init";
  require("font-awesome-webpack!font-awesome-webpack/font-awesome.config.js");
 
