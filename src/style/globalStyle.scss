@@ -31,6 +31,9 @@ body{
 	height: 100%;
 	overflow: hidden;
 	font-family: $normal-font;
+	> div#app{
+		height: 100%;
+	}
 }
 
 h1{
