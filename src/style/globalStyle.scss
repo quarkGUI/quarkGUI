@@ -23,19 +23,14 @@
 
 html {
 	height: 100%;
-	&.fonts-loaded{
-		body{
-			font-family: $normal-font;
-		}
-	}
 }
 
 body{
 	background-color: $body-background;
 	color: $default-text-color;
-	font-family: arial, sans-serif;
 	height: 100%;
 	overflow: hidden;
+	font-family: $normal-font;
 }
 
 h1{
