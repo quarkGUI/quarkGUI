@@ -69,7 +69,7 @@ main{
 	}
 
 	:local(.mainContent),
-	> *{
+	> .main-content{
 		max-width: $main-content-max-width;
 		padding: 25px;
 		margin: auto;
