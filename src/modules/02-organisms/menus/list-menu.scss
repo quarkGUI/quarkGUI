@@ -20,11 +20,11 @@
 			display: inline-block;
 			font-size: 14pt;
 			line-height: 14pt;
-			color: $default-text-color;
 			small {
 				display: block;
 				min-height: 19px;
 				font-size: 10pt;
+				color: $default-text-color;
 			}
 			&:local(.singleLine) {
 				line-height: 34px;
