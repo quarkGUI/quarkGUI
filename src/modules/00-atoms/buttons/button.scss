@@ -16,7 +16,7 @@
 }
 
 :local(.icon){
-	font-size: 14pt;
+	font-size: 14pt!important;
 }
 
 :local(.buttonTypeFlat) {
@@ -122,13 +122,16 @@
 	@include transition(all .2s .1s);
 	&:not([disabled]):hover {
 		background-color: $default-hover-color;
+		color: #333;
 	}
 	&:not([disabled]):active {
 		background-color: $default-active-color;
+		color: #333;
 	}
 	&:local(.buttonTypeFlat) {
 		&:not([disabled]):active {
 			background-color: $default-active-color;
+			color: #333;
 		}
 	}
 }
