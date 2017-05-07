@@ -54,6 +54,49 @@ export default function(){
 				}
 				]
 			}
+		},
+		{
+			title: 'List item with icon',
+			iconClass: 'fa fa-user',
+			buttonRow: {
+				id: 'list-menu-button-row1',
+				buttons: [
+				{
+					id: 'list-menu-buttonrow-button1',
+					iconClass: 'fa fa-home'
+				},
+				{
+					id: 'list-menu-buttonrow-button2',
+					iconClass: 'fa fa-cog'
+				},
+				{
+					id: 'list-menu-buttonrow-button3',
+					iconClass: 'fa fa-list'
+				}
+				]
+			}
+		},
+		{
+			title: 'List item with subtitle and icon',
+			subTitle: 'This is a subtitle',
+			iconClass: 'fa fa-user',
+			buttonRow: {
+				id: 'list-menu-button-row1',
+				buttons: [
+				{
+					id: 'list-menu-buttonrow-button1',
+					iconClass: 'fa fa-home'
+				},
+				{
+					id: 'list-menu-buttonrow-button2',
+					iconClass: 'fa fa-cog'
+				},
+				{
+					id: 'list-menu-buttonrow-button3',
+					iconClass: 'fa fa-list'
+				}
+				]
+			}
 		}
 		]
 	})}

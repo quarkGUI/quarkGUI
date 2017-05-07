@@ -12,6 +12,7 @@ export interface IListItem {
     title?: string;
     subTitle?: string;
     link?: string;
+    iconClass?: string;
     moduleLink?: string;
     buttonRow?: ButtonRow.IButtonRow;
 }

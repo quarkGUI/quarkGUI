@@ -30,7 +30,9 @@
 				line-height: 34px;
 				vertical-align: text-bottom;
 			}
-
+		}
+		:local(.listItemIcon){
+			margin-right: 8px;
 		}
 		:local(.listItemButtonRow) {
 			float: right;
