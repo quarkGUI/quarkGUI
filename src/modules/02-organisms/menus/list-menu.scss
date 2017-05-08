@@ -16,6 +16,9 @@
 		&:last-child{
 			border-bottom: none;
 		}
+		:local(.listItemDragHandle){
+			display: inline-block;
+		}
 		:local(.listItemTitle){
 			display: inline-block;
 			font-size: 14pt;
@@ -39,6 +42,25 @@
 			line-height: 32px;
 			font-size: 26px;
 			vertical-align: text-bottom;
+		}
+		:local(.listItemExpandButton){
+			&:after{font-family: FontAwesome;
+				content: "\F078";
+				display: inline-block;
+				@include transition(transform .2s ease-in-out, top .2s ease-in-out);
+
+			}
+			&.active{
+				&:after{
+					transform: rotate(180deg);
+				}
+			}
+		}
+		:local(.listItemExpandableContent){
+			display: none;
+			&.active{
+				display: block;
+			}
 		}
 	}
 }

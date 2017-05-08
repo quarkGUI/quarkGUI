@@ -12,6 +12,25 @@ export class ListMenu {
 		if (listMenu.hover !== undefined) this.hover = listMenu.hover;
 	}
 
+	private addListener(listItem: IListItem){
+		document.addEventListener("module-lazy-loaded", function(e) {
+			let expandButtonElement:HTMLElement = document.getElementById(listItem.id + '-expand-button'); 
+			let expandableContentElement:HTMLElement = document.getElementById(listItem.id + '-expandable-content'); 
+
+			expandButtonElement.onclick = function(){
+				let isExpanded:boolean = expandButtonElement.classList.contains('active');
+				
+				if (isExpanded){
+					expandButtonElement.classList.remove("active");
+					expandableContentElement.classList.remove("active");
+				}else{
+					expandButtonElement.classList.add("active");
+					expandableContentElement.classList.add("active");
+				}
+			};
+		});
+	}
+
 
 	private createTitleElement(listItem: IListItem){
 		let moduleLinkAttribute = (listItem.moduleLink !== undefined) ? `data-module-target="${listItem.moduleLink}"` : '';
@@ -32,24 +51,56 @@ export class ListMenu {
 		return titleElement;
 	}
 
+	private createDragHandleElement(listItem: IListItem){
+		let dragHandleElement = "";
+		if (listItem.dragable !== undefined && listItem.dragable === true) {
+
+		}
+		return dragHandleElement;
+	}
+
+	private createExpandButtonElement(listItem: IListItem){
+		let expandButtonElement = "";
+		if (listItem.expandable !== undefined && listItem.expandable === true) {
+			expandButtonElement = `<span id="${listItem.id}-expand-button" class="${Style.listItemExpandButton}"></span>`
+		}
+		return expandButtonElement;
+	}
+
 	private createButtonRowElement(listItem: IListItem){
 		let buttonRowElement = ""
+		let expandButton = this.createExpandButtonElement(listItem);
+
 		if (listItem.buttonRow !== undefined) {
-			buttonRowElement = `<span class="${Style.listItemButtonRow}">${ButtonRow.getModule(listItem.buttonRow)}</span>`;
+			buttonRowElement = `<span class="${Style.listItemButtonRow}">${ButtonRow.getModule(listItem.buttonRow)}${expandButton}</span>`;
+		}else if (listItem.expandable !== undefined && listItem.expandable == true){
+			buttonRowElement = `<span class="${Style.listItemButtonRow}">${expandButton}</span>`;
 		}
 
 		return buttonRowElement;
+	}
 
+	private createExpandableContentElement(listItem: IListItem){
+		let expandableContentElement = "";
+		if (listItem.expandableContent !== undefined) {
+			expandableContentElement = `<div id="${listItem.id}-expandable-content" class="${Style.listItemExpandableContent}">${listItem.expandableContent}</div>`
+		}
+		return expandableContentElement;
 	}
 
 	public createModuleElement() {
-		var listItemElements = "";
+		let listItemElements = "";
 		if (this.listItems !== undefined) {
 			for (let listItem of this.listItems){
-				let title     = this.createTitleElement(listItem);
-				let buttonRow = this.createButtonRowElement(listItem);
+				let dragHandle        = this.createDragHandleElement(listItem);
+				let title             = this.createTitleElement(listItem);
+				let buttonRow         = this.createButtonRowElement(listItem);
+				let expandableContent = this.createExpandableContentElement(listItem);
+				if (listItem.expandable){
+					this.addListener(listItem);
+				}
 
-				listItemElements += `<li class="${Style.listItem}">${title} ${buttonRow}</li>`;
+				listItemElements += `<li class="${Style.listItem}">${title}${buttonRow}${expandableContent}</li>`;
 			}
 		}
 
@@ -61,11 +112,15 @@ export class ListMenu {
 }
 
 export interface IListItem {
+	id?: string;
 	title?: string;
 	subTitle?: string;
 	link?: string;
 	iconClass?: string;
 	moduleLink?: string;
+	expandable?: boolean;
+	expandableContent?: string;
+	dragable?: boolean;
 	buttonRow?: ButtonRow.IButtonRow;
 }
 
