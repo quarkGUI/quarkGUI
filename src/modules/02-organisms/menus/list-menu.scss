@@ -16,6 +16,27 @@
 		&:last-child{
 			border-bottom: none;
 		}
+		&:local(.dragable){
+			cursor: move;
+			cursor: grab;
+			cursor: -moz-grab;
+			cursor: -webkit-grab;
+			-webkit-user-drag: none;
+			-khtml-user-drag: none;
+			-moz-user-drag: none;
+			-o-user-drag: none;
+			user-drag: none;
+			&.gu-transit{
+				opacity: 1;
+				background-color: $default-color;
+				color: transparent;
+				* {
+					color: transparent;
+					border: none;
+					background-color: none;
+				}
+			}
+		}
 		:local(.listItemDragHandle){
 			display: inline-block;
 		}
@@ -34,6 +55,15 @@
 				vertical-align: text-bottom;
 			}
 		}
+		:local(.listItemDivider) {
+			display: inline-block;
+			content: "";
+			width: 1px;
+			height: 32px;
+			background-color: border-color($default-color);
+			vertical-align: middle;
+			margin: 0 8px;
+		}
 		:local(.listItemIcon){
 			margin-right: 8px;
 		}
@@ -44,9 +74,12 @@
 			vertical-align: text-bottom;
 		}
 		:local(.listItemExpandButton){
-			&:after{font-family: FontAwesome;
+			&:after{
+				font-family: FontAwesome;
+				font-size: 14pt;
 				content: "\F078";
 				display: inline-block;
+				cursor: pointer;
 				@include transition(transform .2s ease-in-out, top .2s ease-in-out);
 
 			}

@@ -134,7 +134,7 @@ export default function(){
 			expandableContent: '<h2>testcontent</h2>'
 		},
 		{
-			id: 'listItem1',
+			id: 'listItem6',
 			title: 'List item with subtitle and icon',
 			subTitle: 'This is a subtitle',
 			iconClass: 'fa fa-user',
@@ -160,6 +160,65 @@ export default function(){
 		}
 		]
 	})}
+
+	<h3>Dragable list menu</h3>
+	${ListMenu.getModule({
+		id: 'list-menu3',
+		dragable: true,
+		listItems: [
+		{
+			id: 'listItem7',
+			title: 'List item with subtitle',
+			subTitle: 'This is a subtitle',
+			iconClass: 'fa fa-user',
+			expandable: true,
+			buttonRow: {
+				id: 'list-menu-button-row7',
+				buttons: [
+				{
+					id: 'list-menu-buttonrow-button13',
+					iconClass: 'fa fa-home'
+				},
+				{
+					id: 'list-menu-buttonrow-button14',
+					iconClass: 'fa fa-cog'
+				},
+				{
+					id: 'list-menu-buttonrow-button15',
+					iconClass: 'fa fa-list'
+				}
+				]
+			},
+			expandableContent: '<h2>testcontent</h2>'
+		},
+		{
+			id: 'listItem8',
+			title: 'List item with subtitle and icon',
+			subTitle: 'This is a subtitle',
+			iconClass: 'fa fa-user',
+			expandable: true,
+			buttonRow: {
+				id: 'list-menu-button-row8',
+				buttons: [
+				{
+					id: 'list-menu-buttonrow-button16',
+					iconClass: 'fa fa-home'
+				},
+				{
+					id: 'list-menu-buttonrow-button17',
+					iconClass: 'fa fa-cog'
+				},
+				{
+					id: 'list-menu-buttonrow-button18',
+					iconClass: 'fa fa-list'
+				}
+				]
+			},
+			expandableContent: 'testcontent'
+		}
+		]
+	})}
+
 	<h3>Action bar</h3>
 	${ActionBar.getModule({
 		theme: 'primary',

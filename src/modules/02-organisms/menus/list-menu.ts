@@ -1,3 +1,4 @@
+import * as Dragula from 'dragula';
 import * as ButtonRow from '../../01-molecules/buttons/button-row';
 
 const Style = require<any>('../../../../src/modules/02-organisms/menus/list-menu.scss');
@@ -6,10 +7,31 @@ export class ListMenu {
 	id: string = "";
 	listItems: IListItem[];
 	hover: boolean = false;
+	dragable: boolean = false;
 	constructor(listMenu: IListMenu) {
 		if (listMenu.id !== undefined) this.id = listMenu.id;
 		if (listMenu.listItems !== undefined) this.listItems = listMenu.listItems;
 		if (listMenu.hover !== undefined) this.hover = listMenu.hover;
+		if (listMenu.dragable !== undefined) this.dragable = listMenu.dragable;
+	}
+
+	private initDragula(containers){
+		let dragula = Dragula(containers, {});
+		dragula.on('drop', function(element, container) {
+
+		});
+	}
+
+	private addDragulaListener(thisInstance: any){
+		document.addEventListener('DOMContentLoaded', function() {
+			let containers = [document.getElementById(thisInstance.id)];
+			thisInstance.initDragula(containers);
+		}, false);
+
+		document.addEventListener("module-lazy-loaded", function(e) {
+			let containers = [document.getElementById(thisInstance.id)];
+			thisInstance.initDragula(containers);
+		});
 	}
 
 	private addListener(listItem: IListItem){
@@ -51,18 +73,10 @@ export class ListMenu {
 		return titleElement;
 	}
 
-	private createDragHandleElement(listItem: IListItem){
-		let dragHandleElement = "";
-		if (listItem.dragable !== undefined && listItem.dragable === true) {
-
-		}
-		return dragHandleElement;
-	}
-
 	private createExpandButtonElement(listItem: IListItem){
 		let expandButtonElement = "";
 		if (listItem.expandable !== undefined && listItem.expandable === true) {
-			expandButtonElement = `<span id="${listItem.id}-expand-button" class="${Style.listItemExpandButton}"></span>`
+			expandButtonElement = `<span class="${Style.listItemDivider}"></span><span id="${listItem.id}-expand-button" class="${Style.listItemExpandButton}"></span>`
 		}
 		return expandButtonElement;
 	}
@@ -89,10 +103,14 @@ export class ListMenu {
 	}
 
 	public createModuleElement() {
+		let dragableClass = '';
+		if (this.dragable){
+			this.addDragulaListener(this);
+			dragableClass = Style.dragable
+		}
 		let listItemElements = "";
 		if (this.listItems !== undefined) {
 			for (let listItem of this.listItems){
-				let dragHandle        = this.createDragHandleElement(listItem);
 				let title             = this.createTitleElement(listItem);
 				let buttonRow         = this.createButtonRowElement(listItem);
 				let expandableContent = this.createExpandableContentElement(listItem);
@@ -100,14 +118,13 @@ export class ListMenu {
 					this.addListener(listItem);
 				}
 
-				listItemElements += `<li class="${Style.listItem}">${title}${buttonRow}${expandableContent}</li>`;
+				listItemElements += `<div class="${Style.listItem} ${dragableClass}">${title}${buttonRow}${expandableContent}</div>`;
 			}
 		}
 
-
 		let hoverClass: string = this.hover ? Style.hover : "";
 
-		return `<ul id="${this.id}" class="${Style.listMenu} ${hoverClass}">${listItemElements}</ul>`
+		return `<div id="${this.id}" class="${Style.listMenu} ${hoverClass}">${listItemElements}</div>`
 	}
 }
 
@@ -120,7 +137,6 @@ export interface IListItem {
 	moduleLink?: string;
 	expandable?: boolean;
 	expandableContent?: string;
-	dragable?: boolean;
 	buttonRow?: ButtonRow.IButtonRow;
 }
 
@@ -128,6 +144,7 @@ export interface IListMenu {
 	id?: string;
 	listItems?: IListItem[];
 	hover?: boolean;
+	dragable?: boolean;
 }
 
 

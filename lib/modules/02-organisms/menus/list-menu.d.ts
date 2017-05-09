@@ -3,10 +3,12 @@ export declare class ListMenu {
     id: string;
     listItems: IListItem[];
     hover: boolean;
+    dragable: boolean;
     constructor(listMenu: IListMenu);
+    private initDragula(containers);
+    private addDragulaListener(thisInstance);
     private addListener(listItem);
     private createTitleElement(listItem);
-    private createDragHandleElement(listItem);
     private createExpandButtonElement(listItem);
     private createButtonRowElement(listItem);
     private createExpandableContentElement(listItem);
@@ -21,12 +23,12 @@ export interface IListItem {
     moduleLink?: string;
     expandable?: boolean;
     expandableContent?: string;
-    dragable?: boolean;
     buttonRow?: ButtonRow.IButtonRow;
 }
 export interface IListMenu {
     id?: string;
     listItems?: IListItem[];
     hover?: boolean;
+    dragable?: boolean;
 }
 export declare function getModule(listMenu: IListMenu): string;
