@@ -159,7 +159,7 @@ export default function(){
 		${Breadcrumbs.getModule({
 			breadcrumbItems: [
 				{ name: 'first breadcrumb', link: '#' },
-				{ name: 'second breadcrupm', link: '#' },
+				{ name: 'second breadcrumb', link: '#' },
 				{ name: 'third breadcrumb', link: '#' }
 			]
 		})}
