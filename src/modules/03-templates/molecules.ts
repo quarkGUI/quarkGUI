@@ -7,6 +7,7 @@ import * as SelectList from '../01-molecules/form-elements/select-list';
 import * as ButtonRow from '../01-molecules/buttons/button-row';
 import * as Modal from '../01-molecules/messaging/modal';
 import * as DragableList from '../01-molecules/lists/dragable-list';
+import * as Breadcrumbs from '../01-molecules/navigation/breadcrumbs';
 
 export default function(){
 
@@ -150,6 +151,16 @@ export default function(){
 				{ content: `first list item content` },
 				{ content: `second list item content` },
 				{ content: `third list item content` }
+			]
+		})}
+
+		<h2>Navigation</h2>
+		<h3>Breadcrumbs</h3>
+		${Breadcrumbs.getModule({
+			breadcrumbItems: [
+				{ name: 'first breadcrumb', link: '#' },
+				{ name: 'second breadcrupm', link: '#' },
+				{ name: 'third breadcrumb', link: '#' }
 			]
 		})}
 `
