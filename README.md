@@ -59,6 +59,7 @@ npm run build
 - Messaging
   - [Modal](src/modules/01-molecules/messaging/modal.md)
 - Navigation
+  - [Breadcrumbs](src/modules/01-molecules/navigation/breadcrumbs.md)
   - [List navigation](src/modules/01-molecules/navigation/list-navigation.md)
   - [Primary navigation](src/modules/01-molecules/navigation/primary-navigation.md)
   - [Sidebar navigation](src/modules/01-molecules/navigation/sidebar-navigation.md)
