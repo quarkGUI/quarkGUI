@@ -1,0 +1,19 @@
+@import "../../../../src/style/abstracts/all";
+
+:local(.breadcrumbs) {
+	list-style: none;
+	padding: 0;
+	li {
+		display: inline-block;
+		&:after{
+			font-family: FontAwesome;
+			content: "\f105";
+			display: inline-block;
+			font-size: .8em;
+			margin: 0 4px;
+		}
+		&:last-child:after {
+			content: none;
+		}
+	}
+}
