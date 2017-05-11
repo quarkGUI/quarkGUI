@@ -279,21 +279,13 @@ export class DatePicker {
 	}
 }
 
-
-export interface IOptions{
-	name: string;
-	value: any;
-}
-
 export interface IDatePicker{
 	id: string;
 	name: string;
-	searchable?: boolean;
 	type?: string;
 	value?: any;
 	placeholder?: string;
 	labelElement?: string;
-	options?: IOptions[];
 }
 
 export function getModule(datePicker: IDatePicker){
