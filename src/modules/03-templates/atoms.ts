@@ -210,13 +210,5 @@ export default function(){
 				}
 			]
 		})}
-
-		${DatePicker.getModule({
-			id: 'atom-date-picker1',
-			name: 'atom-date-picker1',
-			type: 'text',
-			placeholder: 'Type here',
-		})}
-`
-	
+	`
 }
