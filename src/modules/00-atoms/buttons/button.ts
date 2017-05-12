@@ -12,7 +12,7 @@ export class Button {
 		this.id = button.id;
 		if (button.id !== undefined) this.id = button.id;
 		if (button.link !== undefined) this.link = button.link;
-		if (button.iconClass !== undefined) this.icon = `<span class="${Style.icon} ${button.iconClass}"></span>`;
+		if (button.iconClass !== undefined) this.icon = `<span class='${Style.icon} ${button.iconClass}'></span>`;
 		if (button.content !== undefined ) this.content = button.content;
 		if (button.type !== undefined) this.type = button.type;
 		if (button.theme !== undefined) this.theme = button.theme;
@@ -38,9 +38,7 @@ export class Button {
 	public createModuleElement() {
 		let themeClass = this.getThemeClass(this.theme)
 		let typeClass = (this.type !== undefined) ? this.getTypeClass(this.type) : Style.buttonTypeFlat;
-		return `
-			<a id="${this.id}" href="${this.link}" class="${Style.button} ${typeClass} ${themeClass}">${this.icon} ${this.content}</a>
-		`
+		return `<a id='${this.id}'' href='${this.link}'' class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</a>`;
 	}
 }
 

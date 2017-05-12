@@ -10,7 +10,7 @@ export class Image {
 	}
 
 	public createModuleElement(){
-		return `<img class="${Style.image}" src="${this.src}" alt="${this.alt}" />`
+		return `<img class='${Style.image}' src='${this.src}' alt='${this.alt}' />`;
 	}
 }
 

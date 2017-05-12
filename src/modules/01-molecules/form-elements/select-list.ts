@@ -27,13 +27,9 @@ export class SelectList extends AtomSelectList.SelectList {
 			options: this.options
 		}
 
-		if (this.label !== undefined) selectList.labelElement = `<label for="${this.id}" class="${Style.label}">${this.label}</label>`;
+		if (this.label !== undefined) selectList.labelElement = `<label for='${this.id}' class='${Style.label}'>${this.label}</label>`;
 		
-		return `
-			<div class="${Style.inputGroup}">
-				${AtomSelectList.getModule(selectList)}
-			</div>
-		`
+		return `<div class="${Style.inputGroup}">${AtomSelectList.getModule(selectList)}</div>`;
 	}
 }
 

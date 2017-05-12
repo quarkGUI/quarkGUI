@@ -7,7 +7,7 @@ export class ActionButton {
 
 	constructor(actionButton: IActionButton) {
 		this.id = actionButton.id;
-		if (actionButton.iconClass !== undefined) this.icon = `<span class="${Style.icon} ${actionButton.iconClass}"></span>`;
+		if (actionButton.iconClass !== undefined) this.icon = `<span class='${Style.icon} ${actionButton.iconClass}'></span>`;
 		if (actionButton.theme !== undefined) this.themeClass = this.getThemeClass(actionButton.theme);
 
 	}
@@ -43,9 +43,7 @@ export class ActionButton {
 
 	public createModuleElement() {
 		this.addListener(this.id);
-		return `
-			<div id="${this.id}" class="${Style.button} ${this.themeClass} ${this.themeClass}">${this.icon}</div>
-		`
+		return `<div id='${this.id}' class='${Style.button} ${this.themeClass} ${this.themeClass}'>${this.icon}</div>`;
 	}
 
 }

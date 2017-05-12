@@ -26,10 +26,7 @@ export class Checkbox {
 
 	public createModuleElement() {
 		this.addListener(this.id);
-		return `
-			<input id="${this.id}" name="${this.name}" type="checkbox" value="${this.value}" class="${Style.input}" />
-			<span id="checkbox-toggle-${this.id}" class="${Style.checkboxIcon}"></span>
-		`
+		return `<input id='${this.id}' name='${this.name}' type='checkbox' value='${this.value}' class='${Style.input}' /><span id='checkbox-toggle-${this.id}' class='${Style.checkboxIcon}'></span>`;
 	}
 }
 

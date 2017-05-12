@@ -13,7 +13,7 @@ export class ToggleButton {
 		if (toggleButton.toggleType !== undefined) this.toggleType = toggleButton.toggleType;
 		if (toggleButton.title !== undefined) this.title = toggleButton.title;
 		if (toggleButton.theme !== undefined) this.themeClass = this.getThemeClass(toggleButton.theme);
-		if (toggleButton.iconClass !== undefined) this.icon = `<span class="${Style.icon} ${toggleButton.iconClass}"></span>`;
+		if (toggleButton.iconClass !== undefined) this.icon = `<span class='${Style.icon} ${toggleButton.iconClass}'></span>`;
 
 	}
 
@@ -56,11 +56,7 @@ export class ToggleButton {
 
 	public createModuleElement(){
 		this.addListener(this.id, this.targetClass);
-		return ` 
-		<button id="${this.id}" data-toggle-type="${this.toggleType}" title="${this.title}" value="${this.targetClass}" class="${Style.button} ${this.themeClass}"> 
-			${this.icon}
-		</button>
-		`
+		return `<button id='${this.id}' data-toggle-type='${this.toggleType}' title='${this.title}' value='${this.targetClass}' class='${Style.button} ${this.themeClass}'>${this.icon}</button>`;
 	}
 }
 

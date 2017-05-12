@@ -30,7 +30,7 @@ export class ActionBarMenu {
 				toggleButtonElements += ToggleButton.getModule(toggleButton)
 			};
 		}
-		return `<ul id="${this.id}" class="${Style.actionBar} ${themeClass}">${toggleButtonElements}</ul>`
+		return `<ul id='${this.id}' class='${Style.actionBar} ${themeClass}'>${toggleButtonElements}</ul>`;
 	}
 }
 

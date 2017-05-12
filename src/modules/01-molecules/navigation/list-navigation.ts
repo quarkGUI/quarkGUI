@@ -10,10 +10,10 @@ export class ListNavigation {
 		let listItemElements: string = "";
 		if (this.listItems.length){
 			for (let listItem of this.listItems){ 
-				listItemElements += `<li><a href="${listItem.link}">${listItem.name}</a></li>`
+				listItemElements += `<li><a href='${listItem.link}'>${listItem.name}</a></li>`;
 			};
 		}
-		return `<ul class="${Style.listNavigation}">${listItemElements}</ul>`
+		return `<ul class='${Style.listNavigation}'>${listItemElements}</ul>`;
 	}
 }
 

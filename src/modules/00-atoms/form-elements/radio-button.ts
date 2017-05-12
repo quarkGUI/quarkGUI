@@ -26,10 +26,7 @@ export class RadioButton {
 
 	public createModuleElement() {
 		this.addListener(this.id);
-		return `
-			<input id="${this.id}" name="${this.name}" type="radio" value="${this.value}" class="${Style.input}" />
-			<span id="radio-toggle-${this.id}" class="${Style.radioIcon}"></span>
-		`
+		return `<input id='${this.id}' name='${this.name}' type='radio' value='${this.value}' class='${Style.input}' /><span id='radio-toggle-${this.id}' class='${Style.radioIcon}'></span>`;
 	}
 }
 

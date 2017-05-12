@@ -11,10 +11,10 @@ export class SidebarNavigation {
 	private createListItemElements(listItems){
 		let listItemElements = "";
 		for (let listItem of this.listItems){
-			let id         = listItem.id         !== undefined ? `id="${listItem.id}"` : '';
-			let moduleLink = listItem.moduleLink !== undefined ? `data-module-target="${listItem.moduleLink}"` : '';
+			let id         = listItem.id         !== undefined ? `id='${listItem.id}'` : '';
+			let moduleLink = listItem.moduleLink !== undefined ? `data-module-target='${listItem.moduleLink}'` : '';
 
-			listItemElements += `<li><a class="loadPage" ${id} ${listItem.link} ${moduleLink}>${listItem.name}</a></li>`;
+			listItemElements += `<li><a class='loadPage' ${id} ${listItem.link} ${moduleLink}>${listItem.name}</a></li>`;
 		}
 		return listItemElements;
 	}
@@ -22,7 +22,7 @@ export class SidebarNavigation {
 	public createModuleElement(){
 		let listItemElements: string = this.createListItemElements(this.listItems);
 		
-		return `<ul class="${Style.list}">${listItemElements}</ul>`
+		return `<ul class='${Style.list}'>${listItemElements}</ul>`;
 	}
 }
 

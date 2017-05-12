@@ -14,12 +14,7 @@ export class RadioButton extends AtomRadioButton.RadioButton{
 			name: this.name,
 			value: this.value
 		};
-		return `
-		<div class="${Style.inputGroup}">
-		${AtomRadioButton.getModule(radioButton)}
-		<label for="${this.id}" class="${Style.label}">${this.label}</label>
-		</div>
-		`;
+		return `<div class='${Style.inputGroup}'>${AtomRadioButton.getModule(radioButton)}<label for='${this.id}' class='${Style.label}'>${this.label}</label></div>`;
 	}
 }
 

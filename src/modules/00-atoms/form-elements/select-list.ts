@@ -120,7 +120,7 @@ export class SelectList {
 	private createOptionElements(options: IOptions[]){
 		let optionElements: string = "";
 		for (let option of options){
-			optionElements += `<li data-value="${option.value}">${option.name}</li>`;
+			optionElements += `<li data-value='${option.value}'>${option.name}</li>`;
 		}
 		return optionElements;
 	}
@@ -136,14 +136,7 @@ export class SelectList {
 			id: this.id + '-dropdownList'
 		}
 		this.addListener(this, inputField, dropdownList);
-		return `
-			<div id="${this.id}" class="${Style.dropdownContainer}">
-				${InputField.getModule(inputField)} ${this.labelElement}
-				<ul id="${dropdownList.id}" class="${Style.dropdownList}">
-					${this.optionElements}
-				</ul>
-			</div>
-		`
+		return `<div id='${this.id}' class='${Style.dropdownContainer}'>${InputField.getModule(inputField)} ${this.labelElement}<ul id='${dropdownList.id}' class='${Style.dropdownList}'>${this.optionElements}</ul></div>`;
 	}
 }
 

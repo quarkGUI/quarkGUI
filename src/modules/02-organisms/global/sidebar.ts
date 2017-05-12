@@ -21,17 +21,7 @@ export class Sidebar {
 			if (this.logo.url !== undefined) logoUrl = this.logo.url;
 		} 
 
-		return `
-			<aside class="${Style.sidebar}">
-				<div class="${Style.sidebarOverlay}"></div>
-				<div class="${Style.sidebarContent}">
-					<a href="${logoUrl}" class="${Style.logo}">
-						${logoImage}
-					</a>
-					${SidebarNavigationElement}
-				</div>
-			</aside>
-		`
+		return `<aside class='${Style.sidebar}'><div class='${Style.sidebarOverlay}'></div><div class='${Style.sidebarContent}'><a href='${logoUrl}' class='${Style.logo}'>${logoImage}</a>${SidebarNavigationElement}</div></aside>`;
 	}
 }
 

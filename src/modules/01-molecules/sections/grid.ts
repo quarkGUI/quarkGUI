@@ -12,9 +12,7 @@ export class Grid {
 		for (let gridItem of this.gridItems){ 
 			gridItemElements += GridItem.getModule(gridItem)
 		};
-		return ` 
-			<div class="${Style.row}">${gridItemElements}<div class="${Style.clearFix}"></div></div>
-		`
+		return `<div class='${Style.row}'>${gridItemElements}<div class='${Style.clearFix}'></div></div>`;
 	}
 }
 

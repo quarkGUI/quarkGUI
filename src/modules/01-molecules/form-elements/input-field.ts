@@ -20,12 +20,7 @@ export class InputField extends AtomInputField.InputField{
 			value: this.value,
 			placeholder: this.placeholder
 		}
-		return `
-			<div class="${Style.inputGroup}">
-				${AtomInputField.getModule(inputField)}
-				<label for="${this.id}" class="${Style.label}">${this.label}</label>
-			</div>
-		`
+		return `<div class='${Style.inputGroup}'>${AtomInputField.getModule(inputField)}<label for='${this.id}' class='${Style.label}'>${this.label}</label></div>`;
 	}
 }
 

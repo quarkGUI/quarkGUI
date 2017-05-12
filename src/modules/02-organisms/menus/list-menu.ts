@@ -55,20 +55,20 @@ export class ListMenu {
 
 
 	private createTitleElement(listItem: IListItem){
-		let moduleLinkAttribute = (listItem.moduleLink !== undefined) ? `data-module-target="${listItem.moduleLink}"` : '';
+		let moduleLinkAttribute = (listItem.moduleLink !== undefined) ? `data-module-target='${listItem.moduleLink}'` : '';
 		let singleLineClass = (listItem.title !== undefined && listItem.subTitle == undefined) ? Style.singleLine : '';
 		let subTitleElement = (listItem.subTitle !== undefined) ? `<small>${listItem.subTitle}</small>` : '';
-		let iconElement = (listItem.iconClass !== undefined) ? `<span class="${Style.listItemIcon} ${listItem.iconClass}"></span>` : '';
+		let iconElement = (listItem.iconClass !== undefined) ? `<span class='${Style.listItemIcon} ${listItem.iconClass}'></span>` : '';
 
 		let titleElement = "";
 		if (listItem.title !== undefined && listItem.link !== undefined) {
-			titleElement = `<a href="${listItem.link}" class="${Style.listItemTitle} ${singleLineClass}">${iconElement}${listItem.title} ${subTitleElement}</a>`;
+			titleElement = `<a href='${listItem.link}' class='${Style.listItemTitle} ${singleLineClass}'>${iconElement}${listItem.title} ${subTitleElement}</a>`;
 		}
 		else if (listItem.title !== undefined && listItem.moduleLink !== undefined){
-			titleElement = `<a ${moduleLinkAttribute} class="loadPage ${Style.listItemTitle} ${singleLineClass}">${iconElement}${listItem.title} ${subTitleElement}</a>`;
+			titleElement = `<a ${moduleLinkAttribute} class='loadPage ${Style.listItemTitle} ${singleLineClass}'>${iconElement}${listItem.title} ${subTitleElement}</a>`;
 		}
 		else if (listItem.title !== undefined) {
-			titleElement = `<span class="${Style.listItemTitle} ${singleLineClass}" ${moduleLinkAttribute}>${iconElement}${listItem.title} ${subTitleElement}</span>`;
+			titleElement = `<span class='${Style.listItemTitle} ${singleLineClass}' ${moduleLinkAttribute}>${iconElement}${listItem.title} ${subTitleElement}</span>`;
 		}
 		return titleElement;
 	}
@@ -76,7 +76,7 @@ export class ListMenu {
 	private createExpandButtonElement(listItem: IListItem){
 		let expandButtonElement = "";
 		if (listItem.expandable !== undefined && listItem.expandable === true) {
-			expandButtonElement = `<span class="${Style.listItemDivider}"></span><span id="${listItem.id}-expand-button" class="${Style.listItemExpandButton}"></span>`
+			expandButtonElement = `<span class='${Style.listItemDivider}'></span><span id='${listItem.id}-expand-button' class='${Style.listItemExpandButton}'></span>`;
 		}
 		return expandButtonElement;
 	}
@@ -86,9 +86,9 @@ export class ListMenu {
 		let expandButton = this.createExpandButtonElement(listItem);
 
 		if (listItem.buttonRow !== undefined) {
-			buttonRowElement = `<span class="${Style.listItemButtonRow}">${ButtonRow.getModule(listItem.buttonRow)}${expandButton}</span>`;
+			buttonRowElement = `<span class='${Style.listItemButtonRow}'>${ButtonRow.getModule(listItem.buttonRow)}${expandButton}</span>`;
 		}else if (listItem.expandable !== undefined && listItem.expandable == true){
-			buttonRowElement = `<span class="${Style.listItemButtonRow}">${expandButton}</span>`;
+			buttonRowElement = `<span class='${Style.listItemButtonRow}'>${expandButton}</span>`;
 		}
 
 		return buttonRowElement;
@@ -97,7 +97,7 @@ export class ListMenu {
 	private createExpandableContentElement(listItem: IListItem){
 		let expandableContentElement = "";
 		if (listItem.expandableContent !== undefined) {
-			expandableContentElement = `<div id="${listItem.id}-expandable-content" class="${Style.listItemExpandableContent}">${listItem.expandableContent}</div>`
+			expandableContentElement = `<div id='${listItem.id}-expandable-content' class='${Style.listItemExpandableContent}'>${listItem.expandableContent}</div>`;
 		}
 		return expandableContentElement;
 	}
@@ -118,13 +118,13 @@ export class ListMenu {
 					this.addListener(listItem);
 				}
 
-				listItemElements += `<div class="${Style.listItem} ${dragableClass}">${title}${buttonRow}${expandableContent}</div>`;
+				listItemElements += `<div class='${Style.listItem} ${dragableClass}'>${title}${buttonRow}${expandableContent}</div>`;
 			}
 		}
 
 		let hoverClass: string = this.hover ? Style.hover : "";
 
-		return `<div id="${this.id}" class="${Style.listMenu} ${hoverClass}">${listItemElements}</div>`
+		return `<div id='${this.id}' class='${Style.listMenu} ${hoverClass}'>${listItemElements}</div>`;
 	}
 }
 

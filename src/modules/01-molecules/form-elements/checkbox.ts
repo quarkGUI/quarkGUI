@@ -14,12 +14,7 @@ export class Checkbox extends AtomCheckbox.Checkbox{
 			name: this.name,
 			value: this.value
 		};
-		return `
-			<div class="${Style.inputGroup}">
-				${AtomCheckbox.getModule(checkbox)}
-				<label for="${this.id}" class="${Style.label}">${this.label}</label>
-			</div>
-		`;
+		return `<div class='${Style.inputGroup}'>${AtomCheckbox.getModule(checkbox)}<label for='${this.id}' class='${Style.label}'>${this.label}</label></div>`;
 	}
 }
 

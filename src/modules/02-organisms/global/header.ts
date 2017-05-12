@@ -43,11 +43,7 @@ export class Header {
 			if (this.logo.url !== undefined) logoUrl = this.logo.url;
 		}
 		if (this.sidebar !== undefined){
-			sidebarElement = `
-				<div id="sidebarToggle" class="overlay-element ${Style.sidenavToggle}">
-					${Sidebar.getModule(this.sidebar)}
-				</div>
-			`;
+			sidebarElement = `<div id='sidebarToggle' class='overlay-element ${Style.sidenavToggle}'>${Sidebar.getModule(this.sidebar)}</div>`;
 		}
 		if (this.primaryNavigation !== undefined) {
 			if (this.primaryNavigation.theme == undefined) {
@@ -56,16 +52,7 @@ export class Header {
 			this.primaryNavigation.id = this.id + '-primary-navigation';
 			primaryNavigationElement = PrimaryNavigation.getModule(this.primaryNavigation);
 		}
-		return `
-			<header class="${Style.navbar} ${themeClass}">
-				${sidebarElement}
-				<a href="${logoUrl}" class="${Style.logo}">
-					${logoImage}
-				</a>
-				<span class="${Style.menuDivider}"></span>
-				${primaryNavigationElement}
-			</header>
-		`
+		return `<header class='${Style.navbar} ${themeClass}'>${sidebarElement}<a href='${logoUrl}' class='${Style.logo}'>${logoImage}</a><span class='${Style.menuDivider}'></span>${primaryNavigationElement}</header>`;
 	}
 }
 

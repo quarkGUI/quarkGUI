@@ -22,16 +22,7 @@ export class Card {
 
 	public createModuleElement() {
 		let themeClass: string = this.getThemeClass(this.theme);
-		return `
-			<div class="card ${Style.card} ${themeClass}">
-				<div class="${Style.cardHeader}">
-					<span class="${Style.cardHeaderTitle}">${this.title}</span>
-				</div>
-				<div class="${Style.cardBody}">
-					${this.content}
-				</div>
-			</div>
-		`
+		return `<div class='card ${Style.card} ${themeClass}'><div class='${Style.cardHeader}'><span class='${Style.cardHeaderTitle}'>${this.title}</span></div><div class='${Style.cardBody}'>${this.content}</div></div>`;
 	}
 }
 

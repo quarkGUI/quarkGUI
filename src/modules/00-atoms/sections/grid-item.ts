@@ -18,11 +18,7 @@ export class GridItem {
 		}
 	}
 	public createModuleElement(){
-		return `
-			<div class="${this.sizes.phone} ${this.sizes.tablet} ${this.sizes.tabletLandscape} ${this.sizes.screen}">
-				${this.content}
-			</div>
-		`
+		return `<div class='${this.sizes.phone} ${this.sizes.tablet} ${this.sizes.tabletLandscape} ${this.sizes.screen}'>${this.content}</div>`;
 	}
 }
 

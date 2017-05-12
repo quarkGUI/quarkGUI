@@ -33,7 +33,7 @@ export class DragableList {
 		let listItemElements: string = "";
 		for (let listItem of listItems){
 			let listItemContent: string = listItem.content !== undefined ? listItem.content : '';
-			listItemElements += `<div class="${Style.listItem}">${listItemContent}</div>`;
+			listItemElements += `<div class='${Style.listItem}'>${listItemContent}</div>`;
 		}
 		return listItemElements;
 	}
@@ -42,11 +42,7 @@ export class DragableList {
 		this.addListener(this);
 		let listElements: string = this.createListElements(this.listItems);
 
-		return `
-			<div id="${this.id}" class="${Style.dragableList}">
-				${listElements}
-			</div>
-		`
+		return `<div id='${this.id}' class='${Style.dragableList}'>${listElements}</div>`;
 	}
 }
 

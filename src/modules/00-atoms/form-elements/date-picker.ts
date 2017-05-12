@@ -144,7 +144,7 @@ export class DatePicker {
 		<span>${activeDate.year}</span>
 		${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-right"})}
 		`;
-		let dateSelectorElement: string = `<div class="${Style.monthSelector}">${monthSelectorElement}</div><div class="${Style.yearSelector}">${yearSelectorElement}</div>`;
+		let dateSelectorElement: string = `<div class='${Style.monthSelector}'>${monthSelectorElement}</div><div class='${Style.yearSelector}'>${yearSelectorElement}</div>`;
 		return dateSelectorElement;
 	}
 

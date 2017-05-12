@@ -14,9 +14,7 @@ export class ButtonRow{
 		for (let button of this.buttons){ 
 			buttonElements += Button.getModule(button)
 		};
-		return ` 
-			<span id="${this.id}" class="${Style.buttonRow}">${buttonElements}</span>
-		`
+		return `<span id='${this.id}' class='${Style.buttonRow}'>${buttonElements}</span>`;
 	}
 }
 
