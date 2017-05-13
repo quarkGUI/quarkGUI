@@ -11,7 +11,7 @@ export class Modal {
 	}
 
 	public createModuleElement(){
-		return `<div class='${Style.modalOverlay}'><div class='${Style.modal}'><div class='${Style.modalHeader}'>${this.title}</div><div class='${Style.modalContent}'>${this.content}</div></div></div>`;
+		return `<div id='${this.id}' class='${Style.modalOverlay}'><div class='${Style.modal}'><div class='${Style.modalHeader}'>${this.title}</div><div class='${Style.modalContent}'>${this.content}</div></div></div>`;
 	}
 }
 
