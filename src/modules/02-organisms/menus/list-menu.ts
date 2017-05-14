@@ -38,20 +38,25 @@ export class ListMenu {
 
 	private addListener(listItem: IListItem){
 		document.addEventListener("module-lazy-loaded", function(e) {
+			let hasExpandButtonElement: boolean = document.getElementById(listItem.id + '-expand-button') !== null;
+			let hasExpandableContentElement: boolean = document.getElementById(listItem.id + '-expandable-content') !== null;
+
 			let expandButtonElement:HTMLElement = document.getElementById(listItem.id + '-expand-button'); 
 			let expandableContentElement:HTMLElement = document.getElementById(listItem.id + '-expandable-content'); 
 
-			expandButtonElement.onclick = function(){
-				let isExpanded:boolean = expandButtonElement.classList.contains('active');
-				
-				if (isExpanded){
-					expandButtonElement.classList.remove("active");
-					expandableContentElement.classList.remove("active");
-				}else{
-					expandButtonElement.classList.add("active");
-					expandableContentElement.classList.add("active");
-				}
-			};
+			if (hasExpandButtonElement && hasExpandableContentElement){
+				expandButtonElement.onclick = function(){
+					let isExpanded:boolean = expandButtonElement.classList.contains('active');
+					
+					if (isExpanded){
+						expandButtonElement.classList.remove("active");
+						expandableContentElement.classList.remove("active");
+					}else{
+						expandButtonElement.classList.add("active");
+						expandableContentElement.classList.add("active");
+					}
+				};
+			}
 		});
 	}
 
