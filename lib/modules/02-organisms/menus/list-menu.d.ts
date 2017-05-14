@@ -2,12 +2,14 @@ import * as ButtonRow from '../../01-molecules/buttons/button-row';
 export declare class ListMenu {
     id: string;
     listItems: IListItem[];
+    raised: boolean;
     hover: boolean;
     dragable: boolean;
     constructor(listMenu: IListMenu);
     private initDragula(containers);
     private addDragulaListener(thisInstance);
     private addListener(listItem);
+    private getTypeClass(raised);
     private createTitleElement(listItem);
     private createExpandButtonElement(listItem);
     private createButtonRowElement(listItem);
@@ -28,6 +30,7 @@ export interface IListItem {
 export interface IListMenu {
     id?: string;
     listItems?: IListItem[];
+    raised?: boolean;
     hover?: boolean;
     dragable?: boolean;
 }
