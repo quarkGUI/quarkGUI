@@ -120,11 +120,28 @@ export default function(){
 
 		<h2>Form elements</h2>
 		<h3>Input field</h3>
+		<p>Standard input field</p>
 		${InputField.getModule({
 			id: 'atom-input1',
 			name: 'atom-inputname1',
 			type: 'text',
 			placeholder: 'Placeholder text here'
+		})}
+		<p>Disabled input field</p>
+		${InputField.getModule({
+			id: 'atom-input1',
+			name: 'atom-inputname1',
+			type: 'text',
+			placeholder: 'Placeholder text here',
+			attributes: ['disabled']
+		})}
+		<p>Required input field</p>
+		${InputField.getModule({
+			id: 'atom-input1',
+			name: 'atom-inputname1',
+			type: 'text',
+			placeholder: 'Placeholder text here',
+			attributes: ['required']
 		})}
 
 		<h3>Checkbox</h3>

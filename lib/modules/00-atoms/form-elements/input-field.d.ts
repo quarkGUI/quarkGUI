@@ -4,8 +4,10 @@ export declare class InputField {
     type: string;
     value: any;
     placeholder: string;
+    attributes: string[];
     constructor(inputField: IInputField);
     private addListener(id);
+    private getHtmlAttributes(attributes);
     createModuleElement(): string;
 }
 export interface IInputField {
@@ -14,5 +16,6 @@ export interface IInputField {
     type?: string;
     value?: any;
     placeholder?: string;
+    attributes?: string[];
 }
 export declare function getModule(inputField: IInputField): string;
