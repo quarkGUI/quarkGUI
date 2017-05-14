@@ -32,6 +32,8 @@ body{
 	height: 100%;
 	overflow: hidden;
 	font-family: $normal-font;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	> div#app{
 		height: 100%;
 	}
