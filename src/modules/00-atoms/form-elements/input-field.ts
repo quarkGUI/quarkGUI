@@ -30,9 +30,7 @@ export class InputField {
 
 	public createModuleElement() {
 		this.addListener(this.id);
-		return `
-			<input 	id="${this.id}" name="${this.name}" type="${this.type}" value="${this.value}" placeholder="${this.placeholder}" class="${Style.input}" />
-		`
+		return `<input 	id='${this.id}' name='${this.name}' type='${this.type}' value='${this.value}' placeholder='${this.placeholder}' class='${Style.input}' />`;
 	}
 }
 
