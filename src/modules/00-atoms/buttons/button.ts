@@ -7,6 +7,7 @@ export class Button {
 	content: string = "";
 	type?: string = "flat";
 	theme?: string = "default";
+	submit?: boolean = false;
 
 	constructor(button: IButton) {
 		this.id = button.id;
@@ -16,6 +17,7 @@ export class Button {
 		if (button.content !== undefined ) this.content = button.content;
 		if (button.type !== undefined) this.type = button.type;
 		if (button.theme !== undefined) this.theme = button.theme;
+		if (button.submit !== undefined) this.submit = button.submit;
 	}
 
 	private getThemeClass(theme: string){
@@ -38,7 +40,8 @@ export class Button {
 	public createModuleElement() {
 		let themeClass = this.getThemeClass(this.theme)
 		let typeClass = (this.type !== undefined) ? this.getTypeClass(this.type) : Style.buttonTypeFlat;
-		return `<a id='${this.id}'' href='${this.link}'' class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</a>`;
+		let submitAttribute:string = this.submit !== undefined && this.submit === true ? "type='submit' " : "";
+		return `<a id='${this.id}' ${submitAttribute}href='${this.link}' class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</a>`;
 	}
 }
 
@@ -49,6 +52,7 @@ export interface IButton {
 	link ?: string; 
 	iconClass?: string; 
 	content?: string;
+	submit?: boolean;
 }
 
 export function getModule(button: IButton){

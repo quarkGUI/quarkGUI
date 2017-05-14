@@ -5,6 +5,7 @@ export declare class Button {
     content: string;
     type?: string;
     theme?: string;
+    submit?: boolean;
     constructor(button: IButton);
     private getThemeClass(theme);
     private getTypeClass(type);
@@ -17,5 +18,6 @@ export interface IButton {
     link?: string;
     iconClass?: string;
     content?: string;
+    submit?: boolean;
 }
 export declare function getModule(button: IButton): string;
