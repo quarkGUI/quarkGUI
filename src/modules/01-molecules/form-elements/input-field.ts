@@ -8,6 +8,7 @@ export class InputField extends AtomInputField.InputField{
 		if (inputField.type !== undefined) this.type = inputField.type;
 		if (inputField.value !== undefined) this.value = inputField.value;
 		if (inputField.placeholder !== undefined) this.placeholder = inputField.placeholder;
+		if (inputField.attributes !== undefined) this.attributes = inputField.attributes;
 		if (inputField.label !== undefined) this.label = inputField.label;
 	}
 
@@ -18,7 +19,8 @@ export class InputField extends AtomInputField.InputField{
 			name: this.name,
 			type: this.type,
 			value: this.value,
-			placeholder: this.placeholder
+			placeholder: this.placeholder,
+			attributes: this.attributes
 		}
 		return `<div class='${Style.inputGroup}'>${AtomInputField.getModule(inputField)}<label for='${this.id}' class='${Style.label}'>${this.label}</label></div>`;
 	}

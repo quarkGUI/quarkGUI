@@ -6,13 +6,15 @@ export class RadioButton extends AtomRadioButton.RadioButton{
 	constructor(radioButton: IRadioButton) {
 		super({id: radioButton.id, name: radioButton.name, value: radioButton.value});
 		if(radioButton.label !== undefined) this.label = radioButton.label;
+		if (radioButton.attributes !== undefined) this.attributes = radioButton.attributes;
 	}
 
 	public createModuleElement() {
 		let radioButton = {
 			id: this.id,
 			name: this.name,
-			value: this.value
+			value: this.value,
+			attributes: this.attributes
 		};
 		return `<div class='${Style.inputGroup}'>${AtomRadioButton.getModule(radioButton)}<label for='${this.id}' class='${Style.label}'>${this.label}</label></div>`;
 	}
