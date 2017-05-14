@@ -40,8 +40,14 @@ export class Button {
 	public createModuleElement() {
 		let themeClass = this.getThemeClass(this.theme)
 		let typeClass = (this.type !== undefined) ? this.getTypeClass(this.type) : Style.buttonTypeFlat;
-		let submitAttribute:string = this.submit !== undefined && this.submit === true ? "type='submit' " : "";
-		return `<a id='${this.id}' ${submitAttribute}href='${this.link}' class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</a>`;
+		let isSubmitButton:boolean = this.submit !== undefined && this.submit === true;
+		let moduleElement:string = '';
+		if (isSubmitButton){
+			moduleElement = `<button type='submit' id='${this.id}' class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</button>`;
+		}else{
+			moduleElement = `<a id='${this.id}' href='${this.link}' class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</a>`;
+		}
+		return moduleElement;
 	}
 }
 
