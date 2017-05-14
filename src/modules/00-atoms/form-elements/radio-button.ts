@@ -4,10 +4,12 @@ export class RadioButton {
 	id: string;
 	name: string;
 	value: string;
+	attributes: string[];
 	constructor(radioButton: IRadioButton) {
 		this.id = radioButton.id;
 		this.name = radioButton.name;
 		this.value = radioButton.value;
+		if (radioButton.attributes !== undefined) this.attributes = radioButton.attributes;
 	}
 
 	private addListener(id: string){
@@ -24,9 +26,21 @@ export class RadioButton {
 		}, false);
 	}
 
+	private getHtmlAttributes(attributes: string[]){
+		let htmlAttributes: string = '';
+		attributes.forEach(function(attribute, index){
+			htmlAttributes += attribute;
+			if (index < attributes.length){
+				htmlAttributes += ' ';
+			}
+		});
+		return htmlAttributes;
+	}
+
 	public createModuleElement() {
 		this.addListener(this.id);
-		return `<input id='${this.id}' name='${this.name}' type='radio' value='${this.value}' class='${Style.input}' /><span id='radio-toggle-${this.id}' class='${Style.radioIcon}'></span>`;
+		let htmlAtributes: string = this.attributes !== undefined && this.attributes.length ? this.getHtmlAttributes(this.attributes) : '';
+		return `<input id='${this.id}' name='${this.name}' type='radio' value='${this.value}' ${htmlAtributes} class='${Style.input}' /><span id='radio-toggle-${this.id}' class='${Style.radioIcon}'></span>`;
 	}
 }
 
@@ -35,6 +49,7 @@ export interface IRadioButton{
 	id: string;
 	name: string;
 	value: string;
+	attributes?: string[];
 }
 
 
