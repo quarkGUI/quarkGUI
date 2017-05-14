@@ -1,23 +1,11 @@
 @import "attribution";
 @import "abstracts/all";
 @import "font-awesome";
+@import "typography";
 @import "helpers";
 @import "reset";
 
-@font-face {
-	font-family: 'Lato';
-	src: url('../fonts/Lato-Regular.woff') format('woff');
-	src: url('../fonts/Lato-Regular.woff') format('woff'), url('../fonts/Lato-Regular.ttf') format('truetype');
 
-	font-weight: normal;
-}
-
-@font-face {
-	font-family: 'Lato';
-	src: url('../fonts/Lato-Regular.woff') format('woff');
-	src: url('../fonts/Lato-Bold.woff') format('woff'), url('../fonts/Lato-Bold.ttf') format('truetype');
-	font-weight: bold;
-}
 
 
 @include scrollbar(14px, #e0e1e2, transparent, 0)
