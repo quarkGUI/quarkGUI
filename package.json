@@ -69,7 +69,6 @@
   "homepage": "https://github.com/benjamindehli/quarkGUI#readme",
   "dependencies": {
     "dragula": "^3.7.2",
-    "less-loader": "^4.0.0",
     "typescript": "^2.2.0"
   }
 }

@@ -84,12 +84,6 @@ const sassLoader = PRODUCTION || DOCS
 		})
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier, 'sass-loader'];
 
-const lessLoader = PRODUCTION || DOCS
-	?	ExtractTextPlugin.extract({
-			use: 'css-loader?minimize!less-loader?localIdentName=' + cssIdentifier
-		})
-	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier, 'less-loader'];
-
 module.exports = {
 	devtool: 'source-map',
 	entry: entry,
@@ -118,10 +112,6 @@ module.exports = {
 		}, {
 			test: /\.scss$/,
 			use: sassLoader,
-			exclude: '/node_modules/'
-		}, {
-			test: /\.less$/,
-			use: lessLoader,
 			exclude: '/node_modules/'
 		}, { 
 			test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
