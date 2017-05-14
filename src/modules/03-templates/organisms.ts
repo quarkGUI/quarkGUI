@@ -13,6 +13,7 @@ export default function(){
 	<h3>List menu</h3>
 	${ListMenu.getModule({
 		id: 'list-menu1',
+		raised: true,
 		listItems: [
 		{
 			id: 'listItem1',
@@ -107,6 +108,7 @@ export default function(){
 	<h3>Expandable list menu</h3>
 	${ListMenu.getModule({
 		id: 'list-menu2',
+		raised: true,
 		listItems: [
 		{
 			id: 'listItem5',
@@ -164,6 +166,7 @@ export default function(){
 	<h3>Dragable list menu</h3>
 	${ListMenu.getModule({
 		id: 'list-menu3',
+		raised: true,
 		dragable: true,
 		listItems: [
 		{

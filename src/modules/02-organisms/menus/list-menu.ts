@@ -6,11 +6,13 @@ const Style = require<any>('../../../../src/modules/02-organisms/menus/list-menu
 export class ListMenu {
 	id: string = "";
 	listItems: IListItem[];
+	raised: boolean = false;
 	hover: boolean = false;
 	dragable: boolean = false;
 	constructor(listMenu: IListMenu) {
 		if (listMenu.id !== undefined) this.id = listMenu.id;
 		if (listMenu.listItems !== undefined) this.listItems = listMenu.listItems;
+		if (listMenu.raised !== undefined) this.raised = listMenu.raised;
 		if (listMenu.hover !== undefined) this.hover = listMenu.hover;
 		if (listMenu.dragable !== undefined) this.dragable = listMenu.dragable;
 	}
@@ -51,6 +53,12 @@ export class ListMenu {
 				}
 			};
 		});
+	}
+
+	private getTypeClass(raised: boolean){
+		let typeClass = '';
+		if (raised) typeClass = Style.listMenuTypeRaised;
+		return typeClass;
 	}
 
 
@@ -122,9 +130,10 @@ export class ListMenu {
 			}
 		}
 
+		let typeClass = (this.raised !== undefined) ? this.getTypeClass(this.raised) : '';
 		let hoverClass: string = this.hover ? Style.hover : "";
 
-		return `<div id='${this.id}' class='${Style.listMenu} ${hoverClass}'>${listItemElements}</div>`;
+		return `<div id='${this.id}' class='${Style.listMenu} ${typeClass} ${hoverClass}'>${listItemElements}</div>`;
 	}
 }
 
@@ -143,6 +152,7 @@ export interface IListItem {
 export interface IListMenu {
 	id?: string;
 	listItems?: IListItem[];
+	raised?: boolean;
 	hover?: boolean;
 	dragable?: boolean;
 }

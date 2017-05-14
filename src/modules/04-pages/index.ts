@@ -16,6 +16,7 @@ export default function(){
 				${ListMenu.getModule({
 					id: 'index-listmenu',
 					hover: true,
+					raised: true,
 					listItems: [
 						{
 							title: 'Global',

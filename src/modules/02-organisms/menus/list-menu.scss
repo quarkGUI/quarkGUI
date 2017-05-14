@@ -2,8 +2,9 @@
 
 :local(.listMenu){
 	list-style: none;
-	padding: 0 0 10px 0;
 	margin: 0;
+	background-color: #FFF;
+	border-radius: 2px;
 	&:local(.hover){
 		:local(.listItem):hover{
 			background-color: bright-gray($dark-color);
@@ -97,4 +98,8 @@
 			}
 		}
 	}
+}
+
+:local(.listMenuTypeRaised) {
+	@include raised(2);
 }
