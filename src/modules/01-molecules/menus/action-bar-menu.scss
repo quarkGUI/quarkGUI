@@ -10,12 +10,10 @@
 	color: #FFF;
 	height: 60px;
 	bottom: 0px;
-	-webkit-box-shadow: 0 -6px 10px 0 rgba(0, 0, 0, 0.3);
-	box-shadow: 0 -6px 10px 0 rgba(0, 0, 0, 0.3);
 	width: 0;
-	-webkit-transition: all .2s;
-	transition: all .2s;
 	z-index: 3;
+	@include box-shadow(0 -6px 10px 0 rgba(0, 0, 0, .3));
+	@include transition(all .2s ease-in-out);
 }
 
 body.action-menu-active {

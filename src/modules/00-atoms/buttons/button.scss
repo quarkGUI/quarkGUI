@@ -37,11 +37,11 @@
 
 :local(.buttonTypeRaised) {
 	&:not([disabled]) {
-		@include box-shadow(0 2px 5px 0 rgba(0, 0, 0, .26));
+		@include raised(2);
 		@include transition(box-shadow .4s cubic-bezier(.25, .8, .25, 1), background-color .4s cubic-bezier(.25, .8, .25, 1));
 	}
 	&:not([disabled]):active {
-		@include box-shadow(0 4px 8px 0 rgba(0, 0, 0, .4));
+		@include raised(3);
 		background-color: bright-color($primary-color);
 	}
 	&[disabled] {

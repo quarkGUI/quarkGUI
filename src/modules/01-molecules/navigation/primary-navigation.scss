@@ -36,6 +36,7 @@
   a{
     color: $default-text-color;
   }
+  @include raised(2);
   @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.26));
   @media only screen and (min-width: $screen-sm) {
     top: 64px;

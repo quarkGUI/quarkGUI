@@ -51,7 +51,7 @@
     padding: 0;
     width: 360px;
     background-color: $bright-white;
-    @include box-shadow(0 2px 5px rgba(0, 0, 0, 0.26));
+    @include raised(2);
     
     :local(.toggleTab){
         width: 50%;
