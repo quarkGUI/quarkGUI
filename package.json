@@ -58,6 +58,7 @@
     "style-loader": "^0.17.0",
     "svg-url-loader": "^2.0.1",
     "ts-loader": "^2.0.0",
+    "typescript": "^2.2.0",
     "url-loader": "^0.5.7",
     "vows": "^0.8.1",
     "webpack": "^2.1.0-beta.28",
@@ -68,7 +69,6 @@
   },
   "homepage": "https://github.com/benjamindehli/quarkGUI#readme",
   "dependencies": {
-    "dragula": "^3.7.2",
-    "typescript": "^2.2.0"
+    "dragula": "^3.7.2"
   }
 }
