@@ -3,7 +3,7 @@ import * as Button from '../../00-atoms/buttons/button'
 const Style = require<any>("../../../../src/modules/01-molecules/buttons/button-row.scss");
 
 export class ButtonRow{
-	id: string;
+	id: string = "";
 	buttons: Button.IButton[];
 	constructor(buttonRow: IButtonRow) {
 		this.id = buttonRow.id;
@@ -19,8 +19,8 @@ export class ButtonRow{
 }
 
 export interface IButtonRow{
-	id: string;
 	buttons: Button.IButton[];
+	id?: string;
 }
 
 export function getModule(buttonRow: IButtonRow){
