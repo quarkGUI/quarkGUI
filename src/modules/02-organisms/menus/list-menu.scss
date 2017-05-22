@@ -38,9 +38,6 @@
 				}
 			}
 		}
-		:local(.listItemDragHandle){
-			display: inline-block;
-		}
 		:local(.listItemTitle){
 			display: inline-block;
 			font-size: 14pt;
@@ -71,9 +68,6 @@
 		}
 		:local(.listItemButtonRow) {
 			float: right;
-			line-height: 32px;
-			font-size: 26px;
-			vertical-align: text-bottom;
 		}
 		:local(.listItemExpandButton){
 			&:after{
@@ -82,6 +76,8 @@
 				content: "\F078";
 				display: inline-block;
 				cursor: pointer;
+				width: 29px;
+				text-align: center;
 				@include transition(transform .2s ease-in-out, top .2s ease-in-out);
 
 			}
