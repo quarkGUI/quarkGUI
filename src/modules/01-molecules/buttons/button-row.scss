@@ -1,10 +1,8 @@
 @import "../../../../src/style/abstracts/all";
 
 :local(.buttonRow){
+	margin: 0 -2px;
 	> a, > button{
-		margin: 0 4px 0 0;
-		&:last-child{
-			margin: 0;
-		}
+		margin: 0 2px;
 	}
 }
