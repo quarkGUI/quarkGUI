@@ -29,15 +29,10 @@ export class ListMenu {
 			let containers = [document.getElementById(thisInstance.id)];
 			thisInstance.initDragula(containers);
 		}, false);
-
-		document.addEventListener("module-lazy-loaded", function(e) {
-			let containers = [document.getElementById(thisInstance.id)];
-			thisInstance.initDragula(containers);
-		});
 	}
 
 	private addListener(listItem: IListItem){
-		document.addEventListener("module-lazy-loaded", function(e) {
+		document.addEventListener('DOMContentLoaded', function() {
 			let hasExpandButtonElement: boolean = document.getElementById(listItem.id + '-expand-button') !== null;
 			let hasExpandableContentElement: boolean = document.getElementById(listItem.id + '-expandable-content') !== null;
 
