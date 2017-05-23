@@ -1,6 +1,6 @@
 {
   "name": "quark-gui",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Webpack GUI framework based on atomic design",
   "keywords": [
     "atomic",
