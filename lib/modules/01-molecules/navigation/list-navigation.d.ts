@@ -6,6 +6,7 @@ export declare class ListNavigation {
 export interface IListItem {
     name: string;
     link: string;
+    iconClass?: string;
 }
 export interface IListNavigation {
     listItems: IListItem[];
