@@ -5,6 +5,7 @@ export class Button {
 	link: string = "#";
 	icon: string = "";
 	content: string = "";
+	title: string;
 	type?: string = "flat";
 	theme?: string = "default";
 	submit?: boolean = false;
@@ -15,6 +16,7 @@ export class Button {
 		if (button.link !== undefined) this.link = button.link;
 		if (button.iconClass !== undefined) this.icon = `<span class='${Style.icon} ${button.iconClass}'></span>`;
 		if (button.content !== undefined ) this.content = button.content;
+		if (button.title !== undefined ) this.title = button.title;
 		if (button.type !== undefined) this.type = button.type;
 		if (button.theme !== undefined) this.theme = button.theme;
 		if (button.submit !== undefined) this.submit = button.submit;
@@ -40,12 +42,13 @@ export class Button {
 	public createModuleElement() {
 		let themeClass = this.getThemeClass(this.theme)
 		let typeClass = (this.type !== undefined) ? this.getTypeClass(this.type) : Style.buttonTypeFlat;
+		let titleAttribute: string = (this.title !== undefined) ? `title='${this.title}'` : '';
 		let isSubmitButton:boolean = this.submit !== undefined && this.submit === true;
 		let moduleElement:string = '';
 		if (isSubmitButton){
 			moduleElement = `<button type='submit' id='${this.id}' class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</button>`;
 		}else{
-			moduleElement = `<a id='${this.id}' href='${this.link}' class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</a>`;
+			moduleElement = `<a id='${this.id}' ${titleAttribute} href='${this.link}' class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</a>`;
 		}
 		return moduleElement;
 	}
@@ -58,6 +61,7 @@ export interface IButton {
 	link ?: string; 
 	iconClass?: string; 
 	content?: string;
+	title?: string;
 	submit?: boolean;
 }
 

@@ -3,6 +3,7 @@ export declare class Button {
     link: string;
     icon: string;
     content: string;
+    title: string;
     type?: string;
     theme?: string;
     submit?: boolean;
@@ -18,6 +19,7 @@ export interface IButton {
     link?: string;
     iconClass?: string;
     content?: string;
+    title?: string;
     submit?: boolean;
 }
 export declare function getModule(button: IButton): string;
