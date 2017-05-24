@@ -59,21 +59,25 @@ export default function(){
 						{
 							name: "Global",
 							link: "",
-							moduleLink: "global"
+							moduleLink: "global",
+							iconClass: "fa fa-globe"
 						},
 						{
 							name: "Atoms",
 							link: "",
-							moduleLink: "atoms"
+							moduleLink: "atoms",
+							iconClass: "fa fa-square-o"
 						}, 
 						{
 							name: "Molecules",
 							link: "",
-							moduleLink: "molecules"
+							moduleLink: "molecules",
+							iconClass: "fa fa-cube"
 						}, {
 							name: "Organisms",
 							link: "",
-							moduleLink: "organisms"
+							moduleLink: "organisms",
+							iconClass: "fa fa-cubes"
 						}
 					]
 				}

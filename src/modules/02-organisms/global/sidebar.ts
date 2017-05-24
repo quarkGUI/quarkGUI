@@ -1,3 +1,4 @@
+import * as ListNavigation from '../../01-molecules/navigation/list-navigation';
 import * as SidebarNavigation from '../../01-molecules/navigation/sidebar-navigation';
 import * as Image from '../../00-atoms/media/image';
 
@@ -35,9 +36,7 @@ export interface ILogo {
 	url?: string;
 }
 
-export interface IListItem {
-	name: string;
-	link: string;
+export interface IListItem extends ListNavigation.IListItem{
 	id?: string;
 	moduleLink?: string;
 }

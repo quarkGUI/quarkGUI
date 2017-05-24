@@ -1,3 +1,4 @@
+import * as ListNavigation from '../../01-molecules/navigation/list-navigation';
 export declare class Sidebar {
     sidebarNavigation: ISidebarNavigation;
     logo: ILogo;
@@ -12,9 +13,7 @@ export interface ILogo {
     image: IImage;
     url?: string;
 }
-export interface IListItem {
-    name: string;
-    link: string;
+export interface IListItem extends ListNavigation.IListItem {
     id?: string;
     moduleLink?: string;
 }

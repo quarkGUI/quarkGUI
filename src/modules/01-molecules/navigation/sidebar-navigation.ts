@@ -11,10 +11,23 @@ export class SidebarNavigation {
 	private createListItemElements(listItems){
 		let listItemElements = "";
 		for (let listItem of this.listItems){
-			let id         = listItem.id         !== undefined ? `id='${listItem.id}'` : '';
-			let moduleLink = listItem.moduleLink !== undefined ? `data-module-target='${listItem.moduleLink}'` : '';
+			let id = listItem.id !== undefined ? `id='${listItem.id}'` : '';
+			let hasModuleLink: boolean = listItem.moduleLink !== undefined;
+			let hasLink: boolean = listItem.link !== undefined;
+			let hasIcon: boolean = listItem.iconClass !== undefined;
 
-			listItemElements += `<li><a class='loadPage' ${id} ${listItem.link} ${moduleLink}>${listItem.name}</a></li>`;
+			let linkAttribute: string = '';
+			let iconElement: string = '';
+			if (hasModuleLink){
+				linkAttribute = `data-module-target='${listItem.moduleLink}'`;
+			}else if(hasLink){
+				linkAttribute = `href='${listItem.link}'`;
+			}
+
+			if (hasIcon){
+				iconElement = `<span class='${listItem.iconClass} ${Style.listItemIcon}'></span>`;
+			}
+			listItemElements += `<li><a class='loadPage' ${id} ${linkAttribute}>${iconElement}${listItem.name}</a></li>`;
 		}
 		return listItemElements;
 	}

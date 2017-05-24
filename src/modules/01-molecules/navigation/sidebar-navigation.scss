@@ -24,6 +24,9 @@
       &.active {
         border-left: 2px solid $primary-color;
       }
+      :local(.listItemIcon){
+        margin-right: 8px;
+      }
     }
   }
 }
