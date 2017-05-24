@@ -20,19 +20,23 @@ export default function(){
 					listItems: [
 						{
 							title: 'Global',
-							moduleLink: 'global'
+							moduleLink: 'global',
+							iconClass: 'fa fa-globe'
 						},
 						{
 							title: 'Atoms',
-							moduleLink: 'atoms'
+							moduleLink: 'atoms',
+							iconClass: 'fa fa-square-o'
 						},
 						{
 							title: 'Molecules',
-							moduleLink: 'molecules'
+							moduleLink: 'molecules',
+							iconClass: 'fa fa-cube'
 						},
 						{
 							title: 'Organisms',
-							moduleLink: 'organisms'
+							moduleLink: 'organisms',
+							iconClass: 'fa fa-cubes'
 						},
 					]
 				})}
