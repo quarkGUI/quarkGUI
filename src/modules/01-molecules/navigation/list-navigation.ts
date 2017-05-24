@@ -13,7 +13,7 @@ export class ListNavigation {
 				let hasIcon:boolean = listItem.iconClass !== undefined;
 				let icon:string = '';
 				if (hasIcon){
-					icon = `<span class='${listItem.iconClass}'></span>`;
+					icon = `<span class='${listItem.iconClass} ${Style.listItemIcon}'></span>`;
 				}
 				listItemElements += `<li><a href='${listItem.link}'>${icon}${listItem.name}</a></li>`;
 			}
