@@ -28,6 +28,8 @@
     &.active {
         display: block;
         z-index: 2;
+        max-height: 300px;
+        overflow: auto;
     }
     &.transparent{
         opacity: 0;
