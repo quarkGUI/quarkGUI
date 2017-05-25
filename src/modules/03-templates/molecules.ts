@@ -36,12 +36,40 @@ export default function(){
 
 		<h2>Form elements</h2>
 		<h3>Input field</h3>
+		<p>Default field</p>
 		${InputField.getModule({
 			id: 'molecule-input1',
 			name: 'molecule-inputname1',
 			type: 'text',
 			placeholder: 'Placeholder text here',
 			label: 'Input 1'
+		})}
+		<p>Required field</p>
+		${InputField.getModule({
+			id: 'molecule-input2',
+			name: 'molecule-inputname2',
+			type: 'text',
+			placeholder: 'Placeholder text here',
+			label: 'Input 2',
+			attributes: ['required']
+		})}
+		<p>Readonly field</p>
+		${InputField.getModule({
+			id: 'molecule-input3',
+			name: 'molecule-inputname3',
+			type: 'text',
+			placeholder: 'Placeholder text here',
+			label: 'Input 3',
+			attributes: ['readonly']
+		})}
+		<p>Disabled field</p>
+		${InputField.getModule({
+			id: 'molecule-input4',
+			name: 'molecule-inputname4',
+			type: 'text',
+			placeholder: 'Placeholder text here',
+			label: 'Input 4',
+			attributes: ['disabled']
 		})}
 
 		<h3>Checkbox</h3>
@@ -111,6 +139,70 @@ export default function(){
 			placeholder: 'Type here',
 			label: 'Searchable select list',
 			searchable: true,
+			options: [
+				{
+					name: 'first',
+					value: 'first'
+				},
+				{
+					name: 'second',
+					value: 'second'
+				},
+				{
+					name: 'third',
+					value: 'third'
+				},
+				{
+					name: 'fourth',
+					value: 'fourth'
+				},
+				{
+					name: 'fifth',
+					value: 'fifth'
+				}
+			]
+		})}
+
+		${SelectList.getModule({
+			id: 'molecule-select3',
+			name: 'molecule-selectname3',
+			type: 'text',
+			placeholder: 'Type here',
+			label: 'Disabled select list',
+			searchable: true,
+			attributes: ['disabled'],
+			options: [
+				{
+					name: 'first',
+					value: 'first'
+				},
+				{
+					name: 'second',
+					value: 'second'
+				},
+				{
+					name: 'third',
+					value: 'third'
+				},
+				{
+					name: 'fourth',
+					value: 'fourth'
+				},
+				{
+					name: 'fifth',
+					value: 'fifth'
+				}
+			]
+		})}
+
+		${SelectList.getModule({
+			id: 'molecule-select4',
+			name: 'molecule-selectname4',
+			type: 'text',
+			placeholder: 'Type here',
+			label: 'Readonly select list',
+			searchable: true,
+			attributes: ['readonly'],
 			options: [
 				{
 					name: 'first',
