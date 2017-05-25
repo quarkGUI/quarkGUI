@@ -1,7 +1,7 @@
 @import "../../../../src/style/abstracts/all";
 
 :local(.inputGroup){
-	margin-bottom: 4px;
+	margin-bottom: 12px;
 	:local(.label) {
 		color: #777;
 		position: relative;
@@ -22,6 +22,15 @@
   }
   :focus + label {
     color: $primary-color;
+    bottom: 50px;
+    font-size: 16px;
+    cursor: default;
+    &:after {
+      content: ":";
+    }
+  }
+  :read-only + label {
+    color: #777;
     bottom: 50px;
     font-size: 16px;
     cursor: default;

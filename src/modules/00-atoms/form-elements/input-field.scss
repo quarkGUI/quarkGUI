@@ -25,9 +25,26 @@
         }
     }
     &.is-not-empty {
-      color: #212121;
-      &:focus {
-        color: #212121;
-      }
+        color: $default-text-color;
+        &:focus {
+            color: $default-text-color;
+        }
     }
+    &:disabled,
+    &:focus:disabled,
+    &.is-not-empy:disabled{
+        color: #777;
+    }
+    &:read-only,
+    &:focus:read-only,
+    &.is-not-empy:read-only{
+        border-bottom: 2px solid transparent;
+        color: $default-text-color;
+        @include placeholder{
+            color: transparent;
+        }
+    }
+
+
+
 }
