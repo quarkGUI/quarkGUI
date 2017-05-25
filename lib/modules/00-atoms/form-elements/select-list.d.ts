@@ -7,6 +7,7 @@ export declare class SelectList {
     placeholder: string;
     labelElement: string;
     optionElements: string;
+    attributes: string[];
     constructor(selectList: ISelectList);
     private updateDropdownListHeight(dropdownListElement);
     private elementIsNotNullOrUndefinedById(id);
@@ -28,5 +29,6 @@ export interface ISelectList {
     placeholder?: string;
     labelElement?: string;
     options?: IOptions[];
+    attributes?: string[];
 }
 export declare function getModule(selectList: ISelectList): string;

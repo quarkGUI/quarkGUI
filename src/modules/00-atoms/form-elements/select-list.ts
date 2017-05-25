@@ -10,6 +10,7 @@ export class SelectList {
 	placeholder: string = "";
 	labelElement: string = "";
 	optionElements: string = "";
+	attributes: string[];
 	constructor(selectList: ISelectList) {
 		this.id = selectList.id;
 		this.name = selectList.name;
@@ -19,6 +20,7 @@ export class SelectList {
 		if (selectList.placeholder !== undefined) this.placeholder = selectList.placeholder;
 		if (selectList.labelElement !== undefined) this.labelElement = selectList.labelElement;
 		if (selectList.options !== undefined) this.optionElements = this.createOptionElements(selectList.options);
+		if (selectList.attributes !== undefined) this.attributes = selectList.attributes;
 	}
 
 	private updateDropdownListHeight(dropdownListElement){
@@ -125,12 +127,13 @@ export class SelectList {
 		return optionElements;
 	}
 	public createModuleElement() {
-		let inputField = {
+		let inputField: InputField.IInputField = {
 			id: this.id + '-input',
 			name: this.name,
 			type: this.type,
 			value: this.value,
-			placeholder: this.placeholder
+			placeholder: this.placeholder,
+			attributes: this.attributes
 		}
 		let dropdownList = {
 			id: this.id + '-dropdownList'
@@ -154,6 +157,7 @@ export interface ISelectList{
 	placeholder?: string;
 	labelElement?: string;
 	options?: IOptions[];
+	attributes?: string[];
 }
 
 export function getModule(selectList: ISelectList){

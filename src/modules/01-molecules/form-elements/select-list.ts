@@ -14,6 +14,7 @@ export class SelectList extends AtomSelectList.SelectList {
 		if (selectList.placeholder !== undefined) this.placeholder = selectList.placeholder;
 		if (selectList.label !== undefined) this.label = selectList.label;
 		if (selectList.options !== undefined) this.options = selectList.options;
+		if (selectList.attributes !== undefined) this.attributes = selectList.attributes;
 	}
 
 	public createModuleElement() {
@@ -24,7 +25,8 @@ export class SelectList extends AtomSelectList.SelectList {
 			type: this.type,
 			value: this.value,
 			placeholder: this.placeholder,
-			options: this.options
+			options: this.options,
+			attributes: this.attributes
 		}
 
 		if (this.label !== undefined) selectList.labelElement = `<label for='${this.id}' class='${Style.label}'>${this.label}</label>`;
