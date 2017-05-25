@@ -35,7 +35,7 @@ export class SelectList {
 	}
 
 	private addListener(selectList: SelectList, inputField, dropdownList){
-		document.addEventListener("module-lazy-loaded", function(e) {
+		document.addEventListener('DOMContentLoaded', function(e) {
 			let selectListElementIsDefined: boolean = selectList.elementIsNotNullOrUndefinedById(selectList.id);
 			let inputFieldElementIsDefined: boolean = selectList.elementIsNotNullOrUndefinedById(inputField.id);
 			let dropdownListElementIsDefined: boolean = selectList.elementIsNotNullOrUndefinedById(dropdownList.id);

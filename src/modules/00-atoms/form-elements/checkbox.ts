@@ -13,7 +13,7 @@ export class Checkbox {
 	}
 
 	private addListener(id: string){
-		document.addEventListener("module-lazy-loaded", function(e) {
+		document.addEventListener('DOMContentLoaded', function(e) {
 			let iconElementIsDefined: boolean = document.getElementById('checkbox-toggle-' + id) !== undefined;
 			let iconElementIsNotNull: boolean = document.getElementById('checkbox-toggle-' + id) !== null;
 			let checkboxElement: HTMLInputElement = <HTMLInputElement> document.getElementById(id);

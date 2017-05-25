@@ -49,7 +49,7 @@ export class DatePicker {
 	}
 
 	private addListener(datePicker: DatePicker, inputField, dropdownList){
-		document.addEventListener("module-lazy-loaded", function(e) {
+		document.addEventListener('DOMContentLoaded', function(e) {
 			let datePickerElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id);
 			let inputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
 			let dropdownListElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(dropdownList.id);

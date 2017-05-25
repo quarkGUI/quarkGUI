@@ -23,7 +23,7 @@ export class ActionButton {
 	}
 
 	private addListener(id: string){
-		document.addEventListener("module-lazy-loaded", function(e) {
+		document.addEventListener('DOMContentLoaded', function(e) {
 			let elementIsDefined: boolean = document.getElementById(id) !== undefined;
 			let elementIsNotNull: boolean = document.getElementById(id) !== null;
 			if (elementIsDefined && elementIsNotNull){

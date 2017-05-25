@@ -22,11 +22,6 @@ export class DragableList {
 			let containers = [document.getElementById(thisInstance.id)];
 			thisInstance.initDragula(containers);
 		}, false);
-
-		document.addEventListener("module-lazy-loaded", function(e) {
-			let containers = [document.getElementById(thisInstance.id)];
-			thisInstance.initDragula(containers);
-		});
 	}
 
 	private createListElements(listItems){

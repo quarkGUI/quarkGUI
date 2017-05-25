@@ -13,7 +13,7 @@ export class RadioButton {
 	}
 
 	private addListener(id: string){
-		document.addEventListener("module-lazy-loaded", function(e) {
+		document.addEventListener('DOMContentLoaded', function(e) {
 			let iconElementIsDefined: boolean = document.getElementById('radio-toggle-' + id) !== undefined;
 			let iconElementIsNotNull: boolean = document.getElementById('radio-toggle-' + id) !== null;
 			let radioButtonElement: HTMLInputElement = <HTMLInputElement> document.getElementById(id);
