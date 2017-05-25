@@ -65,4 +65,20 @@ main{
 		padding: 25px;
 		margin: auto;
 	}
+	.content-container {
+		margin: 0 -25px;
+		padding: 25px;
+		background-color: #FFF;
+		border-radius: 2px;
+		max-width: $main-content-max-width;
+		@media (min-width: $main-content-max-width - 50px) {
+			margin: auto;
+			padding: 10px;
+		}
+		&.raised {
+			@media (min-width: $main-content-max-width - 50px) {
+				@include raised(1);
+			}
+		}
+	}
 }
