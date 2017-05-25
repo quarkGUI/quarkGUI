@@ -29,7 +29,8 @@
       content: ":";
     }
   }
-  :read-only + label {
+  :read-only + label,
+  :disabled + label{
     color: #777;
     bottom: 50px;
     font-size: 16px;
