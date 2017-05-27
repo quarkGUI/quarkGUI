@@ -138,8 +138,9 @@ export class SelectList {
 		let dropdownList = {
 			id: this.id + '-dropdownList'
 		}
+		let readOnlyClass:string = this.attributes !== undefined && this.attributes.indexOf('readonly') > -1 ? Style.readOnly : '';
 		this.addListener(this, inputField, dropdownList);
-		return `<div id='${this.id}' class='${Style.dropdownContainer}'>${InputField.getModule(inputField)} ${this.labelElement}<ul id='${dropdownList.id}' class='${Style.dropdownList}'>${this.optionElements}</ul></div>`;
+		return `<div id='${this.id}' class='${Style.dropdownContainer} ${readOnlyClass}'>${InputField.getModule(inputField)} ${this.labelElement}<ul id='${dropdownList.id}' class='${Style.dropdownList}'>${this.optionElements}</ul></div>`;
 	}
 }
 

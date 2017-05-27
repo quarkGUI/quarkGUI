@@ -28,24 +28,15 @@
     &:after {
       content: ":";
     }
-    },
-    :focus + label {
-      color: $primary-color;
-      bottom: 50px;
-      font-size: 16px;
-      cursor: default;
-      &:after {
-        content: ":";
-      }
-    }
-    :read-only + label,
-    :disabled + label{
-     color: #777;
-     bottom: 50px;
-     font-size: 16px;
-     cursor: default;
-     &:after {
-      content: ":";
-    }
   }
+  :read-only + label,
+  :disabled + label{
+   color: #777;
+   bottom: 50px;
+   font-size: 16px;
+   cursor: default;
+   &:after {
+    content: ":";
+  }
+}
 }

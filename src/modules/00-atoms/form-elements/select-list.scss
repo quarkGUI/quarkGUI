@@ -9,6 +9,9 @@
       right: 8px;
       @include transition(transform .2s ease-in-out, top .2s ease-in-out);
   }
+    &:local(.readOnly):after{
+        content: none;
+    }
 }
 :local(.dropdownContainer).active{
     &:after{
