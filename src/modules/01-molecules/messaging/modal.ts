@@ -11,6 +11,7 @@ export class Modal {
 		this.modalElement = modal.modalElement;
 		if (modal.modalElement.title !== undefined) this.modalElement.title = modal.modalElement.title;
 		this.modalElement.closeButtontext = modal.modalElement.closeButtontext !== undefined ? modal.modalElement.closeButtontext : 'Close';
+		this.modalElement.scrollable = modal.modalElement.scrollable !== undefined ? modal.modalElement.scrollable : false;
 	}
 
 	private addListener(triggerId:string, targetId:string, closeId:string){
@@ -63,10 +64,11 @@ export class Modal {
 	}
 
 	public createModuleElement(){
-		let triggerElement = this.createTriggerElement();
-		let closeElement = this.createCloseElement();
+		let triggerElement:string = this.createTriggerElement();
+		let closeElement:string = this.createCloseElement();
+		let scrollableClass:string = this.modalElement.scrollable ? Style.scrollable : '';
 		this.addListener(this.id + '-trigger', this.id, this.id + '-close');
-		return `${triggerElement} <div id='${this.id}' class='${Style.modalOverlay}'><div class='${Style.modal}'><div class='${Style.modalContainer}'><div class='${Style.modalHeader}'>${this.modalElement.title}</div><div class='${Style.modalContent}'>${this.modalElement.content}</div><div class='${Style.modalFooter}'>${closeElement}</div></div></div></div>`;
+		return `${triggerElement} <div id='${this.id}' class='${Style.modalOverlay}'><div class='${Style.modal} ${scrollableClass}'><div class='${Style.modalContainer}'><div class='${Style.modalHeader}'>${this.modalElement.title}</div><div class='${Style.modalContent}'>${this.modalElement.content}</div><div class='${Style.modalFooter}'>${closeElement}</div></div></div></div>`;
 	}
 }
 
@@ -74,6 +76,7 @@ export interface IModalElement {
 	content: string;
 	closeButtontext?: string;
 	title?: string;
+	scrollable?: boolean;
 }
 
 export interface IModal {

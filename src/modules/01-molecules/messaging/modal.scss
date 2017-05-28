@@ -35,6 +35,11 @@
       overflow: visible;
       @include calc(max-height, '100% - 85px');
     }
+    &:local(.scrollable){
+      @media (min-width: $screen-sm) {
+        height: 100%;
+      }
+    }
     :local(.modalContainer){
       background-color: #FFF;
       height: 100%;
