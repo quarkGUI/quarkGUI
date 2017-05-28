@@ -231,8 +231,11 @@ export default function(){
 		<h3>Modal</h3>
 		${Modal.getModule({
 			id: 'modal1',
-			title: 'Modal title',
-			content: `<p>modal content</p>`
+			triggerElement: '',
+			modalElement: {
+				title: 'Modal title',
+				content: `<p>modal content</p>`
+			}
 		})}
 
 		<h2>Lists</h2>
