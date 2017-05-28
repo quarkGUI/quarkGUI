@@ -1,4 +1,5 @@
 const Style = require<any>("../../../../src/modules/01-molecules/messaging/modal.scss");
+import * as Button from '../../00-atoms/buttons/button'
 
 export class Modal {
 	id: string;
@@ -9,15 +10,17 @@ export class Modal {
 		this.triggerElement = modal.triggerElement;
 		this.modalElement = modal.modalElement;
 		if (modal.modalElement.title !== undefined) this.modalElement.title = modal.modalElement.title;
+		this.modalElement.closeButtontext = modal.modalElement.closeButtontext !== undefined ? modal.modalElement.closeButtontext : 'Close';
 	}
 
-	private addListener(triggerId:string, targetId:string){
+	private addListener(triggerId:string, targetId:string, closeId:string){
 		document.addEventListener('DOMContentLoaded', function() {
-			let elementsIsDefined: boolean = document.getElementById(triggerId) !== undefined && document.getElementById(targetId) !== undefined;
-			let elementsIsNotNull: boolean = document.getElementById(triggerId) !== null && document.getElementById(targetId) !== null;
+			let elementsIsDefined: boolean = document.getElementById(triggerId) !== undefined && document.getElementById(targetId) !== undefined && document.getElementById(closeId) !== undefined;
+			let elementsIsNotNull: boolean = document.getElementById(triggerId) !== null && document.getElementById(targetId) !== null && document.getElementById(closeId) !== null;
 			if (elementsIsDefined && elementsIsNotNull){
 				let triggerElement:HTMLElement = document.getElementById(triggerId);
 				let targetElement:HTMLElement = document.getElementById(targetId);
+				let closeElement:HTMLElement = document.getElementById(closeId);
 
 				triggerElement.onclick = function(){
 					if (triggerElement.classList.contains('active')){
@@ -38,6 +41,10 @@ export class Modal {
 						}
 					}
 				}
+				closeElement.onclick = function(event:any){
+					triggerElement.classList.remove('active');
+					targetElement.classList.remove('active');
+				}
 			}
 		}, false);
 	}
@@ -46,15 +53,26 @@ export class Modal {
 		return `<div id='${this.id}-trigger'>${this.triggerElement}</div>`;
 	}
 
+	private createCloseElement(){
+		let closeButtonElement:string = Button.getModule({
+			id: this.id + '-close',
+			type: 'minimal',
+			content: this.modalElement.closeButtontext
+		});
+		return `<div class='${Style.footerButtons}'>${closeButtonElement}</div>`;
+	}
+
 	public createModuleElement(){
-		this.triggerElement = this.createTriggerElement();
-		this.addListener(this.id + '-trigger', this.id);
-		return `${this.triggerElement} <div id='${this.id}' class='${Style.modalOverlay}'><div class='${Style.modal}'><div class='${Style.modalHeader}'>${this.modalElement.title}</div><div class='${Style.modalContent}'>${this.modalElement.content}</div></div></div>`;
+		let triggerElement = this.createTriggerElement();
+		let closeElement = this.createCloseElement();
+		this.addListener(this.id + '-trigger', this.id, this.id + '-close');
+		return `${triggerElement} <div id='${this.id}' class='${Style.modalOverlay}'><div class='${Style.modal}'><div class='${Style.modalContainer}'><div class='${Style.modalHeader}'>${this.modalElement.title}</div><div class='${Style.modalContent}'>${this.modalElement.content}</div><div class='${Style.modalFooter}'>${closeElement}</div></div></div></div>`;
 	}
 }
 
 export interface IModalElement {
 	content: string;
+	closeButtontext?: string;
 	title?: string;
 }
 
