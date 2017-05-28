@@ -3,12 +3,14 @@ export declare class Modal {
     triggerElement: string;
     modalElement: IModalElement;
     constructor(modal: IModal);
-    private addListener(triggerId, targetId);
+    private addListener(triggerId, targetId, closeId);
     private createTriggerElement();
+    private createCloseElement();
     createModuleElement(): string;
 }
 export interface IModalElement {
     content: string;
+    closeButtontext?: string;
     title?: string;
 }
 export interface IModal {
