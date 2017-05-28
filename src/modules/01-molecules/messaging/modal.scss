@@ -37,6 +37,7 @@
     }
     :local(.modalContainer){
       background-color: #FFF;
+      height: 100%;
       @media (min-width: $screen-sm) {
         @include border-radius(2px);
         @include raised(3);
@@ -59,7 +60,7 @@
           overflow-y: auto;
           overflow-x: hidden;
           height: auto;
-          @include calc(max-height, '100% - 90px');
+          @include calc(max-height, '100% - 100px');
         }
       }
       :local(.modalFooter) {
