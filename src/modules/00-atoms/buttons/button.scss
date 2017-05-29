@@ -16,6 +16,10 @@
 	@include border-radius(2px);
 }
 
+:local(.formWrapper){
+	display: inline-block;
+}
+
 :local(.icon){
 	font-size: 14pt!important;
 	vertical-align: middle;

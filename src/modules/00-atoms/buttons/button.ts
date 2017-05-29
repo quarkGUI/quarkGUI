@@ -10,6 +10,7 @@ export class Button {
 	theme?: string = "default";
 	submit?: boolean = false;
 	attributes: string[];
+	formWrapper: IFormWrapper;
 
 	constructor(button: IButton) {
 		this.id = button.id;
@@ -22,6 +23,14 @@ export class Button {
 		if (button.theme !== undefined) this.theme = button.theme;
 		if (button.submit !== undefined) this.submit = button.submit;
 		if (button.attributes !== undefined) this.attributes = button.attributes;
+
+		if (button.formWrapper !== undefined){
+			this.formWrapper = {
+				formAction: button.formWrapper.formAction !== undefined ? button.formWrapper.formAction : '',
+				formMethod: button.formWrapper.formMethod !== undefined ? button.formWrapper.formMethod : ''
+			};
+			
+		}
 	}
 
 	private getThemeClass(theme: string){
@@ -52,6 +61,10 @@ export class Button {
 		return htmlAttributes;
 	}
 
+	private addFormWrapper(moduleElement:string){
+		return `<form action='${this.formWrapper.formAction}' method='${this.formWrapper.formMethod}' class='${Style.formWrapper}'>${moduleElement}</form>`;
+	}
+
 	public createModuleElement() {
 		let themeClass = this.getThemeClass(this.theme)
 		let typeClass = (this.type !== undefined) ? this.getTypeClass(this.type) : Style.buttonTypeFlat;
@@ -59,13 +72,24 @@ export class Button {
 		let isSubmitButton:boolean = this.submit !== undefined && this.submit === true;
 		let htmlAtributes: string = this.attributes !== undefined && this.attributes.length ? this.getHtmlAttributes(this.attributes) : '';
 		let moduleElement:string = '';
+		
 		if (isSubmitButton){
 			moduleElement = `<button type='submit' id='${this.id}' ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</button>`;
 		}else{
 			moduleElement = `<a id='${this.id}' ${titleAttribute} href='${this.link}' ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</a>`;
 		}
+
+		if (this.formWrapper !== undefined){
+			moduleElement = this.addFormWrapper(moduleElement);
+		}
+
 		return moduleElement;
 	}
+}
+
+export interface IFormWrapper {
+	formAction?: string;
+	formMethod?: string;
 }
 
 export interface IButton {
@@ -78,6 +102,7 @@ export interface IButton {
 	title?: string;
 	submit?: boolean;
 	attributes?: string[];
+	formWrapper?: IFormWrapper;
 }
 
 export function getModule(button: IButton){
