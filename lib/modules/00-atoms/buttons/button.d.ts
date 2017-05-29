@@ -7,9 +7,11 @@ export declare class Button {
     type?: string;
     theme?: string;
     submit?: boolean;
+    attributes: string[];
     constructor(button: IButton);
     private getThemeClass(theme);
     private getTypeClass(type);
+    private getHtmlAttributes(attributes);
     createModuleElement(): string;
 }
 export interface IButton {
@@ -21,5 +23,6 @@ export interface IButton {
     content?: string;
     title?: string;
     submit?: boolean;
+    attributes?: string[];
 }
 export declare function getModule(button: IButton): string;
