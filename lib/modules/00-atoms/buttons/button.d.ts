@@ -13,12 +13,18 @@ export declare class Button {
     private getThemeClass(theme);
     private getTypeClass(type);
     private getHtmlAttributes(attributes);
+    private addHiddenFields();
     private addFormWrapper(moduleElement);
     createModuleElement(): string;
+}
+export interface IHiddenField {
+    name: string;
+    value: string;
 }
 export interface IFormWrapper {
     formAction?: string;
     formMethod?: string;
+    hiddenFields?: IHiddenField[];
 }
 export interface IButton {
     id?: string;

@@ -27,9 +27,9 @@ export class Button {
 		if (button.formWrapper !== undefined){
 			this.formWrapper = {
 				formAction: button.formWrapper.formAction !== undefined ? button.formWrapper.formAction : '',
-				formMethod: button.formWrapper.formMethod !== undefined ? button.formWrapper.formMethod : ''
+				formMethod: button.formWrapper.formMethod !== undefined ? button.formWrapper.formMethod : '',
+				hiddenFields: button.formWrapper.hiddenFields !== undefined && button.formWrapper.hiddenFields.length ? button.formWrapper.hiddenFields : []
 			};
-			
 		}
 	}
 
@@ -61,8 +61,19 @@ export class Button {
 		return htmlAttributes;
 	}
 
+	private addHiddenFields(){
+		let hiddenFieldsElement = '';
+		if (this.formWrapper.hiddenFields !== undefined && this.formWrapper.hiddenFields.length){
+			this.formWrapper.hiddenFields.forEach(function (hiddenField){
+				hiddenFieldsElement += `<input type='hidden' name='${hiddenField.name}' value='${hiddenField.value}' />`;
+			});
+		}
+		return hiddenFieldsElement;
+	}
+
 	private addFormWrapper(moduleElement:string){
-		return `<form action='${this.formWrapper.formAction}' method='${this.formWrapper.formMethod}' class='${Style.formWrapper}'>${moduleElement}</form>`;
+		let hiddenFields:string = this.addHiddenFields();
+		return `<form action='${this.formWrapper.formAction}' method='${this.formWrapper.formMethod}' class='${Style.formWrapper}'>${hiddenFields}${moduleElement}</form>`;
 	}
 
 	public createModuleElement() {
@@ -87,9 +98,15 @@ export class Button {
 	}
 }
 
+export interface IHiddenField {
+	name: string;
+	value: string;
+}
+
 export interface IFormWrapper {
 	formAction?: string;
 	formMethod?: string;
+	hiddenFields?: IHiddenField[];
 }
 
 export interface IButton {
