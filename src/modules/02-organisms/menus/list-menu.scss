@@ -56,6 +56,10 @@
 			display: inline-block;
 			font-size: 14pt;
 			line-height: 14pt;
+			overflow: hidden;
+			white-space: nowrap;
+			max-width: 100%;
+			vertical-align: middle;
 			small {
 				display: block;
 				min-height: 19px;
