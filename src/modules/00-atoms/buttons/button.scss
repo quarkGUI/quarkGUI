@@ -10,7 +10,6 @@
 	color: $primary-color;
 	line-height: 32px;
 	display: inline-block;
-	margin: 0 8px;
 	padding: 0 6px;
 	text-transform: uppercase;
 	@include border-radius(2px);
@@ -18,6 +17,7 @@
 
 :local(.formWrapper){
 	display: inline-block;
+	vertical-align: bottom;
 }
 
 :local(.icon){
@@ -78,7 +78,7 @@
 	}
 	&:local(.buttonThemeDefault),
 	&:local(.buttonThemeDefault):visited {
-		color: $primary-color;
+		color: $default-text-color;
 		&:not([disabled]):active {
 			background-color: bright-gray-active($dark-color);
 		}
