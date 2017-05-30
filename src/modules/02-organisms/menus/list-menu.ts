@@ -125,8 +125,9 @@ export class ListMenu {
 				if (listItem.expandable){
 					this.addListener(listItem);
 				}
+				let hiddenButtonRowClass = listItem.hiddenButtonRow !== undefined && listItem.hiddenButtonRow ? Style.hiddenButtonRow : '';
 
-				listItemElements += `<div class='${Style.listItem} ${dragableClass}'>${title}${buttonRow}${expandableContent}</div>`;
+				listItemElements += `<div class='${Style.listItem} ${dragableClass} ${hiddenButtonRowClass}'>${title}${buttonRow}${expandableContent}</div>`;
 			}
 		}
 
@@ -147,6 +148,7 @@ export interface IListItem {
 	expandable?: boolean;
 	expandableContent?: string;
 	buttonRow?: ButtonRow.IButtonRow;
+	hiddenButtonRow?: boolean;
 }
 
 export interface IListMenu {

@@ -38,6 +38,20 @@
 				}
 			}
 		}
+		&:local(.hiddenButtonRow){
+			:local(.listItemButtonRow) {
+				@media (min-width: $screen-sm){
+					opacity: 0;
+					visibility: hidden;
+				}
+			}
+			&:hover{
+				:local(.listItemButtonRow) {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
 		:local(.listItemTitle){
 			display: inline-block;
 			font-size: 14pt;

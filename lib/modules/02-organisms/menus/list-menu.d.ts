@@ -26,6 +26,7 @@ export interface IListItem {
     expandable?: boolean;
     expandableContent?: string;
     buttonRow?: ButtonRow.IButtonRow;
+    hiddenButtonRow?: boolean;
 }
 export interface IListMenu {
     id?: string;
