@@ -152,7 +152,7 @@ export interface IListItem {
 }
 
 export interface IListMenu {
-	id?: string;
+	id: string;
 	listItems?: IListItem[];
 	raised?: boolean;
 	hover?: boolean;
