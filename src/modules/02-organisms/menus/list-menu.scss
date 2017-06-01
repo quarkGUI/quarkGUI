@@ -42,13 +42,11 @@
 			:local(.listItemButtonRow) {
 				@media (min-width: $screen-sm){
 					opacity: 0;
-					visibility: hidden;
 				}
 			}
 			&:hover{
 				:local(.listItemButtonRow) {
 					opacity: 1;
-					visibility: visible;
 				}
 			}
 		}
@@ -60,6 +58,7 @@
 			white-space: nowrap;
 			max-width: 100%;
 			vertical-align: middle;
+			text-overflow: ellipsis;
 			small {
 				display: block;
 				min-height: 19px;
