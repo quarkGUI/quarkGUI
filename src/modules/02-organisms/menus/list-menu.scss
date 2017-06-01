@@ -64,6 +64,8 @@
 				min-height: 19px;
 				font-size: 10pt;
 				color: $default-text-color;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 			&:local(.singleLine) {
 				line-height: 34px;
