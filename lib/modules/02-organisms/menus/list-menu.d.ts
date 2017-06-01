@@ -8,7 +8,8 @@ export declare class ListMenu {
     constructor(listMenu: IListMenu);
     private initDragula(containers);
     private addDragulaListener(thisInstance);
-    private addListener(listItem);
+    private addExpandableListener(listItem);
+    private addButtonRowListener(listItem);
     private getTypeClass(raised);
     private createTitleElement(listItem);
     private createExpandButtonElement(listItem);

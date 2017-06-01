@@ -10,7 +10,7 @@ export class ListMenu {
 	hover: boolean = false;
 	dragable: boolean = false;
 	constructor(listMenu: IListMenu) {
-		if (listMenu.id !== undefined) this.id = listMenu.id;
+		this.id = listMenu.id;
 		if (listMenu.listItems !== undefined) this.listItems = listMenu.listItems;
 		if (listMenu.raised !== undefined) this.raised = listMenu.raised;
 		if (listMenu.hover !== undefined) this.hover = listMenu.hover;
@@ -31,7 +31,7 @@ export class ListMenu {
 		}, false);
 	}
 
-	private addListener(listItem: IListItem){
+	private addExpandableListener(listItem: IListItem){
 		document.addEventListener('DOMContentLoaded', function() {
 			let hasExpandButtonElement: boolean = document.getElementById(listItem.id + '-expand-button') !== null;
 			let hasExpandableContentElement: boolean = document.getElementById(listItem.id + '-expandable-content') !== null;
@@ -55,6 +55,19 @@ export class ListMenu {
 		});
 	}
 
+	private addButtonRowListener(listItem: IListItem){
+		document.addEventListener('DOMContentLoaded', function() {
+			let titleId = listItem.id + '-' + 'title';
+			let buttonRowId = listItem.id + '-' + 'buttonrow';
+			let buttonRowElement:HTMLElement = document.getElementById(buttonRowId);
+			let titleElement:HTMLElement = document.getElementById(titleId);
+			if (buttonRowElement !== null && titleElement !== null){
+				let buttonRowElementWidth = buttonRowElement.offsetWidth;
+				titleElement.style.maxWidth = 'calc(100% - ' + buttonRowElementWidth + 'px)';
+			}
+		});
+	}
+
 	private getTypeClass(raised: boolean){
 		let typeClass = '';
 		if (raised) typeClass = Style.listMenuTypeRaised;
@@ -70,13 +83,13 @@ export class ListMenu {
 
 		let titleElement = "";
 		if (listItem.title !== undefined && listItem.link !== undefined) {
-			titleElement = `<a href='${listItem.link}' class='${Style.listItemTitle} ${singleLineClass}'>${iconElement}${listItem.title} ${subTitleElement}</a>`;
+			titleElement = `<a id='${listItem.id}-title' href='${listItem.link}' class='${Style.listItemTitle} ${singleLineClass}'>${iconElement}${listItem.title} ${subTitleElement}</a>`;
 		}
 		else if (listItem.title !== undefined && listItem.moduleLink !== undefined){
-			titleElement = `<a ${moduleLinkAttribute} class='loadPage ${Style.listItemTitle} ${singleLineClass}'>${iconElement}${listItem.title} ${subTitleElement}</a>`;
+			titleElement = `<a id='${listItem.id}-title' ${moduleLinkAttribute} class='loadPage ${Style.listItemTitle} ${singleLineClass}'>${iconElement}${listItem.title} ${subTitleElement}</a>`;
 		}
 		else if (listItem.title !== undefined) {
-			titleElement = `<span class='${Style.listItemTitle} ${singleLineClass}' ${moduleLinkAttribute}>${iconElement}${listItem.title} ${subTitleElement}</span>`;
+			titleElement = `<span id='${listItem.id}-title' class='${Style.listItemTitle} ${singleLineClass}' ${moduleLinkAttribute}>${iconElement}${listItem.title} ${subTitleElement}</span>`;
 		}
 		return titleElement;
 	}
@@ -94,9 +107,9 @@ export class ListMenu {
 		let expandButton = this.createExpandButtonElement(listItem);
 
 		if (listItem.buttonRow !== undefined) {
-			buttonRowElement = `<span class='${Style.listItemButtonRow}'>${ButtonRow.getModule(listItem.buttonRow)}${expandButton}</span>`;
+			buttonRowElement = `<span id='${listItem.id}-buttonrow' class='${Style.listItemButtonRow}'>${ButtonRow.getModule(listItem.buttonRow)}${expandButton}</span>`;
 		}else if (listItem.expandable !== undefined && listItem.expandable == true){
-			buttonRowElement = `<span class='${Style.listItemButtonRow}'>${expandButton}</span>`;
+			buttonRowElement = `<span id='${listItem.id}-buttonrow' class='${Style.listItemButtonRow}'>${expandButton}</span>`;
 		}
 
 		return buttonRowElement;
@@ -118,21 +131,28 @@ export class ListMenu {
 		}
 		let listItemElements = "";
 		if (this.listItems !== undefined) {
+			let listItemIndex = 0;
 			for (let listItem of this.listItems){
+				listItem.id = this.id + '-' + listItemIndex;
 				let title             = this.createTitleElement(listItem);
 				let buttonRow         = this.createButtonRowElement(listItem);
 				let expandableContent = this.createExpandableContentElement(listItem);
 				if (listItem.expandable){
-					this.addListener(listItem);
+					this.addExpandableListener(listItem);
+				}
+				if (listItem.buttonRow !== undefined){
+					this.addButtonRowListener(listItem);
 				}
 				let hiddenButtonRowClass = listItem.hiddenButtonRow !== undefined && listItem.hiddenButtonRow ? Style.hiddenButtonRow : '';
 
 				listItemElements += `<div class='${Style.listItem} ${dragableClass} ${hiddenButtonRowClass}'>${title}${buttonRow}${expandableContent}</div>`;
+				listItemIndex++;
 			}
 		}
 
 		let typeClass = (this.raised !== undefined) ? this.getTypeClass(this.raised) : '';
 		let hoverClass: string = this.hover ? Style.hover : "";
+
 
 		return `<div id='${this.id}' class='${Style.listMenu} ${typeClass} ${hoverClass}'>${listItemElements}</div>`;
 	}
