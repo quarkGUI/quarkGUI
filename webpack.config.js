@@ -7,14 +7,13 @@ var CompressionPlugin = require("compression-webpack-plugin");
 
 var DEVELOPMENT = process.env.NODE_ENV === 'development';
 var PRODUCTION  = process.env.NODE_ENV === 'production';
-var DOCS        = process.env.NODE_ENV === 'docs';
 
-var outputPath = DOCS ? 'docs' : 'dist';
-var ouputPublicPath = DOCS ? '/quarkGUI/' : '/';
+var outputPath = 'dist';
+var ouputPublicPath = '/';
 var cssFileName = PRODUCTION ? 'style-[contenthash:10].css' : 'styles.css';
 var scriptFileName = PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js';
 
-var entry = PRODUCTION || DOCS
+var entry = PRODUCTION
 	?	{
 			vendor: ['dragula'],
 			app: './src/index.js'
@@ -29,7 +28,7 @@ var entry = PRODUCTION || DOCS
 		};
 
 
-var plugins = PRODUCTION || DOCS
+var plugins = PRODUCTION
 	? 	[
 		    new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename: "scripts/vendor.[hash:12].min.js"}),
 			new webpack.optimize.UglifyJsPlugin({
@@ -64,21 +63,20 @@ var plugins = PRODUCTION || DOCS
 plugins.push(
 	new webpack.DefinePlugin({
 		DEVELOPMENT: JSON.stringify(DEVELOPMENT),
-		PRODUCTION: JSON.stringify(PRODUCTION),
-		DOCS: JSON.stringify(DOCS),
+		PRODUCTION: JSON.stringify(PRODUCTION)
 	})
 );
 
-const cssIdentifier = PRODUCTION || DOCS ? '[hash:base64:10]' : '[path][name]---[local]';
+const cssIdentifier = PRODUCTION ? '[hash:base64:10]' : '[path][name]---[local]';
 
-const cssLoader = PRODUCTION || DOCS
+const cssLoader = PRODUCTION
 	?	ExtractTextPlugin.extract({
 			use: 'css-loader?minimize!localIdentName=' + cssIdentifier
 		})
 
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier];
 
-const sassLoader = PRODUCTION || DOCS
+const sassLoader = PRODUCTION
 	?	ExtractTextPlugin.extract({
 			use: 'css-loader?minimize!sass-loader?localIdentName=' + cssIdentifier
 		})
@@ -128,7 +126,7 @@ module.exports = {
 	},
 	output: {
 		path: path.join(__dirname, outputPath),
-		publicPath: PRODUCTION || DOCS ? ouputPublicPath : '/dist/',
-		filename: PRODUCTION || DOCS ? 'scripts/' + scriptFileName : scriptFileName
+		publicPath: PRODUCTION ? ouputPublicPath : '/dist/',
+		filename: PRODUCTION ? 'scripts/' + scriptFileName : scriptFileName
 	}
 };
