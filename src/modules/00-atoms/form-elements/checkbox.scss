@@ -1,37 +1,30 @@
 @import "../../../../src/style/abstracts/all";
 
 :local(.checkboxIcon){
-    margin: 0 0 0 6pt;
-    font-size: 14pt;
-    width: 1em;
-    cursor: pointer;
-    display: inline-block;
-    @include appearance(none);
-    &:before{
-        font-family: FontAwesome;
-        content: "\f096";
-    }
-    
-    :local(.input):focus {
-        color: $primary-color;
-    }
+  margin: 0 6pt;
+  font-size: 14pt;
+  width: 1em;
+  cursor: pointer;
+  display: inline-block;
+  @include appearance(none);
+  &:before{
+    font-family: FontAwesome;
+    content: "\f096";
+  }
+
+  :local(.input):focus {
+    color: $primary-color;
+  }
 }
 
 :local(.input){
-    display: none;
-
-    &:checked{
-        + :local(.checkboxIcon){
-            &:before{
-                content: "\f046";
-            }
-        }
+  display: none;
+  &:checked{
+    + :local(.checkboxIcon){
+      &:before{
+        content: "\f046";
+        color: $primary-color;
+      }
     }
-    &:focus {
-        + :local(.checkboxIcon){
-            &:before{
-                color: $primary-color;
-            }
-        }
-    }
+  }
 }

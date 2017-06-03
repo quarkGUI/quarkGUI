@@ -1,37 +1,30 @@
 @import "../../../../src/style/abstracts/all";
 
 :local(.radioIcon){
-    margin: 0 0 0 6pt;
-    font-size: 14pt;
-    width: 1em;
-    cursor: pointer;
-    display: inline-block;
-    @include appearance(none);
-    &:before{
-        font-family: FontAwesome;
-        content: "\f10c";
-    }
-    
-    :local(.input):focus {
-        color: $primary-color;
-    }
+  margin: 0 6pt;
+  font-size: 14pt;
+  width: 1em;
+  cursor: pointer;
+  display: inline-block;
+  @include appearance(none);
+  &:before{
+    font-family: FontAwesome;
+    content: "\f1db";
+  }
+
+  :local(.input):focus {
+    color: $primary-color;
+  }
 }
 
 :local(.input){
-    display: none;
-
-    &:checked{
-        + :local(.radioIcon){
-            &:before{
-                content: "\f192";
-            }
-        }
+  display: none;
+  &:checked{
+    + :local(.radioIcon){
+      &:before{
+        content: "\f111";
+        color: $primary-color;
+      }
     }
-    &:focus {
-        + :local(.radioIcon){
-            &:before{
-                color: $primary-color;
-            }
-        }
-    }
+  }
 }
