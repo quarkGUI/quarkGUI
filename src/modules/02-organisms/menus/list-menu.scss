@@ -87,6 +87,9 @@
 		}
 		:local(.listItemButtonRow) {
 			float: right;
+			>*{
+				display: inline-block;
+			}
 		}
 		:local(.listItemExpandButton){
 			&:after{
