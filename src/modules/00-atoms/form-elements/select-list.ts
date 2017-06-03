@@ -76,7 +76,6 @@ export class SelectList {
 						selectList.updateDropdownListHeight(dropdownListElement);
 					});
 				}else{
-					inputFieldElement.readOnly = true;
 					inputFieldElement.addEventListener("keydown", function(e) {
 						e.preventDefault();
 						return false;
@@ -84,10 +83,12 @@ export class SelectList {
 				}
 
 				inputFieldElement.onfocus = function(){
-					selectListElement.classList.add("active");
-					dropdownListElement.classList.add("active");
-					dropdownListElement.classList.remove("transparent")
-					selectList.updateDropdownListHeight(dropdownListElement);
+					if (!inputFieldElement.readOnly){
+						selectListElement.classList.add("active");
+						dropdownListElement.classList.add("active");
+						dropdownListElement.classList.remove("transparent")
+						selectList.updateDropdownListHeight(dropdownListElement);
+					}
 				};
 
 				inputFieldElement.onblur = function(event){
@@ -98,7 +99,7 @@ export class SelectList {
 							dropdownListElement.classList.remove("active")
 							dropdownListElement.classList.remove("transparent")
 						}
-					}, 1000);
+					}, 100);
 
 				}
 				if (dropdownListElementIsDefined){
@@ -139,8 +140,9 @@ export class SelectList {
 			id: this.id + '-dropdownList'
 		}
 		let readOnlyClass:string = this.attributes !== undefined && this.attributes.indexOf('readonly') > -1 ? Style.readOnly : '';
+		let disabledClass:string = this.attributes !== undefined && this.attributes.indexOf('disabled') > -1 ? Style.disabled : '';
 		this.addListener(this, inputField, dropdownList);
-		return `<div id='${this.id}' class='${Style.dropdownContainer} ${readOnlyClass}'>${InputField.getModule(inputField)} ${this.labelElement}<ul id='${dropdownList.id}' class='${Style.dropdownList}'>${this.optionElements}</ul></div>`;
+		return `<div id='${this.id}' class='${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${this.labelElement}<ul id='${dropdownList.id}' class='${Style.dropdownList}'>${this.optionElements}</ul></div>`;
 	}
 }
 

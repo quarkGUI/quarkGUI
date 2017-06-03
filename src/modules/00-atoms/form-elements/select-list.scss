@@ -1,57 +1,60 @@
 @import "../../../../src/style/abstracts/all";
 :local(.dropdownContainer) {
-    &:after{
-      font-family: FontAwesome;
-      content: "\f078";
-      position: relative;
-      float: right;
-      top: -25px;
-      right: 8px;
-      @include transition(transform .2s ease-in-out, top .2s ease-in-out);
+  &:after{
+    font-family: FontAwesome;
+    content: "\f078";
+    position: relative;
+    float: right;
+    top: -25px;
+    right: 8px;
+    @include transition(transform .2s ease-in-out, top .2s ease-in-out);
   }
-    &:local(.readOnly):after{
-        content: none;
-    }
+  &:local(.readOnly):after{
+    content: none;
+  }
+  &:local(.disabled):after{
+   color: #CCC;
+ }
 }
 :local(.dropdownContainer).active{
-    &:after{
-        top: -23px;
-        transform: rotate(180deg);
-    }
+  &:after{
+    top: -23px;
+    transform: rotate(180deg);
+  }
 }
 :local(.dropdownList) {
-    list-style: none;
-    display: none;
-    font-size: 14pt;
-    margin: 0;
-    padding: 0;
-    background-color: $bright-white;
-    @include raised(2);
-    position: relative;
+  list-style: none;
+  display: none;
+  font-size: 14pt;
+  margin: 0;
+  padding: 0;
+  background-color: $bright-white;
+  @include raised(2);
+  position: relative;
+  &.active {
+    display: block;
+    z-index: 2;
+    max-height: 300px;
+    overflow: auto;
+  }
+  &.transparent{
+    opacity: 0;
+  }
+
+  > li {
+    display: block;
+    color: $default-text-color;
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 100%;
+    min-width: 200px;
+    border-left: 2px solid transparent;
+    &:hover {
+      background-color: bright-gray($dark-color);
+      cursor: pointer;
+    }
     &.active {
-        display: block;
-        z-index: 2;
-        max-height: 300px;
-        overflow: auto;
-    }
-    &.transparent{
-        opacity: 0;
-    }
-    
-    > li {
-        display: block;
-        color: $default-text-color;
-        text-decoration: none;
-        padding: 10px 20px;
-        width: 100%;
-        min-width: 200px;
-        border-left: 2px solid transparent;
-        &:hover {
-            background-color: bright-gray($dark-color);
-            cursor: pointer;
-        }
-        &.active {
-            border-left: 2px solid $primary-color;
-        } 
-    }
+      border-left: 2px solid $primary-color;
+    } 
+  }
 }
