@@ -92,6 +92,7 @@
 			}
 		}
 		:local(.listItemExpandButton){
+			line-height: 32px;
 			&:after{
 				font-family: FontAwesome;
 				font-size: 14pt;
