@@ -23,11 +23,6 @@ export class SelectList {
 		if (selectList.attributes !== undefined) this.attributes = selectList.attributes;
 	}
 
-	private updateDropdownListHeight(dropdownListElement){
-		var dropdownElementHeight = dropdownListElement.offsetHeight;
-		dropdownListElement.style.marginBottom = 0-dropdownElementHeight + 'px';
-	}
-
 	private elementIsNotNullOrUndefinedById(id: string){
 		return document.getElementById(id) !== undefined && document.getElementById(id) !== null;
 	}
@@ -73,7 +68,6 @@ export class SelectList {
 								listItems[i].style.display = "none";
 							}
 						}
-						selectList.updateDropdownListHeight(dropdownListElement);
 					});
 				}else{
 					inputFieldElement.addEventListener("keydown", function(e) {
@@ -81,27 +75,7 @@ export class SelectList {
 						return false;
 					});
 				}
-
-				inputFieldElement.onfocus = function(){
-					if (!inputFieldElement.readOnly){
-						selectListElement.classList.add("active");
-						dropdownListElement.classList.add("active");
-						dropdownListElement.classList.remove("transparent")
-						selectList.updateDropdownListHeight(dropdownListElement);
-					}
-				};
-
-				inputFieldElement.onblur = function(event){
-					selectListElement.classList.remove("active");
-					dropdownListElement.classList.add("transparent")
-					setTimeout(function(){ 
-						if (inputFieldElement !== document.activeElement){
-							dropdownListElement.classList.remove("active")
-							dropdownListElement.classList.remove("transparent")
-						}
-					}, 100);
-
-				}
+				
 				if (dropdownListElementIsDefined){
 					dropdownListElement.addEventListener('click', function (e) {
 						let target: any = e.target; // Clicked element
@@ -139,10 +113,19 @@ export class SelectList {
 		let dropdownList = {
 			id: this.id + '-dropdownList'
 		}
-		let readOnlyClass:string = this.attributes !== undefined && this.attributes.indexOf('readonly') > -1 ? Style.readOnly : '';
-		let disabledClass:string = this.attributes !== undefined && this.attributes.indexOf('disabled') > -1 ? Style.disabled : '';
+		let selectListIsReadOnly:boolean = this.attributes !== undefined && this.attributes.indexOf('readonly') > -1;
+		let selectListIsDisabled:boolean = this.attributes !== undefined && this.attributes.indexOf('disabled') > -1;
+
+		let readOnlyClass:string = selectListIsReadOnly ? Style.readOnly : '';
+		let disabledClass:string = selectListIsDisabled ? Style.disabled : '';
 		this.addListener(this, inputField, dropdownList);
-		return `<div id='${this.id}' class='${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${this.labelElement}<ul id='${dropdownList.id}' class='${Style.dropdownList}'>${this.optionElements}</ul></div>`;
+		let selectListElement:string = '';
+		if (selectListIsReadOnly || selectListIsDisabled){
+			selectListElement = `<div id='${this.id}' class='overlay-element ${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${this.labelElement}</div>`;
+		}else{
+			selectListElement = `<div id='${this.id}' class='overlay-element ${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${this.labelElement}<div class='${Style.dropdownList}'><ul id='${dropdownList.id}'>${this.optionElements}</ul></div></div>`;
+		}
+		return selectListElement;
 	}
 }
 

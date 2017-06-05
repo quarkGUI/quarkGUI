@@ -9,7 +9,6 @@ export declare class SelectList {
     optionElements: string;
     attributes: string[];
     constructor(selectList: ISelectList);
-    private updateDropdownListHeight(dropdownListElement);
     private elementIsNotNullOrUndefinedById(id);
     private elementIsNotNullOrUndefinedByTagName(containerElement, tagName);
     private addListener(selectList, inputField, dropdownList);
