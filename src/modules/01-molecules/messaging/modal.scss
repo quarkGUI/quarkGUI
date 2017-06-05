@@ -84,6 +84,10 @@
   }
 }
 
+:local(.triggerElementContainer) {
+  display: inline-block;
+}
+
 body.action-menu-active :local(.modalOverlay) {
   padding-bottom: 60px;
 }

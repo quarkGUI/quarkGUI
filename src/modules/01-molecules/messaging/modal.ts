@@ -51,7 +51,7 @@ export class Modal {
 	}
 
 	private createTriggerElement(){
-		return `<div id='${this.id}-trigger'>${this.triggerElement}</div>`;
+		return `<div class='${Style.triggerElementContainer}' id='${this.id}-trigger'>${this.triggerElement}</div>`;
 	}
 
 	private createCloseElement(){
