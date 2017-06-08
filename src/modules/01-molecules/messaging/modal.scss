@@ -1,71 +1,88 @@
 @import "../../../../src/style/abstracts/all";
 :local(.modalOverlay) {
   position: fixed;
-  padding-top: 48px;
   padding-bottom: 0;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 1;
   display: none;
-  background-color: #FFFFFF;
-  @include box-shadow(0 6px 10px 0 rgba(0, 0, 0, 0.3));
-  @media only screen and (min-width: $screen-sm) {
-    padding-top: 64px;
-  }
-  @media (min-width: $screen-sm) {
-    padding-top: 0;
-    z-index: 2;
-    background-color: rgba(33, 33, 33, 0.48);
-    @include box-shadow(none);
-    @include transition(all .2s .4s);
+  background-color: rgba(33, 33, 33, 0.48);
+  z-index: 2;
+  @include transition(all .2s .4s);
+  &:local(.fullscreen){
+    background-color: #FFFFFF;
+    @include box-shadow(0 6px 10px 0 rgba(0, 0, 0, 0.3));
+    z-index: 1;
+    padding-top: 48px;
+    @media (min-width: $screen-sm) {
+      background-color: rgba(33, 33, 33, 0.48);
+      @include box-shadow(none);
+      z-index: 2;
+      padding-top: 0;
+    }
+    :local(.modal) {
+      margin: 0;
+      max-height: 100%;
+      @include border-radius(0);
+      @media (min-width: $screen-sm) {
+        margin: 40px auto;
+        @include calc(max-height, '100% - 80px');
+        @include border-radius(2px);
+
+      }
+
+    }
   }
   &.active {
     display: block;
   }
   :local(.modal) {
-    height: 100%;
     overflow: auto;
     padding: 15px;
+    margin: 40px auto;
+    @include calc(max-height, '100% - 80px');
+    overflow: visible;
+
     @media (min-width: $screen-sm) {
-      height: auto;
       max-width: 900px;
-      margin: 85px auto;
-      overflow: visible;
-      @include calc(max-height, '100% - 85px');
     }
     &:local(.scrollable){
+      height: 100%;
+      :local(.modalContainer){
+        :local(.modalContent) {
+          @include calc(height, '100% - 104px');
+        }
+      }
       @media (min-width: $screen-sm) {
-        height: 100%;
+
       }
     }
     :local(.modalContainer){
       background-color: #FFF;
       height: 100%;
+      @include border-radius(2px);
       @media (min-width: $screen-sm) {
-        @include border-radius(2px);
         @include raised(3);
       }
       :local(.modalHeader) {
         font-size: 18pt;
         font-weight: bold;
         line-height: 24pt;
-        margin-bottom: 4pt;
+        padding: 6px 12px;
         border-bottom: 1px solid $default-color;
         @media (min-width: $screen-sm) {
-          margin: 0;
-          padding: 6px 12px;
           @include border-radius(2px 2px 0 0);
         }
       }
       :local(.modalContent) {
         width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: auto;
+        @include calc(max-height, '100% - 104px');
         @media (min-width: $screen-sm) {
-          overflow-y: auto;
-          overflow-x: hidden;
-          height: auto;
-          @include calc(max-height, '100% - 100px');
+
         }
       }
       :local(.modalFooter) {

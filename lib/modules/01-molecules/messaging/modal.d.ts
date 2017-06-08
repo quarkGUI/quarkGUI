@@ -13,6 +13,7 @@ export interface IModalElement {
     closeButtontext?: string;
     title?: string;
     scrollable?: boolean;
+    fullscreen?: boolean;
 }
 export interface IModal {
     id: string;
