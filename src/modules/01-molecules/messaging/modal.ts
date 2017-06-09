@@ -13,6 +13,7 @@ export class Modal {
 		this.modalElement.closeButtontext = modal.modalElement.closeButtontext !== undefined ? modal.modalElement.closeButtontext : 'Close';
 		this.modalElement.scrollable = modal.modalElement.scrollable !== undefined ? modal.modalElement.scrollable : false;
 		this.modalElement.fullscreen = modal.modalElement.fullscreen !== undefined ? modal.modalElement.fullscreen : false;
+		this.modalElement.maxWidth = modal.modalElement.maxWidth !== undefined ? modal.modalElement.maxWidth : null;
 	}
 
 	private addListener(triggerId:string, targetId:string, closeId:string){
@@ -64,13 +65,26 @@ export class Modal {
 		return `<div class='${Style.footerButtons}'>${closeButtonElement}</div>`;
 	}
 
+	private setMaxWidth(){
+		let modalElementId = this.id + '-modal';
+		let modalElementObject = this.modalElement;
+		document.addEventListener('DOMContentLoaded', function() {
+			let modalElement:HTMLElement = document.getElementById(modalElementId);
+			if (modalElementObject.maxWidth !== null){
+				modalElement.style.maxWidth = modalElementObject.maxWidth;
+			}
+		}, false);
+	}
+
 	public createModuleElement(){
 		let triggerElement:string = this.createTriggerElement();
 		let closeElement:string = this.createCloseElement();
+		let modalHeaderElement:string = this.modalElement.title !== undefined ? `<div class='${Style.modalHeader}'>${this.modalElement.title}</div>` : '';
 		let scrollableClass:string = this.modalElement.scrollable ? Style.scrollable : '';
 		let fullscreenClass:string = this.modalElement.fullscreen ? Style.fullscreen : '';
+		this.setMaxWidth();
 		this.addListener(this.id + '-trigger', this.id, this.id + '-close');
-		return `${triggerElement} <div id='${this.id}' class='${Style.modalOverlay} ${fullscreenClass}'><div class='${Style.modal} ${scrollableClass}'><div class='${Style.modalContainer}'><div class='${Style.modalHeader}'>${this.modalElement.title}</div><div class='${Style.modalContent}'>${this.modalElement.content}</div><div class='${Style.modalFooter}'>${closeElement}</div></div></div></div>`;
+		return `${triggerElement} <div id='${this.id}' class='${Style.modalOverlay} ${fullscreenClass}'><div id="${this.id}-modal" class='${Style.modal} ${scrollableClass}'><div class='${Style.modalContainer}'>${modalHeaderElement}<div class='${Style.modalContent}'>${this.modalElement.content}</div><div class='${Style.modalFooter}'>${closeElement}</div></div></div></div>`;
 	}
 }
 
@@ -80,6 +94,7 @@ export interface IModalElement {
 	title?: string;
 	scrollable?: boolean;
 	fullscreen?: boolean;
+	maxWidth?: string;
 }
 
 export interface IModal {
