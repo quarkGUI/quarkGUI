@@ -7,7 +7,8 @@
         "content": "HTML content for modal element",
         "title": "Optional modal title",
         "scrollable": "Scrollable content inside modal element",
-        "fullscreen": "Full width and height for modal element on small screens"
+        "fullscreen": "Full width and height for modal element on small screens",
+        "maxWidth": "Maximum width of modal element"
 	},
 }
 ```
