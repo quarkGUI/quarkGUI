@@ -6,6 +6,7 @@ export declare class Modal {
     private addListener(triggerId, targetId, closeId);
     private createTriggerElement();
     private createCloseElement();
+    private setMaxWidth();
     createModuleElement(): string;
 }
 export interface IModalElement {
@@ -14,6 +15,7 @@ export interface IModalElement {
     title?: string;
     scrollable?: boolean;
     fullscreen?: boolean;
+    maxWidth?: string;
 }
 export interface IModal {
     id: string;
