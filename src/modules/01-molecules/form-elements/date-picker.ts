@@ -1,7 +1,7 @@
 import * as InputField from './input-field'
-import * as Modal from '../../01-molecules/messaging/modal'
-import * as Button from '../buttons/button'
-const Style = require<any>("../../../../src/modules/00-atoms/form-elements/date-picker.scss");
+import * as Modal from '../messaging/modal'
+import * as Button from '../../00-atoms/buttons/button'
+const Style = require<any>("../../../../src/modules/01-molecules/form-elements/date-picker.scss");
 
 export class DatePicker {
 	id: string;
@@ -9,7 +9,7 @@ export class DatePicker {
 	type: string = "date";
 	value: any = "";
 	placeholder: string = "";
-	labelElement: string = "";
+	label: string = "";
 	activeDate: any;
 	selectedDate: any;
 
@@ -20,7 +20,7 @@ export class DatePicker {
 		if (datePicker.type !== undefined) this.type = datePicker.type;
 		if (datePicker.value !== undefined) this.value = datePicker.value;
 		if (datePicker.placeholder !== undefined) this.placeholder = datePicker.placeholder;
-		if (datePicker.labelElement !== undefined) this.labelElement = datePicker.labelElement;
+		if (datePicker.label !== undefined) this.label = datePicker.label;
 		let activeDate = new Date();
 		this.activeDate = {
 			year: activeDate.getFullYear(),
@@ -226,7 +226,8 @@ export class DatePicker {
 			name: this.name,
 			type: 'text',
 			value: this.value,
-			placeholder: this.placeholder
+			placeholder: this.placeholder,
+			label: this.label
 		}
 		let dropdownList = {
 			id: this.id + '-dropdownList'
@@ -292,7 +293,7 @@ export interface IDatePicker{
 	type?: string;
 	value?: any;
 	placeholder?: string;
-	labelElement?: string;
+	label?: string;
 }
 
 export function getModule(datePicker: IDatePicker){

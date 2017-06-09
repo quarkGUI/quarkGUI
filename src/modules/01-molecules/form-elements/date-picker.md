@@ -5,7 +5,7 @@
 	"name": "Name for date picker",
 	"type": "Type for date picker",
 	"value": "Value for date picker",
-	"placeholder": "Placeholder for select list",
-	"labelElement": "Label HTML element for select list"
+	"placeholder": "Placeholder for date picker input field",
+	"label": "Label for date picker input field"
 }
 ```
