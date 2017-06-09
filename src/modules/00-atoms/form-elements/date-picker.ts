@@ -1,11 +1,12 @@
 import * as InputField from './input-field'
+import * as Modal from '../../01-molecules/messaging/modal'
 import * as Button from '../buttons/button'
 const Style = require<any>("../../../../src/modules/00-atoms/form-elements/date-picker.scss");
 
 export class DatePicker {
 	id: string;
 	name: string;
-	type: string = "text";
+	type: string = "date";
 	value: any = "";
 	placeholder: string = "";
 	labelElement: string = "";
@@ -48,33 +49,24 @@ export class DatePicker {
 		return containerElement.getElementsByTagName(tagName).length > 0;
 	}
 
-	private addListener(datePicker: DatePicker, inputField, dropdownList){
+	private addListener(inputField, modalId){
+		let datePicker = this;
 		document.addEventListener('DOMContentLoaded', function(e) {
 			let datePickerElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id);
 			let inputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
-			let dropdownListElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(dropdownList.id);
+			let modalElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(modalId);
 
-			
-			if (datePickerElementIsDefined && inputFieldElementIsDefined && dropdownListElementIsDefined){
-				let selectListElement:HTMLElement = document.getElementById(datePicker.id);
+			if (inputFieldElementIsDefined && modalElementIsDefined){
 				let inputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(inputField.id);
-				let dropdownListElement:HTMLElement = document.getElementById(dropdownList.id);
+				let modalElement:HTMLElement = document.getElementById(modalId);
 
-				let labelElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedByTagName(selectListElement, "LABEL");
+				let activeTabClass = datePicker.type == 'time' ? 'active-tab-clock' : 'active-tab-callendar';
+				modalElement.classList.add(activeTabClass);
 
-				if (labelElementIsDefined){
-					let labelElementList: NodeListOf<Element> = selectListElement.getElementsByTagName("LABEL");
-					let labelElement: HTMLElement = <HTMLElement>labelElementList.item(0);
-					labelElement.onclick = function(){
-						if (inputFieldElementIsDefined){
-							inputFieldElement.focus();
-						}
-					}
-				}
 
 				inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
 
-				inputFieldElement.readOnly = true;
+				//inputFieldElement.readOnly = true;
 				inputFieldElement.addEventListener("keydown", function(e) {
 					e.preventDefault();
 					return false;
@@ -82,27 +74,15 @@ export class DatePicker {
 				
 
 				inputFieldElement.onfocus = function(){
-					selectListElement.classList.add("active");
-					dropdownListElement.classList.add("active");
-					dropdownListElement.classList.remove("transparent")
-					datePicker.updateDropdownListHeight(dropdownListElement);
+					modalElement.classList.add("active");
+					modalElement.classList.remove("transparent")
 				};
 
-				inputFieldElement.onblur = function(event){
-					/*selectListElement.classList.remove("active");
-					dropdownListElement.classList.add("transparent")
-					setTimeout(function(){ 
-						if (inputFieldElement !== document.activeElement){
-							dropdownListElement.classList.remove("active")
-							dropdownListElement.classList.remove("transparent")
-						}
-					}, 1000);*/
-
-				}
-				if (dropdownListElementIsDefined){
-					dropdownListElement.addEventListener('click', function (e) {
+			
+				if (modalElementIsDefined){
+					modalElement.addEventListener('click', function (e) {
 						let target: any = e.target; // Clicked element
-						while (target && target.parentNode !== dropdownListElement) {
+						while (target && target.parentNode !== modalElement) {
 							target = target.parentNode; // If the clicked element isn't a direct child
 							if(!target) { return; } // If element doesn't exist
 						}
@@ -113,19 +93,25 @@ export class DatePicker {
 						}
 					});
 					// Tab toggle buttons
-					let toggleTabCallendarElementList: NodeListOf<Element> = dropdownListElement.getElementsByClassName(Style.toggleTabCallendar);
-					let toggleTabCallendarElement: HTMLElement = <HTMLElement>toggleTabCallendarElementList.item(0);
-					toggleTabCallendarElement.addEventListener('click', function (e){
-						dropdownListElement.classList.remove("active-tab-clock");
-						dropdownListElement.classList.add("active-tab-callendar");
-					})
 
-					let toggleTabClockElementList: NodeListOf<Element> = dropdownListElement.getElementsByClassName(Style.toggleTabClock);
-					let toggleTabClockElement: HTMLElement = <HTMLElement>toggleTabClockElementList.item(0);
-					toggleTabClockElement.addEventListener('click', function (e){
-						dropdownListElement.classList.remove("active-tab-callendar");
-						dropdownListElement.classList.add("active-tab-clock");
-					})
+
+
+					let toggleTabCallendarElementIsNotNull: boolean = document.getElementById(modalId + '-toggleTabCallendar') !== null;
+					if (toggleTabCallendarElementIsNotNull){
+						let toggleTabCallendarElement: HTMLElement = document.getElementById(modalId + '-toggleTabCallendar');
+						toggleTabCallendarElement.addEventListener('click', function (e){
+							modalElement.classList.remove("active-tab-clock");
+							modalElement.classList.add("active-tab-callendar");
+						})
+					}
+					let toggleTabClockElementIsNotNull: boolean = document.getElementById(modalId + '-toggleTabClock') !== null;
+					if (toggleTabClockElementIsNotNull){
+						let toggleTabClockElement: HTMLElement = document.getElementById(modalId + '-toggleTabClock');
+						toggleTabClockElement.addEventListener('click', function (e){
+							modalElement.classList.remove("active-tab-callendar");
+							modalElement.classList.add("active-tab-clock");
+						})
+					}
 					
 				}
 			}
@@ -238,31 +224,38 @@ export class DatePicker {
 		let inputField = {
 			id: this.id + '-input',
 			name: this.name,
-			type: this.type,
+			type: 'text',
 			value: this.value,
 			placeholder: this.placeholder
 		}
 		let dropdownList = {
 			id: this.id + '-dropdownList'
 		}
+
+		let buttonElement = Button.getModule({
+			id: 'datepicker-trigger1',
+			iconClass: 'fa fa-calendar',
+			type: 'minimal'
+		})
+
+		let inputFieldElement = InputField.getModule(inputField);
+
+		
+
 		let previewElement = this.createPreviewElement(this.selectedDate);
 		let dateSelectorElement = this.createDateSelectorElement(this.activeDate);
 		let timeSelectorElement = this.createTimeSelectorElement(this.activeDate);
 		let dayNameElements = this.createDayNameElements();
 		let callendarElement = this.createMonthElement(this.activeDate, this.selectedDate);
 
-		this.addListener(this, inputField, dropdownList);
+		let modalId = this.id + '-datepicker-modal';
+
+		let toggleTabElements = this.type == 'datetime' ? `<span id="${modalId}-toggleTabCallendar" class="${Style.toggleTab} ${Style.toggleTabCallendar}"></span><span id="${modalId}-toggleTabClock" class="${Style.toggleTab} ${Style.toggleTabClock}"></span><div class="clearfix"></div>` : '';
 
 
-
-		return `
-		<div id="${this.id}" class="${Style.dropdownContainer}">
-		${InputField.getModule(inputField)} ${this.labelElement}
-		<div id="${dropdownList.id}" class="${Style.modalOverlay} active-tab-callendar">
-			<div class="${Style.modalContainer}">
-				<span class="${Style.toggleTab} ${Style.toggleTabCallendar}"></span>
-				<span class="${Style.toggleTab} ${Style.toggleTabClock}"></span>
-				<div class="clearfix"></div>
+		let modalContentElement = `
+				${toggleTabElements}
+				
 				${previewElement}
 				<div class="${Style.callendar}">
 					${dateSelectorElement}
@@ -272,10 +265,24 @@ export class DatePicker {
 				<div class="${Style.clock}">
 					${timeSelectorElement}
 				</div>
-			</div>
-		</div>
-		</div>
-		`
+		`;
+
+		let modalObject = {
+			id: modalId,
+			triggerElement: buttonElement,
+			modalElement: {
+				content: modalContentElement,
+				maxWidth: '430px'
+			}
+		};
+
+		let modalElement = Modal.getModule(modalObject);
+
+		this.addListener(inputField, modalObject.id);
+
+
+
+		return `<div class="${Style.datePicker}"><div class="${Style.inputField}">${inputFieldElement}</div><div class="${Style.modal}">${modalElement}</div></div>`
 	}
 }
 

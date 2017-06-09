@@ -1,148 +1,105 @@
 @import "../../../../src/style/abstracts/all";
-:local(.dropdownContainer) {
-    &:after{
-      font-family: FontAwesome;
-      content: "\f078";
-      position: relative;
-      float: right;
-      top: -25px;
-      right: 8px;
-      @include transition(transform .2s ease-in-out, top .2s ease-in-out);
-  }
-}
-:local(.dropdownContainer).active{
-    &:after{
-        top: -23px;
-        transform: rotate(180deg);
-    }
-}
-:local(.modalOverlay){
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    padding-top: 48px;
-    padding-bottom: 0;
-    background-color: #FFFFFF;
-    display: none;
-    &.active {
-        display: block;
-        z-index: 2;
-    }
-    &.transparent{
-        opacity: 0;
-    }
-    @media only screen and (min-width: $screen-sm){
-        padding-top: 64px;
-    }
-    @media (min-width: $screen-lg){
-        padding-top: 0;
-        z-index: 2;
-        background-color: rgba(33, 33, 33, 0.48);
-        @include box-shadow(none);
-        @include transition(all .2s .4s);
-    }
-}
-
-:local(.modalContainer) {
-    font-size: 14pt;
-    margin: 70px auto 0;
-    padding: 0;
-    width: 360px;
-    background-color: $bright-white;
-    @include raised(2);
-    
-    :local(.toggleTab){
-        width: 50%;
-        display: inline-block;
-        float: left;
-        font-size: 36px;
-        text-align: center;
-        &:before{
-            font-family: FontAwesome;
-        }
-        &:local(.toggleTabCallendar){
-            &:before{
-                content: "\f073";
-            }
-        }
-        &:local(.toggleTabClock){
-            &:before{
-                content: "\f017";
-            }
-        }
-    }
-
-    :local(.preview){
-        background-color: $primary-color;
-        color: #FFF;
-        text-align: center;
-        padding: 24px 0;
-        :local(.previewDate){
-            font-size: 18px;
-        }
-        :local(.previewDayNumber){
-            font-size: 46px;
-        }
-        :local(.previewDayName){
-            font-size: 22px;
-        }
-    };
-
-    :local(.yearSelector),
-    :local(.monthSelector){
-        font-size: 20px;
-        width: 50%;
-        float: left;
-        padding: 6px 0;
-        a {
-            vertical-align: middle;
-        }
-    }
-
-    :local(.callendar){
-        display: none;
-        max-width: 400px;
-        margin: auto;
-        :local(.dayName){
-            width: 14.285%;
-            text-align: center;
-            display: inline-block;
-        }
-        :local(.day){
-            width: 14.285%;
-            text-align: center;
-            display: inline-block;
-            line-height: 36px;
-            border-radius: 3px;
-            &:hover {
-                background-color: bright-gray($dark-color);
-                cursor: pointer;
-            }
-            &.active {
-                color: $primary-color;
-                border: 1px solid $primary-color;
-            } 
-        }
-
-    }
-    :local(.clock){
-        display: none;
-        vertical-align: top;
-    }
-    
-    > li {
-        display: block;
-        color: $default-text-color;
-        text-decoration: none;
-        padding: 10px 20px;
-        width: 100%;
-        min-width: 200px;
-        border-left: 2px solid transparent;
+:local(.datePicker){
+    :local(.inputField){
         
     }
+    :local(.modal){
+        float: right;
+        position: relative;
+        top: -34px;
+    }
 }
+:local(.toggleTab){
+    width: 50%;
+    display: inline-block;
+    float: left;
+    font-size: 36px;
+    text-align: center;
+    &:before{
+        font-family: FontAwesome;
+    }
+    &:local(.toggleTabCallendar){
+        &:before{
+            content: "\f073";
+        }
+    }
+    &:local(.toggleTabClock){
+        &:before{
+            content: "\f017";
+        }
+    }
+}
+
+:local(.preview){
+    background-color: $primary-color;
+    color: #FFF;
+    text-align: center;
+    padding: 24px 0;
+    :local(.previewDate){
+        font-size: 18px;
+    }
+    :local(.previewDayNumber){
+        font-size: 46px;
+    }
+    :local(.previewDayName){
+        font-size: 22px;
+    }
+};
+
+:local(.yearSelector),
+:local(.monthSelector){
+    font-size: 20px;
+    width: 50%;
+    float: left;
+    padding: 6px 0;
+    text-align: center;
+    a {
+        vertical-align: middle;
+    }
+}
+
+:local(.callendar){
+    display: none;
+    max-width: 400px;
+    margin: auto;
+    :local(.dayName){
+        width: 14.285%;
+        text-align: center;
+        display: inline-block;
+    }
+    :local(.day){
+        width: 14.285%;
+        text-align: center;
+        display: inline-block;
+        line-height: 36px;
+        border-radius: 3px;
+        &:hover {
+            background-color: bright-gray($dark-color);
+            cursor: pointer;
+        }
+        &.active {
+            color: $primary-color;
+            border: 1px solid $primary-color;
+        } 
+    }
+
+}
+:local(.clock){
+    display: none;
+    vertical-align: top;
+}
+
+> li {
+    display: block;
+    color: $default-text-color;
+    text-decoration: none;
+    padding: 10px 20px;
+    width: 100%;
+    min-width: 200px;
+    border-left: 2px solid transparent;
+
+}
+
 
 .active-tab-callendar{
     :local(.toggleTabCallendar){
