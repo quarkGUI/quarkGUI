@@ -1,7 +1,7 @@
 @import "../../../../src/style/abstracts/all";
 :local(.datePicker){
     :local(.inputField){
-        
+
     }
     :local(.modal){
         float: right;
@@ -15,15 +15,25 @@
     float: left;
     font-size: 36px;
     text-align: center;
+    cursor: pointer;
+    @include transition(all .2s);
     &:before{
         font-family: FontAwesome;
     }
+    &:hover{
+        background-color: bright-gray($dark-color);
+    }
+    &:active {
+        background-color: bright-gray-active($dark-color);
+    }
     &:local(.toggleTabCallendar){
+        border-top-left-radius: 2px;
         &:before{
             content: "\f073";
         }
     }
     &:local(.toggleTabClock){
+        border-top-right-radius: 2px;
         &:before{
             content: "\f017";
         }
@@ -48,7 +58,7 @@
 
 :local(.yearSelector),
 :local(.monthSelector){
-    font-size: 20px;
+    font-size: 12pt;
     width: 50%;
     float: left;
     padding: 6px 0;
@@ -60,8 +70,10 @@
 
 :local(.callendar){
     display: none;
-    max-width: 400px;
+    max-width: 296px;
+    padding: 0 15px;
     margin: auto;
+    font-size: 12pt;
     :local(.dayName){
         width: 14.285%;
         text-align: center;
@@ -72,13 +84,23 @@
         text-align: center;
         display: inline-block;
         line-height: 36px;
-        border-radius: 3px;
+        border-radius: 50%;
+        border: 1px solid transparent;
+        cursor: pointer;
+        @include transition(all .2s);
         &:hover {
             background-color: bright-gray($dark-color);
-            cursor: pointer;
+        }
+        &:active {
+            background-color: bright-gray-active($dark-color);
         }
         &.active {
             color: $primary-color;
+            border: 1px solid $primary-color;
+        }
+        &.selected {
+            color: #FFF;
+            background-color: $primary-color;
             border: 1px solid $primary-color;
         } 
     }
@@ -107,7 +129,7 @@
         color: #FFF;
     }
     :local(.callendar){
-        display: inline-block;
+        display: block;
     }
 }
 .active-tab-clock{
@@ -116,6 +138,6 @@
         color: #FFF;
     }
     :local(.clock){
-        display: inline-block;
+        display: block;
     }
 }
