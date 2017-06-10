@@ -66,7 +66,7 @@ export class Modal {
 			content: this.modalElement.closeButtontext
 		};
 		let footerButtons: ButtonRow.IButtonRow = {
-			buttons: []
+			buttons: [closeButton]
 		}
 		if (this.modalElement.footerButtons !== null){
 			footerButtons = this.modalElement.footerButtons.buttonRow;
