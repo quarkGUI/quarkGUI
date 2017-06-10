@@ -86,7 +86,7 @@ export class DatePicker {
 							target = target.parentNode; // If the clicked element isn't a direct child
 							if(!target) { return; } // If element doesn't exist
 						}
-						if (target.tagName === 'LI'){
+						if (target.className === 'SPAN'){
 							var optionValue = target.getAttribute("data-value");
 							inputFieldElement.value = optionValue;
 							inputFieldElement.classList.add("is-not-empty");
@@ -112,8 +112,29 @@ export class DatePicker {
 							modalElement.classList.add("active-tab-clock");
 						})
 					}
-					
 				}
+
+
+				/* Callendar listener */
+				let callendarElement:HTMLElement = document.getElementById(modalId + '-callendar');
+				callendarElement.addEventListener('click', function (e) {
+					let target:any = e.target;
+					if (target.classList.contains(Style.day)){
+						datePicker.selectedDate = {
+							day: target.dataset.day,
+							weekDay: target.dataset.weekDay,
+							month: target.dataset.month,
+							year: target.dataset.year
+						}
+
+						let callendarPreviewElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-preview');
+						let callendarMonthElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-month');
+						callendarPreviewElement.outerHTML = datePicker.createPreviewElement(datePicker.selectedDate);
+						callendarMonthElement.innerHTML = datePicker.createMonthElement(datePicker.selectedDate, datePicker.activeDate);
+
+
+					}
+				})
 			}
 		}, false);
 	}
@@ -142,7 +163,7 @@ export class DatePicker {
 		let dayNumberString: string = dayNumbers[selectedDate.day - 1];
 		let dayNameString: string = dayNames[selectedDate.weekDay];
 		let datePreviewElement: string = `
-											<div class="${Style.preview}">
+											<div id="${this.id}-callendar-preview" class="${Style.preview}">
 												<div class="${Style.previewDate}">${dateString}</div>
 												<div class="${Style.previewDayNumber}">${dayNumberString}</div>
 												<div class="${Style.previewDayName}">${dayNameString}</div>
@@ -195,7 +216,7 @@ export class DatePicker {
 		let dayElements: string = "";
 		let days: any[] = [];
 
-		for (var dayIndex = 1; dayIndex <= daysInMonth; dayIndex++){
+		for (let dayIndex = 1; dayIndex <= daysInMonth; dayIndex++){
 			days.push({
 				number: dayIndex,
 				selected: false,
@@ -205,16 +226,18 @@ export class DatePicker {
 
 		if (selectedDate.year == activeDate.year && selectedDate.month == activeDate.month){
 			days[activeDate.day - 1].active = true;
+			days[selectedDate.day - 1].selected = true;
 		}
 
-		for (var dummyDayIndex = 0; dummyDayIndex < firstDay; dummyDayIndex++){
+		for (let dummyDayIndex = 0; dummyDayIndex < firstDay; dummyDayIndex++){
 			dayElements += `<span class="${Style.day}"></span>`;
 		}
 
 		for (let day of days){
+			let weekDay = (day.number - 1 + firstDay) % 7;
 			let activeClass: string = day.active ? "active" : "";
 			let selectedClass: string = day.selected ? "selected" : "";
-			dayElements += `<span class="${Style.day} ${activeClass} ${selectedClass}" data-value="${day.number}">${day.number}</span>`;
+			dayElements += `<span class="${Style.day} ${activeClass} ${selectedClass}" data-day="${day.number}" data-week-day="${weekDay}" data-month="${selectedDate.month}" data-year="${selectedDate.year}">${day.number}</span>`;
 		}
 
 		return dayElements;
@@ -256,12 +279,11 @@ export class DatePicker {
 
 		let modalContentElement = `
 				${toggleTabElements}
-				
 				${previewElement}
-				<div class="${Style.callendar}">
+				<div id="${modalId}-callendar" class="${Style.callendar}">
 					${dateSelectorElement}
 					${dayNameElements}
-					${callendarElement}
+					<div id="${this.id}-callendar-month">${callendarElement}</div>
 				</div>
 				<div class="${Style.clock}">
 					${timeSelectorElement}
@@ -273,7 +295,7 @@ export class DatePicker {
 			triggerElement: buttonElement,
 			modalElement: {
 				content: modalContentElement,
-				maxWidth: '430px',
+				maxWidth: '326px',
 				closeButtontext: 'cancel',
 				footerButtons: {
 					buttonRow: {
