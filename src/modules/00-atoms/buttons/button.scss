@@ -26,7 +26,7 @@
 }
 
 :local(.buttonTypeFlat) {
-	@include transition(all .2s .1s);
+	@include transition(all .2s);
 
 	&:not([disabled]):hover {
 		background-color: bright-gray($dark-color);
@@ -129,7 +129,7 @@
 	background-color: $default-color;
 	color: #333;
 	border: 1px solid border-color($default-color);
-	@include transition(all .2s .1s);
+	@include transition(all .2s);
 	&:not([disabled]):hover {
 		background-color: $default-hover-color;
 		color: #333;
@@ -150,7 +150,7 @@
 :local(.buttonThemePrimary):visited {
 	background-color: $primary-color;
 	color: #FFFFFF;
-	@include transition(all .2s .1s);
+	@include transition(all .2s);
 	&:not([disabled]):hover {
 		background-color: hover-color($primary-color);
 	}
@@ -168,7 +168,7 @@
 :local(.buttonThemeInfo):visited {
 	background-color: $info-color;
 	color: #FFFFFF;
-	@include transition(all .2s .1s);
+	@include transition(all .2s);
 	&:not([disabled]):hover {
 		background-color: hover-color($info-color);
 	}
@@ -186,7 +186,7 @@
 :local(.buttonThemeSuccess):visited {
 	background-color: $success-color;
 	color: #FFFFFF;
-	@include transition(all .2s .1s);
+	@include transition(all .2s);
 	&:not([disabled]):hover {
 		background-color: hover-color($success-color);
 	}
@@ -204,7 +204,7 @@
 :local(.buttonThemeWarning):visited {
 	background-color: $warning-color;
 	color: #FFFFFF;
-	@include transition(all .2s .1s);
+	@include transition(all .2s);
 	&:not([disabled]):hover {
 		background-color: hover-color($warning-color);
 	}
@@ -222,7 +222,7 @@
 :local(.buttonThemeDanger):visited {
 	background-color: $danger-color;
 	color: #FFFFFF;
-	@include transition(all .2s .1s);
+	@include transition(all .2s);
 	&:not([disabled]):hover {
 		background-color: hover-color($danger-color);
 	}
