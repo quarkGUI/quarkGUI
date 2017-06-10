@@ -273,7 +273,15 @@ export class DatePicker {
 			triggerElement: buttonElement,
 			modalElement: {
 				content: modalContentElement,
-				maxWidth: '430px'
+				maxWidth: '430px',
+				closeButtontext: 'cancel',
+				footerButtons: {
+					buttonRow: {
+						buttons: [
+							{type: 'minimal', theme: 'primary', content: 'ok'}
+						]
+					}
+				}
 			}
 		};
 
