@@ -68,6 +68,19 @@
     }
 }
 
+:local(.hoursSelector),
+:local(.minutesSelector),
+:local(.secondsSelector){
+    width: 33%;
+    float: left;
+    :local(.toggleButton){
+        text-align: center;
+        a {
+            display: block;
+        }
+    }
+}
+
 :local(.callendar){
     display: none;
     max-width: 296px;
@@ -119,9 +132,11 @@
     width: 100%;
     min-width: 200px;
     border-left: 2px solid transparent;
-
 }
 
+:local(clearfix){
+    clear: both;
+}
 
 .active-tab-callendar{
     :local(.toggleTabCallendar){
