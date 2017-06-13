@@ -1,4 +1,3 @@
-import * as AtomInputField from '../../00-atoms/form-elements/input-field'
 import * as InputField from './input-field'
 import * as Modal from '../messaging/modal'
 import * as Button from '../../00-atoms/buttons/button'
@@ -140,8 +139,6 @@ export class DatePicker {
 					}
 				}
 
-
-				
 
 				datePicker.addDateSelectorListener();
 				datePicker.addTimeSelectorListener();
@@ -350,7 +347,7 @@ export class DatePicker {
 			let clockSecondsDownElement:HTMLElement = document.getElementById(datePicker.id + '-clock-seconds-down');
 
 			clockSecondsInputElement.value ? clockSecondsInputElement.classList.add("is-not-empty") : clockSecondsInputElement.classList.remove("is-not-empty");
-			
+
 			// Selector for seconds
 			clockSecondsInputElement.addEventListener('blur', function (e) {
 				let value:number;
@@ -602,7 +599,7 @@ export class DatePicker {
 		let hours = this.selectedTime.hours > 9 ? this.selectedTime.hours : '0' + this.selectedTime.hours;
 		let minutes = this.selectedTime.minutes > 9 ? this.selectedTime.minutes : '0' + this.selectedTime.minutes;
 		let seconds = this.selectedTime.seconds > 9 ? this.selectedTime.seconds : '0' + this.selectedTime.seconds;
-		return `${hours}-${minutes}-${seconds}`;
+		return `${hours}:${minutes}:${seconds}`;
 	}
 
 	private setDateTimeValue() {
