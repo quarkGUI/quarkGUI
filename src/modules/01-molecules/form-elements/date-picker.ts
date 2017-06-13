@@ -1,3 +1,4 @@
+import * as AtomInputField from '../../00-atoms/form-elements/input-field'
 import * as InputField from './input-field'
 import * as Modal from '../messaging/modal'
 import * as Button from '../../00-atoms/buttons/button'
@@ -13,6 +14,7 @@ export class DatePicker {
 	activeDate: IDatePickerDate;
 	selectedDate: IDatePickerDate;
 	visibleDate: IDatePickerDate;
+	selectedTime: IDatePickerTime;
 
 
 	constructor(datePicker: IDatePicker) {
@@ -25,6 +27,7 @@ export class DatePicker {
 		let activeDate = new Date();
 		let selectedDate = new Date();
 		let visibleDate = new Date();
+		let selectedTime = new Date();
 		this.activeDate = {
 			year: activeDate.getFullYear(),
 			month: activeDate.getMonth() + 1,
@@ -42,6 +45,11 @@ export class DatePicker {
 			month: visibleDate.getMonth() + 1,
 			day: visibleDate.getDate(),
 			weekDay: visibleDate.getDay()
+		}
+		this.selectedTime = this.value !== undefined && this.value !== '' ? this.getTimeValue() : {
+			hours: selectedTime.getHours(),
+			minutes: visibleDate.getMinutes(),
+			seconds: visibleDate.getSeconds()
 		}
 	}
 
@@ -138,10 +146,17 @@ export class DatePicker {
 				});
 
 				datePicker.addDateSelectorListener();
+				datePicker.addTimeSelectorListener();
 
 				let submitValueButtonElement = document.getElementById(datePicker.id + '-datepicker-submit');
 				submitValueButtonElement.addEventListener('click', function (e) {
 					let dateValue = datePicker.setDateValue();
+					if (datePicker.type == 'time'){
+						dateValue = datePicker.setTimeValue();
+					}
+					else if (datePicker.type == 'datetime'){
+						dateValue = datePicker.setDateTimeValue();
+					}
 					inputFieldElement.value = dateValue;
 					modalElement.classList.remove("active");
 					if (dateValue !== null && dateValue !== ''){
@@ -201,6 +216,160 @@ private addDateSelectorListener(){
 	});
 }
 
+private addTimeSelectorListener(){
+	let datePicker = this;
+
+	let clockHoursInputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-clock-hours-input');
+	let clockHoursUpElement:HTMLElement = document.getElementById(datePicker.id + '-clock-hours-up');
+	let clockHoursDownElement:HTMLElement = document.getElementById(datePicker.id + '-clock-hours-down');
+	
+	let clockMinutesInputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-clock-minutes-input');
+	let clockMinutesUpElement:HTMLElement = document.getElementById(datePicker.id + '-clock-minutes-up');
+	let clockMinutesDownElement:HTMLElement = document.getElementById(datePicker.id + '-clock-minutes-down');
+	
+	let clockSecondsInputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-clock-seconds-input');
+	let clockSecondsUpElement:HTMLElement = document.getElementById(datePicker.id + '-clock-seconds-up');
+	let clockSecondsDownElement:HTMLElement = document.getElementById(datePicker.id + '-clock-seconds-down');
+
+	let clockTimeSelectorElement:HTMLElement = document.getElementById(datePicker.id + '-clock-time-selector');
+
+	clockHoursInputElement.value ? clockHoursInputElement.classList.add("is-not-empty") : clockHoursInputElement.classList.remove("is-not-empty");
+	clockMinutesInputElement.value ? clockMinutesInputElement.classList.add("is-not-empty") : clockMinutesInputElement.classList.remove("is-not-empty");
+	clockSecondsInputElement.value ? clockSecondsInputElement.classList.add("is-not-empty") : clockSecondsInputElement.classList.remove("is-not-empty");
+
+
+	// Selector for hours
+	clockHoursInputElement.addEventListener('blur', function (e) {
+		let value:number;
+		if (Number(this.value) < 0){
+			value = 0;
+		}else if (Number(this.value) > 23){
+			value = 23;
+		}else{
+			value = Number(this.value);
+		}
+		datePicker.selectedTime.hours = value;
+		clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+		datePicker.addTimeSelectorListener();
+	});
+	clockHoursUpElement.addEventListener('click', function (e) {
+		if (datePicker.selectedTime.hours < 23){
+			datePicker.selectedTime.hours++;
+		}else{
+			datePicker.selectedTime.hours = 0;
+		}
+		clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+		datePicker.addTimeSelectorListener();
+	});
+	clockHoursDownElement.addEventListener('click', function (e) {
+		if (datePicker.selectedTime.hours > 0){
+			datePicker.selectedTime.hours--;
+		}else{
+			datePicker.selectedTime.hours = 23;
+		}
+		clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+		datePicker.addTimeSelectorListener();
+	});
+
+
+	// Selector for minutes
+	clockMinutesInputElement.addEventListener('blur', function (e) {
+		let value:number;
+		if (Number(this.value) < 0){
+			value = 0;
+		}else if (Number(this.value) > 59){
+			value = 59;
+		}else{
+			value = Number(this.value);
+		}
+		datePicker.selectedTime.minutes = value;
+		clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+		datePicker.addTimeSelectorListener();
+	});
+	clockMinutesUpElement.addEventListener('click', function (e) {
+		if (datePicker.selectedTime.minutes < 59){
+			datePicker.selectedTime.minutes++;
+		}else{
+			datePicker.selectedTime.minutes = 0;
+			if (datePicker.selectedTime.hours < 23){
+				datePicker.selectedTime.hours++;
+			}else{
+				datePicker.selectedTime.hours = 0;
+			}
+		}
+		clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+		datePicker.addTimeSelectorListener();
+	});
+	clockMinutesDownElement.addEventListener('click', function (e) {
+		if (datePicker.selectedTime.minutes > 0){
+			datePicker.selectedTime.minutes--;
+		}else{
+			datePicker.selectedTime.minutes = 59;
+			if (datePicker.selectedTime.hours > 0){
+				datePicker.selectedTime.hours--;
+			}else{
+				datePicker.selectedTime.hours = 23;
+			}
+		}
+		clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+		datePicker.addTimeSelectorListener();
+	});
+
+
+	// Selector for seconds
+	clockSecondsInputElement.addEventListener('blur', function (e) {
+		let value:number;
+		if (Number(this.value) < 0){
+			value = 0;
+		}else if (Number(this.value) > 59){
+			value = 59;
+		}else{
+			value = Number(this.value);
+		}
+		datePicker.selectedTime.seconds = value;
+		clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+		datePicker.addTimeSelectorListener();
+	});
+	clockSecondsUpElement.addEventListener('click', function (e) {
+		if (datePicker.selectedTime.seconds < 59){
+			datePicker.selectedTime.seconds++;
+		}else{
+			datePicker.selectedTime.seconds = 0;
+			if (datePicker.selectedTime.minutes < 59){
+				datePicker.selectedTime.minutes++;
+			}else{
+				datePicker.selectedTime.minutes = 0;
+				if (datePicker.selectedTime.hours < 23){
+					datePicker.selectedTime.hours++;
+				}else{
+					datePicker.selectedTime.hours = 0;
+				}
+			}
+		}
+		clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+		datePicker.addTimeSelectorListener();
+	});
+	clockSecondsDownElement.addEventListener('click', function (e) {
+		if (datePicker.selectedTime.seconds > 0){
+			datePicker.selectedTime.seconds--;
+		}else{
+			datePicker.selectedTime.seconds = 59;
+			if (datePicker.selectedTime.minutes > 0){
+				datePicker.selectedTime.minutes--;
+			}else{
+				datePicker.selectedTime.minutes = 59;
+				if (datePicker.selectedTime.hours > 0){
+					datePicker.selectedTime.hours--;
+				}else{
+					datePicker.selectedTime.hours = 23;
+				}
+			}
+		}
+		clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+		datePicker.addTimeSelectorListener();
+	});
+}
+
 private createDateSelectorElement(visibleDate){
 	let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	let monthSelectorElement: string = `
@@ -235,30 +404,53 @@ private createPreviewElement(selectedDate){
 	return datePreviewElement;
 }
 
-private createTimeSelectorElement(activeDate){
+private createTimeSelectorElement(selectedTime){
 	let hourSelectorElement: string = `
-	<div style="width: 50%">
-	${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-up"})}
-	${InputField.getModule({
-		id: "dsjkl",
-		name: "dsdf",
-		type: "number"
+	<div style="width: 33%">
+	${Button.getModule({id: this.id + '-clock-hours-up', type: "minimal", iconClass: "fa fa-chevron-up"})}
+	${AtomInputField.getModule({
+		id: this.id + '-clock-hours-input',
+		name: this.id + '-clock-hours-input',
+		value: '' + this.selectedTime.hours,
+		type: 'number',
+		attributes: ['min="0"', 'max="23"']
 	})}
-	${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-down"})}
+	<span>${this.selectedTime.hours}</span>
+	${Button.getModule({id: this.id + '-clock-hours-down', type: "minimal", iconClass: "fa fa-chevron-down"})}
 	</div>
 	`;
+
 	let minuteSelectorElement: string = `
-	<div style="width: 50%">
-	${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-up"})}
-	${InputField.getModule({
-		id: "dsddjkl",
-		name: "ddddsdf",
-		type: "number"
+	<div style="width: 33%">
+	${Button.getModule({id: this.id + '-clock-minutes-up', type: "minimal", iconClass: "fa fa-chevron-up"})}
+	${AtomInputField.getModule({
+		id: this.id + '-clock-minutes-input',
+		name: this.id + '-clock-minutes-input',
+		value: '' + this.selectedTime.minutes,
+		type: 'number',
+		attributes: ['min="0"', 'max="59"']
 	})}
-	${Button.getModule({type: "minimal", iconClass: "fa fa-chevron-down"})}
+	<span>${this.selectedTime.minutes}</span>
+	${Button.getModule({id: this.id + '-clock-minutes-down', type: "minimal", iconClass: "fa fa-chevron-down"})}
 	</div>
 	`;
-	let timeSelectorElement: string = `<div>${hourSelectorElement}${minuteSelectorElement}</div>`;
+
+	let secondsSelectorElement: string = `
+	<div style="width: 33%">
+	${Button.getModule({id: this.id + '-clock-seconds-up', type: "minimal", iconClass: "fa fa-chevron-up"})}
+	${AtomInputField.getModule({
+		id: this.id + '-clock-seconds-input',
+		name: this.id + '-clock-seconds-input',
+		value: '' + this.selectedTime.seconds,
+		type: 'number',
+		attributes: ['min="0"', 'max="59"']
+	})}
+	<span>${this.selectedTime.seconds}</span>
+	${Button.getModule({id: this.id + '-clock-seconds-down', type: "minimal", iconClass: "fa fa-chevron-down"})}
+	</div>
+	`;
+
+	let timeSelectorElement: string = `<div>${hourSelectorElement}${minuteSelectorElement}${secondsSelectorElement}</div>`;
 	return timeSelectorElement;
 }
 
@@ -327,6 +519,28 @@ private setDateValue() {
 	return `${year}-${month}-${day}`;
 }
 
+private getTimeValue() {
+	let dateStringValue = new Date(this.value);
+
+	let dateValue: IDatePickerTime = {
+		hours: dateStringValue.getHours(),
+		minutes: dateStringValue.getMinutes(),
+		seconds: dateStringValue.getSeconds()
+	};
+	return dateValue;
+}
+
+private setTimeValue() {
+	let hours = this.selectedTime.hours > 9 ? this.selectedTime.hours : '0' + this.selectedTime.hours;
+	let minutes = this.selectedTime.minutes > 9 ? this.selectedTime.minutes : '0' + this.selectedTime.minutes;
+	let seconds = this.selectedTime.seconds > 9 ? this.selectedTime.seconds : '0' + this.selectedTime.seconds;
+	return `${hours}-${minutes}-${seconds}`;
+}
+
+private setDateTimeValue() {
+	return `${this.setDateValue()} ${this.setTimeValue()}`;
+}
+
 public createModuleElement() {
 	let inputField = {
 		id: this.id + '-input',
@@ -367,9 +581,7 @@ public createModuleElement() {
 	${dayNameElements}
 	<div id='${this.id}-callendar-month'>${callendarElement}</div>
 	</div>
-	<div class='${Style.clock}'>
-	${timeSelectorElement}
-	</div>`;
+	<div id='${this.id}-clock-time-selector' class='${Style.clock}'>${timeSelectorElement}</div>`;
 
 	let modalObject = {
 		id: modalId,
@@ -394,6 +606,12 @@ public createModuleElement() {
 
 	return `<div class='${Style.datePicker}'><div class='${Style.inputField}'>${inputFieldElement}</div><div class='${Style.modal}'>${modalElement}</div></div>`;
 }
+}
+
+export interface IDatePickerTime{
+	hours?: number,
+	minutes?: number,
+	seconds?: number,
 }
 
 export interface IDatePickerDate{

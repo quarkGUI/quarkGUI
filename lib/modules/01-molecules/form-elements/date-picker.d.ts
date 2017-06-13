@@ -8,19 +8,29 @@ export declare class DatePicker {
     activeDate: IDatePickerDate;
     selectedDate: IDatePickerDate;
     visibleDate: IDatePickerDate;
+    selectedTime: IDatePickerTime;
     constructor(datePicker: IDatePicker);
     private elementIsNotNullOrUndefinedById(id);
     private elementIsNotNullOrUndefinedByTagName(containerElement, tagName);
     private addListener(inputField, modalId);
     private addDateSelectorListener();
+    private addTimeSelectorListener();
     private createDateSelectorElement(visibleDate);
     private createPreviewElement(selectedDate);
-    private createTimeSelectorElement(activeDate);
+    private createTimeSelectorElement(selectedTime);
     private createDayNameElements();
     private createMonthElement(selectedDate, activeDate, visibleDate);
     private getDateValue();
     private setDateValue();
+    private getTimeValue();
+    private setTimeValue();
+    private setDateTimeValue();
     createModuleElement(): string;
+}
+export interface IDatePickerTime {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
 }
 export interface IDatePickerDate {
     year: number;
