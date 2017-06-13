@@ -9,6 +9,7 @@ export declare class DatePicker {
     selectedDate: IDatePickerDate;
     visibleDate: IDatePickerDate;
     selectedTime: IDatePickerTime;
+    clockOptions: IClockOptions;
     constructor(datePicker: IDatePicker);
     private elementIsNotNullOrUndefinedById(id);
     private elementIsNotNullOrUndefinedByTagName(containerElement, tagName);
@@ -16,7 +17,7 @@ export declare class DatePicker {
     private addDateSelectorListener();
     private addTimeSelectorListener();
     private createDateSelectorElement(visibleDate);
-    private createPreviewElement(selectedDate);
+    private createPreviewElement();
     private createTimeSelectorElement(selectedTime);
     private createDayNameElements();
     private createMonthElement(selectedDate, activeDate, visibleDate);
@@ -26,6 +27,11 @@ export declare class DatePicker {
     private setTimeValue();
     private setDateTimeValue();
     createModuleElement(): string;
+}
+export interface IClockOptions {
+    showHours?: boolean;
+    showMinutes?: boolean;
+    showSeconds?: boolean;
 }
 export interface IDatePickerTime {
     hours?: number;
@@ -45,5 +51,6 @@ export interface IDatePicker {
     value?: any;
     placeholder?: string;
     label?: string;
+    clockOptions?: IClockOptions;
 }
 export declare function getModule(datePicker: IDatePicker): string;
