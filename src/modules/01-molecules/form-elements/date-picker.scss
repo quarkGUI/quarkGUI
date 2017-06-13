@@ -54,6 +54,18 @@
     :local(.previewDayName){
         font-size: 22px;
     }
+    :local(.previewClock){
+        span:after{
+            content: ":";
+            display: inline-block;
+        }
+        span:last-child:after{
+            content: none;
+        }
+        &:local(.bigClock){
+            font-size: 40pt;
+        }
+    }
 };
 
 :local(.yearSelector),
