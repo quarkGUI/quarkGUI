@@ -74,10 +74,6 @@ export class DatePicker {
 		return document.getElementById(id) !== undefined && document.getElementById(id) !== null;
 	}
 
-	private elementIsNotNullOrUndefinedByTagName(containerElement: HTMLElement, tagName: string){
-		return containerElement.getElementsByTagName(tagName).length > 0;
-	}
-
 	private addListener(inputField, modalId){
 		let datePicker = this;
 		document.addEventListener('DOMContentLoaded', function(e) {

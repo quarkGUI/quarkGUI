@@ -12,7 +12,6 @@ export declare class DatePicker {
     clockOptions: IClockOptions;
     constructor(datePicker: IDatePicker);
     private elementIsNotNullOrUndefinedById(id);
-    private elementIsNotNullOrUndefinedByTagName(containerElement, tagName);
     private addListener(inputField, modalId);
     private addDateSelectorListener();
     private addTimeSelectorListener();
