@@ -1,3 +1,3 @@
-import * as Colors from "./05-global/colors";
+import * as Colors from "./03-global/colors";
 
 export {Colors}

@@ -1,7 +1,7 @@
 var style = require('../../style/globalStyle.scss');
 
 import * as Grid from '../01-molecules/sections/grid';
-import * as ColorPalette from '../05-global/colors/color-palette';
+import * as ColorPalette from '../03-global/colors/color-palette';
 
 export default function(){
 
