@@ -39,3 +39,9 @@ node_modules
 
 #Ignore distribution directory
 /dist
+
+#Ignore template files
+index.html
+index-template.html
+src/modules/04-templates/
+src/modules/05-pages/
