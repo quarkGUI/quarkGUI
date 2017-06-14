@@ -186,7 +186,7 @@ export class DatePicker {
 				let previewElement:HTMLElement = document.getElementById(datePicker.id + '-preview');
 				let callendarMonthElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-month');
 				previewElement.innerHTML = datePicker.createPreviewElement();
-				callendarMonthElement.innerHTML = datePicker.createMonthElement(datePicker.selectedDate, datePicker.activeDate, datePicker.visibleDate);
+				callendarMonthElement.innerHTML = datePicker.createMonthElement();
 			}
 		});
 
@@ -206,8 +206,8 @@ export class DatePicker {
 				datePicker.visibleDate.month = 12;
 				datePicker.visibleDate.year--;
 			}
-			callendarMonthElement.innerHTML = datePicker.createMonthElement(datePicker.selectedDate, datePicker.activeDate, datePicker.visibleDate);
-			callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement(datePicker.visibleDate);
+			callendarMonthElement.innerHTML = datePicker.createMonthElement();
+			callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement();
 			datePicker.addDateSelectorListener();
 		});
 		callendarMonthNextElement.addEventListener('click', function (e) {
@@ -217,20 +217,20 @@ export class DatePicker {
 				datePicker.visibleDate.month = 1;
 				datePicker.visibleDate.year++;
 			}
-			callendarMonthElement.innerHTML = datePicker.createMonthElement(datePicker.selectedDate, datePicker.activeDate, datePicker.visibleDate);
-			callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement(datePicker.visibleDate);
+			callendarMonthElement.innerHTML = datePicker.createMonthElement();
+			callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement();
 			datePicker.addDateSelectorListener();
 		});
 		callendarYearPrevElement.addEventListener('click', function (e) {
 			datePicker.visibleDate.year--;
-			callendarMonthElement.innerHTML = datePicker.createMonthElement(datePicker.selectedDate, datePicker.activeDate, datePicker.visibleDate);
-			callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement(datePicker.visibleDate);
+			callendarMonthElement.innerHTML = datePicker.createMonthElement();
+			callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement();
 			datePicker.addDateSelectorListener();
 		});
 		callendarYearNextElement.addEventListener('click', function (e) {
 			datePicker.visibleDate.year++;
-			callendarMonthElement.innerHTML = datePicker.createMonthElement(datePicker.selectedDate, datePicker.activeDate, datePicker.visibleDate);
-			callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement(datePicker.visibleDate);
+			callendarMonthElement.innerHTML = datePicker.createMonthElement();
+			callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement();
 			datePicker.addDateSelectorListener();
 		});
 	}
@@ -259,7 +259,7 @@ export class DatePicker {
 					value = Number(this.value);
 				}
 				datePicker.selectedTime.hours = value;
-				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				datePicker.addTimeSelectorListener();
 			});
@@ -269,7 +269,7 @@ export class DatePicker {
 				}else{
 					datePicker.selectedTime.hours = 0;
 				}
-				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				datePicker.addTimeSelectorListener();
 			});
@@ -279,7 +279,7 @@ export class DatePicker {
 				}else{
 					datePicker.selectedTime.hours = 23;
 				}
-				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				datePicker.addTimeSelectorListener();
 			});
@@ -303,7 +303,7 @@ export class DatePicker {
 					value = Number(this.value);
 				}
 				datePicker.selectedTime.minutes = value;
-				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				datePicker.addTimeSelectorListener();
 			});
@@ -318,7 +318,7 @@ export class DatePicker {
 						datePicker.selectedTime.hours = 0;
 					}
 				}
-				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				datePicker.addTimeSelectorListener();
 			});
@@ -333,7 +333,7 @@ export class DatePicker {
 						datePicker.selectedTime.hours = 23;
 					}
 				}
-				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				datePicker.addTimeSelectorListener();
 			});
@@ -358,7 +358,7 @@ export class DatePicker {
 					value = Number(this.value);
 				}
 				datePicker.selectedTime.seconds = value;
-				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				datePicker.addTimeSelectorListener();
 			});
@@ -378,7 +378,7 @@ export class DatePicker {
 						}
 					}
 				}
-				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				datePicker.addTimeSelectorListener();
 			});
@@ -398,17 +398,17 @@ export class DatePicker {
 						}
 					}
 				}
-				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement(datePicker.selectedTime);
+				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				datePicker.addTimeSelectorListener();
 			});
 		}
 	}
 
-	private createDateSelectorElement(visibleDate){
+	private createDateSelectorElement(){
 		let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-		let monthSelectorElement: string = `${Button.getModule({id: this.id + '-callendar-month-prev', type: "minimal", iconClass: "fa fa-chevron-left"})}<span>${monthNames[visibleDate.month - 1]}</span>${Button.getModule({id: this.id + '-callendar-month-next', type: "minimal", iconClass: "fa fa-chevron-right"})}`;
-		let yearSelectorElement: string = `${Button.getModule({id: this.id + '-callendar-year-prev', type: "minimal", iconClass: "fa fa-chevron-left"})}<span>${visibleDate.year}</span>${Button.getModule({id: this.id + '-callendar-year-next', type: "minimal", iconClass: "fa fa-chevron-right"})}`;
+		let monthSelectorElement: string = `${Button.getModule({id: this.id + '-callendar-month-prev', type: "minimal", iconClass: "fa fa-chevron-left"})}<span>${monthNames[this.visibleDate.month - 1]}</span>${Button.getModule({id: this.id + '-callendar-month-next', type: "minimal", iconClass: "fa fa-chevron-right"})}`;
+		let yearSelectorElement: string = `${Button.getModule({id: this.id + '-callendar-year-prev', type: "minimal", iconClass: "fa fa-chevron-left"})}<span>${this.visibleDate.year}</span>${Button.getModule({id: this.id + '-callendar-year-next', type: "minimal", iconClass: "fa fa-chevron-right"})}`;
 		let dateSelectorElement: string = `<div class='${Style.monthSelector}'>${monthSelectorElement}</div><div class='${Style.yearSelector}'>${yearSelectorElement}</div>`;
 		return dateSelectorElement;
 	}
@@ -448,7 +448,7 @@ export class DatePicker {
 		return datePreviewElement;
 	}
 
-	private createTimeSelectorElement(selectedTime){
+	private createTimeSelectorElement(){
 		let hoursSelectorElement: string = '';
 		let minutesSelectorElement: string =  '';
 		let secondsSelectorElement: string =  '';
@@ -509,9 +509,9 @@ export class DatePicker {
 		return dayNameElements;
 	}
 
-	private createMonthElement(selectedDate, activeDate, visibleDate){
-		let daysInMonth: number = new Date(visibleDate.year, visibleDate.month, 0).getDate();
-		let firstDay: number = new Date(visibleDate.year, visibleDate.month - 1, 1).getDay();
+	private createMonthElement(){
+		let daysInMonth: number = new Date(this.visibleDate.year, this.visibleDate.month, 0).getDate();
+		let firstDay: number = new Date(this.visibleDate.year, this.visibleDate.month - 1, 1).getDay();
 
 		let dayElements: string = "";
 		let days: any[] = [];
@@ -524,12 +524,12 @@ export class DatePicker {
 			});
 		}
 
-		if (selectedDate.year == visibleDate.year && selectedDate.month == visibleDate.month){
-			days[selectedDate.day - 1].selected = true;
+		if (this.selectedDate.year == this.visibleDate.year && this.selectedDate.month == this.visibleDate.month){
+			days[this.selectedDate.day - 1].selected = true;
 		}
 
-		if (activeDate.year == visibleDate.year && activeDate.month == visibleDate.month){
-			days[activeDate.day - 1].active = true;
+		if (this.activeDate.year == this.visibleDate.year && this.activeDate.month == this.visibleDate.month){
+			days[this.activeDate.day - 1].active = true;
 		}
 
 		for (let dummyDayIndex = 0; dummyDayIndex < firstDay; dummyDayIndex++){
@@ -540,7 +540,7 @@ export class DatePicker {
 			let weekDay = (day.number - 1 + firstDay) % 7;
 			let activeClass: string = day.active ? "active" : "";
 			let selectedClass: string = day.selected ? "selected" : "";
-			dayElements += `<span class='${Style.day} ${activeClass} ${selectedClass}' data-day='${day.number}' data-week-day='${weekDay}' data-month='${visibleDate.month}' data-year='${visibleDate.year}'>${day.number}</span>`;
+			dayElements += `<span class='${Style.day} ${activeClass} ${selectedClass}' data-day='${day.number}' data-week-day='${weekDay}' data-month='${this.visibleDate.month}' data-year='${this.visibleDate.year}'>${day.number}</span>`;
 		}
 
 		return dayElements;
@@ -615,12 +615,12 @@ export class DatePicker {
 
 		let callendarElement:string = '';
 		if (this.type == 'date' || this.type == 'datetime'){
-			let dateSelectorElement:string = this.createDateSelectorElement(this.visibleDate);
+			let dateSelectorElement:string = this.createDateSelectorElement();
 			dateSelectorElement = `<div id='${this.id}-callendar-date-selector'>${dateSelectorElement}</div>`;
 
 			let dayNameElements = this.createDayNameElements();
 
-			let monthElement = this.createMonthElement(this.selectedDate, this.activeDate, this.visibleDate);
+			let monthElement = this.createMonthElement();
 			monthElement = `<div id='${this.id}-callendar-month'>${monthElement}</div>`;
 
 			callendarElement = `<div id='${modalId}-callendar' class='${Style.callendar}'>${dateSelectorElement}${dayNameElements}${monthElement}</div>`;
@@ -629,7 +629,7 @@ export class DatePicker {
 
 		let timeSelectorElement:string = '';
 		if (this.type == 'time' || this.type == 'datetime'){
-			timeSelectorElement = this.createTimeSelectorElement(this.visibleDate);
+			timeSelectorElement = this.createTimeSelectorElement();
 			timeSelectorElement = `<div id='${this.id}-clock-time-selector' class='${Style.clock}'>${timeSelectorElement}</div>`;
 		}
 

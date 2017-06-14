@@ -16,11 +16,11 @@ export declare class DatePicker {
     private addListener(inputField, modalId);
     private addDateSelectorListener();
     private addTimeSelectorListener();
-    private createDateSelectorElement(visibleDate);
+    private createDateSelectorElement();
     private createPreviewElement();
-    private createTimeSelectorElement(selectedTime);
+    private createTimeSelectorElement();
     private createDayNameElements();
-    private createMonthElement(selectedDate, activeDate, visibleDate);
+    private createMonthElement();
     private getDateValue();
     private setDateValue();
     private getTimeValue();
