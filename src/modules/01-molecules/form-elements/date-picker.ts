@@ -139,9 +139,12 @@ export class DatePicker {
 					}
 				}
 
-
-				datePicker.addDateSelectorListener();
-				datePicker.addTimeSelectorListener();
+				if (datePicker.type == 'date' || datePicker.type == 'datetime'){
+					datePicker.addDateSelectorListener();
+				}
+				if (datePicker.type == 'time' || datePicker.type == 'datetime'){
+					datePicker.addTimeSelectorListener();
+				}
 
 				let submitValueButtonElement = document.getElementById(datePicker.id + '-datepicker-submit');
 				submitValueButtonElement.addEventListener('click', function (e) {
@@ -160,7 +163,6 @@ export class DatePicker {
 						inputFieldElement.classList.remove("is-not-empty");
 					}
 				});
-
 			}
 		}, false);
 	}
@@ -168,7 +170,6 @@ export class DatePicker {
 
 	private addDateSelectorListener(){
 		let datePicker = this;
-
 
 		/* Callendar listener */
 		let callendarElement:HTMLElement = document.getElementById(datePicker.id + '-datepicker-modal-callendar');
@@ -186,8 +187,6 @@ export class DatePicker {
 				let callendarMonthElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-month');
 				previewElement.innerHTML = datePicker.createPreviewElement();
 				callendarMonthElement.innerHTML = datePicker.createMonthElement(datePicker.selectedDate, datePicker.activeDate, datePicker.visibleDate);
-
-
 			}
 		});
 
@@ -408,16 +407,8 @@ export class DatePicker {
 
 	private createDateSelectorElement(visibleDate){
 		let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-		let monthSelectorElement: string = `
-		${Button.getModule({id: this.id + '-callendar-month-prev', type: "minimal", iconClass: "fa fa-chevron-left"})}
-		<span>${monthNames[visibleDate.month - 1]}</span>
-		${Button.getModule({id: this.id + '-callendar-month-next', type: "minimal", iconClass: "fa fa-chevron-right"})}
-		`;
-		let yearSelectorElement: string = `
-		${Button.getModule({id: this.id + '-callendar-year-prev', type: "minimal", iconClass: "fa fa-chevron-left"})}
-		<span>${visibleDate.year}</span>
-		${Button.getModule({id: this.id + '-callendar-year-next', type: "minimal", iconClass: "fa fa-chevron-right"})}
-		`;
+		let monthSelectorElement: string = `${Button.getModule({id: this.id + '-callendar-month-prev', type: "minimal", iconClass: "fa fa-chevron-left"})}<span>${monthNames[visibleDate.month - 1]}</span>${Button.getModule({id: this.id + '-callendar-month-next', type: "minimal", iconClass: "fa fa-chevron-right"})}`;
+		let yearSelectorElement: string = `${Button.getModule({id: this.id + '-callendar-year-prev', type: "minimal", iconClass: "fa fa-chevron-left"})}<span>${visibleDate.year}</span>${Button.getModule({id: this.id + '-callendar-year-next', type: "minimal", iconClass: "fa fa-chevron-right"})}`;
 		let dateSelectorElement: string = `<div class='${Style.monthSelector}'>${monthSelectorElement}</div><div class='${Style.yearSelector}'>${yearSelectorElement}</div>`;
 		return dateSelectorElement;
 	}
@@ -432,9 +423,7 @@ export class DatePicker {
 			let dayNumberString: string = dayNumbers[this.selectedDate.day - 1];
 			let dayNameString: string = dayNames[this.selectedDate.weekDay];
 
-			dateElement = `<div class='${Style.previewDate}'>${dateString}</div>
-			<div class='${Style.previewDayNumber}'>${dayNumberString}</div>
-			<div class='${Style.previewDayName}'>${dayNameString}</div>`;
+			dateElement = `<div class='${Style.previewDate}'>${dateString}</div><div class='${Style.previewDayNumber}'>${dayNumberString}</div><div class='${Style.previewDayName}'>${dayNameString}</div>`;
 		}
 
 		let clockElement = '';
@@ -465,57 +454,49 @@ export class DatePicker {
 		let secondsSelectorElement: string =  '';
 
 		if (this.clockOptions.showHours){
-			hoursSelectorElement = `
-			<div class='${Style.hoursSelector}'>
-			<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-hours-up', type: "minimal", iconClass: "fa fa-chevron-up"})}</div>
-			${InputField.getModule({
+			let toggleButtonUp = `<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-hours-up', type: "minimal", iconClass: "fa fa-chevron-up"})}</div>`;
+			let toggleButtonDown = `<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-hours-down', type: "minimal", iconClass: "fa fa-chevron-down"})}</div>`;
+			let inputFieldElement = InputField.getModule({
 				id: this.id + '-clock-hours-input',
 				name: this.id + '-clock-hours-input',
 				value: '' + this.selectedTime.hours,
 				type: 'number',
 				attributes: ['min="0"', 'max="23"'],
 				label: 'Hours'
-			})}
-			<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-hours-down', type: "minimal", iconClass: "fa fa-chevron-down"})}</div>
-			</div>
-			`;
+			});
+
+			hoursSelectorElement = `<div class='${Style.hoursSelector}'>${toggleButtonUp}${inputFieldElement}${toggleButtonDown}</div>`;
 		}
 
 		if (this.clockOptions.showMinutes){
-			minutesSelectorElement = `
-			<div class='${Style.minutesSelector}'>
-			<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-minutes-up', type: "minimal", iconClass: "fa fa-chevron-up"})}</div>
-			${InputField.getModule({
+			let toggleButtonUp = `<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-minutes-up', type: "minimal", iconClass: "fa fa-chevron-up"})}</div>`;
+			let toggleButtonDown = `<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-minutes-down', type: "minimal", iconClass: "fa fa-chevron-down"})}</div>`;
+			let inputFieldElement = InputField.getModule({
 				id: this.id + '-clock-minutes-input',
 				name: this.id + '-clock-minutes-input',
 				value: '' + this.selectedTime.minutes,
 				type: 'number',
 				attributes: ['min="0"', 'max="59"'],
 				label: 'Minutes'
-			})}
-			<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-minutes-down', type: "minimal", iconClass: "fa fa-chevron-down"})}</div>
-			</div>
-			`;
+			});
+			minutesSelectorElement = `<div class='${Style.minutesSelector}'>${toggleButtonUp}${inputFieldElement}${toggleButtonDown}</div>`;
 		}
 
 		if (this.clockOptions.showSeconds){
-			secondsSelectorElement = `
-			<div class='${Style.secondsSelector}'>
-			<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-seconds-up', type: "minimal", iconClass: "fa fa-chevron-up"})}</div>
-			${InputField.getModule({
+			let toggleButtonUp = `<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-seconds-up', type: "minimal", iconClass: "fa fa-chevron-up"})}</div>`;
+			let toggleButtonDown = `<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-seconds-down', type: "minimal", iconClass: "fa fa-chevron-down"})}</div>`;
+			let inputFieldElement = InputField.getModule({
 				id: this.id + '-clock-seconds-input',
 				name: this.id + '-clock-seconds-input',
 				value: '' + this.selectedTime.seconds,
 				type: 'number',
 				attributes: ['min="0"', 'max="59"'],
 				label: 'Seconds'
-			})}
-			<div class='${Style.toggleButton}'>${Button.getModule({id: this.id + '-clock-seconds-down', type: "minimal", iconClass: "fa fa-chevron-down"})}</div>
-			</div>
-			`;
+			});
+			secondsSelectorElement = `<div class='${Style.secondsSelector}'>${toggleButtonUp}${inputFieldElement}${toggleButtonDown}</div>`;
 		}
 
-		let timeSelectorElement: string = `<div>${hoursSelectorElement}${minutesSelectorElement}${secondsSelectorElement}<div class="${Style.clearfix}"></div></div>`;
+		let timeSelectorElement: string = `<div>${hoursSelectorElement}${minutesSelectorElement}${secondsSelectorElement}<div class='${Style.clearfix}'></div></div>`;
 		return timeSelectorElement;
 	}
 
@@ -627,27 +608,35 @@ export class DatePicker {
 
 		let inputFieldElement = InputField.getModule(inputField);
 
-
+		let modalId:string = this.id + '-datepicker-modal';
 
 		let previewElement = this.createPreviewElement();
-		let dateSelectorElement = this.createDateSelectorElement(this.visibleDate);
-		let timeSelectorElement = this.createTimeSelectorElement(this.visibleDate);
-		let dayNameElements = this.createDayNameElements();
-		let callendarElement = this.createMonthElement(this.selectedDate, this.activeDate, this.visibleDate);
+		previewElement = `<div id='${this.id}-preview' class='${Style.preview}'>${previewElement}</div>`;
 
-		let modalId = this.id + '-datepicker-modal';
+		let callendarElement:string = '';
+		if (this.type == 'date' || this.type == 'datetime'){
+			let dateSelectorElement:string = this.createDateSelectorElement(this.visibleDate);
+			dateSelectorElement = `<div id='${this.id}-callendar-date-selector'>${dateSelectorElement}</div>`;
 
-		let toggleTabElements = this.type == 'datetime' ? `<span id='${modalId}-toggleTabCallendar' class='${Style.toggleTab} ${Style.toggleTabCallendar}'></span><span id='${modalId}-toggleTabClock' class='${Style.toggleTab} ${Style.toggleTabClock}'></span><div class='clearfix'></div>` : '';
+			let dayNameElements = this.createDayNameElements();
+
+			let monthElement = this.createMonthElement(this.selectedDate, this.activeDate, this.visibleDate);
+			monthElement = `<div id='${this.id}-callendar-month'>${monthElement}</div>`;
+
+			callendarElement = `<div id='${modalId}-callendar' class='${Style.callendar}'>${dateSelectorElement}${dayNameElements}${monthElement}</div>`;
+		}
 
 
-		let modalContentElement = `${toggleTabElements}
-		<div id='${this.id}-preview' class='${Style.preview}'>${previewElement}</div>
-		<div id='${modalId}-callendar' class='${Style.callendar}'>
-		<div id='${this.id}-callendar-date-selector'>${dateSelectorElement}</div>
-		${dayNameElements}
-		<div id='${this.id}-callendar-month'>${callendarElement}</div>
-		</div>
-		<div id='${this.id}-clock-time-selector' class='${Style.clock}'>${timeSelectorElement}</div>`;
+		let timeSelectorElement:string = '';
+		if (this.type == 'time' || this.type == 'datetime'){
+			timeSelectorElement = this.createTimeSelectorElement(this.visibleDate);
+			timeSelectorElement = `<div id='${this.id}-clock-time-selector' class='${Style.clock}'>${timeSelectorElement}</div>`;
+		}
+
+
+		let toggleTabElements:string = this.type == 'datetime' ? `<span id='${modalId}-toggleTabCallendar' class='${Style.toggleTab} ${Style.toggleTabCallendar}'></span><span id='${modalId}-toggleTabClock' class='${Style.toggleTab} ${Style.toggleTabClock}'></span><div class='clearfix'></div>` : '';
+
+		let modalContentElement = `${toggleTabElements}${previewElement}${callendarElement}${timeSelectorElement}`;
 
 		let modalObject = {
 			id: modalId,
