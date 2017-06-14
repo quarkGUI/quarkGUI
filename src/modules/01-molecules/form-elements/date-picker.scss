@@ -136,16 +136,6 @@
     vertical-align: top;
 }
 
-> li {
-    display: block;
-    color: $default-text-color;
-    text-decoration: none;
-    padding: 10px 20px;
-    width: 100%;
-    min-width: 200px;
-    border-left: 2px solid transparent;
-}
-
 :local(.clearfix){
     clear: both;
 }
