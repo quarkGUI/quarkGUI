@@ -28,7 +28,7 @@ export class Footer {
 			if (this.logo.url !== undefined) logoUrl = this.logo.url;
 		} 
 
-		return `<footer class='${Style.footer} ${themeClass}'><a href='${logoUrl}' class='${Style.logo}'>${logoImage}</a>${this.content}</footer>`;
+		return `<footer class='${Style.footer} ${themeClass}'><div class='${Style.logo}'><a href='${logoUrl}'>${logoImage}</a></div>${this.content}</footer>`;
 	}
 }
 
