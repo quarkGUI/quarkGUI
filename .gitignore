@@ -43,5 +43,6 @@ node_modules
 #Ignore template files
 index.html
 index-template.html
+src/index.js
 src/modules/04-templates/
 src/modules/05-pages/
