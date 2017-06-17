@@ -83,8 +83,17 @@
 :local(.hoursSelector),
 :local(.minutesSelector),
 :local(.secondsSelector){
-    width: 33%;
     float: left;
+    &:local(.size-1-0),
+    &:local(.size-1-1){
+        width: 100%;
+    }
+    &:local(.size-1-2){
+        width: 50%;
+    }
+    &:local(.size-1-3){
+        width: 33%;
+    }
     :local(.toggleButton){
         text-align: center;
         a {

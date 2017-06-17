@@ -444,6 +444,15 @@ export class DatePicker {
 		return datePreviewElement;
 	}
 
+	private getTimeSelectorSizeClass(){
+		let timeSelectorsCount:number = 0;
+		if (this.clockOptions.showHours) timeSelectorsCount++;
+		if (this.clockOptions.showMinutes) timeSelectorsCount++;
+		if (this.clockOptions.showSeconds) timeSelectorsCount++;
+		let sizeClass = 'size-1-' + timeSelectorsCount;
+		return Style[sizeClass];
+	}
+
 	private createTimeSelectorElement(){
 		let hoursSelectorElement: string = '';
 		let minutesSelectorElement: string =  '';
@@ -461,7 +470,7 @@ export class DatePicker {
 				label: 'Hours'
 			});
 
-			hoursSelectorElement = `<div class='${Style.hoursSelector}'>${toggleButtonUp}${inputFieldElement}${toggleButtonDown}</div>`;
+			hoursSelectorElement = `<div class='${Style.hoursSelector} ${this.getTimeSelectorSizeClass()}'>${toggleButtonUp}${inputFieldElement}${toggleButtonDown}</div>`;
 		}
 
 		if (this.clockOptions.showMinutes){
@@ -475,7 +484,7 @@ export class DatePicker {
 				attributes: ['min="0"', 'max="59"'],
 				label: 'Minutes'
 			});
-			minutesSelectorElement = `<div class='${Style.minutesSelector}'>${toggleButtonUp}${inputFieldElement}${toggleButtonDown}</div>`;
+			minutesSelectorElement = `<div class='${Style.minutesSelector} ${this.getTimeSelectorSizeClass()}'>${toggleButtonUp}${inputFieldElement}${toggleButtonDown}</div>`;
 		}
 
 		if (this.clockOptions.showSeconds){
@@ -489,7 +498,7 @@ export class DatePicker {
 				attributes: ['min="0"', 'max="59"'],
 				label: 'Seconds'
 			});
-			secondsSelectorElement = `<div class='${Style.secondsSelector}'>${toggleButtonUp}${inputFieldElement}${toggleButtonDown}</div>`;
+			secondsSelectorElement = `<div class='${Style.secondsSelector} ${this.getTimeSelectorSizeClass()}'>${toggleButtonUp}${inputFieldElement}${toggleButtonDown}</div>`;
 		}
 
 		let timeSelectorElement: string = `<div>${hoursSelectorElement}${minutesSelectorElement}${secondsSelectorElement}<div class='${Style.clearfix}'></div></div>`;

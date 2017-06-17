@@ -17,6 +17,7 @@ export declare class DatePicker {
     private addTimeSelectorListener();
     private createDateSelectorElement();
     private createPreviewElement();
+    private getTimeSelectorSizeClass();
     private createTimeSelectorElement();
     private createDayNameElements();
     private createMonthElement();
