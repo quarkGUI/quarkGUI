@@ -8,7 +8,7 @@
   left: 0;
   display: none;
   background-color: rgba(33, 33, 33, 0.48);
-  z-index: 2;
+  z-index: 3;
   @include transition(all .2s .4s);
   &:local(.fullscreen){
     background-color: #FFFFFF;
