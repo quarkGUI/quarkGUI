@@ -76,20 +76,28 @@ export class SelectList {
 					});
 				}
 				
-				if (dropdownListElementIsDefined){
-					dropdownListElement.addEventListener('click', function (e) {
-						let target: any = e.target; // Clicked element
-						while (target && target.parentNode !== dropdownListElement) {
-							target = target.parentNode; // If the clicked element isn't a direct child
-							if(!target) { return; } // If element doesn't exist
-						}
-						if (target.tagName === 'LI'){
-							var optionValue = target.getAttribute("data-value");
-							inputFieldElement.value = optionValue;
-							inputFieldElement.classList.add("is-not-empty");
-						}
-					});
-				}
+				dropdownListElement.addEventListener('click', function (e) {
+					let target: any = e.target; // Clicked element
+					while (target && target.parentNode !== dropdownListElement) {
+						target = target.parentNode; // If the clicked element isn't a direct child
+						if(!target) { return; } // If element doesn't exist
+					}
+					if (target.tagName === 'LI'){
+						var optionValue = target.getAttribute("data-value");
+						inputFieldElement.value = optionValue;
+						inputFieldElement.classList.add("is-not-empty");
+					}
+				});
+
+				selectListElement.addEventListener('click', function (e) {
+					let target: any = e.target; // Clicked element
+					if (target.tagName !== 'LI' && target.tagName !== 'INPUT' && target.tagName !== 'LABEL'){
+						setTimeout( function(){
+							selectListElement.classList.remove("active");
+						}, 1 );
+					}
+				});
+				
 			}
 		}, false);
 	}
