@@ -573,9 +573,14 @@ export class DatePicker {
 	}
 
 	private setTimeValue() {
+		if (!this.clockOptions.showHours) this.selectedTime.hours = 0;
+		if (!this.clockOptions.showMinutes) this.selectedTime.minutes = 0;
+		if (!this.clockOptions.showSeconds) this.selectedTime.seconds = 0;
+
 		let hours = this.selectedTime.hours > 9 ? this.selectedTime.hours : '0' + this.selectedTime.hours;
 		let minutes = this.selectedTime.minutes > 9 ? this.selectedTime.minutes : '0' + this.selectedTime.minutes;
 		let seconds = this.selectedTime.seconds > 9 ? this.selectedTime.seconds : '0' + this.selectedTime.seconds;
+
 		return `${hours}:${minutes}:${seconds}`;
 	}
 
