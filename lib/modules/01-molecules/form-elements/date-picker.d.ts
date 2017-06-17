@@ -9,6 +9,7 @@ export declare class DatePicker {
     selectedDate: IDatePickerDate;
     visibleDate: IDatePickerDate;
     selectedTime: IDatePickerTime;
+    attributes: string[];
     clockOptions: IClockOptions;
     constructor(datePicker: IDatePicker);
     private elementIsNotNullOrUndefinedById(id);
@@ -51,6 +52,7 @@ export interface IDatePicker {
     value?: any;
     placeholder?: string;
     label?: string;
+    attributes?: string[];
     clockOptions?: IClockOptions;
 }
 export declare function getModule(datePicker: IDatePicker): string;

@@ -8,6 +8,18 @@
         position: relative;
         top: -46px;
     }
+    &:local(.readOnly):after{
+        content: none;
+    }
+    &:local(.disabled):after{
+        content: "\F073";
+        color: #CCC;
+        font-family: FontAwesome;
+        position: relative;
+        float: right;
+        top: -40px;
+        right: 13px;
+    }
 }
 :local(.toggleTab){
     width: 50%;

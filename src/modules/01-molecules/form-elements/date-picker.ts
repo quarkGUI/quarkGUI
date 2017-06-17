@@ -14,6 +14,7 @@ export class DatePicker {
 	selectedDate: IDatePickerDate;
 	visibleDate: IDatePickerDate;
 	selectedTime: IDatePickerTime;
+	attributes: string[];
 	clockOptions: IClockOptions = {
 		showHours: true,
 		showMinutes: true,
@@ -28,6 +29,7 @@ export class DatePicker {
 		if (datePicker.value !== undefined) this.value = datePicker.value;
 		if (datePicker.placeholder !== undefined) this.placeholder = datePicker.placeholder;
 		if (datePicker.label !== undefined) this.label = datePicker.label;
+		if (datePicker.attributes !== undefined) this.attributes = datePicker.attributes;
 
 		if (datePicker.clockOptions !== undefined) {
 			this.clockOptions.showHours = datePicker.clockOptions.showHours !== undefined ? datePicker.clockOptions.showHours : true;
@@ -598,78 +600,89 @@ export class DatePicker {
 	}
 
 	public createModuleElement() {
+
+		let datePickerIsReadOnly:boolean = this.attributes !== undefined && this.attributes.indexOf('readonly') > -1;
+		let datePickerIsDisabled:boolean = this.attributes !== undefined && this.attributes.indexOf('disabled') > -1;
+
+		let datePickerElement: string = '';
+
 		let inputField = {
 			id: this.id + '-input',
 			name: this.name,
 			type: 'text',
 			value: this.value,
 			placeholder: this.placeholder,
+			attributes: this.attributes,
 			label: this.label
 		}
-		let dropdownList = {
-			id: this.id + '-dropdownList'
-		}
-
-		let buttonElement = Button.getModule({
-			id: 'datepicker-trigger1',
-			iconClass: 'fa fa-calendar',
-			type: 'minimal'
-		})
 
 		let inputFieldElement = InputField.getModule(inputField);
 
-		let modalId:string = this.id + '-datepicker-modal';
+		if (datePickerIsReadOnly || datePickerIsDisabled){
+			let readOnlyClass:string = datePickerIsReadOnly ? Style.readOnly : '';
+			let disabledClass:string = datePickerIsDisabled ? Style.disabled : '';
+			datePickerElement = `<div class='${Style.datePicker} ${readOnlyClass} ${disabledClass}'><div class='${Style.inputField}'>${inputFieldElement}</div></div>`;
+		}else{
+			let buttonElement = Button.getModule({
+				id: 'datepicker-trigger1',
+				iconClass: 'fa fa-calendar',
+				type: 'minimal'
+			})
 
-		let previewElement = this.createPreviewElement();
-		previewElement = `<div id='${this.id}-preview' class='${Style.preview}'>${previewElement}</div>`;
+			let modalId:string = this.id + '-datepicker-modal';
 
-		let callendarElement:string = '';
-		if (this.type == 'date' || this.type == 'datetime'){
-			let dateSelectorElement:string = this.createDateSelectorElement();
-			dateSelectorElement = `<div id='${this.id}-callendar-date-selector'>${dateSelectorElement}</div>`;
+			let previewElement = this.createPreviewElement();
+			previewElement = `<div id='${this.id}-preview' class='${Style.preview}'>${previewElement}</div>`;
 
-			let dayNameElements = this.createDayNameElements();
+			let callendarElement:string = '';
+			if (this.type == 'date' || this.type == 'datetime'){
+				let dateSelectorElement:string = this.createDateSelectorElement();
+				dateSelectorElement = `<div id='${this.id}-callendar-date-selector'>${dateSelectorElement}</div>`;
 
-			let monthElement = this.createMonthElement();
-			monthElement = `<div id='${this.id}-callendar-month'>${monthElement}</div>`;
+				let dayNameElements = this.createDayNameElements();
 
-			callendarElement = `<div id='${modalId}-callendar' class='${Style.callendar}'>${dateSelectorElement}${dayNameElements}${monthElement}</div>`;
-		}
+				let monthElement = this.createMonthElement();
+				monthElement = `<div id='${this.id}-callendar-month'>${monthElement}</div>`;
 
-
-		let timeSelectorElement:string = '';
-		if (this.type == 'time' || this.type == 'datetime'){
-			timeSelectorElement = this.createTimeSelectorElement();
-			timeSelectorElement = `<div id='${this.id}-clock-time-selector' class='${Style.clock}'>${timeSelectorElement}</div>`;
-		}
+				callendarElement = `<div id='${modalId}-callendar' class='${Style.callendar}'>${dateSelectorElement}${dayNameElements}${monthElement}</div>`;
+			}
 
 
-		let toggleTabElements:string = this.type == 'datetime' ? `<span id='${modalId}-toggleTabCallendar' class='${Style.toggleTab} ${Style.toggleTabCallendar}'></span><span id='${modalId}-toggleTabClock' class='${Style.toggleTab} ${Style.toggleTabClock}'></span><div class='clearfix'></div>` : '';
+			let timeSelectorElement:string = '';
+			if (this.type == 'time' || this.type == 'datetime'){
+				timeSelectorElement = this.createTimeSelectorElement();
+				timeSelectorElement = `<div id='${this.id}-clock-time-selector' class='${Style.clock}'>${timeSelectorElement}</div>`;
+			}
 
-		let modalContentElement = `${toggleTabElements}${previewElement}${callendarElement}${timeSelectorElement}`;
 
-		let modalObject = {
-			id: modalId,
-			triggerElement: buttonElement,
-			modalElement: {
-				content: modalContentElement,
-				maxWidth: '326px',
-				closeButtontext: 'cancel',
-				footerButtons: {
-					buttonRow: {
-						buttons: [
-						{id: this.id + '-datepicker-submit', type: 'minimal', theme: 'primary', content: 'ok'}
-						]
+			let toggleTabElements:string = this.type == 'datetime' ? `<span id='${modalId}-toggleTabCallendar' class='${Style.toggleTab} ${Style.toggleTabCallendar}'></span><span id='${modalId}-toggleTabClock' class='${Style.toggleTab} ${Style.toggleTabClock}'></span><div class='clearfix'></div>` : '';
+
+			let modalContentElement = `${toggleTabElements}${previewElement}${callendarElement}${timeSelectorElement}`;
+
+			let modalObject = {
+				id: modalId,
+				triggerElement: buttonElement,
+				modalElement: {
+					content: modalContentElement,
+					maxWidth: '326px',
+					closeButtontext: 'cancel',
+					footerButtons: {
+						buttonRow: {
+							buttons: [
+							{id: this.id + '-datepicker-submit', type: 'minimal', theme: 'primary', content: 'ok'}
+							]
+						}
 					}
 				}
-			}
-		};
+			};
 
-		let modalElement = Modal.getModule(modalObject);
+			let modalElement = Modal.getModule(modalObject);
 
-		this.addListener(inputField, modalObject.id);
+			this.addListener(inputField, modalObject.id);
+			datePickerElement = `<div class='${Style.datePicker}'><div class='${Style.inputField}'>${inputFieldElement}</div><div class='${Style.modal}'>${modalElement}</div></div>`;
+		}
 
-		return `<div class='${Style.datePicker}'><div class='${Style.inputField}'>${inputFieldElement}</div><div class='${Style.modal}'>${modalElement}</div></div>`;
+		return datePickerElement;
 	}
 }
 
@@ -699,6 +712,7 @@ export interface IDatePicker{
 	value?: any;
 	placeholder?: string;
 	label?: string;
+	attributes?: string[];
 	clockOptions?: IClockOptions;
 }
 
