@@ -13,6 +13,9 @@
 	padding: 0 6px;
 	text-transform: uppercase;
 	@include border-radius(2px);
+	&[disabled] {
+		cursor: not-allowed;
+	}
 }
 
 :local(.formWrapper){
@@ -58,7 +61,13 @@
 	}
 }
 
-:local(.buttonTypeMinimal) {
+:local(.buttonTypeMinimal)[disabled] {
+	background: none;
+	border: none;
+	color: rgba(0, 0, 0, 0.26);
+}
+
+:local(.buttonTypeMinimal):not([disabled]) {
 	background: none;
 	border: none;
 	color: $primary-color;
@@ -76,161 +85,161 @@
 	&:local(.buttonThemeDanger):visited{
 		background: none;
 		border: none;
-		&:not([disabled]):hover {
+		&:hover {
 			background-color: bright-gray($dark-color);
 		}
 	}
 	&:local(.buttonThemeDefault),
 	&:local(.buttonThemeDefault):visited {
 		color: $default-text-color;
-		&:not([disabled]):active {
+		&:active {
 			background-color: bright-gray-active($dark-color);
 		}
 	}
 	&:local(.buttonThemePrimary),
 	&:local(.buttonThemePrimary):visited {
 		color: $primary-color;
-		&:not([disabled]):active {
+		&:active {
 			background-color: bright-color($primary-color);
 		}
 	}
 	&:local(.buttonThemeInfo),
 	&:local(.buttonThemeInfo):visited {
 		color: $info-color;
-		&:not([disabled]):active {
+		&:active {
 			background-color: bright-color($info-color);
 		}
 	}
 	&:local(.buttonThemeSuccess),
 	&:local(.buttonThemeSuccess):visited {
 		color: $success-color;
-		&:not([disabled]):active {
+		&:active {
 			background-color: bright-color($success-color);
 		}
 	}
 	&:local(.buttonThemeWarning),
 	&:local(.buttonThemeWarning):visited {
 		color: $warning-color;
-		&:not([disabled]):active {
+		&:active {
 			background-color: bright-color($warning-color);
 		}
 	}
 	&:local(.buttonThemeDanger),
 	&:local(.buttonThemeDanger):visited {
 		color: $danger-color;
-		&:not([disabled]):active {
+		&:active {
 			background-color: bright-color($danger-color);
 		}
 	}
 }
 
-:local(.buttonThemeDefault),
-:local(.buttonThemeDefault):visited {
+:local(.buttonThemeDefault):not([disabled]),
+:local(.buttonThemeDefault):not([disabled]):visited {
 	background-color: $default-color;
 	color: #333;
 	border: 1px solid border-color($default-color);
 	@include transition(all .2s);
-	&:not([disabled]):hover {
+	&:hover {
 		background-color: $default-hover-color;
 		color: #333;
 	}
-	&:not([disabled]):active {
+	&:active {
 		background-color: $default-active-color;
 		color: #333;
 	}
 	&:local(.buttonTypeFlat) {
-		&:not([disabled]):active {
+		&:active {
 			background-color: $default-active-color;
 			color: #333;
 		}
 	}
 }
 
-:local(.buttonThemePrimary),
-:local(.buttonThemePrimary):visited {
+:local(.buttonThemePrimary):not([disabled]),
+:local(.buttonThemePrimary):not([disabled]):visited {
 	background-color: $primary-color;
 	color: #FFFFFF;
 	@include transition(all .2s);
-	&:not([disabled]):hover {
+	&:hover {
 		background-color: hover-color($primary-color);
 	}
-	&:not([disabled]):active {
+	&:active {
 		background-color: active-color($primary-color);
 	}
 	&:local(.buttonTypeFlat) {
-		&:not([disabled]):active {
+		&:active {
 			background-color: active-color($primary-color);
 		}
 	}
 }
 
-:local(.buttonThemeInfo),
-:local(.buttonThemeInfo):visited {
+:local(.buttonThemeInfo):not([disabled]),
+:local(.buttonThemeInfo):not([disabled]):visited {
 	background-color: $info-color;
 	color: #FFFFFF;
 	@include transition(all .2s);
-	&:not([disabled]):hover {
+	&:hover {
 		background-color: hover-color($info-color);
 	}
-	&:not([disabled]):active {
+	&:active {
 		background-color: active-color($info-color);
 	}
 	&:local(.buttonTypeFlat) {
-		&:not([disabled]):active {
+		&:active {
 			background-color: active-color($info-color);
 		}
 	}
 }
 
-:local(.buttonThemeSuccess),
-:local(.buttonThemeSuccess):visited {
+:local(.buttonThemeSuccess):not([disabled]),
+:local(.buttonThemeSuccess):not([disabled]):visited {
 	background-color: $success-color;
 	color: #FFFFFF;
 	@include transition(all .2s);
-	&:not([disabled]):hover {
+	&:hover {
 		background-color: hover-color($success-color);
 	}
-	&:not([disabled]):active {
+	&:active {
 		background-color: active-color($success-color);
 	}
 	&:local(.buttonTypeFlat) {
-		&:not([disabled]):active {
+		&:active {
 			background-color: active-color($success-color);
 		}
 	}
 }
 
-:local(.buttonThemeWarning),
-:local(.buttonThemeWarning):visited {
+:local(.buttonThemeWarning):not([disabled]),
+:local(.buttonThemeWarning):not([disabled]):visited {
 	background-color: $warning-color;
 	color: #FFFFFF;
 	@include transition(all .2s);
-	&:not([disabled]):hover {
+	&:hover {
 		background-color: hover-color($warning-color);
 	}
-	&:not([disabled]):active {
+	&:active {
 		background-color: active-color($warning-color);
 	}
 	&:local(.buttonTypeFlat) {
-		&:not([disabled]):active {
+		&:active {
 			background-color: active-color($warning-color);
 		}
 	}
 }
 
-:local(.buttonThemeDanger),
-:local(.buttonThemeDanger):visited {
+:local(.buttonThemeDanger):not([disabled]),
+:local(.buttonThemeDanger):not([disabled]):visited {
 	background-color: $danger-color;
 	color: #FFFFFF;
 	@include transition(all .2s);
-	&:not([disabled]):hover {
+	&:hover {
 		background-color: hover-color($danger-color);
 	}
-	&:not([disabled]):active {
+	&:active {
 		background-color: active-color($danger-color);
 	}
 	&:local(.buttonTypeFlat) {
-		&:not([disabled]):active {
+		&:active {
 			background-color: active-color($danger-color);
 		}
 	}
