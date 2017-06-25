@@ -14,6 +14,7 @@ export class DatePicker {
 	selectedDate: IDatePickerDate;
 	visibleDate: IDatePickerDate;
 	selectedTime: IDatePickerTime;
+	visibleTime: IDatePickerTime;
 	attributes: string[];
 	clockOptions: IClockOptions = {
 		showHours: true,
@@ -51,24 +52,20 @@ export class DatePicker {
 			month: activeDate.getMonth() + 1,
 			day: activeDate.getDate(),
 			weekDay: activeDate.getDay()
-		}
-		this.selectedDate = this.value !== undefined && this.value !== '' ? this.getDateValue() : {
-			year: selectedDate.getFullYear(),
-			month: selectedDate.getMonth() + 1,
-			day: selectedDate.getDate(),
-			weekDay: selectedDate.getDay()
-		}
+		};
+		this.selectedDate = this.value !== undefined && this.value !== '' ? this.getDateValue() : null;
 		this.visibleDate = this.value !== undefined && this.value !== '' ? this.getDateValue() : {
 			year: visibleDate.getFullYear(),
 			month: visibleDate.getMonth() + 1,
 			day: visibleDate.getDate(),
 			weekDay: visibleDate.getDay()
-		}
-		this.selectedTime = this.value !== undefined && this.value !== '' ? this.getTimeValue() : {
-			hours: 0,
-			minutes: 0,
-			seconds: 0
-		}
+		};
+		this.selectedTime = this.value !== undefined && this.value !== '' ? this.getTimeValue() : null;
+		this.visibleTime = this.value !== undefined && this.value !== '' ? this.getTimeValue() : {
+			hours: 0, 
+			minutes: 0, 
+			seconds: 0 
+		};
 	}
 
 
@@ -105,6 +102,9 @@ export class DatePicker {
 
 
 				if (modalElementIsDefined){
+
+					datePicker.updateSubmitButtonState();
+
 					modalElement.addEventListener('click', function (e) {
 						let target: any = e.target; // Clicked element
 						while (target && target.parentNode !== modalElement) {
@@ -233,6 +233,16 @@ export class DatePicker {
 		});
 	}
 
+	private initSelectedTime(){
+		if (this.selectedTime == null){
+			this.selectedTime = {
+				hours: 0, 
+				minutes: 0, 
+				seconds: 0 
+			}
+		}
+	}
+
 	private addTimeSelectorListener(){
 		let datePicker = this;
 
@@ -248,6 +258,7 @@ export class DatePicker {
 
 			// Selector for hours
 			clockHoursInputElement.addEventListener('blur', function (e) {
+				datePicker.initSelectedTime();
 				let value:number;
 				if (Number(this.value) < 0){
 					value = 0;
@@ -262,6 +273,7 @@ export class DatePicker {
 				datePicker.addTimeSelectorListener();
 			});
 			clockHoursUpElement.addEventListener('click', function (e) {
+				datePicker.initSelectedTime();
 				if (datePicker.selectedTime.hours < 23){
 					datePicker.selectedTime.hours++;
 				}else{
@@ -272,6 +284,7 @@ export class DatePicker {
 				datePicker.addTimeSelectorListener();
 			});
 			clockHoursDownElement.addEventListener('click', function (e) {
+				datePicker.initSelectedTime();
 				if (datePicker.selectedTime.hours > 0){
 					datePicker.selectedTime.hours--;
 				}else{
@@ -292,6 +305,7 @@ export class DatePicker {
 
 			// Selector for minutes
 			clockMinutesInputElement.addEventListener('blur', function (e) {
+				datePicker.initSelectedTime();
 				let value:number;
 				if (Number(this.value) < 0){
 					value = 0;
@@ -306,6 +320,7 @@ export class DatePicker {
 				datePicker.addTimeSelectorListener();
 			});
 			clockMinutesUpElement.addEventListener('click', function (e) {
+				datePicker.initSelectedTime();
 				if (datePicker.selectedTime.minutes < 59){
 					datePicker.selectedTime.minutes++;
 				}else{
@@ -321,6 +336,7 @@ export class DatePicker {
 				datePicker.addTimeSelectorListener();
 			});
 			clockMinutesDownElement.addEventListener('click', function (e) {
+				datePicker.initSelectedTime();
 				if (datePicker.selectedTime.minutes > 0){
 					datePicker.selectedTime.minutes--;
 				}else{
@@ -347,6 +363,7 @@ export class DatePicker {
 
 			// Selector for seconds
 			clockSecondsInputElement.addEventListener('blur', function (e) {
+				datePicker.initSelectedTime();
 				let value:number;
 				if (Number(this.value) < 0){
 					value = 0;
@@ -361,6 +378,7 @@ export class DatePicker {
 				datePicker.addTimeSelectorListener();
 			});
 			clockSecondsUpElement.addEventListener('click', function (e) {
+				datePicker.initSelectedTime();
 				if (datePicker.selectedTime.seconds < 59){
 					datePicker.selectedTime.seconds++;
 				}else{
@@ -381,6 +399,7 @@ export class DatePicker {
 				datePicker.addTimeSelectorListener();
 			});
 			clockSecondsDownElement.addEventListener('click', function (e) {
+				datePicker.initSelectedTime();
 				if (datePicker.selectedTime.seconds > 0){
 					datePicker.selectedTime.seconds--;
 				}else{
@@ -411,37 +430,79 @@ export class DatePicker {
 		return dateSelectorElement;
 	}
 
+	private datePickerValueIsValid(){
+		let datePickerValueIsValid: boolean = false;
+		if (this.type == 'date'){
+			datePickerValueIsValid = this.selectedDate !== null;
+		}else if (this.type == 'time'){
+			datePickerValueIsValid = this.selectedTime !== null;
+		} else if (this.type == 'datetime'){
+			datePickerValueIsValid = this.selectedDate !== null && this.selectedTime !== null;
+		}
+		return datePickerValueIsValid;
+	}
+
+	private getDatePreviewElementInfoMessage(){
+		let datePreviewElementInfoMessage: string = '';
+		if (this.type == 'date'){
+			datePreviewElementInfoMessage = 'Select a date';
+		}else if (this.type == 'time'){
+			datePreviewElementInfoMessage = 'Select a time';
+		} else if (this.type == 'datetime'){
+			if (this.selectedDate !== null){
+				datePreviewElementInfoMessage = 'Select a time';
+			}else if (this.selectedTime !== null){
+				datePreviewElementInfoMessage = 'Select a date';
+			}else {
+				datePreviewElementInfoMessage = 'Select a date and time';
+			}
+		}
+		return `<div class="${Style.previewInfoMessage}">${datePreviewElementInfoMessage}</div>`;	
+	}
+
 	private createPreviewElement(){
 		let dateElement = '';
-		if (this.type == 'date' || this.type == 'datetime'){
-			let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-			let dayNumbers = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st'];
-			let dayNames: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-			let dateString: string = `${monthNames[this.selectedDate.month - 1]} - ${this.selectedDate.year}`;
-			let dayNumberString: string = dayNumbers[this.selectedDate.day - 1];
-			let dayNameString: string = dayNames[this.selectedDate.weekDay];
+		if (this.selectedDate !== null){
+			if (this.type == 'date' || this.type == 'datetime'){
+				let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+				let dayNumbers = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st'];
+				let dayNames: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+				let dateString: string = `${monthNames[this.selectedDate.month - 1]} - ${this.selectedDate.year}`;
+				let dayNumberString: string = dayNumbers[this.selectedDate.day - 1];
+				let dayNameString: string = dayNames[this.selectedDate.weekDay];
 
-			dateElement = `<div class='${Style.previewDate}'>${dateString}</div><div class='${Style.previewDayNumber}'>${dayNumberString}</div><div class='${Style.previewDayName}'>${dayNameString}</div>`;
+				dateElement = `<div class='${Style.previewDate}'>${dateString}</div><div class='${Style.previewDayNumber}'>${dayNumberString}</div><div class='${Style.previewDayName}'>${dayNameString}</div>`;
+			}
 		}
+		
 
 		let clockElement = '';
-		if (this.type == 'time' || this.type == 'datetime'){
-			let clockHoursValue: string = this.selectedTime.hours > 9 ? this.selectedTime.hours.toString() : '0' + this.selectedTime.hours.toString();
-			let clockHoursElement: string = this.clockOptions.showHours ? `<span>${clockHoursValue}</span>` : '';
+		if (this.selectedTime !== null){
+			if (this.type == 'time' || this.type == 'datetime'){
+				let clockHoursValue: string = this.selectedTime.hours > 9 ? this.selectedTime.hours.toString() : '0' + this.selectedTime.hours.toString();
+				let clockHoursElement: string = this.clockOptions.showHours ? `<span>${clockHoursValue}</span>` : '';
 
-			let clockMinutesValue: string = this.selectedTime.minutes > 9 ? this.selectedTime.minutes.toString() : '0' + this.selectedTime.minutes.toString();
-			let clockMinutesElement: string = this.clockOptions.showMinutes ? `<span>${clockMinutesValue}</span>` : '';
+				let clockMinutesValue: string = this.selectedTime.minutes > 9 ? this.selectedTime.minutes.toString() : '0' + this.selectedTime.minutes.toString();
+				let clockMinutesElement: string = this.clockOptions.showMinutes ? `<span>${clockMinutesValue}</span>` : '';
 
-			let clockSecondsValue: string = this.selectedTime.seconds > 9 ? this.selectedTime.seconds.toString() : '0' + this.selectedTime.seconds.toString();
-			let clockSecondsElement: string = this.clockOptions.showSeconds ? `<span>${clockSecondsValue}</span>` : '';
+				let clockSecondsValue: string = this.selectedTime.seconds > 9 ? this.selectedTime.seconds.toString() : '0' + this.selectedTime.seconds.toString();
+				let clockSecondsElement: string = this.clockOptions.showSeconds ? `<span>${clockSecondsValue}</span>` : '';
 
-			let clockClass:string = this.type == 'time' ? `${Style.bigClock}` : '';
+				let clockClass:string = this.type == 'time' ? `${Style.bigClock}` : '';
 
-			clockElement = `<div class='${Style.previewClock} ${clockClass}'>${clockHoursElement}${clockMinutesElement}${clockSecondsElement}</div>`;
+				clockElement = `<div class='${Style.previewClock} ${clockClass}'>${clockHoursElement}${clockMinutesElement}${clockSecondsElement}</div>`;
+			}
 		}
 
+		let datePreviewElement: string = '';
 
-		let datePreviewElement: string = `${dateElement}${clockElement}`;
+		if (this.datePickerValueIsValid()){
+			datePreviewElement = `${dateElement}${clockElement}`;
+		}else {
+			datePreviewElement = this.getDatePreviewElementInfoMessage();
+		}
+
+		this.updateSubmitButtonState();
 
 		return datePreviewElement;
 	}
@@ -466,7 +527,7 @@ export class DatePicker {
 			let inputFieldElement = InputField.getModule({
 				id: this.id + '-clock-hours-input',
 				name: this.id + '-clock-hours-input',
-				value: '' + this.selectedTime.hours,
+				value: this.selectedTime !== null ? '' + this.selectedTime.hours : '',
 				type: 'number',
 				attributes: ['min="0"', 'max="23"'],
 				label: 'Hours'
@@ -481,7 +542,7 @@ export class DatePicker {
 			let inputFieldElement = InputField.getModule({
 				id: this.id + '-clock-minutes-input',
 				name: this.id + '-clock-minutes-input',
-				value: '' + this.selectedTime.minutes,
+				value: this.selectedTime !== null ? '' + this.selectedTime.minutes : '',
 				type: 'number',
 				attributes: ['min="0"', 'max="59"'],
 				label: 'Minutes'
@@ -495,7 +556,7 @@ export class DatePicker {
 			let inputFieldElement = InputField.getModule({
 				id: this.id + '-clock-seconds-input',
 				name: this.id + '-clock-seconds-input',
-				value: '' + this.selectedTime.seconds,
+				value: this.selectedTime !== null ? '' + this.selectedTime.seconds : '',
 				type: 'number',
 				attributes: ['min="0"', 'max="59"'],
 				label: 'Seconds'
@@ -531,7 +592,7 @@ export class DatePicker {
 			});
 		}
 
-		if (this.selectedDate.year == this.visibleDate.year && this.selectedDate.month == this.visibleDate.month){
+		if (this.selectedDate !== null && this.selectedDate.year == this.visibleDate.year && this.selectedDate.month == this.visibleDate.month){
 			days[this.selectedDate.day - 1].selected = true;
 		}
 
@@ -597,6 +658,22 @@ export class DatePicker {
 
 	private setDateTimeValue() {
 		return `${this.setDateValue()} ${this.setTimeValue()}`;
+	}
+
+	private updateSubmitButtonState() {
+		let submitButtonElement:HTMLElement = document.getElementById(this.id + '-datepicker-submit');
+		let disabledSubmitButtonElement:HTMLElement = document.getElementById(this.id + '-datepicker-submit-disabled');
+		let submitButtonsIsNotNull:boolean = submitButtonElement !== null && disabledSubmitButtonElement !== null;
+
+		if (submitButtonsIsNotNull){
+			if (this.datePickerValueIsValid()){
+				submitButtonElement.style.display = 'inline-block';
+				disabledSubmitButtonElement.style.display = 'none';
+			}else{
+				submitButtonElement.style.display = 'none';
+				disabledSubmitButtonElement.style.display = 'inline-block';
+			}
+		}
 	}
 
 	public createModuleElement() {
@@ -669,7 +746,8 @@ export class DatePicker {
 					footerButtons: {
 						buttonRow: {
 							buttons: [
-							{id: this.id + '-datepicker-submit', type: 'minimal', theme: 'primary', content: 'ok'}
+							{id: this.id + '-datepicker-submit', type: 'minimal', theme: 'primary', content: 'ok'},
+							{id: this.id + '-datepicker-submit-disabled', type: 'minimal', theme: 'primary', content: 'ok', attributes: ['disabled']}
 							]
 						}
 					}

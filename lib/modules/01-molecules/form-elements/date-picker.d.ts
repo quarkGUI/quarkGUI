@@ -9,14 +9,18 @@ export declare class DatePicker {
     selectedDate: IDatePickerDate;
     visibleDate: IDatePickerDate;
     selectedTime: IDatePickerTime;
+    visibleTime: IDatePickerTime;
     attributes: string[];
     clockOptions: IClockOptions;
     constructor(datePicker: IDatePicker);
     private elementIsNotNullOrUndefinedById(id);
     private addListener(inputField, modalId);
     private addDateSelectorListener();
+    private initSelectedTime();
     private addTimeSelectorListener();
     private createDateSelectorElement();
+    private datePickerValueIsValid();
+    private getDatePreviewElementInfoMessage();
     private createPreviewElement();
     private getTimeSelectorSizeClass();
     private createTimeSelectorElement();
@@ -27,6 +31,7 @@ export declare class DatePicker {
     private getTimeValue();
     private setTimeValue();
     private setDateTimeValue();
+    private updateSubmitButtonState();
     createModuleElement(): string;
 }
 export interface IClockOptions {

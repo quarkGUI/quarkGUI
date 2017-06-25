@@ -78,6 +78,9 @@
             font-size: 40pt;
         }
     }
+    :local(.previewInfoMessage){
+        font-size: 26px;
+    }
 }
 
 :local(.yearSelector),
