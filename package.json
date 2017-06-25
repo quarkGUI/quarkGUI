@@ -56,8 +56,8 @@
     "typescript": "^2.2.0",
     "url-loader": "^0.5.7",
     "vows": "^0.8.1",
-    "webpack": "^2.1.0-beta.28",
-    "webpack-dev-server": "^2.2.0-rc.0"
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
   },
   "bugs": {
     "url": "https://github.com/benjamindehli/quarkGUI/issues"
