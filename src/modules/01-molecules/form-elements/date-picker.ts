@@ -84,10 +84,14 @@ export class DatePicker {
 		document.addEventListener('DOMContentLoaded', function(e) {
 			let datePickerElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id);
 			let inputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
+			let dummyInputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
+
 			let modalElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(modalId);
 
 			if (inputFieldElementIsDefined && modalElementIsDefined){
 				let inputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(inputField.id);
+				let dummyInputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-dummyInput');
+				let dummyInputFieldValueElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-dummyInputValue');
 				let modalElement:HTMLElement = document.getElementById(modalId);
 
 				let activeTabClass = datePicker.type == 'time' ? 'active-tab-clock' : 'active-tab-callendar';
@@ -95,14 +99,14 @@ export class DatePicker {
 
 
 				inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
+				dummyInputFieldValueElement.innerHTML = inputFieldElement.value;
 
 				inputFieldElement.addEventListener("keydown", function(e) {
 					e.preventDefault();
 					return false;
 				});
 				
-
-				inputFieldElement.onfocus = function(){
+				dummyInputFieldElement.onclick = function(){
 					modalElement.classList.add("active");
 				};
 
@@ -124,6 +128,7 @@ export class DatePicker {
 						if (target.className === 'SPAN'){
 							var optionValue = target.getAttribute("data-value");
 							inputFieldElement.value = optionValue;
+							dummyInputFieldValueElement.innerHTML = inputFieldElement.value;
 							inputFieldElement.classList.add("is-not-empty");
 						}
 					});
@@ -164,6 +169,7 @@ export class DatePicker {
 						dateValue = datePicker.setDateTimeValue();
 					}
 					inputFieldElement.value = dateValue;
+					dummyInputFieldValueElement.innerHTML = inputFieldElement.value;
 					modalElement.classList.remove("active");
 					if (dateValue !== null && dateValue !== ''){
 						inputFieldElement.classList.add("is-not-empty")
@@ -704,7 +710,7 @@ export class DatePicker {
 		let inputField = {
 			id: this.id + '-input',
 			name: this.name,
-			type: 'text',
+			type: 'hidden',
 			value: this.value,
 			placeholder: this.placeholder,
 			attributes: this.attributes,
@@ -712,11 +718,12 @@ export class DatePicker {
 		}
 
 		let inputFieldElement = InputField.getModule(inputField);
+		let dummyInputFieldElement = `<div id='${this.id}-dummyInput' class='${Style.dummyInputField}'><span id='${this.id}-dummyInputValue' class='${Style.dummyInputFieldValue}'><span></div>`;
 
 		if (datePickerIsReadOnly || datePickerIsDisabled){
 			let readOnlyClass:string = datePickerIsReadOnly ? Style.readOnly : '';
 			let disabledClass:string = datePickerIsDisabled ? Style.disabled : '';
-			datePickerElement = `<div class='${Style.datePicker} ${readOnlyClass} ${disabledClass}'><div class='${Style.inputField}'>${inputFieldElement}</div></div>`;
+			datePickerElement = `<div class='${Style.datePicker} ${readOnlyClass} ${disabledClass}'><div class='${Style.inputField}'>${dummyInputFieldElement}${inputFieldElement}</div></div>`;
 		}else{
 			let buttonElement = Button.getModule({
 				id: 'datepicker-trigger1',
@@ -775,7 +782,7 @@ export class DatePicker {
 			let modalElement = Modal.getModule(modalObject);
 
 			this.addListener(inputField, modalObject.id);
-			datePickerElement = `<div class='${Style.datePicker}'><div class='${Style.inputField}'>${inputFieldElement}</div><div class='${Style.modal}'>${modalElement}</div></div>`;
+			datePickerElement = `<div class='${Style.datePicker}'><div class='${Style.inputField}'>${dummyInputFieldElement}${inputFieldElement}</div><div class='${Style.modal}'>${modalElement}</div></div>`;
 		}
 
 		return datePickerElement;
