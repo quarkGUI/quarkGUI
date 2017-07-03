@@ -20,7 +20,8 @@ export class DatePicker {
 		showHours: true,
 		showMinutes: true,
 		showSeconds: true,
-		interactive: false
+		interactive: false,
+		required: true
 	};
 
 
@@ -38,12 +39,14 @@ export class DatePicker {
 			this.clockOptions.showMinutes = datePicker.clockOptions.showMinutes!== undefined ? datePicker.clockOptions.showMinutes : true;
 			this.clockOptions.showSeconds = datePicker.clockOptions.showSeconds !== undefined ? datePicker.clockOptions.showSeconds : true;
 			this.clockOptions.interactive = datePicker.clockOptions.interactive !== undefined ? datePicker.clockOptions.interactive : false;
+			this.clockOptions.required = datePicker.clockOptions.required !== undefined ? datePicker.clockOptions.required : true;
 		}else{
 			this.clockOptions = {
 				showHours: true,
 				showMinutes: true,
 				showSeconds: true,
-				interactive: false
+				interactive: false,
+				required: true
 			}
 		}
 
@@ -105,6 +108,10 @@ export class DatePicker {
 
 
 				if (modalElementIsDefined){
+
+					if (datePicker.type == 'datetime' && !datePicker.clockOptions.required){
+						datePicker.initSelectedTime();
+					}
 
 					datePicker.updateSubmitButtonState();
 
@@ -779,7 +786,8 @@ export interface IClockOptions{
 	showHours?: boolean,
 	showMinutes?: boolean,
 	showSeconds?: boolean,
-	interactive?: boolean
+	interactive?: boolean,
+	required?: boolean
 }
 
 export interface IDatePickerTime{
