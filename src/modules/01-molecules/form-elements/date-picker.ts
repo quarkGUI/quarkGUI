@@ -19,7 +19,8 @@ export class DatePicker {
 	clockOptions: IClockOptions = {
 		showHours: true,
 		showMinutes: true,
-		showSeconds: true
+		showSeconds: true,
+		interactive: false
 	};
 
 
@@ -36,11 +37,13 @@ export class DatePicker {
 			this.clockOptions.showHours = datePicker.clockOptions.showHours !== undefined ? datePicker.clockOptions.showHours : true;
 			this.clockOptions.showMinutes = datePicker.clockOptions.showMinutes!== undefined ? datePicker.clockOptions.showMinutes : true;
 			this.clockOptions.showSeconds = datePicker.clockOptions.showSeconds !== undefined ? datePicker.clockOptions.showSeconds : true;
+			this.clockOptions.interactive = datePicker.clockOptions.interactive !== undefined ? datePicker.clockOptions.interactive : false;
 		}else{
 			this.clockOptions = {
 				showHours: true,
 				showMinutes: true,
-				showSeconds: true
+				showSeconds: true,
+				interactive: false
 			}
 		}
 
@@ -325,10 +328,12 @@ export class DatePicker {
 					datePicker.selectedTime.minutes++;
 				}else{
 					datePicker.selectedTime.minutes = 0;
-					if (datePicker.selectedTime.hours < 23){
-						datePicker.selectedTime.hours++;
-					}else{
-						datePicker.selectedTime.hours = 0;
+					if (datePicker.clockOptions.interactive){
+						if (datePicker.selectedTime.hours < 23){
+							datePicker.selectedTime.hours++;
+						}else{
+							datePicker.selectedTime.hours = 0;
+						}
 					}
 				}
 				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
@@ -341,10 +346,12 @@ export class DatePicker {
 					datePicker.selectedTime.minutes--;
 				}else{
 					datePicker.selectedTime.minutes = 59;
-					if (datePicker.selectedTime.hours > 0){
-						datePicker.selectedTime.hours--;
-					}else{
-						datePicker.selectedTime.hours = 23;
+					if (datePicker.clockOptions.interactive){
+						if (datePicker.selectedTime.hours > 0){
+							datePicker.selectedTime.hours--;
+						}else{
+							datePicker.selectedTime.hours = 23;
+						}
 					}
 				}
 				clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
@@ -383,14 +390,16 @@ export class DatePicker {
 					datePicker.selectedTime.seconds++;
 				}else{
 					datePicker.selectedTime.seconds = 0;
-					if (datePicker.selectedTime.minutes < 59){
-						datePicker.selectedTime.minutes++;
-					}else{
-						datePicker.selectedTime.minutes = 0;
-						if (datePicker.selectedTime.hours < 23){
-							datePicker.selectedTime.hours++;
+					if (datePicker.clockOptions.interactive){
+						if (datePicker.selectedTime.minutes < 59){
+							datePicker.selectedTime.minutes++;
 						}else{
-							datePicker.selectedTime.hours = 0;
+							datePicker.selectedTime.minutes = 0;
+							if (datePicker.selectedTime.hours < 23){
+								datePicker.selectedTime.hours++;
+							}else{
+								datePicker.selectedTime.hours = 0;
+							}
 						}
 					}
 				}
@@ -404,14 +413,16 @@ export class DatePicker {
 					datePicker.selectedTime.seconds--;
 				}else{
 					datePicker.selectedTime.seconds = 59;
-					if (datePicker.selectedTime.minutes > 0){
-						datePicker.selectedTime.minutes--;
-					}else{
-						datePicker.selectedTime.minutes = 59;
-						if (datePicker.selectedTime.hours > 0){
-							datePicker.selectedTime.hours--;
+					if (datePicker.clockOptions.interactive){
+						if (datePicker.selectedTime.minutes > 0){
+							datePicker.selectedTime.minutes--;
 						}else{
-							datePicker.selectedTime.hours = 23;
+							datePicker.selectedTime.minutes = 59;
+							if (datePicker.selectedTime.hours > 0){
+								datePicker.selectedTime.hours--;
+							}else{
+								datePicker.selectedTime.hours = 23;
+							}
 						}
 					}
 				}
@@ -767,7 +778,8 @@ export class DatePicker {
 export interface IClockOptions{
 	showHours?: boolean,
 	showMinutes?: boolean,
-	showSeconds?: boolean
+	showSeconds?: boolean,
+	interactive?: boolean
 }
 
 export interface IDatePickerTime{

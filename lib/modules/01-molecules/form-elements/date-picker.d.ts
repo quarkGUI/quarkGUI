@@ -38,6 +38,7 @@ export interface IClockOptions {
     showHours?: boolean;
     showMinutes?: boolean;
     showSeconds?: boolean;
+    interactive?: boolean;
 }
 export interface IDatePickerTime {
     hours?: number;
