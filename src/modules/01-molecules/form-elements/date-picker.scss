@@ -2,9 +2,12 @@
 :local(.datePicker){
     margin-bottom: 12px;
     :local(.inputField){
+        cursor: pointer;
         :local(.dummyInputField){
             height: 57px;
             border-bottom: 2px solid #eee;
+            position: relative;
+            z-index: 2;
             :local(.dummyInputFieldValue){
                 margin-top: 32px;
                 padding-left: 8px;
