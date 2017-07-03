@@ -36,7 +36,6 @@ npm run build
   - [Toggle button](src/modules/00-atoms/buttons/toggle-button.md)
 - Form elements
   - [Checkbox](src/modules/00-atoms/form-elements/checkbox.md)
-  - [Date picker](src/modules/00-atoms/form-elements/date-picker.md)
   - [Input field](src/modules/00-atoms/form-elements/input-field.md)
   - [Radio button](src/modules/00-atoms/form-elements/radio-button.md)
   - [Select list](src/modules/00-atoms/form-elements/select-list.md)
@@ -50,6 +49,7 @@ npm run build
   - [Button row](src/modules/01-molecules/buttons/button-row.md)
 - Form elements
   - [Checkbox](src/modules/01-molecules/form-elements/checkbox.md)
+  - [Date picker](src/modules/01-molecules/form-elements/date-picker.md)
   - [Input field](src/modules/01-molecules/form-elements/input-field.md)
   - [Radio button](src/modules/01-molecules/form-elements/radio-button.md)
   - [Select list](src/modules/01-molecules/form-elements/select-list.md)
