@@ -84,11 +84,12 @@ export class DatePicker {
 		document.addEventListener('DOMContentLoaded', function(e) {
 			let datePickerElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id);
 			let inputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
-			let dummyInputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
+			let dummyInputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id + '-dummyInput');
+			let dummyInputFieldValueElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id + '-dummyInputValue');
 
 			let modalElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(modalId);
 
-			if (inputFieldElementIsDefined && modalElementIsDefined){
+			if (inputFieldElementIsDefined && modalElementIsDefined && dummyInputFieldElementIsDefined && dummyInputFieldValueElementIsDefined){
 				let inputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(inputField.id);
 				let dummyInputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-dummyInput');
 				let dummyInputFieldValueElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-dummyInputValue');
@@ -182,6 +183,21 @@ export class DatePicker {
 				});
 			}
 		}, false);
+}
+
+private addDisabledOrReadOnlyListener(inputField){
+	let datePicker = this;
+	document.addEventListener('DOMContentLoaded', function(e) {
+		let inputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
+		let dummyInputFieldValueElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id + '-dummyInputValue');
+		if (inputFieldElementIsDefined && dummyInputFieldValueElementIsDefined){
+			let inputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(inputField.id);
+			let dummyInputFieldValueElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-dummyInputValue');
+
+			inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
+			dummyInputFieldValueElement.innerHTML = inputFieldElement.value;
+		}
+	});
 }
 
 
@@ -727,6 +743,7 @@ public createModuleElement() {
 		let readOnlyClass:string = datePickerIsReadOnly ? Style.readOnly : '';
 		let disabledClass:string = datePickerIsDisabled ? Style.disabled : '';
 		datePickerElement = `<div class='${Style.datePicker} ${readOnlyClass} ${disabledClass}'><div class='${Style.inputField}'>${dummyInputFieldElement}${inputFieldElement}</div></div>`;
+		this.addDisabledOrReadOnlyListener(inputField);
 	}else{
 		let buttonElement = Button.getModule({
 			id: 'datepicker-trigger1',

@@ -15,6 +15,7 @@ export declare class DatePicker {
     constructor(datePicker: IDatePicker);
     private elementIsNotNullOrUndefinedById(id);
     private addListener(inputField, modalId);
+    private addDisabledOrReadOnlyListener(inputField);
     private addDateSelectorListener();
     private initSelectedTime();
     private addTimeSelectorListener();
