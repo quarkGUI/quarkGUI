@@ -1,13 +1,30 @@
 @import "../../../../src/style/abstracts/all";
 :local(.datePicker){
     margin-bottom: 12px;
+    &:local(.readOnly){
+        :local(.inputField){
+            cursor: default;
+            :local(.dummyInputField){
+                border-bottom: 2px solid transparent;
+                color: $default-text-color;
+            }
+        }
+    }
+    &:local(.disabled){
+        :local(.inputField){
+            cursor: default;
+            :local(.dummyInputField){
+                color: #777;
+            }
+        }
+    }
     :local(.inputField){
         cursor: pointer;
         :local(.dummyInputField){
             height: 57px;
             border-bottom: 2px solid #eee;
             position: relative;
-            z-index: 2;
+            z-index: 1;
             :local(.dummyInputFieldValue){
                 margin-top: 32px;
                 padding-left: 8px;
