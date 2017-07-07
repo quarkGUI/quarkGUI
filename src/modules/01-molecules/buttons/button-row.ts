@@ -5,21 +5,27 @@ const Style = require<any>("../../../../src/modules/01-molecules/buttons/button-
 export class ButtonRow{
 	id: string = "";
 	buttons: Button.IButton[];
+	buttonElements = [];
 	constructor(buttonRow: IButtonRow) {
 		this.id = buttonRow.id;
 		this.buttons = buttonRow.buttons;
+		this.buttonElements = buttonRow.buttonElements !== undefined ? buttonRow.buttonElements : [];
 	}
 	public createModuleElement(){
-		let buttonElements: string = "";
+		let buttonHtmlElements: string = "";
 		for (let button of this.buttons){ 
-			buttonElements += Button.getModule(button)
-		};
-		return `<span id='${this.id}' class='${Style.buttonRow}'>${buttonElements}</span>`;
+			buttonHtmlElements += Button.getModule(button);
+		}
+		for (let buttonElement of this.buttonElements){ 
+			buttonHtmlElements += buttonElement;
+		}
+		return `<span id='${this.id}' class='${Style.buttonRow}'>${buttonHtmlElements}</span>`;
 	}
 }
 
 export interface IButtonRow{
 	buttons: Button.IButton[];
+	buttonElements?: string[];
 	id?: string;
 }
 
