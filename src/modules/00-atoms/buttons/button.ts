@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const Style = require<any>("../../../../src/modules/00-atoms/buttons/button.scss");
 
 export class Button {
@@ -11,6 +13,7 @@ export class Button {
 	submit?: boolean = false;
 	attributes: string[];
 	formWrapper: IFormWrapper;
+	ajaxOptions?: IAjaxOptions;
 
 	constructor(button: IButton) {
 		this.id = button.id;
@@ -23,6 +26,7 @@ export class Button {
 		if (button.theme !== undefined) this.theme = button.theme;
 		if (button.submit !== undefined) this.submit = button.submit;
 		if (button.attributes !== undefined) this.attributes = button.attributes;
+		if (button.ajaxOptions !== undefined) this.ajaxOptions = button.ajaxOptions;
 
 		if (button.formWrapper !== undefined){
 			this.formWrapper = {
@@ -76,6 +80,34 @@ export class Button {
 		return `<form action='${this.formWrapper.formAction}' method='${this.formWrapper.formMethod}' class='${Style.formWrapper}'>${hiddenFields}${moduleElement}</form>`;
 	}
 
+	private addAjaxListener(){
+		let button = this;
+		document.addEventListener('DOMContentLoaded', function() {
+			if (button.ajaxOptions !== undefined){
+				
+				if (button.id !== undefined){
+					let buttonElement:HTMLElement = document.getElementById(button.id);
+					
+					buttonElement.onclick = function(){
+						if (button.ajaxOptions.csrfToken !== undefined){
+							axios.defaults.headers.common['X-CSRF-TOKEN'] = button.ajaxOptions.csrfToken;
+						}
+						if (button.ajaxOptions.method == 'post' || button.ajaxOptions.method == 'put'){
+							let ajaxData = button.ajaxOptions.data !== undefined ? button.ajaxOptions.data : {};
+							axios({
+								method: button.ajaxOptions.method,
+								url: button.ajaxOptions.url,
+								data: ajaxData
+							});
+						}
+					}
+				}else {
+					console.log("Button with ajaxOptions should have an id attribute");
+				}
+			}
+		});
+	}
+
 	public createModuleElement() {
 		let themeClass = this.getThemeClass(this.theme)
 		let typeClass = (this.type !== undefined) ? this.getTypeClass(this.type) : Style.buttonTypeFlat;
@@ -94,6 +126,8 @@ export class Button {
 			moduleElement = this.addFormWrapper(moduleElement);
 		}
 
+		this.addAjaxListener();
+
 		return moduleElement;
 	}
 }
@@ -109,6 +143,13 @@ export interface IFormWrapper {
 	hiddenFields?: IHiddenField[];
 }
 
+export interface IAjaxOptions {
+	method: string;
+	url: string;
+	data?: object;
+	csrfToken?: string;
+}
+
 export interface IButton {
 	id?: string; 
 	type?: string; 
@@ -120,6 +161,7 @@ export interface IButton {
 	submit?: boolean;
 	attributes?: string[];
 	formWrapper?: IFormWrapper;
+	ajaxOptions?: IAjaxOptions;
 }
 
 export function getModule(button: IButton){

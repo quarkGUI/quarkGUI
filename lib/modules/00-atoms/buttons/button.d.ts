@@ -9,12 +9,14 @@ export declare class Button {
     submit?: boolean;
     attributes: string[];
     formWrapper: IFormWrapper;
+    ajaxOptions?: IAjaxOptions;
     constructor(button: IButton);
     private getThemeClass(theme);
     private getTypeClass(type);
     private getHtmlAttributes(attributes);
     private addHiddenFields();
     private addFormWrapper(moduleElement);
+    private addAjaxListener();
     createModuleElement(): string;
 }
 export interface IHiddenField {
@@ -25,6 +27,12 @@ export interface IFormWrapper {
     formAction?: string;
     formMethod?: string;
     hiddenFields?: IHiddenField[];
+}
+export interface IAjaxOptions {
+    method: string;
+    url: string;
+    data?: object;
+    csrfToken?: string;
 }
 export interface IButton {
     id?: string;
@@ -37,5 +45,6 @@ export interface IButton {
     submit?: boolean;
     attributes?: string[];
     formWrapper?: IFormWrapper;
+    ajaxOptions?: IAjaxOptions;
 }
 export declare function getModule(button: IButton): string;
