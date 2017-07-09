@@ -26,7 +26,10 @@ export class Button {
 		if (button.theme !== undefined) this.theme = button.theme;
 		if (button.submit !== undefined) this.submit = button.submit;
 		if (button.attributes !== undefined) this.attributes = button.attributes;
-		if (button.ajaxOptions !== undefined) this.ajaxOptions = button.ajaxOptions;
+		if (button.ajaxOptions !== undefined){
+			this.ajaxOptions = button.ajaxOptions;
+			this.ajaxOptions.getDataFromElements = button.ajaxOptions.getDataFromElements !== undefined ? button.ajaxOptions.getDataFromElements : false;
+		}
 
 		if (button.formWrapper !== undefined){
 			this.formWrapper = {
@@ -94,6 +97,16 @@ export class Button {
 						}
 						if (button.ajaxOptions.method == 'post' || button.ajaxOptions.method == 'put'){
 							let ajaxData = button.ajaxOptions.data !== undefined ? button.ajaxOptions.data : {};
+
+							if (button.ajaxOptions.getDataFromElements && button.ajaxOptions.dataFromElements !== undefined){
+								button.ajaxOptions.dataFromElements.forEach(function (dataFromElement){
+									let inputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(dataFromElement.elementId);
+									if (inputElement !== null){
+										ajaxData[dataFromElement.name] = inputElement.value;
+									}
+								});
+							}
+
 							axios({
 								method: button.ajaxOptions.method,
 								url: button.ajaxOptions.url,
@@ -143,11 +156,18 @@ export interface IFormWrapper {
 	hiddenFields?: IHiddenField[];
 }
 
+export interface IDataFromElement {
+	name: string;
+	elementId: string;
+}
+
 export interface IAjaxOptions {
 	method: string;
 	url: string;
 	data?: object;
 	csrfToken?: string;
+	getDataFromElements?: boolean;
+	dataFromElements?: IDataFromElement[];
 }
 
 export interface IButton {

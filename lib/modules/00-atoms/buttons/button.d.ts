@@ -28,11 +28,17 @@ export interface IFormWrapper {
     formMethod?: string;
     hiddenFields?: IHiddenField[];
 }
+export interface IDataFromElement {
+    name: string;
+    elementId: string;
+}
 export interface IAjaxOptions {
     method: string;
     url: string;
     data?: object;
     csrfToken?: string;
+    getDataFromElements?: boolean;
+    dataFromElements?: IDataFromElement[];
 }
 export interface IButton {
     id?: string;
