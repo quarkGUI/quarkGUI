@@ -737,7 +737,7 @@ public createModuleElement() {
 	}
 
 	let inputFieldElement = InputField.getModule(inputField);
-	let dummyInputFieldElement = `<div id='${this.id}-dummyInput' class='${Style.dummyInputField}'><span id='${this.id}-dummyInputValue' class='${Style.dummyInputFieldValue}'><span></div>`;
+	let dummyInputFieldElement = `<div id='${this.id}-dummyInput' class='${Style.dummyInputField}'><span id='${this.id}-dummyInputValue' class='${Style.dummyInputFieldValue}'></span></div>`;
 
 	if (datePickerIsReadOnly || datePickerIsDisabled){
 		let readOnlyClass:string = datePickerIsReadOnly ? Style.readOnly : '';
