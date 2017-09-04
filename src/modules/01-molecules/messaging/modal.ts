@@ -86,7 +86,7 @@ export class Modal {
 		let modalElementObject = this.modalElement;
 		document.addEventListener('DOMContentLoaded', function() {
 			let modalElement:HTMLElement = document.getElementById(modalElementId);
-			if (modalElementObject.maxWidth !== null){
+			if (modalElementObject.maxWidth !== null && modalElement !== null){
 				modalElement.style.maxWidth = modalElementObject.maxWidth;
 			}
 		}, false);
