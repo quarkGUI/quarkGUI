@@ -5,6 +5,9 @@ export declare class PrimaryNavigation {
     listItems: IListItem[];
     constructor(primaryNavigation: IPrimaryNavigation);
     private getThemeClass(theme);
+    private getResponsiveClass(listItem);
+    private createIconElement(listItem);
+    private createNameElement(listItem);
     private createListElements(listItems);
     private addListener();
     createModuleElement(): string;
@@ -14,6 +17,10 @@ export interface IDropdownContent {
 }
 export interface IListItem extends ListNavigation.IListItem {
     dropdownContent?: IDropdownContent;
+    responsive?: {
+        showIcon?: boolean;
+        showText?: boolean;
+    };
 }
 export interface IPrimaryNavigation {
     id?: string;

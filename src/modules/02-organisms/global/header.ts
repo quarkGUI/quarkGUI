@@ -8,12 +8,14 @@ export class Header {
 	id: string;
 	theme: string = "default";
 	logo: ILogo;
-	primaryNavigation: PrimaryNavigation.IPrimaryNavigation;
+	primaryNavigationLeft: PrimaryNavigation.IPrimaryNavigation;
+	primaryNavigationRight: PrimaryNavigation.IPrimaryNavigation;
 	sidebar: Sidebar.ISidebar;
 	constructor(header: IHeader) {
 		if (header.theme !== undefined) this.theme = header.theme;
 		if (header.logo !== undefined) this.logo = header.logo;
-		if (header.primaryNavigation !== undefined) this.primaryNavigation = header.primaryNavigation;
+		if (header.primaryNavigationLeft !== undefined) this.primaryNavigationLeft = header.primaryNavigationLeft;
+		if (header.primaryNavigationRight !== undefined) this.primaryNavigationRight = header.primaryNavigationRight;
 		if (header.sidebar !== undefined) this.sidebar = header.sidebar;
 	}
 
@@ -37,7 +39,6 @@ export class Header {
 		let logoImage = "";
 		let logoUrl = "#";
 		let sidebarElement = "";
-		let primaryNavigationElement = "";
 		if (this.logo !== undefined){
 			if (this.logo.image !== undefined) logoImage = Image.getModule(this.logo.image);
 			if (this.logo.url !== undefined) logoUrl = this.logo.url;
@@ -45,14 +46,25 @@ export class Header {
 		if (this.sidebar !== undefined){
 			sidebarElement = `<div id='sidebarToggle' class='overlay-element ${Style.sidenavToggle}'>${Sidebar.getModule(this.sidebar)}</div>`;
 		}
-		if (this.primaryNavigation !== undefined) {
-			if (this.primaryNavigation.theme == undefined) {
-				this.primaryNavigation.theme = this.theme;
+
+		let primaryNavigationLeftElement = "";
+		if (this.primaryNavigationLeft !== undefined) {
+			if (this.primaryNavigationLeft.theme == undefined) {
+				this.primaryNavigationLeft.theme = this.theme;
 			}
-			this.primaryNavigation.id = this.id + '-primary-navigation';
-			primaryNavigationElement = PrimaryNavigation.getModule(this.primaryNavigation);
+			this.primaryNavigationLeft.id = this.id + '-primary-navigation-left';
+			primaryNavigationLeftElement = PrimaryNavigation.getModule(this.primaryNavigationLeft);
 		}
-		return `<header class='${Style.navbar} ${themeClass}'>${sidebarElement}<a href='${logoUrl}' class='${Style.logo}'>${logoImage}</a><span class='${Style.menuDivider}'></span>${primaryNavigationElement}</header>`;
+		
+		let primaryNavigationRightElement = "";
+		if (this.primaryNavigationRight !== undefined) {
+			if (this.primaryNavigationRight.theme == undefined) {
+				this.primaryNavigationRight.theme = this.theme;
+			}
+			this.primaryNavigationRight.id = this.id + '-primary-navigation-right';
+			primaryNavigationRightElement = PrimaryNavigation.getModule(this.primaryNavigationRight);
+		}
+		return `<header class='${Style.navbar} ${themeClass}'>${sidebarElement}<a href='${logoUrl}' class='${Style.logo}'>${logoImage}</a><span class='${Style.menuDivider}'></span><div class='${Style.primaryNavigationLeft}'>${primaryNavigationLeftElement}</div><div class='${Style.primaryNavigationRight}'>${primaryNavigationRightElement}</div></header>`;
 	}
 }
 
@@ -66,7 +78,8 @@ export interface IHeader {
 	id: string;
 	theme?: string;
 	logo?: ILogo;
-	primaryNavigation?: PrimaryNavigation.IPrimaryNavigation;
+	primaryNavigationLeft?: PrimaryNavigation.IPrimaryNavigation;
+	primaryNavigationRight?: PrimaryNavigation.IPrimaryNavigation;
 	sidebar?: Sidebar.ISidebar;
 }
 

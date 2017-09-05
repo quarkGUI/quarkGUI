@@ -19,20 +19,53 @@ export class PrimaryNavigation {
 		return themeClass;
 	}
 
+	private getResponsiveClass(listItem: IListItem){
+		let responsiveClass = "";
+		if (listItem.responsive !== undefined){
+			let showIcon:boolean = listItem.responsive.showIcon !== undefined && listItem.responsive.showIcon;
+			let responsiveIconClass:string = showIcon ? Style.showIconOnPhone : "";
+
+			let showText:boolean = listItem.responsive.showText !== undefined && listItem.responsive.showText;
+			let responsiveTextClass:string = showText ? Style.showTextOnPhone : "";
+
+			responsiveClass = `${responsiveIconClass} ${responsiveTextClass}`;
+		}
+		return `${responsiveClass}`;
+	}
+
+	private createIconElement(listItem:IListItem){
+		let iconElement = '';
+		if (listItem.iconClass !== undefined){
+			iconElement = `<span class='${Style.listItemIcon} ${listItem.iconClass}'></span>`;
+		}
+		return iconElement;
+	}
+
+	private createNameElement(listItem:IListItem){
+		let nameElement = '';
+		if (listItem.name !== undefined){
+			nameElement = `${listItem.name}`;
+		}
+		return nameElement;
+	}
+
 	private createListElements(listItems){
 		let listElements = "";
 		if (this.listItems.length){
 			for (let listItem of this.listItems){
-				let dropdownContent = '';
-				let dropdownClass = '';
-				let listElement = '';
+				let dropdownContent:string = '';
+				let dropdownClass:string = '';
+				let iconElement:string = this.createIconElement(listItem);
+				let nameElement:string = this.createNameElement(listItem);
+				let listElement:string = '';
+				let responsiveClass = this.getResponsiveClass(listItem);
 				let hasDropdown: boolean = listItem.dropdownContent !== undefined;
 				if (hasDropdown){
 					dropdownContent = `<div class='${Style.dropdownContent}'>${ListNavigation.getModule(listItem.dropdownContent)}<div>`;
 					dropdownClass = `${Style.hasDropdown}`;
-					listElement = `<li class='overlay-element ${dropdownClass}'><span class='${Style.dropdownTitle}'>${listItem.name}</span>${dropdownContent}</li>`;
+					listElement = `<li class='overlay-element ${responsiveClass} ${dropdownClass}'>${iconElement}<span class='${Style.dropdownTitle}'>${nameElement}</span>${dropdownContent}</li>`;
 				}else{
-					listElement = `<li><a href='${listItem.link}'>${listItem.name}</a></li>`;
+					listElement = `<li class='${responsiveClass}'><a href='${listItem.link}'>${iconElement}<span class='${Style.linkTitle}'>${nameElement}</span></a></li>`;
 				}
 				listElements += listElement;
 			}
@@ -66,8 +99,6 @@ export class PrimaryNavigation {
 		let themeClass: string = this.getThemeClass(this.theme);
 		return `<ul id='${this.id}' class='${Style.list} ${themeClass}'>${listItemElements}</ul>`;
 	}
-
-
 }
 
 export interface IDropdownContent {
@@ -76,6 +107,10 @@ export interface IDropdownContent {
 
 export interface IListItem extends ListNavigation.IListItem{
 	dropdownContent?: IDropdownContent;
+	responsive?: {
+		showIcon?: boolean;
+		showText?: boolean;
+	}
 }
 
 export interface IPrimaryNavigation {

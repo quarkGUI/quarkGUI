@@ -5,7 +5,8 @@ export declare class Header {
     id: string;
     theme: string;
     logo: ILogo;
-    primaryNavigation: PrimaryNavigation.IPrimaryNavigation;
+    primaryNavigationLeft: PrimaryNavigation.IPrimaryNavigation;
+    primaryNavigationRight: PrimaryNavigation.IPrimaryNavigation;
     sidebar: Sidebar.ISidebar;
     constructor(header: IHeader);
     private addListener();
@@ -20,7 +21,8 @@ export interface IHeader {
     id: string;
     theme?: string;
     logo?: ILogo;
-    primaryNavigation?: PrimaryNavigation.IPrimaryNavigation;
+    primaryNavigationLeft?: PrimaryNavigation.IPrimaryNavigation;
+    primaryNavigationRight?: PrimaryNavigation.IPrimaryNavigation;
     sidebar?: Sidebar.ISidebar;
 }
 export declare function getModule(header: IHeader): string;

@@ -81,6 +81,13 @@
     line-height: 48px;
     vertical-align: bottom;
   }
+  :local(.primaryNavigationLeft){
+    display: inline;
+  }
+  :local(.primaryNavigationRight){
+    display: inline;
+    float: right;
+  }
 }
 
 @media only screen and (min-width: $screen-xs) {
