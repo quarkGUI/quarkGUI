@@ -29,8 +29,15 @@
     }
   }
   :local(span.listItemIcon){
-    margin: 0 2px 0 0;
+    margin: 6px 2px 0 0;
     display: none;
+    font-size: 30px;
+    line-height: 36px;
+    @media (min-width: $screen-sm) {
+      margin: 0px 2px 0 0;
+      font-size: 22px;
+      line-height: 51px;
+    }
   }
   &:local(.hasDropdown){
     :local(span.listItemIcon){
@@ -91,7 +98,7 @@
   @media only screen and (min-width: $screen-sm) {
     top: 64px;
   }
-  &::before {
+  :local(.arrow) {
     content: "";
     position: absolute;
     width: 0;
