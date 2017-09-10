@@ -15,6 +15,7 @@ export class ListItem implements IListItem{
 	expandableContent: string;
 	buttonRow: ButtonRow.IButtonRow;
 	hiddenButtonRow: boolean = false;
+	vueBindings: IVueBindings;
 	
 	constructor(listItem: IListItem) {
 		if (listItem.id !== undefined) this.id = listItem.id;
@@ -27,6 +28,7 @@ export class ListItem implements IListItem{
 		if (listItem.expandableContent !== undefined) this.expandableContent = listItem.expandableContent;
 		if (listItem.buttonRow !== undefined) this.buttonRow = listItem.buttonRow;
 		if (listItem.hiddenButtonRow !== undefined) this.hiddenButtonRow = listItem.hiddenButtonRow;
+		if (listItem.vueBindings !== undefined) this.vueBindings = listItem.vueBindings;
 	}
 
 	private addExpandableListener(){
@@ -66,17 +68,57 @@ export class ListItem implements IListItem{
 		}.bind(this));
 	}
 
+	private getVueBinding(attributeName){
+		let vueBinding = false;
+		if (this.vueBindings !== undefined){
+			vueBinding = this.vueBindings[attributeName] !== undefined ? this.vueBindings[attributeName] : false;
+		}
+		return vueBinding;
+	}
+
 	private createTitleElement(){
-		let singleLineClass = (this.title !== undefined && this.subTitle == undefined) ? Style.singleLine : '';
-		let subTitleElement = (this.subTitle !== undefined) ? `<small>${this.subTitle}</small>` : '';
-		let iconElement = (this.iconClass !== undefined) ? `<span class='${Style.listItemIcon} ${this.iconClass}'></span>` : '';
+		let hasTitle: boolean = this.title !== undefined || this.getVueBinding('title');
+		let hasSubTitle: boolean = this.subTitle !== undefined || this.getVueBinding('subTitle');
+		let hasLink: boolean = this.link !== undefined || this.getVueBinding('link');
+		let hasIconClass: boolean = this.iconClass !== undefined || this.getVueBinding('iconClass');
+
+		let singleLineClass = (hasTitle && !hasSubTitle) ? Style.singleLine : '';
+
+		let subTitleElement = '';
+		if (hasSubTitle){
+			let subTitle = this.getVueBinding('subTitle') ? "{{ " + this.getVueBinding('subTitle') + " }}" : this.subTitle;
+			let subTitleElement = (hasSubTitle) ? `<small>${this.subTitle}</small>` : '';
+		}
+
+		let iconElement = '';
+		if (hasIconClass){
+			let iconClassAttribute = '';
+			if (this.getVueBinding('iconClass')){
+				let iconClass = this.getVueBinding('iconClass');
+				iconClassAttribute = `class='${Style.listItemIcon}' v-bind:class='${iconClass}'`;
+			}else{
+				iconClassAttribute = `class='${Style.listItemIcon}'`;
+			}
+			iconElement = `<span ${iconClassAttribute}></span>`;
+		}
 
 		let titleElement = "";
-		if (this.title !== undefined && this.link !== undefined) {
-			titleElement = `<a id='${this.id}-title' href='${this.link}' class='${Style.listItemTitle} ${singleLineClass}'>${iconElement}${this.title} ${subTitleElement}</a>`;
-		}
-		else if (this.title !== undefined) {
-			titleElement = `<span id='${this.id}-title' class='${Style.listItemTitle} ${singleLineClass}'>${iconElement}${this.title} ${subTitleElement}</span>`;
+		if (hasTitle){
+			let title = this.getVueBinding('title') ? "{{ " + this.getVueBinding('title') + " }}" : this.title;
+			if (hasLink) {
+				let linkAttribute = '';
+				if (this.getVueBinding('link')){
+					let link = this.getVueBinding('link');
+					linkAttribute = `v-bind:href='${link}'`;
+				}else{
+					linkAttribute = `href='${this.link}'`;
+				}
+
+				titleElement = `<a id='${this.id}-title' ${linkAttribute} class='${Style.listItemTitle} ${singleLineClass}'>${iconElement}${title} ${subTitleElement}</a>`;
+			}
+			else {
+				titleElement = `<span id='${this.id}-title' class='${Style.listItemTitle} ${singleLineClass}'>${iconElement}${title} ${subTitleElement}</span>`;
+			}
 		}
 		return titleElement;
 	}
@@ -129,6 +171,13 @@ export class ListItem implements IListItem{
 	}
 }
 
+export interface IVueBindings{
+	title?: string;
+	subTitle?: string;
+	link?: string;
+	iconClass?: string;
+}
+
 export interface IListItem {
 	id?: string;
 	title?: string;
@@ -141,6 +190,7 @@ export interface IListItem {
 	expandableContent?: string;
 	buttonRow?: ButtonRow.IButtonRow;
 	hiddenButtonRow?: boolean;
+	vueBindings?: IVueBindings;
 }
 
 export function getModule(listItem: IListItem){
