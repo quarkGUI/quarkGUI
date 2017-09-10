@@ -7,7 +7,7 @@ export declare class ButtonRow {
     createModuleElement(): string;
 }
 export interface IButtonRow {
-    buttons: Button.IButton[];
+    buttons?: Button.IButton[];
     buttonElements?: string[];
     id?: string;
 }

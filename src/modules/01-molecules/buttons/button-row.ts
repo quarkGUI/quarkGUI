@@ -4,11 +4,11 @@ const Style = require<any>("../../../../src/modules/01-molecules/buttons/button-
 
 export class ButtonRow{
 	id: string = "";
-	buttons: Button.IButton[];
+	buttons: Button.IButton[] = [];
 	buttonElements = [];
 	constructor(buttonRow: IButtonRow) {
 		this.id = buttonRow.id;
-		this.buttons = buttonRow.buttons;
+		this.buttons = buttonRow.buttons !== undefined ? buttonRow.buttons : [];
 		this.buttonElements = buttonRow.buttonElements !== undefined ? buttonRow.buttonElements : [];
 	}
 	public createModuleElement(){
@@ -24,7 +24,7 @@ export class ButtonRow{
 }
 
 export interface IButtonRow{
-	buttons: Button.IButton[];
+	buttons?: Button.IButton[];
 	buttonElements?: string[];
 	id?: string;
 }
