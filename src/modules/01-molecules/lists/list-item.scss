@@ -1,0 +1,114 @@
+@import "../../../../src/style/abstracts/all";
+
+:local(.listItem){
+	padding: 10px;
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	@include transition(background-color .2s ease-in-out);
+	&:last-child{
+		border-bottom: none;
+	}
+	&:local(.dragable){
+		cursor: move;
+		cursor: grab;
+		cursor: -moz-grab;
+		cursor: -webkit-grab;
+		-webkit-user-drag: none;
+		-khtml-user-drag: none;
+		-moz-user-drag: none;
+		-o-user-drag: none;
+		user-drag: none;
+		&.gu-transit{
+			opacity: 1;
+			background-color: $default-color;
+			color: transparent;
+			* {
+				color: transparent;
+				border: none;
+				background-color: none;
+			}
+		}
+	}
+	&:local(.hover){
+		&:hover{
+			background-color: bright-gray($dark-color);
+		}
+	}
+	&:local(.hiddenButtonRow){
+		:local(.listItemButtonRow) {
+			@media (min-width: $screen-sm){
+				opacity: 0;
+			}
+		}
+		&:hover{
+			:local(.listItemButtonRow) {
+				opacity: 1;
+			}
+		}
+	}
+	:local(.listItemTitle){
+		display: inline-block;
+		font-size: 14pt;
+		line-height: 14pt;
+		overflow: hidden;
+		white-space: nowrap;
+		max-width: 100%;
+		vertical-align: middle;
+		text-overflow: ellipsis;
+		small {
+			display: block;
+			min-height: 19px;
+			font-size: 10pt;
+			color: $default-text-color;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		&:local(.singleLine) {
+			line-height: 34px;
+			vertical-align: text-bottom;
+		}
+	}
+	:local(.listItemDivider) {
+		display: inline-block;
+		content: "";
+		width: 1px;
+		height: 32px;
+		background-color: border-color($default-color);
+		vertical-align: middle;
+		margin: 0 8px;
+	}
+	:local(.listItemIcon){
+		margin-right: 8px;
+		color: $default-text-color;
+	}
+	:local(.listItemButtonRow) {
+		float: right;
+		>*{
+			display: inline-block;
+		}
+	}
+	:local(.listItemExpandButton){
+		line-height: 32px;
+		&:after{
+			font-family: FontAwesome;
+			font-size: 14pt;
+			content: "\F078";
+			display: inline-block;
+			cursor: pointer;
+			width: 29px;
+			text-align: center;
+			@include transition(transform .2s ease-in-out, top .2s ease-in-out);
+
+		}
+		&.active{
+			&:after{
+				transform: rotate(180deg);
+			}
+		}
+	}
+	:local(.listItemExpandableContent){
+		display: none;
+		&.active{
+			display: block;
+		}
+	}
+}

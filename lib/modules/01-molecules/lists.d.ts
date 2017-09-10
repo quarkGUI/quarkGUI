@@ -1,2 +1,3 @@
 import * as DragableList from "./lists/dragable-list";
-export { DragableList };
+import * as ListItem from "./lists/list-item";
+export { DragableList, ListItem };

@@ -55,6 +55,7 @@ npm run build
   - [Select list](src/modules/01-molecules/form-elements/select-list.md)
 - Lists
   - [Dragable list](src/modules/01-molecules/lists/dragable-list.md)
+  - [List item](src/modules/01-molecules/lists/list-item.md)
 - Menus
   - [Action bar menu](src/modules/01-molecules/menus/action-bar-menu.md)
 - Messaging
