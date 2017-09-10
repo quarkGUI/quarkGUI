@@ -75,9 +75,10 @@ npm run build
   - [Footer](src/modules/02-organisms/global/footer.md)
   - [Header](src/modules/02-organisms/global/header.md)
   - [Sidebar](src/modules/02-organisms/global/sidebar.md)
+- Lists
+  - [List](src/modules/02-organisms/menus/list.md)
 - Menus
   - [Action bar](src/modules/02-organisms/menus/action-bar.md)
-  - [List menu](src/modules/02-organisms/menus/list-menu.md)
 
 
 

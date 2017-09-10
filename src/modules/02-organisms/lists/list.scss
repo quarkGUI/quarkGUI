@@ -1,0 +1,13 @@
+@import "../../../../src/style/abstracts/all";
+
+:local(.listMenu){
+	list-style: none;
+	margin: 0;
+	background-color: #FFF;
+	border-radius: 2px;
+	
+}
+
+:local(.listMenuTypeRaised) {
+	@include raised(1);
+}
