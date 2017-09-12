@@ -98,7 +98,7 @@ export class ListItem implements IListItem{
 				let iconClass = this.getVueBinding('iconClass');
 				iconClassAttribute = `class='${Style.listItemIcon}' v-bind:class='${iconClass}'`;
 			}else{
-				iconClassAttribute = `class='${Style.listItemIcon}'`;
+				iconClassAttribute = `class='${Style.listItemIcon} ${this.iconClass}'`;
 			}
 			iconElement = `<span ${iconClassAttribute}></span>`;
 		}
