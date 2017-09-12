@@ -21,6 +21,7 @@ export class ListItem implements IListItem{
 		if (listItem.id !== undefined) this.id = listItem.id;
 		if (listItem.title !== undefined) this.title = listItem.title;
 		if (listItem.subTitle !== undefined) this.subTitle = listItem.subTitle;
+		if (listItem.link !== undefined) this.link = listItem.link;
 		if (listItem.iconClass !== undefined) this.iconClass = listItem.iconClass;
 		if (listItem.hover !== undefined) this.hover = listItem.hover;
 		if (listItem.dragable !== undefined) this.dragable = listItem.dragable;
