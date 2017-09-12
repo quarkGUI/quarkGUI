@@ -88,7 +88,7 @@ export class ListItem implements IListItem{
 		let subTitleElement = '';
 		if (hasSubTitle){
 			let subTitle = this.getVueBinding('subTitle') ? "{{ " + this.getVueBinding('subTitle') + " }}" : this.subTitle;
-			let subTitleElement = (hasSubTitle) ? `<small>${this.subTitle}</small>` : '';
+			let subTitleElement = hasSubTitle ? `<small>${subTitle}</small>` : '';
 		}
 
 		let iconElement = '';
