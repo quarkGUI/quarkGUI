@@ -5,7 +5,7 @@ const Style = require<any>("../../../../src/modules/00-atoms/buttons/button.scss
 export class Button {
 	id: string = "";
 	link: string = "#";
-	icon: string = "";
+	iconClass: string = "";
 	content: string = "";
 	title: string;
 	type?: string = "flat";
@@ -14,12 +14,13 @@ export class Button {
 	attributes: string[];
 	formWrapper: IFormWrapper;
 	ajaxOptions?: IAjaxOptions;
+	vueBindings: IVueBindings;
 
 	constructor(button: IButton) {
 		this.id = button.id;
 		if (button.id !== undefined) this.id = button.id;
 		if (button.link !== undefined) this.link = button.link;
-		if (button.iconClass !== undefined) this.icon = `<span class='${Style.icon} ${button.iconClass}'></span>`;
+		if (button.iconClass !== undefined) this.iconClass = button.iconClass;
 		if (button.content !== undefined ) this.content = button.content;
 		if (button.title !== undefined ) this.title = button.title;
 		if (button.type !== undefined) this.type = button.type;
@@ -38,6 +39,33 @@ export class Button {
 				hiddenFields: button.formWrapper.hiddenFields !== undefined && button.formWrapper.hiddenFields.length ? button.formWrapper.hiddenFields : []
 			};
 		}
+
+		if (button.vueBindings !== undefined) this.vueBindings = button.vueBindings;
+
+	}
+
+	private getVueBinding(attributeName){
+		let vueBinding = false;
+		if (this.vueBindings !== undefined){
+			vueBinding = this.vueBindings[attributeName] !== undefined ? this.vueBindings[attributeName] : false;
+		}
+		return vueBinding;
+	}
+
+	private getFormWrapperVueBinding(attributeName){
+		let vueBinding = false;
+		if (this.formWrapper.vueBindings !== undefined){
+			vueBinding = this.formWrapper.vueBindings[attributeName] !== undefined ? this.formWrapper.vueBindings[attributeName] : false;
+		}
+		return vueBinding;
+	}
+
+	private getFormWrapperHiddenFieldVueBinding(attributeName, hiddenField: IHiddenField){
+		let vueBinding = false;
+		if (hiddenField.vueBindings !== undefined){
+			vueBinding = hiddenField.vueBindings[attributeName] !== undefined ? hiddenField.vueBindings[attributeName] : false;
+		}
+		return vueBinding;
 	}
 
 	private getThemeClass(theme: string){
@@ -72,7 +100,24 @@ export class Button {
 		let hiddenFieldsElement = '';
 		if (this.formWrapper.hiddenFields !== undefined && this.formWrapper.hiddenFields.length){
 			this.formWrapper.hiddenFields.forEach(function (hiddenField){
-				hiddenFieldsElement += `<input type='hidden' name='${hiddenField.name}' value='${hiddenField.value}' />`;
+
+				let nameAttribute = '';
+				if (this.getFormWrapperHiddenFieldVueBinding('name', hiddenField)){
+					let name = this.getFormWrapperVueBinding('name', hiddenField);
+					nameAttribute = `v-bind:name='${name}'`;
+				} else{
+					nameAttribute = `name='${hiddenField.name}'`;
+				}
+
+				let valueAttribute = '';
+				if (this.getFormWrapperHiddenFieldVueBinding('value', hiddenField)){
+					let value = this.getFormWrapperVueBinding('value', hiddenField);
+					valueAttribute = `v-bind:value='${value}'`;
+				} else{
+					valueAttribute = `value='${hiddenField.value}'`;
+				}
+
+				hiddenFieldsElement += `<input type='hidden' ${nameAttribute} ${valueAttribute} />`;
 			});
 		}
 		return hiddenFieldsElement;
@@ -80,7 +125,24 @@ export class Button {
 
 	private addFormWrapper(moduleElement:string){
 		let hiddenFields:string = this.addHiddenFields();
-		return `<form action='${this.formWrapper.formAction}' method='${this.formWrapper.formMethod}' class='${Style.formWrapper}'>${hiddenFields}${moduleElement}</form>`;
+		
+		let formActionAttribute = '';
+		if (this.getFormWrapperVueBinding('formAction')){
+			let formAction = this.getFormWrapperVueBinding('formAction');
+			formActionAttribute = `v-bind:action='${formAction}'`;
+		} else{
+			formActionAttribute = `action='${this.formWrapper.formAction}'`;
+		}
+
+		let formMethodAttribute = '';
+		if (this.getFormWrapperVueBinding('formMethod')){
+			let formMethod = this.getFormWrapperVueBinding('formMethod');
+			formMethodAttribute = `v-bind:method='${formMethod}'`;
+		} else{
+			formMethodAttribute = `method='${this.formWrapper.formMethod}'`;
+		}
+
+		return `<form ${formActionAttribute} ${formMethodAttribute} class='${Style.formWrapper}'>${hiddenFields}${moduleElement}</form>`;
 	}
 
 	private addAjaxListener(){
@@ -124,15 +186,62 @@ export class Button {
 	public createModuleElement() {
 		let themeClass = this.getThemeClass(this.theme)
 		let typeClass = (this.type !== undefined) ? this.getTypeClass(this.type) : Style.buttonTypeFlat;
-		let titleAttribute: string = (this.title !== undefined) ? `title='${this.title}'` : '';
+
+		let hasTitle: boolean = this.title !== undefined || this.getVueBinding('title');
+		let hasContent: boolean = this.content !== undefined || this.getVueBinding('content');
+		let hasLink: boolean = this.link !== undefined || this.getVueBinding('link');
+		let hasIconClass: boolean = this.iconClass !== undefined || this.getVueBinding('iconClass');
+
 		let isSubmitButton:boolean = this.submit !== undefined && this.submit === true;
 		let htmlAtributes: string = this.attributes !== undefined && this.attributes.length ? this.getHtmlAttributes(this.attributes) : '';
 		let moduleElement:string = '';
+
+		let titleAttribute: string = '';
+		if (hasTitle){
+			if (this.getVueBinding('title')){
+				let title = this.getVueBinding('title');
+				titleAttribute = `v-bind:title='${title}'`;
+			}else{
+				titleAttribute = `title='${this.iconClass}'`;
+			}
+		}
+
+		let content: any = '';
+		if (hasContent){
+			if (this.getVueBinding('content')){
+				content = this.getVueBinding('content');
+			}else{
+				content = this.content;
+			}
+		}
+
+		let hrefAttribute: string = '';
+		if (hasLink){
+			if (this.getVueBinding('link')){
+				let link = this.getVueBinding('link');
+				hrefAttribute = `v-bind:href='${link}'`;
+			}else{
+				hrefAttribute = `href='${this.link}'`;
+			}
+		}
+
+		let iconElement: string = '';
+		if (hasIconClass){
+			let iconClassAttribute = '';
+			if (this.getVueBinding('iconClass')){
+				let iconClass = this.getVueBinding('iconClass');
+				iconClassAttribute = `class='${Style.icon}' v-bind:class='${iconClass}'`;
+			}else{
+				iconClassAttribute = `class='${Style.icon} ${this.iconClass}'`;
+			}
+			iconElement = `<span ${iconClassAttribute}></span>`;
+		}
+
 		
 		if (isSubmitButton){
-			moduleElement = `<button type='submit' id='${this.id}' ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</button>`;
+			moduleElement = `<button type='submit' id='${this.id}' ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${iconElement} ${content}</button>`;
 		}else{
-			moduleElement = `<a id='${this.id}' ${titleAttribute} href='${this.link}' ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${this.icon} ${this.content}</a>`;
+			moduleElement = `<a id='${this.id}' ${titleAttribute} ${hrefAttribute} ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${iconElement} ${content}</a>`;
 		}
 
 		if (this.formWrapper !== undefined){
@@ -145,15 +254,27 @@ export class Button {
 	}
 }
 
-export interface IHiddenField {
+export interface IHiddenFieldVueBindings {
 	name: string;
 	value: string;
+}
+
+export interface IHiddenField {
+	name?: string;
+	value?: string;
+	vueBindings?: IHiddenFieldVueBindings;
+}
+
+export interface IFormWrapperVueBindings {
+	formAction?: string;
+	formMethod?: string;
 }
 
 export interface IFormWrapper {
 	formAction?: string;
 	formMethod?: string;
 	hiddenFields?: IHiddenField[];
+	vueBindings?: IFormWrapperVueBindings;
 }
 
 export interface IDataFromElement {
@@ -170,6 +291,13 @@ export interface IAjaxOptions {
 	dataFromElements?: IDataFromElement[];
 }
 
+export interface IVueBindings{
+	title?: string;
+	content?: string;
+	link?: string;
+	iconClass?: string;
+}
+
 export interface IButton {
 	id?: string; 
 	type?: string; 
@@ -182,6 +310,7 @@ export interface IButton {
 	attributes?: string[];
 	formWrapper?: IFormWrapper;
 	ajaxOptions?: IAjaxOptions;
+	vueBindings?: IVueBindings;
 }
 
 export function getModule(button: IButton){
