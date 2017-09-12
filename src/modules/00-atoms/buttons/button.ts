@@ -118,7 +118,7 @@ export class Button {
 				}
 
 				hiddenFieldsElement += `<input type='hidden' ${nameAttribute} ${valueAttribute} />`;
-			});
+			}.bind(this));
 		}
 		return hiddenFieldsElement;
 	}
