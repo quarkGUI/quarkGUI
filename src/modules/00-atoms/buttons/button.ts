@@ -209,7 +209,7 @@ export class Button {
 		let content: any = '';
 		if (hasContent){
 			if (this.getVueBinding('content')){
-				content = this.getVueBinding('content');
+				content = "{{ " + this.getVueBinding('content') + " }}";
 			}else{
 				content = this.content;
 			}
