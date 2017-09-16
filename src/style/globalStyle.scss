@@ -80,5 +80,23 @@ main{
 				@include raised(1);
 			}
 		}
+		.content-container-header {
+			background: $primary-color;
+			color: #FFFFFF;
+			margin: -25px -25px 0 -25px;
+			padding: 14px 25px;
+			font-size: 14pt;
+			> * {
+				font-size: 14pt;
+				line-height: 14pt;
+				margin: 0;
+				font-weight: normal;
+			}
+			@media (min-width: $main-content-max-width - 50px) {
+				margin: -10px -10px 0 -10px;
+				padding: 14px 15px;
+				@include border-radius(2px 2px 0 0);
+			}
+		}
 	}
 }
