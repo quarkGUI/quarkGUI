@@ -15,10 +15,11 @@ export class SelectList extends AtomSelectList.SelectList {
 		if (selectList.label !== undefined) this.label = selectList.label;
 		if (selectList.options !== undefined) this.options = selectList.options;
 		if (selectList.attributes !== undefined) this.attributes = selectList.attributes;
+		if (selectList.vueBindings !== undefined) this.vueBindings = selectList.vueBindings;
 	}
 
 	public createModuleElement() {
-		let selectList: any = {
+		let selectList: AtomSelectList.ISelectList = {
 			id: this.id,
 			name: this.name,
 			searchable: this.searchable,
@@ -26,7 +27,8 @@ export class SelectList extends AtomSelectList.SelectList {
 			value: this.value,
 			placeholder: this.placeholder,
 			options: this.options,
-			attributes: this.attributes
+			attributes: this.attributes,
+			vueBindings: this.vueBindings
 		}
 
 		if (this.label !== undefined) selectList.labelElement = `<label for='${this.id}' class='${Style.label}'>${this.label}</label>`;

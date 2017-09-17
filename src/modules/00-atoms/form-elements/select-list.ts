@@ -4,13 +4,15 @@ const Style = require<any>("../../../../src/modules/00-atoms/form-elements/selec
 export class SelectList {
 	id: string;
 	name: string;
-	searchable: boolean = false;
-	type: string = "text";
-	value: any = "";
-	placeholder: string = "";
-	labelElement: string = "";
-	optionElements: string = "";
-	attributes: string[];
+	searchable?: boolean = false;
+	type?: string = "text";
+	value?: any = "";
+	placeholder?: string = "";
+	labelElement?: string = "";
+	//optionElements: string = "";
+	options?: IOptions[];
+	attributes?: string[];
+	vueBindings?: IVueBindings;
 	constructor(selectList: ISelectList) {
 		this.id = selectList.id;
 		this.name = selectList.name;
@@ -19,8 +21,9 @@ export class SelectList {
 		if (selectList.value !== undefined) this.value = selectList.value;
 		if (selectList.placeholder !== undefined) this.placeholder = selectList.placeholder;
 		if (selectList.labelElement !== undefined) this.labelElement = selectList.labelElement;
-		if (selectList.options !== undefined) this.optionElements = this.createOptionElements(selectList.options);
+		if (selectList.options !== undefined) this.options = selectList.options;
 		if (selectList.attributes !== undefined) this.attributes = selectList.attributes;
+		if (selectList.vueBindings !== undefined) this.vueBindings = selectList.vueBindings;
 	}
 
 	private elementIsNotNullOrUndefinedById(id: string){
@@ -29,6 +32,14 @@ export class SelectList {
 
 	private elementIsNotNullOrUndefinedByTagName(containerElement: HTMLElement, tagName: string){
 		return containerElement.getElementsByTagName(tagName).length > 0;
+	}
+
+	private getVueBinding(attributeName){
+		let vueBinding = false;
+		if (this.vueBindings !== undefined){
+			vueBinding = this.vueBindings[attributeName] !== undefined ? this.vueBindings[attributeName] : false;
+		}
+		return vueBinding;
 	}
 
 	private addListener(selectList: SelectList, inputField, dropdownList){
@@ -124,6 +135,18 @@ export class SelectList {
 		let selectListIsReadOnly:boolean = this.attributes !== undefined && this.attributes.indexOf('readonly') > -1;
 		let selectListIsDisabled:boolean = this.attributes !== undefined && this.attributes.indexOf('disabled') > -1;
 
+		let hasOptions: boolean = this.options !== undefined || this.getVueBinding('options');
+		let optionElements = '';
+		if (hasOptions){
+			if (this.getVueBinding('options')){
+				let options = this.getVueBinding('options');
+				optionElements = `<li v-for="option in ${options}" v-bind:data-value="option.value">{{option.name}}</li>`;
+			}else{
+				optionElements = this.createOptionElements(this.options);
+			}
+		}
+		
+
 		let readOnlyClass:string = selectListIsReadOnly ? Style.readOnly : '';
 		let disabledClass:string = selectListIsDisabled ? Style.disabled : '';
 		this.addListener(this, inputField, dropdownList);
@@ -131,7 +154,7 @@ export class SelectList {
 		if (selectListIsReadOnly || selectListIsDisabled){
 			selectListElement = `<div id='${this.id}' class='overlay-element ${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${this.labelElement}</div>`;
 		}else{
-			selectListElement = `<div id='${this.id}' class='overlay-element ${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${this.labelElement}<div class='${Style.dropdownList}'><ul id='${dropdownList.id}'>${this.optionElements}</ul></div></div>`;
+			selectListElement = `<div id='${this.id}' class='overlay-element ${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${this.labelElement}<div class='${Style.dropdownList}'><ul id='${dropdownList.id}'>${optionElements}</ul></div></div>`;
 		}
 		return selectListElement;
 	}
@@ -140,6 +163,10 @@ export class SelectList {
 export interface IOptions{
 	name: string;
 	value: any;
+}
+
+export interface IVueBindings{
+	options?: string;
 }
 
 export interface ISelectList{
@@ -152,6 +179,7 @@ export interface ISelectList{
 	labelElement?: string;
 	options?: IOptions[];
 	attributes?: string[];
+	vueBindings?: IVueBindings;
 }
 
 export function getModule(selectList: ISelectList){
