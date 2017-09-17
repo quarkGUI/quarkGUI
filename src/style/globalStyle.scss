@@ -51,6 +51,8 @@ main{
 	height: 100%;
 	overflow: auto;
 	margin-top: 48px;
+	position: absolute;
+	width: 100%;
 	@include transition(all .2s);
 	@include calc(height, '100% - 48px');
 
