@@ -128,6 +128,13 @@ export class SelectList {
 			placeholder: this.placeholder,
 			attributes: this.attributes
 		}
+		if (this.vueBindings !== undefined){
+			if (this.vueBindings.value !== undefined){
+				inputField.vueBindings = inputField.vueBindings !== undefined ? inputField.vueBindings : {};
+				inputField.vueBindings.value = this.vueBindings.value;
+			}
+		}
+
 		let dropdownList = {
 			id: this.id + '-dropdownList'
 		}
@@ -166,6 +173,7 @@ export interface IOptions{
 
 export interface IVueBindings{
 	options?: string;
+	value?: any;
 }
 
 export interface ISelectList{
