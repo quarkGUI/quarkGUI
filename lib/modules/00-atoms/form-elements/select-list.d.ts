@@ -23,6 +23,7 @@ export interface IOptions {
 }
 export interface IVueBindings {
     options?: string;
+    value?: any;
 }
 export interface ISelectList {
     id: string;
