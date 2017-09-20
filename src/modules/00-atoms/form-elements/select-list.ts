@@ -9,7 +9,6 @@ export class SelectList {
 	value?: any = "";
 	placeholder?: string = "";
 	labelElement?: string = "";
-	//optionElements: string = "";
 	options?: IOptions[];
 	attributes?: string[];
 	vueBindings?: IVueBindings;
