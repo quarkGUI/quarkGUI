@@ -19,7 +19,7 @@
     "Benjamin Dehli <superelg@gmail.com> (https://github.com/benjamindehli)"
   ],
   "license": "GPL-3.0",
-  "homepage": "https://github.com/benjamindehli/quarkGUI",
+  "homepage": "https://github.com/quarkGUI/quarkGUI",
   "ignore": [
     "**/.*",
     "node_modules",

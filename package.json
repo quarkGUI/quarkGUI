@@ -1,6 +1,6 @@
 {
   "name": "quark-gui",
-  "version": "0.7.20",
+  "version": "0.7.21",
   "description": "Webpack GUI framework based on atomic design",
   "keywords": [
     "atomic",
@@ -33,7 +33,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benjamindehli/quarkGUI.git"
+    "url": "git+https://github.com/quarkGUI/quarkGUI.git"
   },
   "author": "Benjamin Dehli <superelg@gmail.com> (https://github.com/benjamindehli)",
   "license": "GPL-3.0",
@@ -60,9 +60,9 @@
     "webpack-dev-server": "^2.5.0"
   },
   "bugs": {
-    "url": "https://github.com/benjamindehli/quarkGUI/issues"
+    "url": "https://github.com/quarkGUI/quarkGUI/issues"
   },
-  "homepage": "https://github.com/benjamindehli/quarkGUI#readme",
+  "homepage": "https://github.com/quarkGUI/quarkGUI#readme",
   "dependencies": {
     "axios": "^0.16.2",
     "dragula": "^3.7.2"
