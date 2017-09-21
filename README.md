@@ -1,6 +1,6 @@
 # quarkGUI
 
-[![Build Status](https://travis-ci.org/benjamindehli/quarkGUI.svg?branch=master)](https://travis-ci.org/benjamindehli/quarkGUI)
+[![Build Status](https://travis-ci.org/quarkGUI/quarkGUI.svg?branch=master)](https://travis-ci.org/quarkGUI/quarkGUI)
 [![npm version](https://badge.fury.io/js/quark-gui.svg)](https://badge.fury.io/js/quark-gui)
 [![Bower version](https://badge.fury.io/bo/quark-gui.svg)](https://badge.fury.io/bo/quark-gui)
 
@@ -8,7 +8,7 @@ Webpack GUI framework based on atomic design
 
 ## Clone or install quarkGUI
 ### Clone:
-- Clone the repository: `git clone https://github.com/benjamindehli/quarkGUI.git`
+- Clone the repository: `git clone https://github.com/quarkGUI/quarkGUI.git`
 
 ### Install:
 - Install with [npm](https://www.npmjs.com): `npm install quark-gui`
