@@ -9,7 +9,7 @@
   @include appearance(none);
   &:before{
     font-family: FontAwesome;
-    content: "\f1db";
+    content: "\f10c";
   }
 
   :local(.input):focus {
@@ -22,7 +22,7 @@
   &:checked{
     + :local(.radioIcon){
       &:before{
-        content: "\f111";
+        content: "\f192";
         color: $primary-color;
       }
     }
