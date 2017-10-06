@@ -10,12 +10,14 @@ export class Header {
 	logo: ILogo;
 	primaryNavigationLeft: PrimaryNavigation.IPrimaryNavigation;
 	primaryNavigationRight: PrimaryNavigation.IPrimaryNavigation;
+	htmlContent: string;
 	sidebar: Sidebar.ISidebar;
 	constructor(header: IHeader) {
 		if (header.theme !== undefined) this.theme = header.theme;
 		if (header.logo !== undefined) this.logo = header.logo;
 		if (header.primaryNavigationLeft !== undefined) this.primaryNavigationLeft = header.primaryNavigationLeft;
 		if (header.primaryNavigationRight !== undefined) this.primaryNavigationRight = header.primaryNavigationRight;
+		if (header.htmlContent !== undefined) this.htmlContent = header.htmlContent;
 		if (header.sidebar !== undefined) this.sidebar = header.sidebar;
 	}
 
@@ -64,7 +66,9 @@ export class Header {
 			this.primaryNavigationRight.id = this.id + '-primary-navigation-right';
 			primaryNavigationRightElement = PrimaryNavigation.getModule(this.primaryNavigationRight);
 		}
-		return `<header class='${Style.navbar} ${themeClass}'>${sidebarElement}<a href='${logoUrl}' class='${Style.logo}'>${logoImage}</a><span class='${Style.menuDivider}'></span><div class='${Style.primaryNavigationLeft}'>${primaryNavigationLeftElement}</div><div class='${Style.primaryNavigationRight}'>${primaryNavigationRightElement}</div></header>`;
+		let htmlContent = (this.htmlContent !== undefined && this.htmlContent !== null) ? this.htmlContent : "";
+		
+		return `<header class='${Style.navbar} ${themeClass}'>${sidebarElement}<a href='${logoUrl}' class='${Style.logo}'>${logoImage}</a><span class='${Style.menuDivider}'></span><div class='${Style.primaryNavigationLeft}'>${primaryNavigationLeftElement}</div>${htmlContent}<div class='${Style.primaryNavigationRight}'>${primaryNavigationRightElement}</div></header>`;
 	}
 }
 
@@ -80,6 +84,7 @@ export interface IHeader {
 	logo?: ILogo;
 	primaryNavigationLeft?: PrimaryNavigation.IPrimaryNavigation;
 	primaryNavigationRight?: PrimaryNavigation.IPrimaryNavigation;
+	htmlContent?: string;
 	sidebar?: Sidebar.ISidebar;
 }
 
