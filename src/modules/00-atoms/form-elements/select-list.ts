@@ -100,6 +100,10 @@ export class SelectList {
 						inputFieldElement.value = optionValue;
 						searchInputFieldElement.value = optionName;
 						searchInputFieldElement.classList.add("is-not-empty");
+
+						var event = document.createEvent('Event');
+						event.initEvent('input', true, true);
+						inputFieldElement.dispatchEvent(event);
 					}
 				});
 
