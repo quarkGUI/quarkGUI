@@ -5,11 +5,22 @@ export class Checkbox {
 	name: string;
 	value: string;
 	attributes: string[];
+	vueBindings: IVueBindings;
 	constructor(checkbox: ICheckbox) {
 		this.id = checkbox.id;
 		this.name = checkbox.name;
 		this.value = checkbox.value;
 		if (checkbox.attributes !== undefined) this.attributes = checkbox.attributes;
+		if (checkbox.vueBindings !== undefined) this.vueBindings = checkbox.vueBindings;
+
+	}
+
+	private getVueBinding(attributeName){
+		let vueBinding = false;
+		if (this.vueBindings !== undefined){
+			vueBinding = this.vueBindings[attributeName] !== undefined ? this.vueBindings[attributeName] : false;
+		}
+		return vueBinding;
 	}
 
 	private addListener(id: string){
@@ -21,6 +32,10 @@ export class Checkbox {
 				let iconElement: HTMLElement =  document.getElementById('checkbox-toggle-' + id);
 				iconElement.onclick = () => {
 					checkboxElement.checked = checkboxElement.checked ? false : true;
+
+					var event = document.createEvent('Event');
+					event.initEvent('click', true, true);
+					checkboxElement.dispatchEvent(event);
 				};
 			}
 		}, false);
@@ -38,10 +53,52 @@ export class Checkbox {
 	}
 
 	public createModuleElement() {
+		let hasId: boolean = this.id !== undefined || this.getVueBinding('id');
+		let hasName: boolean = this.name !== undefined || this.getVueBinding('name');
+		let hasValue: boolean = this.value !== undefined;
+		let hasVueValue: boolean = this.getVueBinding('value');
+
+		let idAttribute = '';
+		if (hasId){
+			if (this.getVueBinding('id')){
+				let id = this.getVueBinding('id');
+				idAttribute = `v-bind:id='${id}'`;
+			}else{
+				idAttribute = `id='${this.id}'`;
+			}
+		}
+
+		let nameAttribute = '';
+		if (hasName){
+			if (this.getVueBinding('name')){
+				let name = this.getVueBinding('name');
+				nameAttribute = `v-bind:name='${name}'`;
+			}else{
+				nameAttribute = `name='${this.name}'`;
+			}
+		}
+
+		let valueAttribute = '';
+		if (hasValue){
+			valueAttribute = `value='${this.value}'`;
+		}
+
+		let vueValueAttribute = '';
+		if (hasVueValue){
+			let value = this.getVueBinding('value');
+			vueValueAttribute = `v-model='${value}'`;
+		}
+
 		this.addListener(this.id);
 		let htmlAtributes: string = this.attributes !== undefined && this.attributes.length ? this.getHtmlAttributes(this.attributes) : '';
-		return `<input id='${this.id}' name='${this.name}' type='checkbox' value='${this.value}' class='${Style.input}' /><span id='checkbox-toggle-${this.id}' ${htmlAtributes} class='${Style.checkboxIcon}'></span>`;
+		return `<input ${idAttribute} ${nameAttribute} type='checkbox' ${valueAttribute} ${vueValueAttribute} class='${Style.input}' /><span id='checkbox-toggle-${this.id}' ${htmlAtributes} class='${Style.checkboxIcon}'></span>`;
 	}
+}
+
+export interface IVueBindings{
+	id?: string;
+	name?: string;
+	value?: string;
 }
 
 export interface ICheckbox{
@@ -49,6 +106,7 @@ export interface ICheckbox{
 	name: string;
 	value: string;
 	attributes?: string[];
+	vueBindings?: IVueBindings;
 }
 
 

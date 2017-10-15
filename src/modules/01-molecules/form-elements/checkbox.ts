@@ -7,6 +7,7 @@ export class Checkbox extends AtomCheckbox.Checkbox{
 		super({id: checkbox.id, name: checkbox.name, value: checkbox.value});
 		if(checkbox.label !== undefined) this.label = checkbox.label;
 		if (checkbox.attributes !== undefined) this.attributes = checkbox.attributes;
+		if (checkbox.vueBindings !== undefined) this.vueBindings = checkbox.vueBindings;
 	}
 
 	public createModuleElement() {
@@ -14,7 +15,8 @@ export class Checkbox extends AtomCheckbox.Checkbox{
 			id: this.id,
 			name: this.name,
 			value: this.value,
-			attributes: this.attributes
+			attributes: this.attributes,
+			vueBindings: this.vueBindings
 		};
 		return `<div class='${Style.inputGroup}'>${AtomCheckbox.getModule(checkbox)}<label for='${this.id}' class='${Style.label}'>${this.label}</label></div>`;
 	}
