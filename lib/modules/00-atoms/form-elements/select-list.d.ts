@@ -13,7 +13,7 @@ export declare class SelectList {
     private elementIsNotNullOrUndefinedById(id);
     private elementIsNotNullOrUndefinedByTagName(containerElement, tagName);
     private getVueBinding(attributeName);
-    private addListener(selectList, inputField, dropdownList);
+    private addListener(selectList, inputField, searchInputField, dropdownList);
     private createOptionElements(options);
     createModuleElement(): string;
 }
