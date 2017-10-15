@@ -41,16 +41,18 @@ export class SelectList {
 		return vueBinding;
 	}
 
-	private addListener(selectList: SelectList, inputField, dropdownList){
+	private addListener(selectList: SelectList, inputField, searchInputField, dropdownList){
 		document.addEventListener('DOMContentLoaded', function(e) {
 			let selectListElementIsDefined: boolean = selectList.elementIsNotNullOrUndefinedById(selectList.id);
 			let inputFieldElementIsDefined: boolean = selectList.elementIsNotNullOrUndefinedById(inputField.id);
+			let searchInputFieldElementIsDefined: boolean = selectList.elementIsNotNullOrUndefinedById(searchInputField.id);
 			let dropdownListElementIsDefined: boolean = selectList.elementIsNotNullOrUndefinedById(dropdownList.id);
 
 			
 			if (selectListElementIsDefined && inputFieldElementIsDefined && dropdownListElementIsDefined){
 				let selectListElement:HTMLElement = document.getElementById(selectList.id);
 				let inputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(inputField.id);
+				let searchInputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(searchInputField.id);
 				var dropdownListElement:HTMLElement = document.getElementById(dropdownList.id);
 
 				let labelElementIsDefined: boolean = selectList.elementIsNotNullOrUndefinedByTagName(selectListElement, "LABEL");
@@ -59,17 +61,17 @@ export class SelectList {
 					let labelElementList: NodeListOf<Element> = selectListElement.getElementsByTagName("LABEL");
 					let labelElement: HTMLElement = <HTMLElement>labelElementList.item(0);
 					labelElement.onclick = function(){
-						if (inputFieldElementIsDefined){
-							inputFieldElement.focus();
+						if (searchInputFieldElementIsDefined){
+							searchInputFieldElement.focus();
 						}
 					}
 				}
 
-				inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
+				inputFieldElement.value ? searchInputFieldElement.classList.add("is-not-empty") : searchInputFieldElement.classList.remove("is-not-empty");
 				if (selectList.searchable){
-					inputFieldElement.addEventListener("keyup", function(e) {
-						inputFieldElement.value.length ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
-						var filter = inputFieldElement.value.toUpperCase();
+					searchInputFieldElement.addEventListener("keyup", function(e) {
+						searchInputFieldElement.value.length ? searchInputFieldElement.classList.add("is-not-empty") : searchInputFieldElement.classList.remove("is-not-empty");
+						var filter = searchInputFieldElement.value.toUpperCase();
 						var listItems = dropdownListElement.getElementsByTagName('li');
 						for (var i = 0; i < listItems.length; i++) {
 							if (listItems[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
@@ -80,7 +82,7 @@ export class SelectList {
 						}
 					});
 				}else{
-					inputFieldElement.addEventListener("keydown", function(e) {
+					searchInputFieldElement.addEventListener("keydown", function(e) {
 						e.preventDefault();
 						return false;
 					});
@@ -93,9 +95,11 @@ export class SelectList {
 						if(!target) { return; } // If element doesn't exist
 					}
 					if (target.tagName === 'LI'){
-						var optionValue = target.getAttribute("data-value");
+						let optionValue = target.getAttribute("data-value");
+						let optionName = target.innerHTML;
 						inputFieldElement.value = optionValue;
-						inputFieldElement.classList.add("is-not-empty");
+						searchInputFieldElement.value = optionName;
+						searchInputFieldElement.classList.add("is-not-empty");
 					}
 				});
 
@@ -123,8 +127,16 @@ export class SelectList {
 		let inputField: InputField.IInputField = {
 			id: this.id + '-input',
 			name: this.name,
-			type: this.type,
+			type: 'hidden',
 			value: this.value,
+			placeholder: this.placeholder,
+			attributes: this.attributes
+		}
+		let searchInputField: InputField.IInputField = {
+			id: this.id + '-search',
+			name: this.name + '-search',
+			type: 'text',
+			value: '',
 			placeholder: this.placeholder,
 			attributes: this.attributes
 		}
@@ -155,12 +167,12 @@ export class SelectList {
 
 		let readOnlyClass:string = selectListIsReadOnly ? Style.readOnly : '';
 		let disabledClass:string = selectListIsDisabled ? Style.disabled : '';
-		this.addListener(this, inputField, dropdownList);
+		this.addListener(this, inputField, searchInputField, dropdownList);
 		let selectListElement:string = '';
 		if (selectListIsReadOnly || selectListIsDisabled){
-			selectListElement = `<div id='${this.id}' class='overlay-element ${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${this.labelElement}</div>`;
+			selectListElement = `<div id='${this.id}' class='overlay-element ${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${InputField.getModule(searchInputField)} ${this.labelElement}</div>`;
 		}else{
-			selectListElement = `<div id='${this.id}' class='overlay-element ${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${this.labelElement}<div class='${Style.dropdownList}'><ul id='${dropdownList.id}'>${optionElements}</ul></div></div>`;
+			selectListElement = `<div id='${this.id}' class='overlay-element ${Style.dropdownContainer} ${readOnlyClass} ${disabledClass}'>${InputField.getModule(inputField)} ${InputField.getModule(searchInputField)} ${this.labelElement}<div class='${Style.dropdownList}'><ul id='${dropdownList.id}'>${optionElements}</ul></div></div>`;
 		}
 		return selectListElement;
 	}
