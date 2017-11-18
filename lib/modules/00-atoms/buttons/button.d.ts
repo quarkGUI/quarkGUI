@@ -24,8 +24,8 @@ export declare class Button {
     createModuleElement(): string;
 }
 export interface IHiddenFieldVueBindings {
-    name: string;
-    value: string;
+    name?: string;
+    value?: string;
 }
 export interface IHiddenField {
     name?: string;
