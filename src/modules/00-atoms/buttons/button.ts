@@ -38,6 +38,8 @@ export class Button {
 				formMethod: button.formWrapper.formMethod !== undefined ? button.formWrapper.formMethod : '',
 				hiddenFields: button.formWrapper.hiddenFields !== undefined && button.formWrapper.hiddenFields.length ? button.formWrapper.hiddenFields : []
 			};
+			
+			if (button.formWrapper.vueBindings !== undefined) this.formWrapper.vueBindings = button.formWrapper.vueBindings;
 		}
 
 		if (button.vueBindings !== undefined) this.vueBindings = button.vueBindings;
@@ -103,7 +105,7 @@ export class Button {
 
 				let nameAttribute = '';
 				if (this.getFormWrapperHiddenFieldVueBinding('name', hiddenField)){
-					let name = this.getFormWrapperVueBinding('name', hiddenField);
+					let name = this.getFormWrapperHiddenFieldVueBinding('name', hiddenField);
 					nameAttribute = `v-bind:name='${name}'`;
 				} else{
 					nameAttribute = `name='${hiddenField.name}'`;
@@ -111,7 +113,7 @@ export class Button {
 
 				let valueAttribute = '';
 				if (this.getFormWrapperHiddenFieldVueBinding('value', hiddenField)){
-					let value = this.getFormWrapperVueBinding('value', hiddenField);
+					let value = this.getFormWrapperHiddenFieldVueBinding('value', hiddenField);
 					valueAttribute = `v-bind:value='${value}'`;
 				} else{
 					valueAttribute = `value='${hiddenField.value}'`;
@@ -255,8 +257,8 @@ export class Button {
 }
 
 export interface IHiddenFieldVueBindings {
-	name: string;
-	value: string;
+	name?: string;
+	value?: string;
 }
 
 export interface IHiddenField {
