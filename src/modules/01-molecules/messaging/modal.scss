@@ -60,6 +60,7 @@
     }
     :local(.modalContainer){
       background-color: #FFF;
+      text-align: left;
       height: 100%;
       @include border-radius(2px);
       @media (min-width: $screen-sm) {
