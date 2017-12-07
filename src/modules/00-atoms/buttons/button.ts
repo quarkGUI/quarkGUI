@@ -154,28 +154,29 @@ export class Button {
 				
 				if (button.id !== undefined){
 					let buttonElement:HTMLElement = document.getElementById(button.id);
-					
-					buttonElement.onclick = function(){
-						if (button.ajaxOptions.csrfToken !== undefined){
-							axios.defaults.headers.common['X-CSRF-TOKEN'] = button.ajaxOptions.csrfToken;
-						}
-						if (button.ajaxOptions.method == 'post' || button.ajaxOptions.method == 'put'){
-							let ajaxData = button.ajaxOptions.data !== undefined ? button.ajaxOptions.data : {};
+					if (buttonElement !== null){
+						buttonElement.onclick = function(){
+							if (button.ajaxOptions.csrfToken !== undefined){
+								axios.defaults.headers.common['X-CSRF-TOKEN'] = button.ajaxOptions.csrfToken;
+							}
+							if (button.ajaxOptions.method == 'post' || button.ajaxOptions.method == 'put'){
+								let ajaxData = button.ajaxOptions.data !== undefined ? button.ajaxOptions.data : {};
 
-							if (button.ajaxOptions.getDataFromElements && button.ajaxOptions.dataFromElements !== undefined){
-								button.ajaxOptions.dataFromElements.forEach(function (dataFromElement){
-									let inputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(dataFromElement.elementId);
-									if (inputElement !== null){
-										ajaxData[dataFromElement.name] = inputElement.value;
-									}
+								if (button.ajaxOptions.getDataFromElements && button.ajaxOptions.dataFromElements !== undefined){
+									button.ajaxOptions.dataFromElements.forEach(function (dataFromElement){
+										let inputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(dataFromElement.elementId);
+										if (inputElement !== null){
+											ajaxData[dataFromElement.name] = inputElement.value;
+										}
+									});
+								}
+
+								axios({
+									method: button.ajaxOptions.method,
+									url: button.ajaxOptions.url,
+									data: ajaxData
 								});
 							}
-
-							axios({
-								method: button.ajaxOptions.method,
-								url: button.ajaxOptions.url,
-								data: ajaxData
-							});
 						}
 					}
 				}else {
@@ -189,6 +190,7 @@ export class Button {
 		let themeClass = this.getThemeClass(this.theme)
 		let typeClass = (this.type !== undefined) ? this.getTypeClass(this.type) : Style.buttonTypeFlat;
 
+		let hasId: boolean = this.id !== undefined || this.getVueBinding('id');
 		let hasTitle: boolean = this.title !== undefined || this.getVueBinding('title');
 		let hasContent: boolean = this.content !== undefined || this.getVueBinding('content');
 		let hasLink: boolean = this.link !== undefined || this.getVueBinding('link');
@@ -197,6 +199,16 @@ export class Button {
 		let isSubmitButton:boolean = this.submit !== undefined && this.submit === true;
 		let htmlAtributes: string = this.attributes !== undefined && this.attributes.length ? this.getHtmlAttributes(this.attributes) : '';
 		let moduleElement:string = '';
+
+		let idAttribute: string = '';
+		if (hasId){
+			if (this.getVueBinding('id')){
+				let id = this.getVueBinding('id');
+				idAttribute = `v-bind:id='${id}'`;
+			}else{
+				idAttribute = `id='${this.id}'`;
+			}
+		}
 
 		let titleAttribute: string = '';
 		if (hasTitle){
@@ -241,9 +253,9 @@ export class Button {
 
 		
 		if (isSubmitButton){
-			moduleElement = `<button type='submit' id='${this.id}' ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${iconElement} ${content}</button>`;
+			moduleElement = `<button type='submit' ${idAttribute} ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${iconElement} ${content}</button>`;
 		}else{
-			moduleElement = `<a id='${this.id}' ${titleAttribute} ${hrefAttribute} ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${iconElement} ${content}</a>`;
+			moduleElement = `<a ${idAttribute} ${titleAttribute} ${hrefAttribute} ${htmlAtributes} class='${Style.button} ${typeClass} ${themeClass}'>${iconElement} ${content}</a>`;
 		}
 
 		if (this.formWrapper !== undefined){
@@ -294,6 +306,7 @@ export interface IAjaxOptions {
 }
 
 export interface IVueBindings{
+	id?: string;
 	title?: string;
 	content?: string;
 	link?: string;
