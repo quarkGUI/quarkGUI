@@ -15,5 +15,11 @@
  import * as Organisms from "./modules/organisms";
  import * as Globals from "./modules/global";
 
+ const LazyInit = function () {
+ 	let event = new CustomEvent("quarkLazyLoaded", { "detail": "One or more modules has been lazy loaded" });
+ 	document.dispatchEvent(event);
+ }
 
- export {Atoms, Molecules, Organisms, Globals, Init}
+ 
+
+ export {Atoms, Molecules, Organisms, Globals, Init, LazyInit}
