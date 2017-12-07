@@ -1,14 +1,23 @@
 import * as ButtonRow from '../../01-molecules/buttons/button-row';
+export declare let counter: number;
+export declare let eventListeners: string[];
 export declare class Modal {
     id: string;
     triggerElement: string;
     modalElement: IModalElement;
+    vueBindings: IVueBindings;
     constructor(modal: IModal);
-    private addListener(triggerId, targetId, closeId);
-    private createTriggerElement();
+    private getVueBinding(attributeName);
+    initModal(targetId: any): void;
+    private initAllModals();
+    private addListener();
+    private createTriggerElement(triggerIdAttribute);
     private createFooterButtonsElement();
     private setMaxWidth();
     createModuleElement(): string;
+}
+export interface IVueBindings {
+    id?: string;
 }
 export interface IFooterButtons {
     buttonRow: ButtonRow.IButtonRow;
@@ -27,5 +36,6 @@ export interface IModal {
     id: string;
     triggerElement: string;
     modalElement: IModalElement;
+    vueBindings?: IVueBindings;
 }
 export declare function getModule(modal: IModal): string;

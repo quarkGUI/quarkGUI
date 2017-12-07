@@ -55,6 +55,7 @@ export interface IAjaxOptions {
     dataFromElements?: IDataFromElement[];
 }
 export interface IVueBindings {
+    id?: string;
     title?: string;
     content?: string;
     link?: string;
