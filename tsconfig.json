@@ -4,7 +4,8 @@
 		"rootDirs": ["./"],
 		"declaration": true,
 		"declarationDir": "lib/",
-		"baseUrl": "."
+		"baseUrl": ".",
+		"lib": ["dom", "es7"]
 	},
 	"files": [
     	"src/main.ts",
