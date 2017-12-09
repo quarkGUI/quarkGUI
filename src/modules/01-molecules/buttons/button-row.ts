@@ -6,26 +6,34 @@ export class ButtonRow{
 	id: string = "";
 	buttons: Button.IButton[] = [];
 	buttonElements = [];
+	buttonElementsFirst = false;
 	constructor(buttonRow: IButtonRow) {
 		this.id = buttonRow.id;
 		this.buttons = buttonRow.buttons !== undefined ? buttonRow.buttons : [];
 		this.buttonElements = buttonRow.buttonElements !== undefined ? buttonRow.buttonElements : [];
+		this.buttonElementsFirst = buttonRow.buttonElementsFirst !== undefined ? buttonRow.buttonElementsFirst : false;
 	}
 	public createModuleElement(){
-		let buttonHtmlElements: string = "";
+		let buttonsHtmlString: string = "";
+		let buttonElementsHtmlString: string = "";
+		let mergedButtonsString: string = "";
 		for (let button of this.buttons){ 
-			buttonHtmlElements += Button.getModule(button);
+			buttonsHtmlString += Button.getModule(button);
 		}
 		for (let buttonElement of this.buttonElements){ 
-			buttonHtmlElements += buttonElement;
+			buttonElementsHtmlString += buttonElement;
 		}
-		return `<span id='${this.id}' class='${Style.buttonRow}'>${buttonHtmlElements}</span>`;
+		if (this.buttonElementsFirst) mergedButtonsString = `${buttonElementsHtmlString}${buttonsHtmlString}`;
+		else mergedButtonsString = `${buttonsHtmlString}${buttonElementsHtmlString}`;
+		
+		return `<span id='${this.id}' class='${Style.buttonRow}'>${mergedButtonsString}</span>`;
 	}
 }
 
 export interface IButtonRow{
 	buttons?: Button.IButton[];
 	buttonElements?: string[];
+	buttonElementsFirst?: boolean;
 	id?: string;
 }
 
