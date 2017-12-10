@@ -8,8 +8,7 @@ export declare class Modal {
     vueBindings: IVueBindings;
     constructor(modal: IModal);
     private getVueBinding(attributeName);
-    initModal(targetId: any): void;
-    private initAllModals();
+    private initFunction(id?);
     private addListener();
     private createTriggerElement(triggerIdAttribute);
     private createFooterButtonsElement();

@@ -19,7 +19,7 @@ export interface IVueBindings {
     placeholder?: string;
 }
 export interface IInputField {
-    id: string;
+    id?: string;
     name: string;
     type?: string;
     value?: any;
