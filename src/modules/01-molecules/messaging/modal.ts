@@ -32,106 +32,57 @@ export class Modal {
 		return vueBinding;
 	}
 
-	public initModal(targetId){
-		document.addEventListener('DOMContentLoaded', function() {
+	private initFunction(id?: string){
+		{
+			let targetId = id != undefined ? id : this.id;
+			let triggerId:string = targetId + '-trigger';
+			let closeId:string = targetId + '-close';
 
-				//let targetId:string = this.getVueBinding('id') ? '' + this.getVueBinding('id') : this.id;
-				let triggerId:string = targetId + '-trigger';
-				let closeId:string = targetId + '-close';
+			let elementsIsDefined: boolean = document.getElementById(triggerId) !== undefined && document.getElementById(targetId) !== undefined && document.getElementById(closeId) !== undefined;
+			let elementsIsNotNull: boolean = document.getElementById(triggerId) !== null && document.getElementById(targetId) !== null && document.getElementById(closeId) !== null;
+			if (elementsIsDefined && elementsIsNotNull){
+				let triggerElement:HTMLElement = document.getElementById(triggerId);
+				let targetElement:HTMLElement = document.getElementById(targetId);
+				let closeElement:HTMLElement = document.getElementById(closeId);
 
-				let elementsIsDefined: boolean = document.getElementById(triggerId) !== undefined && document.getElementById(targetId) !== undefined && document.getElementById(closeId) !== undefined;
-				let elementsIsNotNull: boolean = document.getElementById(triggerId) !== null && document.getElementById(targetId) !== null && document.getElementById(closeId) !== null;
-				if (elementsIsDefined && elementsIsNotNull){
-					let triggerElement:HTMLElement = document.getElementById(triggerId);
-					let targetElement:HTMLElement = document.getElementById(targetId);
-					let closeElement:HTMLElement = document.getElementById(closeId);
-
-
-					triggerElement.onclick = function(){
-						if (triggerElement.classList.contains('active')){
-							triggerElement.classList.remove('active');
-							targetElement.classList.remove('active');
-						}else{
-							triggerElement.classList.add('active');
-							targetElement.classList.add('active');
-						}
-					}
-					targetElement.onclick = function(event:any){
-						let targetClassListIsDefined:boolean = event.target.classList !== undefined;
-						if (targetClassListIsDefined){
-							let targetClassList:DOMTokenList = event.target.classList;
-							if (targetClassList.contains(Style.modalOverlay)){
-								triggerElement.classList.remove('active');
-								targetElement.classList.remove('active');
-							}
-						}
-					}
-					closeElement.onclick = function(event:any){
+				triggerElement.onclick = function(){
+					if (triggerElement.classList.contains('active')){
 						triggerElement.classList.remove('active');
 						targetElement.classList.remove('active');
+					}else{
+						triggerElement.classList.add('active');
+						targetElement.classList.add('active');
 					}
 				}
-			}, false);
-	}
-
-	private initAllModals(){
-		let self = this;
-		document.addEventListener('quarkLazyLoaded', function (){
-			let self = this;
-			let targetElements = document.getElementsByClassName(Style.modalOverlay);
-			for (var i = 0; i < targetElements.length; i++) {
-
-				let targetId = targetElements[i].id;
-
-				let triggerId:string = targetId + '-trigger';
-				let closeId:string = targetId + '-close';
-
-				let elementsIsDefined: boolean = document.getElementById(triggerId) !== undefined && document.getElementById(targetId) !== undefined && document.getElementById(closeId) !== undefined;
-				let elementsIsNotNull: boolean = document.getElementById(triggerId) !== null && document.getElementById(targetId) !== null && document.getElementById(closeId) !== null;
-				if (elementsIsDefined && elementsIsNotNull){
-					let triggerElement:HTMLElement = document.getElementById(triggerId);
-					let targetElement:HTMLElement = document.getElementById(targetId);
-					let closeElement:HTMLElement = document.getElementById(closeId);
-
-
-					triggerElement.onclick = function(){
-						if (triggerElement.classList.contains('active')){
+				targetElement.onclick = function(event:any){
+					let targetClassListIsDefined:boolean = event.target.classList !== undefined;
+					if (targetClassListIsDefined){
+						let targetClassList:DOMTokenList = event.target.classList;
+						if (targetClassList.contains(Style.modalOverlay)){
 							triggerElement.classList.remove('active');
 							targetElement.classList.remove('active');
-						}else{
-							triggerElement.classList.add('active');
-							targetElement.classList.add('active');
 						}
 					}
-
-					targetElement.onclick = function(event:any){
-						let targetClassListIsDefined:boolean = event.target.classList !== undefined;
-						if (targetClassListIsDefined){
-							let targetClassList:DOMTokenList = event.target.classList;
-							if (targetClassList.contains(Style.modalOverlay)){
-								triggerElement.classList.remove('active');
-								targetElement.classList.remove('active');
-							}
-						}
-					}
-					closeElement.onclick = function(event:any){
-						triggerElement.classList.remove('active');
-						targetElement.classList.remove('active');
-					}
+				}
+				closeElement.onclick = function(event:any){
+					triggerElement.classList.remove('active');
+					targetElement.classList.remove('active');
 				}
 			}
-		}, false);
+		}
 	}
-
 
 	private addListener(){
 		let self = this;
-		this.initModal(this.id);
-
-		if (!eventListeners.includes('quarkLazyLoaded')){
-			this.initAllModals();
-			eventListeners.push('quarkLazyLoaded');
-		}
+		document.addEventListener('DOMContentLoaded', function(){
+			self.initFunction();
+		}, false);
+		document.addEventListener('quarkLazyLoaded', function(){
+			let targetElements = document.getElementsByClassName(Style.modalOverlay);
+			for (var i = 0; i < targetElements.length; i++){
+				self.initFunction(targetElements[i].id);
+			}
+		}, false);
 	}
 
 	private createTriggerElement(triggerIdAttribute){
