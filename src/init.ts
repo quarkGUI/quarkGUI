@@ -1,5 +1,5 @@
 export default function(){
-	document.addEventListener('DOMContentLoaded', function() {
+	let initFunction = function () {
 		let overlayElementsIsDefined:boolean = document.getElementsByClassName('overlay-element') !== undefined;
 		if (overlayElementsIsDefined){
 			let overlayElements =  document.getElementsByClassName('overlay-element');
@@ -25,5 +25,6 @@ export default function(){
 				}
 			}
 		}
-	}, false);
+	}
+	document.addEventListener('DOMContentLoaded', initFunction, false);
 }
