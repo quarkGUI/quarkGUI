@@ -119,7 +119,7 @@ export interface IVueBindings{
 }
 
 export interface IInputField{
-	id: string;
+	id?: string;
 	name: string;
 	type?: string;
 	value?: any;
