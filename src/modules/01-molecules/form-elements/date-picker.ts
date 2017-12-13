@@ -23,6 +23,14 @@ export class DatePicker {
 		interactive: false,
 		required: true
 	};
+	inputField: InputField.IInputField;
+	modal: Modal.IModal;
+	dummyInputField: {
+		id: string
+	};
+	dummyInputFieldValue: {
+		id: string
+	}
 
 
 	constructor(datePicker: IDatePicker) {
@@ -49,6 +57,16 @@ export class DatePicker {
 				required: true
 			}
 		}
+
+		this.dummyInputField = {id: ''};
+		this.dummyInputFieldValue = {id: ''};
+		this.modal = {
+			id: '',
+			triggerElement: '',
+			modalElement: {
+				content: ''
+			}
+		};
 
 		let activeDate = new Date();
 		let selectedDate = new Date();
@@ -79,48 +97,55 @@ export class DatePicker {
 		return document.getElementById(id) !== undefined && document.getElementById(id) !== null;
 	}
 
-	private addListener(inputField, modalId){
-		let datePicker = this;
-		document.addEventListener('DOMContentLoaded', function(e) {
-			let datePickerElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id);
-			let inputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
-			let dummyInputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id + '-dummyInput');
-			let dummyInputFieldValueElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id + '-dummyInputValue');
+	private initFunction(id?: string){
 
-			let modalElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(modalId);
-
-			if (inputFieldElementIsDefined && modalElementIsDefined && dummyInputFieldElementIsDefined && dummyInputFieldValueElementIsDefined){
-				let inputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(inputField.id);
-				let dummyInputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-dummyInput');
-				let dummyInputFieldValueElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-dummyInputValue');
-				let modalElement:HTMLElement = document.getElementById(modalId);
-
-				let activeTabClass = datePicker.type == 'time' ? 'active-tab-clock' : 'active-tab-callendar';
-				modalElement.classList.add(activeTabClass);
+		let datePickerId = id != undefined ? id : this.id;
+		let modalId = id != undefined ? id + '-datepicker-modal' : this.modal.id;
+		let inputFieldId = id != undefined ? this.id + '-input' : this.inputField.id;
+		let dummyInputFieldId = id != undefined ? this.id + '-dummyInput' : this.dummyInputField.id;
+		let dummyInputFieldValueId = id != undefined ? this.id + '-dummyInputValue' : this.dummyInputFieldValue.id;
 
 
-				inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
-				dummyInputFieldValueElement.innerHTML = inputFieldElement.value;
 
-				inputFieldElement.addEventListener("keydown", function(e) {
-					e.preventDefault();
-					return false;
-				});
-				
-				dummyInputFieldElement.onclick = function(){
-					modalElement.classList.add("active");
-				};
+		let datePickerElementIsDefined: boolean = this.elementIsNotNullOrUndefinedById(datePickerId);
+		let inputFieldElementIsDefined: boolean = this.elementIsNotNullOrUndefinedById(inputFieldId);
+		let dummyInputFieldElementIsDefined: boolean = this.elementIsNotNullOrUndefinedById(dummyInputFieldId);
+		let dummyInputFieldValueElementIsDefined: boolean = this.elementIsNotNullOrUndefinedById(dummyInputFieldValueId);
+
+		let modalElementIsDefined: boolean = this.elementIsNotNullOrUndefinedById(modalId);
+
+		if (inputFieldElementIsDefined && modalElementIsDefined && dummyInputFieldElementIsDefined && dummyInputFieldValueElementIsDefined){
+			let inputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(inputFieldId);
+			let dummyInputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(dummyInputFieldId);
+			let dummyInputFieldValueElement:HTMLInputElement = <HTMLInputElement> document.getElementById(dummyInputFieldValueId);
+			let modalElement:HTMLElement = document.getElementById(modalId);
+
+			let activeTabClass = this.type == 'time' ? 'active-tab-clock' : 'active-tab-callendar';
+			modalElement.classList.add(activeTabClass);
 
 
-				if (modalElementIsDefined){
+			inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
+			dummyInputFieldValueElement.innerHTML = inputFieldElement.value;
 
-					if (datePicker.type == 'datetime' && !datePicker.clockOptions.required){
-						datePicker.initSelectedTime();
-					}
+			inputFieldElement.addEventListener("keydown", function(e) {
+				e.preventDefault();
+				return false;
+			});
 
-					datePicker.updateSubmitButtonState();
+			dummyInputFieldElement.onclick = function(){
+				modalElement.classList.add("active");
+			};
 
-					modalElement.addEventListener('click', function (e) {
+
+			if (modalElementIsDefined){
+
+				if (this.type == 'datetime' && !this.clockOptions.required){
+					this.initSelectedTime();
+				}
+
+				this.updateSubmitButtonState();
+
+				modalElement.addEventListener('click', function (e) {
 						let target: any = e.target; // Clicked element
 						while (target && target.parentNode !== modalElement) {
 							target = target.parentNode; // If the clicked element isn't a direct child
@@ -136,6 +161,7 @@ export class DatePicker {
 
 					// Tab toggle buttons
 					let toggleTabCallendarElementIsNotNull: boolean = document.getElementById(modalId + '-toggleTabCallendar') !== null;
+
 					if (toggleTabCallendarElementIsNotNull){
 						let toggleTabCallendarElement: HTMLElement = document.getElementById(modalId + '-toggleTabCallendar');
 						toggleTabCallendarElement.addEventListener('click', function (e){
@@ -153,24 +179,24 @@ export class DatePicker {
 					}
 				}
 
-				if (datePicker.type == 'date' || datePicker.type == 'datetime'){
-					datePicker.addDateSelectorListener();
+				if (this.type == 'date' || this.type == 'datetime'){
+					this.addDateSelectorListener();
 				}
-				if (datePicker.type == 'time' || datePicker.type == 'datetime'){
-					datePicker.addTimeSelectorListener();
+				if (this.type == 'time' || this.type == 'datetime'){
+					this.addTimeSelectorListener();
 				}
 
-				let submitValueButtonElement = document.getElementById(datePicker.id + '-datepicker-submit');
+				let submitValueButtonElement = document.getElementById(this.id + '-datepicker-submit');
 				submitValueButtonElement.addEventListener('click', function (e) {
 					let dateValue = '';
-					if (datePicker.type == 'date'){
-						dateValue = datePicker.setDateValue();
+					if (this.type == 'date'){
+						dateValue = this.setDateValue();
 					}
-					else if (datePicker.type == 'time'){
-						dateValue = datePicker.setTimeValue();
+					else if (this.type == 'time'){
+						dateValue = this.setTimeValue();
 					}
-					else if (datePicker.type == 'datetime'){
-						dateValue = datePicker.setDateTimeValue();
+					else if (this.type == 'datetime'){
+						dateValue = this.setDateTimeValue();
 					}
 					inputFieldElement.value = dateValue;
 					dummyInputFieldValueElement.innerHTML = inputFieldElement.value;
@@ -180,120 +206,122 @@ export class DatePicker {
 					}else{
 						inputFieldElement.classList.remove("is-not-empty");
 					}
-				});
+				}.bind(this));
 			}
-		}, false);
-}
-
-private addDisabledOrReadOnlyListener(inputField){
-	let datePicker = this;
-	document.addEventListener('DOMContentLoaded', function(e) {
-		let inputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
-		let dummyInputFieldValueElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id + '-dummyInputValue');
-		if (inputFieldElementIsDefined && dummyInputFieldValueElementIsDefined){
-			let inputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(inputField.id);
-			let dummyInputFieldValueElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-dummyInputValue');
-
-			inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
-			dummyInputFieldValueElement.innerHTML = inputFieldElement.value;
 		}
-	});
-}
 
-
-private addDateSelectorListener(){
-	let datePicker = this;
-
-	/* Callendar listener */
-	let callendarElement:HTMLElement = document.getElementById(datePicker.id + '-datepicker-modal-callendar');
-	callendarElement.addEventListener('click', function (e) {
-		let target:any = e.target;
-		if (target.classList.contains(Style.day)){
-			datePicker.selectedDate = {
-				day: target.dataset.day,
-				weekDay: target.dataset.weekDay,
-				month: target.dataset.month,
-				year: target.dataset.year
-			};
-
-			let previewElement:HTMLElement = document.getElementById(datePicker.id + '-preview');
-			let callendarMonthElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-month');
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			callendarMonthElement.innerHTML = datePicker.createMonthElement();
+		private addListener(){
+			let self = this;
+			document.addEventListener('DOMContentLoaded', function(){
+				self.initFunction();
+			}, false);
 		}
-	});
 
+		private addDisabledOrReadOnlyListener(inputField){
+			let datePicker = this;
+			document.addEventListener('DOMContentLoaded', function(e) {
+				let inputFieldElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(inputField.id);
+				let dummyInputFieldValueElementIsDefined: boolean = datePicker.elementIsNotNullOrUndefinedById(datePicker.id + '-dummyInputValue');
+				if (inputFieldElementIsDefined && dummyInputFieldValueElementIsDefined){
+					let inputFieldElement:HTMLInputElement = <HTMLInputElement> document.getElementById(inputField.id);
+					let dummyInputFieldValueElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-dummyInputValue');
 
-	let callendarMonthPrevElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-month-prev');
-	let callendarMonthNextElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-month-next');
-	let callendarYearPrevElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-year-prev');
-	let callendarYearNextElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-year-next');
-
-	let callendarMonthElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-month');
-	let callendarDateSelectorElement:HTMLElement = document.getElementById(datePicker.id + '-callendar-date-selector');
-
-	callendarMonthPrevElement.addEventListener('click', function (e) {
-		if (datePicker.visibleDate.month > 1){
-			datePicker.visibleDate.month--;
-		}else{
-			datePicker.visibleDate.month = 12;
-			datePicker.visibleDate.year--;
+					inputFieldElement.value ? inputFieldElement.classList.add("is-not-empty") : inputFieldElement.classList.remove("is-not-empty");
+					dummyInputFieldValueElement.innerHTML = inputFieldElement.value;
+				}
+			});
 		}
-		callendarMonthElement.innerHTML = datePicker.createMonthElement();
-		callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement();
-		datePicker.addDateSelectorListener();
-	});
-	callendarMonthNextElement.addEventListener('click', function (e) {
-		if (datePicker.visibleDate.month < 12){
-			datePicker.visibleDate.month++;
-		}else{
-			datePicker.visibleDate.month = 1;
-			datePicker.visibleDate.year++;
+
+
+		private addDateSelectorListener(){
+			/* Callendar listener */
+			let callendarElement:HTMLElement = document.getElementById(this.id + '-datepicker-modal-callendar');
+			callendarElement.addEventListener('click', function (e) {
+				let target:any = e.target;
+				if (target.classList.contains(Style.day)){
+					this.selectedDate = {
+						day: target.dataset.day,
+						weekDay: target.dataset.weekDay,
+						month: target.dataset.month,
+						year: target.dataset.year
+					};
+
+					let previewElement:HTMLElement = document.getElementById(this.id + '-preview');
+					let callendarMonthElement:HTMLElement = document.getElementById(this.id + '-callendar-month');
+					previewElement.innerHTML = this.createPreviewElement();
+					callendarMonthElement.innerHTML = this.createMonthElement();
+				}
+			}.bind(this));
+
+
+			let callendarMonthPrevElement:HTMLElement = document.getElementById(this.id + '-callendar-month-prev');
+			let callendarMonthNextElement:HTMLElement = document.getElementById(this.id + '-callendar-month-next');
+			let callendarYearPrevElement:HTMLElement = document.getElementById(this.id + '-callendar-year-prev');
+			let callendarYearNextElement:HTMLElement = document.getElementById(this.id + '-callendar-year-next');
+
+			let callendarMonthElement:HTMLElement = document.getElementById(this.id + '-callendar-month');
+			let callendarDateSelectorElement:HTMLElement = document.getElementById(this.id + '-callendar-date-selector');
+
+			callendarMonthPrevElement.addEventListener('click', function (e) {
+				if (this.visibleDate.month > 1){
+					this.visibleDate.month--;
+				}else{
+					this.visibleDate.month = 12;
+					this.visibleDate.year--;
+				}
+				callendarMonthElement.innerHTML = this.createMonthElement();
+				callendarDateSelectorElement.innerHTML = this.createDateSelectorElement();
+				this.addDateSelectorListener();
+			}.bind(this));
+			callendarMonthNextElement.addEventListener('click', function (e) {
+				if (this.visibleDate.month < 12){
+					this.visibleDate.month++;
+				}else{
+					this.visibleDate.month = 1;
+					this.visibleDate.year++;
+				}
+				callendarMonthElement.innerHTML = this.createMonthElement();
+				this.innerHTML = this.createDateSelectorElement();
+				this.addDateSelectorListener();
+			}.bind(this));
+			callendarYearPrevElement.addEventListener('click', function (e) {
+				this.visibleDate.year--;
+				callendarMonthElement.innerHTML = this.createMonthElement();
+				callendarDateSelectorElement.innerHTML = this.createDateSelectorElement();
+				this.addDateSelectorListener();
+			}.bind(this));
+			callendarYearNextElement.addEventListener('click', function (e) {
+				this.visibleDate.year++;
+				callendarMonthElement.innerHTML = this.createMonthElement();
+				callendarDateSelectorElement.innerHTML = this.createDateSelectorElement();
+				this.addDateSelectorListener();
+			}.bind(this));
 		}
-		callendarMonthElement.innerHTML = datePicker.createMonthElement();
-		callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement();
-		datePicker.addDateSelectorListener();
-	});
-	callendarYearPrevElement.addEventListener('click', function (e) {
-		datePicker.visibleDate.year--;
-		callendarMonthElement.innerHTML = datePicker.createMonthElement();
-		callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement();
-		datePicker.addDateSelectorListener();
-	});
-	callendarYearNextElement.addEventListener('click', function (e) {
-		datePicker.visibleDate.year++;
-		callendarMonthElement.innerHTML = datePicker.createMonthElement();
-		callendarDateSelectorElement.innerHTML = datePicker.createDateSelectorElement();
-		datePicker.addDateSelectorListener();
-	});
-}
 
-private initSelectedTime(){
-	if (this.selectedTime == null){
-		this.selectedTime = {
-			hours: 0, 
-			minutes: 0, 
-			seconds: 0 
+		private initSelectedTime(){
+			if (this.selectedTime == null){
+				this.selectedTime = {
+					hours: 0, 
+					minutes: 0, 
+					seconds: 0 
+				}
+			}
 		}
-	}
-}
 
-private addTimeSelectorListener(){
-	let datePicker = this;
+		private addTimeSelectorListener(){
+			let clockTimeSelectorElement:HTMLElement = document.getElementById(this.id + '-clock-time-selector');
+			let previewElement:HTMLElement = document.getElementById(this.id + '-preview');
 
-	let clockTimeSelectorElement:HTMLElement = document.getElementById(datePicker.id + '-clock-time-selector');
-	let previewElement:HTMLElement = document.getElementById(datePicker.id + '-preview');
+			if (this.clockOptions.showHours){
+				let clockHoursInputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(this.id + '-clock-hours-input');
+				let clockHoursUpElement:HTMLElement = document.getElementById(this.id + '-clock-hours-up');
+				let clockHoursDownElement:HTMLElement = document.getElementById(this.id + '-clock-hours-down');
 
-	if (datePicker.clockOptions.showHours){
-		let clockHoursInputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-clock-hours-input');
-		let clockHoursUpElement:HTMLElement = document.getElementById(datePicker.id + '-clock-hours-up');
-		let clockHoursDownElement:HTMLElement = document.getElementById(datePicker.id + '-clock-hours-down');
-
-		clockHoursInputElement.value ? clockHoursInputElement.classList.add("is-not-empty") : clockHoursInputElement.classList.remove("is-not-empty");
+				clockHoursInputElement.value ? clockHoursInputElement.classList.add("is-not-empty") : clockHoursInputElement.classList.remove("is-not-empty");
 
 		// Selector for hours
-		clockHoursInputElement.addEventListener('blur', function (e) {
-			datePicker.initSelectedTime();
+		clockHoursInputElement.addEventListener('blur', function () {
+			this.initSelectedTime();
 			let value:number;
 			if (Number(this.value) < 0){
 				value = 0;
@@ -302,45 +330,45 @@ private addTimeSelectorListener(){
 			}else{
 				value = Number(this.value);
 			}
-			datePicker.selectedTime.hours = value;
-			clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			datePicker.addTimeSelectorListener();
-		});
-		clockHoursUpElement.addEventListener('click', function (e) {
-			datePicker.initSelectedTime();
-			if (datePicker.selectedTime.hours < 23){
-				datePicker.selectedTime.hours++;
+			this.selectedTime.hours = value;
+			clockTimeSelectorElement.innerHTML = this.createTimeSelectorElement();
+			previewElement.innerHTML = this.createPreviewElement();
+			this.addTimeSelectorListener();
+		}.bind(this));
+		clockHoursUpElement.addEventListener('click', function () {
+			this.initSelectedTime();
+			if (this.selectedTime.hours < 23){
+				this.selectedTime.hours++;
 			}else{
-				datePicker.selectedTime.hours = 0;
+				this.selectedTime.hours = 0;
 			}
-			clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			datePicker.addTimeSelectorListener();
-		});
-		clockHoursDownElement.addEventListener('click', function (e) {
-			datePicker.initSelectedTime();
-			if (datePicker.selectedTime.hours > 0){
-				datePicker.selectedTime.hours--;
+			clockTimeSelectorElement.innerHTML = this.createTimeSelectorElement();
+			previewElement.innerHTML = this.createPreviewElement();
+			this.addTimeSelectorListener();
+		}.bind(this));
+		clockHoursDownElement.addEventListener('click', function () {
+			this.initSelectedTime();
+			if (this.selectedTime.hours > 0){
+				this.selectedTime.hours--;
 			}else{
-				datePicker.selectedTime.hours = 23;
+				this.selectedTime.hours = 23;
 			}
-			clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			datePicker.addTimeSelectorListener();
-		});
+			clockTimeSelectorElement.innerHTML = this.createTimeSelectorElement();
+			previewElement.innerHTML = this.createPreviewElement();
+			this.addTimeSelectorListener();
+		}.bind(this));
 	}
 
-	if (datePicker.clockOptions.showMinutes){
-		let clockMinutesInputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-clock-minutes-input');
-		let clockMinutesUpElement:HTMLElement = document.getElementById(datePicker.id + '-clock-minutes-up');
-		let clockMinutesDownElement:HTMLElement = document.getElementById(datePicker.id + '-clock-minutes-down');
+	if (this.clockOptions.showMinutes){
+		let clockMinutesInputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(this.id + '-clock-minutes-input');
+		let clockMinutesUpElement:HTMLElement = document.getElementById(this.id + '-clock-minutes-up');
+		let clockMinutesDownElement:HTMLElement = document.getElementById(this.id + '-clock-minutes-down');
 
 		clockMinutesInputElement.value ? clockMinutesInputElement.classList.add("is-not-empty") : clockMinutesInputElement.classList.remove("is-not-empty");
 
 		// Selector for minutes
-		clockMinutesInputElement.addEventListener('blur', function (e) {
-			datePicker.initSelectedTime();
+		clockMinutesInputElement.addEventListener('blur', function () {
+			this.initSelectedTime();
 			let value:number;
 			if (Number(this.value) < 0){
 				value = 0;
@@ -349,60 +377,60 @@ private addTimeSelectorListener(){
 			}else{
 				value = Number(this.value);
 			}
-			datePicker.selectedTime.minutes = value;
-			clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			datePicker.addTimeSelectorListener();
-		});
-		clockMinutesUpElement.addEventListener('click', function (e) {
-			datePicker.initSelectedTime();
-			if (datePicker.selectedTime.minutes < 59){
-				datePicker.selectedTime.minutes++;
+			this.selectedTime.minutes = value;
+			clockTimeSelectorElement.innerHTML = this.createTimeSelectorElement();
+			previewElement.innerHTML = this.createPreviewElement();
+			this.addTimeSelectorListener();
+		}.bind(this));
+		clockMinutesUpElement.addEventListener('click', function () {
+			this.initSelectedTime();
+			if (this.selectedTime.minutes < 59){
+				this.selectedTime.minutes++;
 			}else{
-				datePicker.selectedTime.minutes = 0;
-				if (datePicker.clockOptions.interactive){
-					if (datePicker.selectedTime.hours < 23){
-						datePicker.selectedTime.hours++;
+				this.selectedTime.minutes = 0;
+				if (this.clockOptions.interactive){
+					if (this.selectedTime.hours < 23){
+						this.selectedTime.hours++;
 					}else{
-						datePicker.selectedTime.hours = 0;
+						this.selectedTime.hours = 0;
 					}
 				}
 			}
-			clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			datePicker.addTimeSelectorListener();
-		});
-		clockMinutesDownElement.addEventListener('click', function (e) {
-			datePicker.initSelectedTime();
-			if (datePicker.selectedTime.minutes > 0){
-				datePicker.selectedTime.minutes--;
+			clockTimeSelectorElement.innerHTML = this.createTimeSelectorElement();
+			previewElement.innerHTML = this.createPreviewElement();
+			this.addTimeSelectorListener();
+		}.bind(this));
+		clockMinutesDownElement.addEventListener('click', function () {
+			this.initSelectedTime();
+			if (this.selectedTime.minutes > 0){
+				this.selectedTime.minutes--;
 			}else{
-				datePicker.selectedTime.minutes = 59;
-				if (datePicker.clockOptions.interactive){
-					if (datePicker.selectedTime.hours > 0){
-						datePicker.selectedTime.hours--;
+				this.selectedTime.minutes = 59;
+				if (this.clockOptions.interactive){
+					if (this.selectedTime.hours > 0){
+						this.selectedTime.hours--;
 					}else{
-						datePicker.selectedTime.hours = 23;
+						this.selectedTime.hours = 23;
 					}
 				}
 			}
-			clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			datePicker.addTimeSelectorListener();
-		});
+			clockTimeSelectorElement.innerHTML = this.createTimeSelectorElement();
+			previewElement.innerHTML = this.createPreviewElement();
+			this.addTimeSelectorListener();
+		}.bind(this));
 	}
 
 
-	if (datePicker.clockOptions.showSeconds){
-		let clockSecondsInputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(datePicker.id + '-clock-seconds-input');
-		let clockSecondsUpElement:HTMLElement = document.getElementById(datePicker.id + '-clock-seconds-up');
-		let clockSecondsDownElement:HTMLElement = document.getElementById(datePicker.id + '-clock-seconds-down');
+	if (this.clockOptions.showSeconds){
+		let clockSecondsInputElement:HTMLInputElement = <HTMLInputElement> document.getElementById(this.id + '-clock-seconds-input');
+		let clockSecondsUpElement:HTMLElement = document.getElementById(this.id + '-clock-seconds-up');
+		let clockSecondsDownElement:HTMLElement = document.getElementById(this.id + '-clock-seconds-down');
 
 		clockSecondsInputElement.value ? clockSecondsInputElement.classList.add("is-not-empty") : clockSecondsInputElement.classList.remove("is-not-empty");
 
 		// Selector for seconds
-		clockSecondsInputElement.addEventListener('blur', function (e) {
-			datePicker.initSelectedTime();
+		clockSecondsInputElement.addEventListener('blur', function () {
+			this.initSelectedTime();
 			let value:number;
 			if (Number(this.value) < 0){
 				value = 0;
@@ -411,57 +439,57 @@ private addTimeSelectorListener(){
 			}else{
 				value = Number(this.value);
 			}
-			datePicker.selectedTime.seconds = value;
-			clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			datePicker.addTimeSelectorListener();
-		});
-		clockSecondsUpElement.addEventListener('click', function (e) {
-			datePicker.initSelectedTime();
-			if (datePicker.selectedTime.seconds < 59){
-				datePicker.selectedTime.seconds++;
+			this.selectedTime.seconds = value;
+			clockTimeSelectorElement.innerHTML = this.createTimeSelectorElement();
+			previewElement.innerHTML = this.createPreviewElement();
+			this.addTimeSelectorListener();
+		}.bind(this));
+		clockSecondsUpElement.addEventListener('click', function () {
+			this.initSelectedTime();
+			if (this.selectedTime.seconds < 59){
+				this.selectedTime.seconds++;
 			}else{
-				datePicker.selectedTime.seconds = 0;
-				if (datePicker.clockOptions.interactive){
-					if (datePicker.selectedTime.minutes < 59){
-						datePicker.selectedTime.minutes++;
+				this.selectedTime.seconds = 0;
+				if (this.clockOptions.interactive){
+					if (this.selectedTime.minutes < 59){
+						this.selectedTime.minutes++;
 					}else{
-						datePicker.selectedTime.minutes = 0;
-						if (datePicker.selectedTime.hours < 23){
-							datePicker.selectedTime.hours++;
+						this.selectedTime.minutes = 0;
+						if (this.selectedTime.hours < 23){
+							this.selectedTime.hours++;
 						}else{
-							datePicker.selectedTime.hours = 0;
+							this.selectedTime.hours = 0;
 						}
 					}
 				}
 			}
-			clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			datePicker.addTimeSelectorListener();
-		});
-		clockSecondsDownElement.addEventListener('click', function (e) {
-			datePicker.initSelectedTime();
-			if (datePicker.selectedTime.seconds > 0){
-				datePicker.selectedTime.seconds--;
+			clockTimeSelectorElement.innerHTML = this.createTimeSelectorElement();
+			previewElement.innerHTML = this.createPreviewElement();
+			this.addTimeSelectorListener();
+		}.bind(this));
+		clockSecondsDownElement.addEventListener('click', function () {
+			this.initSelectedTime();
+			if (this.selectedTime.seconds > 0){
+				this.selectedTime.seconds--;
 			}else{
-				datePicker.selectedTime.seconds = 59;
-				if (datePicker.clockOptions.interactive){
-					if (datePicker.selectedTime.minutes > 0){
-						datePicker.selectedTime.minutes--;
+				this.selectedTime.seconds = 59;
+				if (this.clockOptions.interactive){
+					if (this.selectedTime.minutes > 0){
+						this.selectedTime.minutes--;
 					}else{
-						datePicker.selectedTime.minutes = 59;
-						if (datePicker.selectedTime.hours > 0){
-							datePicker.selectedTime.hours--;
+						this.selectedTime.minutes = 59;
+						if (this.selectedTime.hours > 0){
+							this.selectedTime.hours--;
 						}else{
-							datePicker.selectedTime.hours = 23;
+							this.selectedTime.hours = 23;
 						}
 					}
 				}
 			}
-			clockTimeSelectorElement.innerHTML = datePicker.createTimeSelectorElement();
-			previewElement.innerHTML = datePicker.createPreviewElement();
-			datePicker.addTimeSelectorListener();
-		});
+			clockTimeSelectorElement.innerHTML = this.createTimeSelectorElement();
+			previewElement.innerHTML = this.createPreviewElement();
+			this.addTimeSelectorListener();
+		}.bind(this));
 	}
 }
 
@@ -726,7 +754,8 @@ public createModuleElement() {
 
 	let datePickerElement: string = '';
 
-	let inputField = {
+
+	this.inputField = {
 		id: this.id + '-input',
 		name: this.name,
 		type: 'hidden',
@@ -734,16 +763,20 @@ public createModuleElement() {
 		placeholder: this.placeholder,
 		attributes: this.attributes,
 		label: this.label
-	}
+	};
 
-	let inputFieldElement = InputField.getModule(inputField);
-	let dummyInputFieldElement = `<div id='${this.id}-dummyInput' class='${Style.dummyInputField}'><span id='${this.id}-dummyInputValue' class='${Style.dummyInputFieldValue}'></span></div>`;
+	let inputFieldElement = InputField.getModule(this.inputField);
+
+	this.dummyInputField.id = this.id + '-dummyInput';
+	this.dummyInputFieldValue.id = this.id + '-dummyInputValue';
+	
+	let dummyInputFieldElement = `<div id='${this.dummyInputField.id}' class='${Style.dummyInputField}'><span id='${this.dummyInputFieldValue.id}' class='${Style.dummyInputFieldValue}'></span></div>`;
 
 	if (datePickerIsReadOnly || datePickerIsDisabled){
 		let readOnlyClass:string = datePickerIsReadOnly ? Style.readOnly : '';
 		let disabledClass:string = datePickerIsDisabled ? Style.disabled : '';
 		datePickerElement = `<div class='${Style.datePicker} ${readOnlyClass} ${disabledClass}'><div class='${Style.inputField}'>${dummyInputFieldElement}${inputFieldElement}</div></div>`;
-		this.addDisabledOrReadOnlyListener(inputField);
+		this.addDisabledOrReadOnlyListener(this.inputField);
 	}else{
 		let buttonElement = Button.getModule({
 			id: 'datepicker-trigger1',
@@ -751,7 +784,7 @@ public createModuleElement() {
 			type: 'minimal'
 		})
 
-		let modalId:string = this.id + '-datepicker-modal';
+		let modalId = this.id + '-datepicker-modal';
 
 		let previewElement = this.createPreviewElement();
 		previewElement = `<div id='${this.id}-preview' class='${Style.preview}'>${previewElement}</div>`;
@@ -781,7 +814,7 @@ public createModuleElement() {
 
 		let modalContentElement = `${toggleTabElements}${previewElement}${callendarElement}${timeSelectorElement}`;
 
-		let modalObject = {
+		this.modal = {
 			id: modalId,
 			triggerElement: buttonElement,
 			modalElement: {
@@ -799,9 +832,9 @@ public createModuleElement() {
 			}
 		};
 
-		let modalElement = Modal.getModule(modalObject);
+		let modalElement = Modal.getModule(this.modal);
 
-		this.addListener(inputField, modalObject.id);
+		this.addListener();
 		datePickerElement = `<div class='${Style.datePicker}'><div class='${Style.inputField}'>${dummyInputFieldElement}${inputFieldElement}</div><div class='${Style.modal}'>${modalElement}</div></div>`;
 	}
 
