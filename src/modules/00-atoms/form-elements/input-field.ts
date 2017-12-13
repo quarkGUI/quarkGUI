@@ -1,5 +1,7 @@
 const Style = require<any>("../../../../src/modules/00-atoms/form-elements/input-field.scss");
 
+export let eventListeners:string[] = [];
+
 export class InputField {
 	id: string;
 	name: string;
@@ -27,18 +29,32 @@ export class InputField {
 		return vueBinding;
 	}
 
-	private addListener(id: string){
-		document.addEventListener('DOMContentLoaded', function(e) {
-			let elementIsDefined: boolean = document.getElementById(id) !== undefined;
-			let elementIsNotNull: boolean = document.getElementById(id) !== null;
-			if (elementIsDefined && elementIsNotNull){
-				let element: HTMLInputElement = <HTMLInputElement> document.getElementById(id);
-				element.value && element.value.length ? element.classList.add("is-not-empty") : element.classList.remove("is-not-empty");
-				element.onkeyup = function(){
-					element.value && element.value.length ? element.classList.add("is-not-empty") : element.classList.remove("is-not-empty");				
-				};
-			}
+	private initFunction (id?: string) {
+		let elementIsDefined: boolean = document.getElementById(id) !== undefined;
+		let elementIsNotNull: boolean = document.getElementById(id) !== null;
+		if (elementIsDefined && elementIsNotNull){
+			let element: HTMLInputElement = <HTMLInputElement> document.getElementById(id);
+			element.value && element.value.length ? element.classList.add("is-not-empty") : element.classList.remove("is-not-empty");
+			element.onkeyup = function(){
+				element.value && element.value.length ? element.classList.add("is-not-empty") : element.classList.remove("is-not-empty");				
+			};
+		}
+	}
+
+	private addListener(){
+		let self = this;
+		document.addEventListener('DOMContentLoaded', function(){
+			self.initFunction()
 		}, false);
+		if (!eventListeners.includes('quarkLazyLoaded')){
+			document.addEventListener('quarkLazyLoaded', function(){
+				let targetElements = document.getElementsByClassName(Style.input);
+				for (var i = 0; i < targetElements.length; i++){
+					self.initFunction(targetElements[i].id);
+				}
+			}, false);
+			eventListeners.push('quarkLazyLoaded');
+		}
 	}
 
 	private getHtmlAttributes(attributes: string[]){
@@ -104,7 +120,7 @@ export class InputField {
 			}
 		}
 		
-		this.addListener(this.id);
+		this.addListener();
 
 		let htmlAtributes: string = this.attributes !== undefined && this.attributes.length ? this.getHtmlAttributes(this.attributes) : '';
 		return `<input ${idAttribute} ${nameAttribute} ${typeAttribute} ${valueAttribute} ${placeholderAttribute} ${htmlAtributes} class='${Style.input}' />`;
