@@ -1,3 +1,5 @@
+import * as InputField from './input-field';
+import * as Modal from '../messaging/modal';
 export declare class DatePicker {
     id: string;
     name: string;
@@ -12,9 +14,18 @@ export declare class DatePicker {
     visibleTime: IDatePickerTime;
     attributes: string[];
     clockOptions: IClockOptions;
+    inputField: InputField.IInputField;
+    modal: Modal.IModal;
+    dummyInputField: {
+        id: string;
+    };
+    dummyInputFieldValue: {
+        id: string;
+    };
     constructor(datePicker: IDatePicker);
     private elementIsNotNullOrUndefinedById(id);
-    private addListener(inputField, modalId);
+    private initFunction(id?);
+    private addListener();
     private addDisabledOrReadOnlyListener(inputField);
     private addDateSelectorListener();
     private initSelectedTime();

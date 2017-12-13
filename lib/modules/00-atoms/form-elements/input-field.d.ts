@@ -1,3 +1,4 @@
+export declare let eventListeners: string[];
 export declare class InputField {
     id: string;
     name: string;
@@ -8,7 +9,8 @@ export declare class InputField {
     vueBindings: IVueBindings;
     constructor(inputField: IInputField);
     private getVueBinding(attributeName);
-    private addListener(id);
+    private initFunction(id?);
+    private addListener();
     private getHtmlAttributes(attributes);
     createModuleElement(): string;
 }
