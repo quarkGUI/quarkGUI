@@ -12,7 +12,7 @@ export class Modal {
 	vueBindings: IVueBindings;
 	constructor(modal: IModal) {
 		counter += 1;
-		this.id = 'quark-modal-' + counter;
+		this.id = modal.id !== undefined ? modal.id : 'quark-modal-' + counter;
 		this.triggerElement = modal.triggerElement;
 		this.modalElement = modal.modalElement;
 		if (modal.modalElement.title !== undefined) this.modalElement.title = modal.modalElement.title;
