@@ -7,7 +7,7 @@
   padding: 0;
   background-color: $bright-white;
   > li {
-    > a {
+    > a, > router-link {
       display: block;
       color: #212121;
       text-decoration: none;
