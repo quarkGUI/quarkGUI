@@ -5,8 +5,9 @@ export declare class ListNavigation {
 }
 export interface IListItem {
     name: string;
-    link: string;
+    link?: string;
     iconClass?: string;
+    vueRouterLink?: boolean;
 }
 export interface IListNavigation {
     listItems: IListItem[];
