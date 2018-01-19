@@ -1,6 +1,6 @@
 /*!
- * quarkGUI v0.7.31 (https://github.com/quarkGUI/quarkGUI)
- * Copyright(c) 2016-2017 Benjamin Dehli (https://github.com/benjamindehli)
+ * quarkGUI v0.7.32 (https://github.com/quarkGUI/quarkGUI)
+ * Copyright(c) 2016-2018 Benjamin Dehli (https://github.com/benjamindehli)
  * Licenced under GNU General Public License
  */
 import * as Init from "./init";
