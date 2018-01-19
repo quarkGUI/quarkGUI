@@ -25,7 +25,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "vows test/* --spec",
+    "test": "jest",
     "build": "rimraf dist && NODE_ENV=production webpack",
     "dev": "NODE_ENV=development node dev-server.js",
     "win-build": "rimraf dist && SET NODE_ENV=production&& webpack",
@@ -37,7 +37,32 @@
   },
   "author": "Benjamin Dehli <superelg@gmail.com> (https://github.com/benjamindehli)",
   "license": "GPL-3.0",
+  "jest": {
+    "transform": {
+      "^.+\\.(t|j)sx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss|less)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    }
+  },
   "devDependencies": {
+    "@types/jest": "^22.0.1",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.6.0",
@@ -47,11 +72,13 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "html-webpack-plugin": "^2.24.1",
+    "jest": "^22.0.6",
     "node-sass": "^4.5.3",
     "rimraf": "^2.5.4",
     "sass-loader": "^6.0.0",
     "style-loader": "^0.19.0",
     "svg-url-loader": "^2.0.1",
+    "ts-jest": "^22.0.1",
     "ts-loader": "^3.1.1",
     "typescript": "^2.2.0",
     "url-loader": "^0.6.2",
