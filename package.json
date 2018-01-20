@@ -25,7 +25,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --runInBand",
     "build": "rimraf dist && NODE_ENV=production webpack",
     "dev": "NODE_ENV=development node dev-server.js",
     "win-build": "rimraf dist && SET NODE_ENV=production&& webpack",
