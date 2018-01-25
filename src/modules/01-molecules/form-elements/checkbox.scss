@@ -1,16 +1,30 @@
 @import "../../../../src/style/abstracts/all";
 
 :local(.inputGroup){
-    margin-bottom: 4px;
-    :local(.label) {
-        font-size: 16pt;
-        cursor: pointer;
-    }
+	margin-bottom: 4px;
+	:local(.label) {
+		font-size: 16pt;
+		cursor: pointer;
+	}
+	input[type="checkbox"]{
+		&:focus,
+		&:active{
+			+ span,
+			+ span + label{
+				color: $primary-color;
+			}
+		}
+		&.disabled,
+		&.readonly{
+			+ span {
+				color: $disabled-icon-color;
+				+ label{
+					color: $disabled-text-color;
+				}
+			}
+		}
+	}
 }
 
-input[type="checkbox"]:focus,
-input[type="checkbox"]:focus + label,
-:local(.inputGroup):active input[type="checkbox"],
-:local(.inputGroup):active input[type="checkbox"] + label{
-    color: $primary-color;
-}
+
+

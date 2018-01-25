@@ -18,12 +18,23 @@
 }
 
 :local(.input){
+  &:read-only{
+    color: red;
+  }
   display: none;
   &:checked{
     + :local(.checkboxIcon){
       &:before{
         content: "\f046";
         color: $primary-color;
+      }
+    }
+  }
+  &.disabled,
+  &.readonly{
+    + :local(.checkboxIcon){
+      &:before{
+        color: $disabled-icon-color;
       }
     }
   }

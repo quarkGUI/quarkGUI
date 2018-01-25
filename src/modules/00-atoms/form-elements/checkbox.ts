@@ -31,12 +31,19 @@ export class Checkbox {
 			if (iconElementIsDefined && iconElementIsNotNull){
 				let iconElement: HTMLElement =  document.getElementById('checkbox-toggle-' + id);
 				iconElement.onclick = () => {
-					checkboxElement.checked = checkboxElement.checked ? false : true;
+					
+					if (!checkboxElement.disabled && !checkboxElement.readOnly){
+						checkboxElement.checked = checkboxElement.checked ? false : true;
 
-					var event = document.createEvent('Event');
-					event.initEvent('click', true, true);
-					checkboxElement.dispatchEvent(event);
+						var event = document.createEvent('Event');
+						event.initEvent('click', true, true);
+						checkboxElement.dispatchEvent(event);
+					}
+
 				};
+				if (checkboxElement.readOnly){
+					checkboxElement.onclick = () => { return false };
+				}
 			}
 		}, false);
 	}
@@ -53,6 +60,10 @@ export class Checkbox {
 	}
 
 	public createModuleElement() {
+		let checkboxIsReadOnly:boolean = this.attributes !== undefined && this.attributes.indexOf('readonly') > -1;
+		let checkboxIsDisabled:boolean = this.attributes !== undefined && this.attributes.indexOf('disabled') > -1;
+		let checkboxIsChecked:boolean = this.attributes !== undefined && this.attributes.indexOf('checked') > -1;
+
 		let hasId: boolean = this.id !== undefined || this.getVueBinding('id');
 		let hasName: boolean = this.name !== undefined || this.getVueBinding('name');
 		let hasValue: boolean = this.value !== undefined;
@@ -89,9 +100,15 @@ export class Checkbox {
 			vueValueAttribute = `v-model='${value}'`;
 		}
 
+		let readOnlyAttribute:string = checkboxIsReadOnly ? 'readonly' : '';
+		let disabledAttribute:string = checkboxIsDisabled ? 'disabled' : '';
+		let readOnlyClass:string = checkboxIsReadOnly ? Style.readOnly : '';
+		let disabledClass:string = checkboxIsDisabled ? Style.disabled : '';
+		let checkedAttribute:string = checkboxIsChecked ? 'checked' : '';
+
 		this.addListener(this.id);
 		let htmlAtributes: string = this.attributes !== undefined && this.attributes.length ? this.getHtmlAttributes(this.attributes) : '';
-		return `<input ${idAttribute} ${nameAttribute} type='checkbox' ${valueAttribute} ${vueValueAttribute} class='${Style.input}' /><span id='checkbox-toggle-${this.id}' ${htmlAtributes} class='${Style.checkboxIcon}'></span>`;
+		return `<input ${idAttribute} ${nameAttribute} type='checkbox' ${readOnlyAttribute} ${disabledAttribute} ${checkedAttribute} ${valueAttribute} ${vueValueAttribute} class='${Style.input} ${readOnlyAttribute} ${disabledAttribute}' /><span id='checkbox-toggle-${this.id}' ${htmlAtributes} class='${Style.checkboxIcon}'></span>`;
 	}
 }
 
