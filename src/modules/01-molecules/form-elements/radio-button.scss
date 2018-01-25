@@ -6,11 +6,22 @@
 		font-size: 16pt;
 		cursor: pointer;
 	}
-}
-
-input[type="radio"]:focus,
-input[type="radio"]:focus + label,
-:local(.inputGroup):active input[type="radio"],
-:local(.inputGroup):active input[type="radio"] + label{
-	color: $primary-color;
+	input[type="radio"]{
+		&:focus,
+		&:active{
+			+ span,
+			+ span + label{
+				color: $primary-color;
+			}
+		}
+		&.disabled,
+		&.readonly{
+			+ span {
+				color: $disabled-icon-color;
+				+ label{
+					color: $disabled-text-color;
+				}
+			}
+		}
+	}
 }

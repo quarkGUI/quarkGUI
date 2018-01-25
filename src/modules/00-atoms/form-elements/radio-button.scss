@@ -27,4 +27,12 @@
       }
     }
   }
+  &.disabled,
+  &.readonly{
+    + :local(.radioIcon){
+      &:before{
+        color: $disabled-icon-color;
+      }
+    }
+  }
 }

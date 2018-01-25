@@ -20,8 +20,19 @@ export class RadioButton {
 			if (iconElementIsDefined && iconElementIsNotNull){
 				let iconElement: HTMLElement =  document.getElementById('radio-toggle-' + id);
 				iconElement.onclick = () => {
-					radioButtonElement.checked = radioButtonElement.checked ? false : true;
+					
+					if (!radioButtonElement.disabled && !radioButtonElement.readOnly){
+						radioButtonElement.checked = radioButtonElement.checked ? false : true;
+
+						var event = document.createEvent('Event');
+						event.initEvent('click', true, true);
+						radioButtonElement.dispatchEvent(event);
+					}
+
 				};
+				if (radioButtonElement.readOnly){
+					radioButtonElement.onclick = () => { return false };
+				}
 			}
 		}, false);
 	}
@@ -38,9 +49,19 @@ export class RadioButton {
 	}
 
 	public createModuleElement() {
+		let radioButtonIsReadOnly:boolean = this.attributes !== undefined && this.attributes.indexOf('readonly') > -1;
+		let radioButtonIsDisabled:boolean = this.attributes !== undefined && this.attributes.indexOf('disabled') > -1;
+		let radioButtonIsChecked:boolean = this.attributes !== undefined && this.attributes.indexOf('checked') > -1;
+
+		let readOnlyAttribute:string = radioButtonIsReadOnly ? 'readonly' : '';
+		let disabledAttribute:string = radioButtonIsDisabled ? 'disabled' : '';
+		let readOnlyClass:string = radioButtonIsReadOnly ? Style.readOnly : '';
+		let disabledClass:string = radioButtonIsDisabled ? Style.disabled : '';
+		let checkedAttribute:string = radioButtonIsChecked ? 'checked' : '';
+
 		this.addListener(this.id);
 		let htmlAtributes: string = this.attributes !== undefined && this.attributes.length ? this.getHtmlAttributes(this.attributes) : '';
-		return `<input id='${this.id}' name='${this.name}' type='radio' value='${this.value}' ${htmlAtributes} class='${Style.input}' /><span id='radio-toggle-${this.id}' class='${Style.radioIcon}'></span>`;
+		return `<input id='${this.id}' name='${this.name}' type='radio' ${readOnlyAttribute} ${disabledAttribute} ${checkedAttribute} value='${this.value}' ${htmlAtributes} class='${Style.input} ${readOnlyAttribute} ${disabledAttribute}' /><span id='radio-toggle-${this.id}' class='${Style.radioIcon}'></span>`;
 	}
 }
 
