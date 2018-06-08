@@ -35,7 +35,9 @@ export class PrimaryNavigation {
 
 	private createIconElement(listItem:IListItem){
 		let iconElement = '';
-		if (listItem.iconClass !== undefined){
+		if (listItem.iconElement !== undefined){
+			iconElement = listItem.iconElement;
+		}else if (listItem.iconClass !== undefined){
 			iconElement = `<span class='${Style.listItemIcon} ${listItem.iconClass}'></span>`;
 		}
 		return iconElement;

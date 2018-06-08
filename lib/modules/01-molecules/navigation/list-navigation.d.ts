@@ -7,6 +7,7 @@ export interface IListItem {
     name: string;
     link?: string;
     iconClass?: string;
+    iconElement?: string;
     vueRouterLink?: boolean;
 }
 export interface IListNavigation {
