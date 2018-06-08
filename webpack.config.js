@@ -1,8 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var HTMLWebpackPlugin = require('html-webpack-plugin');
 var CompressionPlugin = require("compression-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 
 var DEVELOPMENT = process.env.NODE_ENV === 'development';
@@ -11,7 +12,7 @@ var PRODUCTION  = process.env.NODE_ENV === 'production';
 var outputPath = 'dist';
 var ouputPublicPath = '/';
 var cssFileName = PRODUCTION ? 'style-[contenthash:10].css' : 'styles.css';
-var scriptFileName = PRODUCTION ? 'bundle.[hash:12].min.js' : 'bundle.js';
+var scriptFileName = PRODUCTION ? '[name].[hash:12].min.js' : '[name].js';
 
 var entry = PRODUCTION
 	?	{
@@ -27,22 +28,41 @@ var entry = PRODUCTION
 			]
 		};
 
+var optimization = {
+	splitChunks: {
+		cacheGroups: {
+			vendor: {
+				name: "vendor",
+				filename: PRODUCTION ? "scripts/vendor.[hash:12].min.js" : "vendor.js"
+			}
+		}
+	},
+	minimizer: PRODUCTION 
+	?	[
+			new UglifyJsPlugin({
+				uglifyOptions: {
+					compress: {
+						warnings: false,
+			      		unused: true,
+			      		dead_code: true,
+			      		drop_console: true,
+			    	},
+			    	output: {
+			      		comments: false,
+			    	}
+		    	}
+		  	})
+		]
+	: 	[]
+}
+
 
 var plugins = PRODUCTION
 	? 	[
-		    new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename: "scripts/vendor.[hash:12].min.js"}),
-			new webpack.optimize.UglifyJsPlugin({
-				compress: {
-					warnings: false,
-		      		unused: true,
-		      		dead_code: true,
-		      		drop_console: true,
-		    	},
-		    	output: {
-		      		comments: false,
-		    	}
-		  	}),
-			new ExtractTextPlugin('style/' + cssFileName),
+			new MiniCssExtractPlugin({
+		      filename: "style/" + cssFileName,
+		      chunkFilename: "style/[id].css"
+		    }),
 			new HTMLWebpackPlugin({
 				template: 'index-template.html'
 			}),
@@ -55,8 +75,6 @@ var plugins = PRODUCTION
 		    })
 		]
 	: 	[ 
-			new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename: "vendor.js"}),
-			new ExtractTextPlugin(cssFileName), 
 			new webpack.HotModuleReplacementPlugin() 
 		];
 
@@ -70,27 +88,31 @@ plugins.push(
 const cssIdentifier = PRODUCTION ? '[hash:base64:10]' : '[path][name]---[local]';
 
 const cssLoader = PRODUCTION
-	?	ExtractTextPlugin.extract({
-			use: 'css-loader?minimize!localIdentName=' + cssIdentifier
-		})
-
+	?	[
+			MiniCssExtractPlugin.loader,
+			'css-loader?minimize!localIdentName=' + cssIdentifier
+		]
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier];
 
+
 const sassLoader = PRODUCTION
-	?	ExtractTextPlugin.extract({
-			use: 'css-loader?minimize!sass-loader?localIdentName=' + cssIdentifier
-		})
+	?	[
+			MiniCssExtractPlugin.loader,
+			'css-loader?minimize!sass-loader?localIdentName=' + cssIdentifier
+		]
 	: 	['style-loader', 'css-loader?localIdentName=' + cssIdentifier, 'sass-loader'];
+
 
 module.exports = {
 	devtool: 'source-map',
 	entry: entry,
+	optimization: optimization,
 	plugins: plugins,
 	resolve: {
 		extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   	},
 	module: {
-		loaders: [
+		rules: [
 		{
 			test: /\.js$/,
 			loaders: ['babel-loader'],
