@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`renders a button anchor with type value "submit" 1`] = `"<button type='submit'   class='undefined undefined undefined'><span class='undefined '></span> </button>"`;
-
-exports[`renders as an anchor with id value "testbutton" 1`] = `"<a id='testbutton'  href='#'  class='undefined undefined undefined'><span class='undefined '></span> </a>"`;
