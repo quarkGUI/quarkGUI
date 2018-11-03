@@ -37,8 +37,6 @@ node_modules
 #Ignore MacOS files
 .DS_Store
 
-#Ignore distribution directory
-/dist
 
 #Ignore template files
 index-template.html

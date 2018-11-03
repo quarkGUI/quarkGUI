@@ -1,0 +1,248 @@
+@import "../../../style/abstracts/all";
+
+:local(.button) {
+	cursor: pointer;
+	text-align: center;
+	min-width: 42px;
+	height: 34px;
+	border: 1px solid rgba(0, 0, 0, .07);
+	font-size: 14px;
+	font-family: $normal-font;
+	font-weight: bold;
+	color: $primary-color;
+	line-height: 32px;
+	display: inline-block;
+	padding: 0 6px;
+	text-transform: uppercase;
+	@include border-radius(2px);
+	&[disabled] {
+		cursor: not-allowed;
+	}
+}
+
+:local(.formWrapper){
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+:local(.icon){
+	font-size: 14pt!important;
+	vertical-align: middle;
+}
+
+:local(.buttonType-flat) {
+	@include transition(all .2s);
+
+	&:not([disabled]):hover {
+		background-color: bright-gray($dark-color);
+		color: #FFFFFF;
+	}
+	&:not([disabled]):active {
+		background-color: bright-color($primary-color);
+	}
+	&[disabled] {
+		color: rgba(0, 0, 0, 0.26);
+		background-color: transparent;
+	}
+}
+
+:local(.buttonType-raised) {
+	&:not([disabled]) {
+		@include raised(2);
+		@include transition(box-shadow .4s cubic-bezier(.25, .8, .25, 1), background-color .4s cubic-bezier(.25, .8, .25, 1));
+		&:hover{
+			color: #FFFFFF;
+		}
+	}
+	&:not([disabled]):active {
+		@include raised(3);
+		background-color: bright-color($primary-color);
+	}
+	&[disabled] {
+		color: rgba(0, 0, 0, 0.26);
+	}
+}
+
+:local(.buttonType-minimal)[disabled] {
+	background: none;
+	border: none;
+	color: rgba(0, 0, 0, 0.26);
+}
+
+:local(.buttonType-minimal):not([disabled]) {
+	background: none;
+	border: none;
+	color: $primary-color;
+	&:local(.buttonTheme-default),
+	&:local(.buttonTheme-default):visited,
+	&:local(.buttonTheme-primary),
+	&:local(.buttonTheme-primary):visited,
+	&:local(.buttonTheme-info),
+	&:local(.buttonTheme-info):visited,
+	&:local(.buttonTheme-success),
+	&:local(.buttonTheme-success):visited,
+	&:local(.buttonTheme-warning),
+	&:local(.buttonTheme-warning):visited,
+	&:local(.buttonTheme-danger),
+	&:local(.buttonTheme-danger):visited{
+		background: none;
+		border: none;
+		&:hover {
+			background-color: bright-gray($dark-color);
+		}
+	}
+	&:local(.buttonTheme-default),
+	&:local(.buttonTheme-default):visited {
+		color: $default-text-color;
+		&:active {
+			background-color: bright-gray-active($dark-color);
+		}
+	}
+	&:local(.buttonTheme-primary),
+	&:local(.buttonTheme-primary):visited {
+		color: $primary-color;
+		&:active {
+			background-color: bright-color($primary-color);
+		}
+	}
+	&:local(.buttonTheme-info),
+	&:local(.buttonTheme-info):visited {
+		color: $info-color;
+		&:active {
+			background-color: bright-color($info-color);
+		}
+	}
+	&:local(.buttonTheme-success),
+	&:local(.buttonTheme-success):visited {
+		color: $success-color;
+		&:active {
+			background-color: bright-color($success-color);
+		}
+	}
+	&:local(.buttonTheme-warning),
+	&:local(.buttonTheme-warning):visited {
+		color: $warning-color;
+		&:active {
+			background-color: bright-color($warning-color);
+		}
+	}
+	&:local(.buttonTheme-danger),
+	&:local(.buttonTheme-danger):visited {
+		color: $danger-color;
+		&:active {
+			background-color: bright-color($danger-color);
+		}
+	}
+}
+
+:local(.buttonTheme-default):not([disabled]),
+:local(.buttonTheme-default):not([disabled]):visited {
+	background-color: $default-color;
+	color: #333;
+	border: 1px solid border-color($default-color);
+	@include transition(all .2s);
+	&:hover {
+		background-color: $default-hover-color;
+		color: #333;
+	}
+	&:active {
+		background-color: $default-active-color;
+		color: #333;
+	}
+	&:local(.buttonType-flat) {
+		&:active {
+			background-color: $default-active-color;
+			color: #333;
+		}
+	}
+}
+
+:local(.buttonTheme-primary):not([disabled]),
+:local(.buttonTheme-primary):not([disabled]):visited {
+	background-color: $primary-color;
+	color: #FFFFFF;
+	@include transition(all .2s);
+	&:hover {
+		background-color: hover-color($primary-color);
+	}
+	&:active {
+		background-color: active-color($primary-color);
+	}
+	&:local(.buttonType-flat) {
+		&:active {
+			background-color: active-color($primary-color);
+		}
+	}
+}
+
+:local(.buttonTheme-info):not([disabled]),
+:local(.buttonTheme-info):not([disabled]):visited {
+	background-color: $info-color;
+	color: #FFFFFF;
+	@include transition(all .2s);
+	&:hover {
+		background-color: hover-color($info-color);
+	}
+	&:active {
+		background-color: active-color($info-color);
+	}
+	&:local(.buttonType-flat) {
+		&:active {
+			background-color: active-color($info-color);
+		}
+	}
+}
+
+:local(.buttonTheme-success):not([disabled]),
+:local(.buttonTheme-success):not([disabled]):visited {
+	background-color: $success-color;
+	color: #FFFFFF;
+	@include transition(all .2s);
+	&:hover {
+		background-color: hover-color($success-color);
+	}
+	&:active {
+		background-color: active-color($success-color);
+	}
+	&:local(.buttonType-flat) {
+		&:active {
+			background-color: active-color($success-color);
+		}
+	}
+}
+
+:local(.buttonTheme-warning):not([disabled]),
+:local(.buttonTheme-warning):not([disabled]):visited {
+	background-color: $warning-color;
+	color: #FFFFFF;
+	@include transition(all .2s);
+	&:hover {
+		background-color: hover-color($warning-color);
+	}
+	&:active {
+		background-color: active-color($warning-color);
+	}
+	&:local(.buttonType-flat) {
+		&:active {
+			background-color: active-color($warning-color);
+		}
+	}
+}
+
+:local(.buttonTheme-danger):not([disabled]),
+:local(.buttonTheme-danger):not([disabled]):visited {
+	background-color: $danger-color;
+	color: #FFFFFF;
+	@include transition(all .2s);
+	&:hover {
+		background-color: hover-color($danger-color);
+	}
+	&:active {
+		background-color: active-color($danger-color);
+	}
+	&:local(.buttonType-flat) {
+		&:active {
+			background-color: active-color($danger-color);
+		}
+	}
+}
