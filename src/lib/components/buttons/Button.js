@@ -4,7 +4,6 @@ import Style from './Button.scss';
 
 class Button extends React.Component {
 	getThemeClass(){
-		console.log(Style);
 		return Style['buttonTheme-' + this.props.theme];
 	}
 
