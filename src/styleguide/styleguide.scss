@@ -1,0 +1,76 @@
+@import "../style/abstracts/all";
+
+@include scrollbar(14px, #e0e1e2, transparent, 0);
+
+@media (min-width: 601px){
+	html {
+		height: 100%;
+	}
+	body {
+		height: 100%;
+		.rsg--root-1.rsg--hasSidebar-2{
+			padding-left: 245px;
+		}
+		.rsg--content-3{
+			@include calc('height', '100% - 65px');
+			@include calc('width', '100% - 245px');
+			position: fixed;
+			top: 64px;
+			overflow: scroll;
+		}
+		.rsg--sidebar-4{
+			@include box-shadow(0 2px 5px rgba(0,0,0,.26));
+			background-color: $primary-color;
+			height: 64px;
+			width: 100%;
+			overflow: visible;
+			color: #fff;
+			.rsg--logo-5{
+				font-size: 0;
+				display: inline-block;
+				margin: 10.5px;
+				padding: 0;
+				height: 40px;
+				width: auto;
+				content: url(./quark-GUI-logo-white.svg);
+				border: none;
+				h1 {
+					display: none;
+				}
+			}
+			.rsg--root-42 {
+				@include box-shadow(2px 3px 5px rgba(0,0,0,.26));
+				position: absolute;
+				top: 64px;
+				left: 0;
+				width: 245px;
+				background-color: #fbfcfd;
+				padding: 0;
+				position: fixed;
+				height: 100%;
+				overflow: hidden;
+				z-index: 3;
+				> nav > ul.rsg--list-45{
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					> li {
+						display: block;
+						border-bottom: 1px solid hsla(0,0%,100%,.05);
+						border-top: 1px solid rgba(0,0,0,.05);
+						text-decoration: none;
+						padding: 10px 20px;
+						width: 100%;
+						min-width: 200px;
+						border-left: 2px solid transparent;
+						a {
+							color: #333435!important;
+							font-size: 14pt;
+
+						}
+					}
+				}
+			}
+		}
+	}
+}
