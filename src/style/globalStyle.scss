@@ -19,7 +19,7 @@ body{
 	color: $default-text-color;
 	height: 100%;
 	overflow: hidden;
-	font-family: $normal-font;
+	font-family: $default-font;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	> div#app{

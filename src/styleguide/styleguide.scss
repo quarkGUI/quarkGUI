@@ -8,6 +8,9 @@
 	}
 	body {
 		height: 100%;
+		font-family: $default-font;
+		font-size: $default-font-size;
+		color: $default-text-color;
 		.rsg--root-1.rsg--hasSidebar-2{
 			padding-left: 245px;
 		}
@@ -17,6 +20,7 @@
 			position: fixed;
 			top: 64px;
 			overflow: scroll;
+			max-width: none;
 		}
 		.rsg--sidebar-4{
 			@include box-shadow(0 2px 5px rgba(0,0,0,.26));
