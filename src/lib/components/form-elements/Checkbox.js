@@ -6,24 +6,12 @@ import classNames from 'classnames/bind';
 import style from './Checkbox.scss';
 
 class Checkbox extends React.Component {
-	constructor(props){
-		super(props)
-		this.state = {
-			checked: this.props.checked
-		}
-	}
 	toggleChecked(){
 		if (!this.props.disabled && !this.props.readOnly){
 			this.setState(prevState => ({
 				checked: !prevState.checked
 			}))
 		}
-	}
-	onChange() {
-		if (this.props.onChange){
-			this.props.onChange();
-		}
-		this.toggleChecked()
 	}
 	render () {
 		const checkboxClassNames = classNames({
@@ -36,9 +24,9 @@ class Checkbox extends React.Component {
 				<input disabled={this.props.disabled} 
 					   name={this.props.name}
 					   readOnly={this.props.readOnly} 
-					   onChange={ () => this.onChange() } 
+					   onChange={ this.props.onChange } 
 					   type="checkbox" />
-				<FontAwesomeIcon className={style.icon}  icon={this.state.checked ?  ['far', 'check-square'] : ['far', 'square']} />
+				<FontAwesomeIcon className={style.icon}  icon={this.props.checked ? ['far', 'check-square'] : ['far', 'square']} />
 				{ this.props.label }
 			</label>
 			)
