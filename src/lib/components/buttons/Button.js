@@ -1,37 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Style from './Button.scss';
+import classNames from 'classnames/bind';
+
+import style from './Button.scss';
 
 class Button extends React.Component {
 	getThemeClass(){
-		return Style['buttonTheme-' + this.props.theme];
+		return style['buttonTheme-' + this.props.theme];
 	}
 
 	getTypeClass(){
-		return Style['buttonType-' + this.props.type];
+		return style['buttonType-' + this.props.type];
 	}
 
 	render () {
-		let themeClass = " " + this.getThemeClass();
-		let typeClass = " " + this.getTypeClass();
-		let className = Style.button + themeClass + typeClass;
-		return (
-			<button className={className}>{this.props.content}</button>
-			)
+		const themeClass = " " + this.getThemeClass();
+		const typeClass = " " + this.getTypeClass();
+		const buttonClassNames = classNames({
+            [this.getThemeClass()]: true,
+            [this.getTypeClass()]: true,
+            [style.button]: true,
+        });
+		if (this.props.submit) {
+			return <button type='submit' className={buttonClassNames}>{this.props.content}</button>
+		}
+		else if (this.props.href){
+			return <a href={this.props.href} className={buttonClassNames}>{this.props.content}</a>
+		} else {
+			return <span className={buttonClassNames}>{this.props.content}</span>
+		}
+		
 	}
 }
 
 Button.propTypes = {
-	id: PropTypes.string,
 	type: PropTypes.oneOf(['flat', 'raised', 'minimal']),
 	theme: PropTypes.oneOf(['default', 'primary', 'info', 'success', 'warning', 'danger']),
-	link: PropTypes.string, 
-	iconClass: PropTypes.string,
+	href: PropTypes.string, 
 	/** Text content inside button */
 	content: PropTypes.string,
-	title: PropTypes.string,
-	submit: PropTypes.bool,
-	attributes: PropTypes.arrayOf(PropTypes.string)
+	submit: PropTypes.bool
 }
 
 Button.defaultProps = {
