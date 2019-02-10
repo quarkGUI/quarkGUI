@@ -14,8 +14,6 @@ class Button extends React.Component {
 	}
 
 	render () {
-		const themeClass = " " + this.getThemeClass();
-		const typeClass = " " + this.getTypeClass();
 		const buttonClassNames = classNames({
             [this.getThemeClass()]: true,
             [this.getTypeClass()]: true,
