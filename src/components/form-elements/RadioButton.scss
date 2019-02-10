@@ -1,6 +1,6 @@
-@import "../../../style/abstracts/all";
+@import "../../style/abstracts/all";
 
-:local(.checkboxContainer){
+:local(.radioContainer){
 	display: block;
 	font-family: $default-font;
 	font-size: $default-font-size;
